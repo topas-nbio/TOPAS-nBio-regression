@@ -1,0 +1,24 @@
+A Regression system for TOPAS-nBio
+(Use latest addition on top of the list)
+
+- Jan 10, 2024.  J. Ramos-Mendez. Added tests
+               - GvalueIRT-Temperature
+               - GvalueIRT_H2O2 
+
+- May 8, 2022.  J. Naoki D. Kondo. Added tests
+	       - GValue_LET-IRT
+	       - GValue_LET-SBS
+
+- April 1, 2022. J. Naoki D. Kondo. Added tests
+	       - GValueIRT
+	       - FrickeIRT
+
+- July 27, 2020. J. Ramos-Mendez. Added tests
+               - NanodosimetryI
+               - NanodosimetryII
+               - NanodosimetryIII
+
+- July 20, 2020. J. Ramos-Mendez. Created first version.
+               - DBSCAN
+               - GvalueStepByStep
+               - LET

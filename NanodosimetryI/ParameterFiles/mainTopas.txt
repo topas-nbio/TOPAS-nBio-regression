@@ -1,0 +1,8 @@
+includeFile = depFile1.txt
+
+sv:Ph/Default/Modules = 1 "TsEmDNAPhysics"
+s:Ph/Default/Electron/SetElasticScatteringModel = "CPA100"
+s:Ph/Default/SolvatedElectronThermalizationModel = "Ritchie"
+
+Ts/ShowHistoryCountAtInterval = 100
+
