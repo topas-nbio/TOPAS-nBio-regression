@@ -1,9 +1,9 @@
 ### A regression system for TOPAS-nBio  ###
-# Jose Ramos-Mendez and Naoki D.Kondo     #
-# Department of Radiation Oncology        #
-# University of California San Francisco. #
-# Jose.RamosMendez@ucsf.edu               #
-# April 2022.                             #
+### Jose Ramos-Mendez and Naoki D.Kondo     #
+### Department of Radiation Oncology        #
+### University of California San Francisco. #
+### Jose.RamosMendez@ucsf.edu               #
+### Feb 2023.                             #
 ### ################################### ###
 
 #### Aim
