@@ -42,12 +42,12 @@ Each directory has TOPAS parameters with the follow pattern:
 - `tcsh script files`. Each directory has three tcsh files to submit the example to e.g. a cluster system or locally. For instance, to submit 5 simulation jobs in the local system (different random seeds) use
 
 ```bash
-tcsu submitLocally.sh 5
+tcsh submitLocally.sh 5
 ```
 A directory named `run` is created which contains a sub-directory, its name contains the current date. Later, compare between simulation results with the python script in `analysis/analysis.py`
 
 ```bash
-python analysis/analysis.sh run/2020July/mainTopas run/2020July/mainOpt2 --sut_label Topas --ref_label Opt2
+python analysis/analysis.py run/2020July/mainTopas run/2020July/mainOpt2 --sut_label Topas --ref_label Opt2
 ```
 Look for the images in the directory `results/`. A table which contains averaged execution time per CPU is also available.
 
