@@ -230,7 +230,7 @@ def plot_results(sut_dir, ref_dir, args):
     ax4.errorbar(bench_G[-1]["H_2^0"][:,0][::10],  bench_G[-1]["H_2^0"][:,1][::10],  yerr=bench_G[-1]["H_2^0"][:,2][::10],   color="b", marker="o", dashes=[0,1], markerfacecolor="none", markersize=15, linewidth=2)
     ax5.errorbar(bench_G[-1]["H2O2^0"][:,0][::10], bench_G[-1]["H2O2^0"][:,1][::10], yerr=bench_G[-1]["H2O2^0"][:,2][::10],  color="b", marker="o", dashes=[0,1], markerfacecolor="none", markersize=15, linewidth=2)
     ax6.errorbar(bench_G[-1]["H3O^1"][:,0][::10],  bench_G[-1]["H3O^1"][:,1][::10],  yerr=bench_G[-1]["H3O^1"][:,2][::10],   color="b", marker="o", dashes=[0,1], markerfacecolor="none", markersize=15, linewidth=2)
-    ax7.errorbar(bench_G[-1]["OH^-1"][:,0][::10],  bench_G[-1]["OH^-1"][:,1][::10],  yerr=bench_G[-1]["OH^-1"][:,2][::10],   color="b", marker="o", dashes=[0,1], markerfacecolor="none", markersize=15, linewidth=2)
+    ax7.errorbar(bench_G[-1]["OH^-1"][:,0][::10],  bench_G[-1]["OH^-1"][:,1][::10],  yerr=bench_G[-1]["OH^-1"][:,2][::10],   color="b", marker="o", dashes=[0,1], markerfacecolor="none", markersize=15, linewidth=2, label='Ramos-Mendez (2022)')
 
     ax1.errorbar(sut_G[0]["e_aq^-1"][:,0],sut_G[0]["e_aq^-1"][:,1],yerr=sut_G[0]["e_aq^-1"][:,2], color="r", linewidth=2)
     ax2.errorbar(sut_G[0]["OH^0"][:,0],   sut_G[0]["OH^0"][:,1],   yerr=sut_G[0]["OH^0"][:,2],    color="r", linewidth=2)
@@ -238,7 +238,7 @@ def plot_results(sut_dir, ref_dir, args):
     ax4.errorbar(sut_G[0]["H_2^0"][:,0],  sut_G[0]["H_2^0"][:,1],  yerr=sut_G[0]["H_2^0"][:,2],   color="r", linewidth=2)
     ax5.errorbar(sut_G[0]["H2O2^0"][:,0], sut_G[0]["H2O2^0"][:,1], yerr=sut_G[0]["H2O2^0"][:,2],  color="r", linewidth=2)
     ax6.errorbar(sut_G[0]["H3O^1"][:,0],  sut_G[0]["H3O^1"][:,1],  yerr=sut_G[0]["H3O^1"][:,2],   color="r", linewidth=2)
-    ax7.errorbar(sut_G[0]["OH^-1"][:,0],  sut_G[0]["OH^-1"][:,1],  yerr=sut_G[0]["OH^-1"][:,2],   color="r", linewidth=2, label='Test')
+    ax7.errorbar(sut_G[0]["OH^-1"][:,0],  sut_G[0]["OH^-1"][:,1],  yerr=sut_G[0]["OH^-1"][:,2],   color="r", linewidth=2, label=args.sut_label)
 
     ax1.errorbar(sut_G[-1]["e_aq^-1"][:,0],sut_G[-1]["e_aq^-1"][:,1],yerr=sut_G[-1]["e_aq^-1"][:,2], color="r", linewidth=2)
     ax2.errorbar(sut_G[-1]["OH^0"][:,0],   sut_G[-1]["OH^0"][:,1],   yerr=sut_G[-1]["OH^0"][:,2],    color="r", linewidth=2)
@@ -254,7 +254,7 @@ def plot_results(sut_dir, ref_dir, args):
     ax4.errorbar(ref_G[0]["H_2^0"][:,0],  ref_G[0]["H_2^0"][:,1],  yerr=ref_G[0]["H_2^0"][:,2],   color="g", linewidth=2)
     ax5.errorbar(ref_G[0]["H2O2^0"][:,0], ref_G[0]["H2O2^0"][:,1], yerr=ref_G[0]["H2O2^0"][:,2],  color="g", linewidth=2)
     ax6.errorbar(ref_G[0]["H3O^1"][:,0],  ref_G[0]["H3O^1"][:,1],  yerr=ref_G[0]["H3O^1"][:,2],   color="g", linewidth=2)
-    ax7.errorbar(ref_G[0]["OH^-1"][:,0],  ref_G[0]["OH^-1"][:,1],  yerr=ref_G[0]["OH^-1"][:,2],   color="g", linewidth=2, label='Ref')
+    ax7.errorbar(ref_G[0]["OH^-1"][:,0],  ref_G[0]["OH^-1"][:,1],  yerr=ref_G[0]["OH^-1"][:,2],   color="g", linewidth=2, label=args.ref_label)
 
     ax1.errorbar(ref_G[-1]["e_aq^-1"][:,0],ref_G[-1]["e_aq^-1"][:,1],yerr=ref_G[-1]["e_aq^-1"][:,2], color="g", linewidth=2)
     ax2.errorbar(ref_G[-1]["OH^0"][:,0],   ref_G[-1]["OH^0"][:,1],   yerr=ref_G[-1]["OH^0"][:,2],    color="g", linewidth=2)
@@ -304,7 +304,7 @@ def plot_results(sut_dir, ref_dir, args):
     ax6.set_ylabel("GValue",fontsize=20)
     ax7.set_ylabel("GValue",fontsize=20)
 
-    ax7.legend(loc=0)
+    ax7.legend(loc=2)
 
     ax1.grid(True,dashes=[5,5])
     ax2.grid(True,dashes=[5,5])
@@ -394,7 +394,7 @@ def plot_results(sut_dir, ref_dir, args):
     ax4.errorbar(bench_SG["H_2^0"][:,0],   bench_SG["H_2^0"][:,1],  yerr=bench_SG["H_2^0"][:,2],   color="b", marker="o", dashes=[0,1], markerfacecolor="none", markersize=15, linewidth=2)
     ax5.errorbar(bench_SG["H2O2^0"][:,0],  bench_SG["H2O2^0"][:,1], yerr=bench_SG["H2O2^0"][:,2],  color="b", marker="o", dashes=[0,1], markerfacecolor="none", markersize=15, linewidth=2)
     ax6.errorbar(bench_SG["H3O^1"][:,0],   bench_SG["H3O^1"][:,1],  yerr=bench_SG["H3O^1"][:,2],   color="b", marker="o", dashes=[0,1], markerfacecolor="none", markersize=15, linewidth=2)
-    ax7.errorbar(bench_SG["OH^-1"][:,0],   bench_SG["OH^-1"][:,1],  yerr=bench_SG["OH^-1"][:,2],   color="b", marker="o", dashes=[0,1], markerfacecolor="none", markersize=15, linewidth=2)
+    ax7.errorbar(bench_SG["OH^-1"][:,0],   bench_SG["OH^-1"][:,1],  yerr=bench_SG["OH^-1"][:,2],   color="b", marker="o", dashes=[0,1], markerfacecolor="none", markersize=15, linewidth=2, label='Ramos-Mendez (2022)')
 
     ax1.errorbar(sut_SG["e_aq^-1"][:,0], sut_SG["e_aq^-1"][:,1],yerr=sut_SG["e_aq^-1"][:,2], color="r", linewidth=2)
     ax2.errorbar(sut_SG["OH^0"][:,0],    sut_SG["OH^0"][:,1],   yerr=sut_SG["OH^0"][:,2],    color="r", linewidth=2)
@@ -402,7 +402,7 @@ def plot_results(sut_dir, ref_dir, args):
     ax4.errorbar(sut_SG["H_2^0"][:,0],   sut_SG["H_2^0"][:,1],  yerr=sut_SG["H_2^0"][:,2],   color="r", linewidth=2)
     ax5.errorbar(sut_SG["H2O2^0"][:,0],  sut_SG["H2O2^0"][:,1], yerr=sut_SG["H2O2^0"][:,2],  color="r", linewidth=2)
     ax6.errorbar(sut_SG["H3O^1"][:,0],   sut_SG["H3O^1"][:,1],  yerr=sut_SG["H3O^1"][:,2],   color="r", linewidth=2)
-    ax7.errorbar(sut_SG["OH^-1"][:,0],   sut_SG["OH^-1"][:,1],  yerr=sut_SG["OH^-1"][:,2],   color="r", linewidth=2)
+    ax7.errorbar(sut_SG["OH^-1"][:,0],   sut_SG["OH^-1"][:,1],  yerr=sut_SG["OH^-1"][:,2],   color="r", linewidth=2, label=args.sut_label)
 
     ax1.errorbar(ref_SG["e_aq^-1"][:,0], ref_SG["e_aq^-1"][:,1],yerr=ref_SG["e_aq^-1"][:,2], color="g", dashes=[8,5], linewidth=2)
     ax2.errorbar(ref_SG["OH^0"][:,0],    ref_SG["OH^0"][:,1],   yerr=ref_SG["OH^0"][:,2],    color="g", dashes=[8,5], linewidth=2)
@@ -410,7 +410,7 @@ def plot_results(sut_dir, ref_dir, args):
     ax4.errorbar(ref_SG["H_2^0"][:,0],   ref_SG["H_2^0"][:,1],  yerr=ref_SG["H_2^0"][:,2],   color="g", dashes=[8,5], linewidth=2)
     ax5.errorbar(ref_SG["H2O2^0"][:,0],  ref_SG["H2O2^0"][:,1], yerr=ref_SG["H2O2^0"][:,2],  color="g", dashes=[8,5], linewidth=2)
     ax6.errorbar(ref_SG["H3O^1"][:,0],   ref_SG["H3O^1"][:,1],  yerr=ref_SG["H3O^1"][:,2],   color="g", dashes=[8,5], linewidth=2)
-    ax7.errorbar(ref_SG["OH^-1"][:,0],   ref_SG["OH^-1"][:,1],  yerr=ref_SG["OH^-1"][:,2],   color="g", dashes=[8,5], linewidth=2)
+    ax7.errorbar(ref_SG["OH^-1"][:,0],   ref_SG["OH^-1"][:,1],  yerr=ref_SG["OH^-1"][:,2],   color="g", dashes=[8,5], linewidth=2, label=args.ref_label)
 
     ax1.set_xlim([0,100])
     ax2.set_xlim([0,100])
@@ -443,6 +443,8 @@ def plot_results(sut_dir, ref_dir, args):
     ax5.set_ylabel("GValue",fontsize=20)
     ax6.set_ylabel("GValue",fontsize=20)
     ax7.set_ylabel("GValue",fontsize=20)
+
+    ax7.legend(loc=0)
 
     ax1.grid(True,dashes=[5,5])
     ax2.grid(True,dashes=[5,5])
