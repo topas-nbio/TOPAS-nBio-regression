@@ -39,13 +39,13 @@ def average_results(match_path, normalize):
         stdvDSB += data[:,2].mean()**2
         stdvSSB += data[:,1].mean()**2
 
-        maxSSB = data[:,1].max()
+        maxSSB = int(data[:,1].max())
         ssb, bins = np.histogram(data[:,1], np.linspace(0,maxSSB,maxSSB+1), density=True)
 
         hmeanSSB[bins[:-1].astype('i')] += ssb 
         hstdvSSB[bins[:-1].astype('i')] += ssb**2
 
-        maxDSB = data[:,2].max()
+        maxDSB = int(data[:,2].max())
         dsb, bins = np.histogram(data[:,1], np.linspace(0,maxDSB,maxDSB+1), density=True)
         hmeanDSB[bins[:-1].astype('i')] += dsb 
         hstdvDSB[bins[:-1].astype('i')] += dsb**2 
@@ -134,14 +134,14 @@ def plot_results(sut_dir, ref_dir, args):
                           'b-',label=args.ref_label,linewidth=2.0)
 
         if i_plot == 4:	
-        	plt.ylabel('Frequency')
-	if i_plot > 4:
-        	plt.xlabel('Number of SSB')
+            plt.ylabel('Frequency')
+        if i_plot > 4:
+            plt.xlabel('Number of SSB')
 
-	i_plot += 1
+        i_plot += 1
 
     plt.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
-    plt.tight_layout() 
+    plt.subplots_adjust(wspace=.5, hspace=.5) 
     plt.savefig(join(args.outdir, 'DBSCAN1.eps'), bbox_inches='tight')
 
     fig = plt.figure(figsize=(5,6))
@@ -161,13 +161,13 @@ def plot_results(sut_dir, ref_dir, args):
     Leloup = np.genfromtxt('analysis/benchmark/Leloup.csv') 
     plt.errorbar(Leloup[:,0]*1e-6, Leloup[:,1], yerr=(Leloup[:,2]-Leloup[:,1]), marker='v', color='g', ls='none', label='Leloup exp')
 
-    for energy, value in sut_dbscan.iteritems():
+    for energy, value in sut_dbscan.items():
         if '0.5' in energy:
             plt.errorbar(float(energy), value[9], yerr=value[10], color='r', marker='o', mfc='none', label=args.sut_label)
         else:
             plt.errorbar(float(energy), value[9], yerr=value[10], color='r', marker='o', mfc='none', )
 
-    for energy, value in ref_dbscan.iteritems():
+    for energy, value in ref_dbscan.items():
         if '0.5' in energy:
             plt.errorbar(float(energy), value[9], yerr=value[10], color='b', marker='s', mfc='none', label=args.ref_label)
         else:
