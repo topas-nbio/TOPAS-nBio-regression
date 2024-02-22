@@ -127,8 +127,8 @@ def average_results_time(match_path):
 ### Define Plot Function
 
 def plot_results(sut_dir, ref_dir, args):
-   # concentrations = ["0.1031e-4", "0.1031e-3", "0.1031e-2", "0.1031e-1", "0.1031e-0", "0.1031e+1", "0.1031e+2"]
-    concentrations = ["0.1031e-2", "0.1031e-1", "0.1031e-0", "0.1031e+1", "0.1031e+2"] 
+    concentrations = ["0.1031e-4", "0.1031e-3", "0.1031e-2", "0.1031e-1", "0.1031e-0", "0.1031e+1", "0.1031e+2"]
+    #concentrations = ["0.1031e-2", "0.1031e-1", "0.1031e-0", "0.1031e+1", "0.1031e+2"] 
 
     sut_T = average_results_time(sut_dir + '/*/log.out')
     ref_T = average_results_time(ref_dir + '/*/log.out')
@@ -184,8 +184,8 @@ def plot_results(sut_dir, ref_dir, args):
     ax1.tick_params(axis='both', which='major', labelsize=20)
     ax1.tick_params(axis='both', which='minor', labelsize=20)
 
-    ax1.errorbar(sut_SG["H2O2^0"][:,0],  sut_SG["H2O2^0"][:,1], yerr=sut_SG["H2O2^0"][:,2],  color="r", marker='o', linewidth=2, label='SUT')
-    ax1.errorbar(ref_SG["H2O2^0"][:,0],  ref_SG["H2O2^0"][:,1], yerr=ref_SG["H2O2^0"][:,2],  color="g", marker='x', dashes=[8,5], linewidth=2, label='REF')
+    ax1.errorbar(sut_SG["H2O2^0"][:,0],  sut_SG["H2O2^0"][:,1], yerr=sut_SG["H2O2^0"][:,2],  color="r", marker='o', linewidth=2, label=args.sut_label)
+    ax1.errorbar(ref_SG["H2O2^0"][:,0],  ref_SG["H2O2^0"][:,1], yerr=ref_SG["H2O2^0"][:,2],  color="g", marker='x', dashes=[8,5], linewidth=2, label=args.ref_label)
     ax1.scatter(1e12/bench1[:,0], bench1[:,1], label='Pastina(1999)')
     ax1.scatter(1e12/(bench2[:,0]*kobs), bench2[:,1], label='Hiroki(2002)')
     ax1.scatter(bench3[:,0], bench3[:,1], label='Ramos-Mendez(2021)')
