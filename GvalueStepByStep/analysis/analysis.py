@@ -253,6 +253,7 @@ def plot_results(sut_dir, ref_dir, args):
 
     plt.tight_layout() 
     plt.savefig(join(args.outdir, 'Gvalue.pdf'), bbox_inches='tight')
+    plt.savefig(join(args.outdir, 'Gvalue.eps'), bbox_inches='tight')
     
 if __name__ == '__main__':
     parser = ArgumentParser()
