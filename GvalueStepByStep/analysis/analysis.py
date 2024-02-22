@@ -7,6 +7,7 @@ import os, subprocess
 from os.path import isdir, join, split
 from glob import glob
 from functools import reduce
+import matplotlib.lines as mlines
 
 from pylab import rcParams
 rcParams['legend.numpoints'] = 1
@@ -69,7 +70,7 @@ def average_results(match_path, molecules):
     n = 1
     for i in range(1,len(fnames)):
         agvalue, agvalue2, atime = GetGValue(fnames[i], molecules)
-        for name, value in agvalue.iteritems():
+        for name, value in agvalue.items():
             for j in range(len(value)):
                 gvalue[name][j] += agvalue[name][j]
                 gvalue2[name][j] += agvalue2[name][j]
@@ -86,8 +87,8 @@ def average_results(match_path, molecules):
                 g2 = np.sqrt( (1.0/(n-1)) * (g2/n - g*g))
             else:
                 g2 = 0.0
-            gvalue[name][i] = 100*g
-            gvalue2[name][i] = 100*g2
+            gvalue[name][i] = g
+            gvalue2[name][i] = g2
 
     OH = gvalue['OH^0']
     eOH = gvalue2['OH^0']
@@ -160,7 +161,6 @@ def plot_results(sut_dir, ref_dir, args):
     namePrefix = ref_dir + '/*/' + name 
     ref = average_results(namePrefix,molecules)
 
-    bench = GetGValue('analysis/benchmark/electron_Gvalue.phsp', molecules) 
     i = 1
     grid = plt.GridSpec(3,3)
     for molecule, name in zip(molecules, moleculesName): 
@@ -168,19 +168,18 @@ def plot_results(sut_dir, ref_dir, args):
         plt.xlim((1,2e6))
         plt.xscale('log')
         plt.errorbar(sut[0][molecule], sut[1][molecule], yerr=sut[2][molecule],capsize=None,\
-                          color='r',linestyle='r-',label=args.sut_label,linewidth=1.0)
-        plt.step(sut[0][molecule], sut[1][molecule],\
-                          color='r')
+                          color='r',linestyle='-',label=args.sut_label,linewidth=0.8)
+        #plt.step(sut[0][molecule], sut[1][molecule],\
+                          #color='r')
 
         plt.errorbar(ref[0][molecule], ref[1][molecule], yerr=ref[2][molecule],capsize=None,\
-                          color='b',linestyle='b-',label=args.ref_label,linewidth=1.0)
+                          color='b',linestyle='-',label=args.ref_label,linewidth=0.8)
 
-        plt.step(ref[0][molecule], ref[1][molecule],\
-                          color='b')
+        #plt.step(ref[0][molecule], ref[1][molecule],\
+                          #color='b')
 
 
         # Benchmark 
-        plt.step(bench[2][molecule], bench[0][molecule], color='g')
         if i == 1:
             time = np.linspace(7e-3, 8.0, 1000)
             OHWang = 2.873 + 1.087 * np.exp(-time/0.1354) + 0.8786 * np.exp(-time/1.135)
@@ -188,10 +187,14 @@ def plot_results(sut_dir, ref_dir, args):
             plt.yticks(np.arange(2,6,1))
             plt.ylim((2.0,5.5))
             plt.plot(time*1e3, OHWang, linestyle='-.', linewidth=1.5)
-            plt.errorbar(7, 5.0*1e-1/0.1035, yerr = 0.2*1e-1/0.1036, marker='o')
-            plt.errorbar(1e6, 2.5, yerr=0.12, marker='o')
-            plt.errorbar(1e6, 2.65, yerr=0.30, marker='o')
-            plt.errorbar(1e6, 2.87, yerr=0.14, marker='o')
+            plt.errorbar(7, 5.0*1e-1/0.1035, yerr = 0.2*1e-1/0.1036, marker='o', color='orange', markersize=4)
+            plt.errorbar(1e6, 2.5, yerr=0.12, marker='o', color='k', markersize=4)
+            plt.errorbar(1e6, 2.65, yerr=0.30, marker='o', color='g', markersize=4)
+            plt.errorbar(1e6, 2.87, yerr=0.14, marker='o', color='r', markersize=4)
+
+            # TODO: Add the missing references for OH escape yield data points.
+            refs = [mlines.Line2D([], [], color='orange', marker='o', linestyle='None', markersize=2, label='El Omar (2011)')]
+            plt.legend(handles=refs, loc=0, fontsize=4)
 
         if i == 2:
             time = np.linspace(7e-3, 8.0, 1000)
@@ -202,10 +205,15 @@ def plot_results(sut_dir, ref_dir, args):
 
             plt.plot(time*1e3, EAQWang, linestyle='-.', linewidth=1.5)
             plt.plot(time*1e3, EAQBart, linestyle='-.', linewidth=1.5)
-            plt.errorbar(7.0, 4.4*1e-1/0.1036, yerr=0.2*1e-1/0.1036, marker='o')
-            plt.errorbar(1e6,2.67,yerr=0.15,marker='o')
-            plt.errorbar(1e6,2.70,yerr=0.14,marker='o')
-            plt.errorbar(1e6,2.65,yerr=0.05,marker='o')
+            plt.errorbar(7.0, 4.4*1e-1/0.1036, yerr=0.2*1e-1/0.1036, marker='o', color='g', markersize=4)
+            plt.errorbar(1e6,2.67,yerr=0.15,marker='o', markersize=4)
+            plt.errorbar(1e6,2.70,yerr=0.14,marker='o', markersize=4)
+            plt.errorbar(1e6,2.65,yerr=0.05,marker='o', markersize=4)
+
+            # TODO: Add the missing references for e-aq G-value data points.
+            refs = [mlines.Line2D([], [], color='g', marker='o', linestyle='None', markersize=2, label='Sumiyoshi (2006)')]
+            plt.legend(handles=refs, loc=0, fontsize=4)
+
  
         if i == 4:
             plt.yticks(np.arange(0,1,0.2))
@@ -221,12 +229,12 @@ def plot_results(sut_dir, ref_dir, args):
 
     plt.subplot(grid[i-1]) 
     plt.yticks(np.arange(0.975,1.015,0.01))
-    plt.errorbar(sut[0]['OH^0'], sut[5][:,0], yerr=sut[5][:,1], color='r', label=args.sut_label)
-    plt.errorbar(ref[0]['OH^0'], ref[5][:,0], yerr=ref[5][:,1], color='b', label=args.ref_label)
+    plt.errorbar(sut[0]['OH^0'], sut[5][:,0], yerr=sut[5][:,1], color='r', label=args.sut_label, linewidth=0.8)
+    plt.errorbar(ref[0]['OH^0'], ref[5][:,0], yerr=ref[5][:,1], color='b', label=args.ref_label, linewidth=0.8)
     plt.ylabel('Ox/Red')
     plt.xlabel('Time (ps)')
     plt.xscale('log')
-    plt.legend(loc=0, fontsize=6, borderaxespad=0.)
+    plt.legend(loc=2, fontsize=6)
 
     plt.tight_layout() 
 
@@ -244,7 +252,7 @@ def plot_results(sut_dir, ref_dir, args):
                       )
 
     plt.tight_layout() 
-    plt.savefig(join(args.outdir, 'Gvalue.eps'), bbox_inches='tight')
+    plt.savefig(join(args.outdir, 'Gvalue.pdf'), bbox_inches='tight')
     
 if __name__ == '__main__':
     parser = ArgumentParser()
