@@ -11,6 +11,7 @@ from os.path import isdir, join, split
 from glob import glob
 from functools import reduce
 from pylab import rcParams
+import matplotlib.lines as mlines
 
 ####################################################
 ### Declare Globals
@@ -177,7 +178,7 @@ def plot_results(sut_dir, ref_dir, args):
     namePrefix = ref_dir + '/*/' + name 
     ref = average_results(namePrefix,molecules)
 
-    bench = GetGValue('analysis/benchmark/gvalue-pure-water-temp.phsp', molecules)
+    # bench = GetGValue('analysis/benchmark/gvalue-pure-water-temp.phsp', molecules)
     Fanning1975 = np.genfromtxt('analysis/benchmark/Fanning_1975.csv')
     H2m         = np.genfromtxt("analysis/benchmark/H2_minus_X_equal_to_H_noSpin.csv")
     Pastina1999 = np.genfromtxt("analysis/benchmark/Pastina1999.csv")
@@ -195,35 +196,47 @@ def plot_results(sut_dir, ref_dir, args):
         plt.subplot(grid[i-1]) #3,3,i)
         plt.xlim((1,2e6))
         plt.xscale('log')
-        plt.errorbar(sut[0][molecule], sut[1][molecule], yerr=sut[2][molecule],fmt="r--",label=args.sut_label,linewidth=1.0)
-        plt.errorbar(ref[0][molecule], ref[1][molecule], yerr=ref[2][molecule],fmt="b-.",label=args.ref_label,linewidth=1.0)
+        plt.errorbar(sut[0][molecule], sut[1][molecule], yerr=sut[2][molecule],fmt="r-",label=args.sut_label,linewidth=1.0)
+        plt.errorbar(ref[0][molecule], ref[1][molecule], yerr=ref[2][molecule],fmt="b-",label=args.ref_label,linewidth=1.0)
 
         # Benchmark 
-        plt.step(bench[2][molecule], bench[0][molecule], color='g')
+        # plt.step(bench[2][molecule], bench[0][molecule], color='g')
         if i == 1:
             # OH
-            plt.plot(OH_short[:,0],OH_short[:,1])
-            plt.plot(OH_long[:,0],OH_long[:,1])
-            plt.errorbar(   7.0,1e-1/0.1035* 4.90, yerr=1e-1/0.1035*0.2, marker='o', markerfacecolor="none")
-            plt.errorbar(  10.0,1e-1/0.1035* 4.80, yerr=1e-1/0.1035*0.12, marker='o', markerfacecolor="none")
-            plt.errorbar(296276, 2.72, yerr=0.14, marker='o', markerfacecolor="none")
-            plt.errorbar(493692, 2.47, yerr=0.12, marker='o', markerfacecolor="none")
-            plt.errorbar(605751, 2.44, yerr=0.12, marker='o', markerfacecolor="none")
-            plt.errorbar(   1E6, 2.49, yerr=0.12, marker='o', markerfacecolor="none")
+            plt.plot(OH_short[:,0],OH_short[:,1], linewidth=0.6, color='k')
+            plt.plot(OH_long[:,0],OH_long[:,1], linewidth=0.6, color='grey')
+            plt.errorbar(   7.0,1e-1/0.1035* 4.90, yerr=1e-1/0.1035*0.2, marker='o', markerfacecolor="none", color='g')
+            plt.errorbar(  10.0,1e-1/0.1035* 4.80, yerr=1e-1/0.1035*0.12, marker='o', markerfacecolor="none", color='g')
+            plt.errorbar(296276, 2.72, yerr=0.14, marker='o', markerfacecolor="none", color='orange')
+            plt.errorbar(493692, 2.47, yerr=0.12, marker='o', markerfacecolor="none", color='orange')
+            plt.errorbar(605751, 2.44, yerr=0.12, marker='o', markerfacecolor="none", color='orange')
+            plt.errorbar(   1E6, 2.49, yerr=0.12, marker='o', markerfacecolor="none", color='orange')
+
+            refs = [mlines.Line2D([0], [0], color='k', label='Ma (2015)'),
+                    mlines.Line2D([0], [0], color='grey', label='Ma (2015)'),
+                    mlines.Line2D([], [], color='g', marker='o', markerfacecolor="none", linestyle='None', label='Wang (2018)'),
+                    mlines.Line2D([], [], color='orange', marker='o', markerfacecolor="none", linestyle='None', label='Laverne (2000)')]
+            plt.legend(handles=refs, loc=0, fontsize=7)
 
         if i == 2:
             # Eaq
-            plt.plot(Eaq_short[10:,0], Eaq_short[10:,1])
-            plt.errorbar( 7.0,   1e-1/0.1035*4.4, yerr=1e-1/0.1035*0.2,  marker='o', markerfacecolor="none")
-            plt.errorbar(20.0,   1e-1/0.1035*4.2, yerr=1e-1/0.1035*0.2,  marker='o', markerfacecolor="none")
-            plt.errorbar(70E3,  2.93, yerr=0.2,  marker='o', markerfacecolor="none")
-            plt.errorbar(300E3, 2.67, yerr=0.15, marker='o', markerfacecolor="none")
-            plt.errorbar(  1E5,  2.7, yerr=2.7*0.05, marker='o', markerfacecolor="none")
+            plt.plot(Eaq_short[10:,0], Eaq_short[10:,1], linewidth=0.6, color='k')
+            plt.errorbar( 7.0,   1e-1/0.1035*4.4, yerr=1e-1/0.1035*0.2,  marker='o', markerfacecolor="none", color='purple')
+            plt.errorbar(20.0,   1e-1/0.1035*4.2, yerr=1e-1/0.1035*0.2,  marker='o', markerfacecolor="none", color='purple')
+            plt.errorbar(70E3,  2.93, yerr=0.2,  marker='o', markerfacecolor="none", color='b')
+            plt.errorbar(300E3, 2.67, yerr=0.15, marker='o', markerfacecolor="none", color='b')
+            plt.errorbar(  1E5,  2.7, yerr=2.7*0.05, marker='o', markerfacecolor="none", color='orange')
+
+            refs = [mlines.Line2D([0], [0], color='k', label='Ma (2015)'),
+                    mlines.Line2D([], [], color='purple', marker='o', markerfacecolor="none", linestyle='None', label='Wang (2018)'),
+                    mlines.Line2D([], [], color='orange', marker='o', markerfacecolor="none", linestyle='None', label='Bartels (2000)'),
+                    mlines.Line2D([], [], color='b', marker='o', markerfacecolor="none", linestyle='None', label='Shiraishi (1988)')]
+            plt.legend(handles=refs, loc=0, fontsize=7)
 
         #if i == 3:
             # H+
  
-        #if i == 4:
+        if i == 4:
             # H2O2
             plt.yticks(np.arange(0,1,0.2))
             plt.errorbar(1e6,0.61,yerr=0.03,marker='o')
@@ -231,7 +244,10 @@ def plot_results(sut_dir, ref_dir, args):
 
         if i == 5:
             #H2
-            plt.errorbar(1e12/(H2[:,0]*H2[:,1]*H2[:,3]), H2[:,2], yerr=H2[:,2]*0.1, marker='o', markerfacecolor="none", ls="none")
+            plt.errorbar(1e12/(H2[:,0]*H2[:,1]*H2[:,3]), H2[:,2], yerr=H2[:,2]*0.1, marker='o', markerfacecolor="none", ls="none", color='g')
+
+            refs = [mlines.Line2D([], [], color='g', marker='o', markerfacecolor="none", linestyle='None', label='Pastina (1999)')]
+            plt.legend(handles=refs, loc=2, fontsize=7)
 
         #if i == 6:
             # H
@@ -267,6 +283,7 @@ def plot_results(sut_dir, ref_dir, args):
 
     plt.tight_layout() 
     plt.savefig(join(args.outdir, 'GvalueIRT.eps'), bbox_inches='tight')
+    plt.savefig(join(args.outdir, 'GvalueIRT.pdf'), bbox_inches='tight')
 
 ####################################################
 ### Define Main
