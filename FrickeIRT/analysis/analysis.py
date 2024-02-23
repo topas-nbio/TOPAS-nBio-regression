@@ -178,14 +178,14 @@ def plot_results(sut_dir, ref_dir, args):
     plt.subplot(grid[1])
     plt.errorbar(sut[0]['Fe3'], sut[1]['Fe3'], yerr=sut[2]['Fe3'], fmt='b--',label='TOPAS Test')
     plt.errorbar(ref[0]['Fe3'], ref[1]['Fe3'], yerr=ref[2]['Fe3'], fmt='r:',label='TOPAS Ref')
-    plt.errorbar(5E13, 15.6, yerr=0.2, fmt='o', markerfacecolor="none")
+    plt.errorbar(5E13, 15.6, yerr=0.2, fmt='o', markerfacecolor="none", label='ICRU report 34')
     plt.plot(bench[:,0]*1E12,bench[:,1], label='Plante 2011')
     plt.xscale("log")
     plt.xlim(1,1E14)
     plt.yticks((0 ,5, 10, 15))
     plt.grid(True,dashes=[5,5])
     plt.ylim(0,16)
-    plt.legend(loc=2)
+    plt.legend(loc=2, fontsize=8)
 
     plt.ylabel(r'G($Fe^{3+}$ / 100 eV)')
     plt.xlabel('Time (ps)')
@@ -215,6 +215,7 @@ def plot_results(sut_dir, ref_dir, args):
 
     plt.tight_layout() 
     plt.savefig(join(args.outdir, 'Gvalue.eps'), bbox_inches='tight')
+    plt.savefig(join(args.outdir, 'Gvalue.pdf'), bbox_inches='tight')
 ####################################################
 ### Define Main
 

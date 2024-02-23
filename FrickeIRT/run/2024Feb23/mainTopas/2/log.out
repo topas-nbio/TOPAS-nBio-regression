@@ -144,13 +144,13 @@ Ts Rudd ionisation model is constructed
  I     e_aq^-1 + S2O8^-2 -> SO4^-1 + SO4^-2        4.25975e+10    0.765067      1              
 
 ========================================================================================================================
-Type   Molecules        Products                      Kobs (/M/s)    Kdif (/M/s)     Kact (/M/s)     r (nm)        Preact         alpha (/nm)   
+Type   Molecules        Products                      Kobs (/M/s)    Kdif (/M/s)     Kact (/M/s)      r (nm)        Preact         alpha (/nm)   
 ========================================================================================================================
- II    H^0     + H2O2^0  -> OH^0                   9e+07          2.81516e+10     9.02887e+07     0.4           0.00134615     2.50802       
- II    OH^0    + H^0     -> None                   2e+10          2.85452e+10     6.68101e+10     0.41          0.492293       8.14758       
- II    OH^0    + OH^0    -> H2O2^0                 5.5e+09        7.32548e+09     2.2071e+10      0.44          0.544815       9.12024       
- II    e_aq^-1 + H2O2^0  -> OH^-1 + OH^0           1.1e+10        3.86858e+10     1.53705e+10     0.71          0.103317       1.96805       
- II    e_aq^-1 + OH^0    -> OH^-1                  3e+10          3.86858e+10     1.33617e+11     0.72          0.497921       6.18599       
+ II    H^0     + H2O2^0  -> OH^0                   9e+07          2.81516e+10     9.02887e+07      0.4           0.00134615     2.50802       
+ II    OH^0    + H^0     -> None                   2e+10          2.85452e+10     6.68101e+10      0.41          0.492293       8.14758       
+ II    OH^0    + OH^0    -> H2O2^0                 5.5e+09        7.32548e+09     2.2071e+10       0.44          0.544815       9.12024       
+ II    e_aq^-1 + H2O2^0  -> OH^-1 + OH^0           1.1e+10        3.86858e+10     1.53705e+10      0.71          0.103317       1.96805       
+ II    e_aq^-1 + OH^0    -> OH^-1                  3e+10          3.86858e+10     1.33617e+11      0.72          0.497921       6.18599       
 
 ========================================================================================================================
 Type   Molecules        Products                      Kobs (/M/s)    r (nm)        reff (nm)     Preact         
@@ -159,9 +159,9 @@ Type   Molecules        Products                      Kobs (/M/s)    r (nm)     
  III   e_aq^-1 + e_aq^-1 -> OH^-1 + OH^-1 + H_2^0  5.5e+09        0.404914         0.148322         1                 
 
 ========================================================================================================================
-Type   Molecules        Products                      Kobs (/M/s)    Kdif (/M/s)     Kact (/M/s)     r (nm)        reff (nm)     reff1 (nm)    Preact         
+Type   Molecules        Products                      Kobs (/M/s)    Kdif (/M/s)     Kact (/M/s)      r (nm)        reff (nm)     reff1 (nm)    Preact         
 ========================================================================================================================
- IV    e_aq^-1 + H3O^1   -> H^0                    1.22075e+10    1.26196e+11     2.81262e+10     0.75          1.16126       0.211976      0.0426379      
+ IV    e_aq^-1 + H3O^1   -> H^0                    1.22075e+10    1.26196e+11     2.81262e+10      0.75          1.16126       0.211647      0.0426379      
 
 ========================================================================================================================
 Type   Molecules        Products                      Kobs (/M/s)    r (nm)        reff (nm)     Preact         
@@ -366,11 +366,11 @@ G4WT0 > Begin processing for Run: 0, History: 90
 
 TOPAS run sequence complete.
 Particle source Demo: Total number of histories: 100
-######### Averaged IRT-execution-time per history (55 histories): 0.0512727 s +/- 0.0172737 s 
+######### Averaged IRT-execution-time per history (63 histories): 0.0601587 s +/- 0.027284 s 
 
 Note that TOPAS interrupted one or more histories during this session
 due to errors reported by Geant4.
-The total number of interrupted histories was: 45
+The total number of interrupted histories was: 37
 For details on each of these errors, see the console log for "G4Exception"
 If only a very small proportion of your histories were affected,
 you may be able to still use the overall result,
@@ -381,9 +381,9 @@ You can set TOPAS to exit if it exceeds a given number of interrupted histories 
 the parmameter Ts/MaxInterruptedHistories
 
 Elapsed times:
-Parameter Reading : User=0.000000s Real=0.002590s Sys=0.000000s [Cpu=0.0%]
-    Initialization: User=0.020000s Real=0.011737s Sys=0.000000s [Cpu=170.4%]
-         Execution: User=6.540000s Real=6.634399s Sys=0.080000s [Cpu=99.8%]
-      Finalization: User=0.010000s Real=0.009838s Sys=0.010000s [Cpu=203.3%]
-             Total: User=6.57s Real=6.65856s Sys=0.09s
-        6.85 real         6.73 user         0.11 sys
+Parameter Reading : User=0.000000s Real=0.003144s Sys=0.000000s [Cpu=0.0%]
+    Initialization: User=0.020000s Real=0.012716s Sys=0.000000s [Cpu=157.3%]
+         Execution: User=8.000000s Real=8.112114s Sys=0.090000s [Cpu=99.7%]
+      Finalization: User=0.000000s Real=0.008752s Sys=0.000000s [Cpu=0.0%]
+             Total: User=8.02s Real=8.13673s Sys=0.09s
+        8.40 real         8.17 user         0.12 sys

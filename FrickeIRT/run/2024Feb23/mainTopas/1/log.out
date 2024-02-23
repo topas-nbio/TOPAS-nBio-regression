@@ -161,7 +161,7 @@ Type   Molecules        Products                      Kobs (/M/s)    r (nm)     
 ========================================================================================================================
 Type   Molecules        Products                      Kobs (/M/s)    Kdif (/M/s)     Kact (/M/s)      r (nm)        reff (nm)     reff1 (nm)    Preact         
 ========================================================================================================================
- IV    e_aq^-1 + H3O^1   -> H^0                    1.22075e+10    1.26196e+11     2.81262e+10      0.75          1.16126       0.211976      0.0426379      
+ IV    e_aq^-1 + H3O^1   -> H^0                    1.22075e+10    1.26196e+11     2.81262e+10      0.75          1.16126       0.211647      0.0426379      
 
 ========================================================================================================================
 Type   Molecules        Products                      Kobs (/M/s)    r (nm)        reff (nm)     Preact         
@@ -366,11 +366,11 @@ G4WT0 > Begin processing for Run: 0, History: 90
 
 TOPAS run sequence complete.
 Particle source Demo: Total number of histories: 100
-######### Averaged IRT-execution-time per history (53 histories): 0.0511321 s +/- 0.0178738 s 
+######### Averaged IRT-execution-time per history (51 histories): 0.0539216 s +/- 0.0179409 s 
 
 Note that TOPAS interrupted one or more histories during this session
 due to errors reported by Geant4.
-The total number of interrupted histories was: 47
+The total number of interrupted histories was: 49
 For details on each of these errors, see the console log for "G4Exception"
 If only a very small proportion of your histories were affected,
 you may be able to still use the overall result,
@@ -381,9 +381,9 @@ You can set TOPAS to exit if it exceeds a given number of interrupted histories 
 the parmameter Ts/MaxInterruptedHistories
 
 Elapsed times:
-Parameter Reading : User=0.000000s Real=0.002595s Sys=0.000000s [Cpu=0.0%]
-    Initialization: User=0.010000s Real=0.011649s Sys=0.000000s [Cpu=85.8%]
-         Execution: User=6.420000s Real=6.504872s Sys=0.080000s [Cpu=99.9%]
-      Finalization: User=0.010000s Real=0.009858s Sys=0.000000s [Cpu=101.4%]
-             Total: User=6.44s Real=6.52897s Sys=0.08s
-        6.72 real         6.60 user         0.10 sys
+Parameter Reading : User=0.000000s Real=0.003361s Sys=0.000000s [Cpu=0.0%]
+    Initialization: User=0.010000s Real=0.013680s Sys=0.000000s [Cpu=73.1%]
+         Execution: User=6.350000s Real=6.445467s Sys=0.070000s [Cpu=99.6%]
+      Finalization: User=0.010000s Real=0.008663s Sys=0.010000s [Cpu=230.9%]
+             Total: User=6.37s Real=6.47117s Sys=0.08s
+        6.76 real         6.52 user         0.11 sys

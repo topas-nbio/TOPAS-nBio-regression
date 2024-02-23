@@ -70,4 +70,4 @@ b:Sc/nbOfMol/EnableHighTimeScavengers = "True"
 
 ##########################################
 
-Ts/Seed = 20491
+Ts/Seed = 9475
