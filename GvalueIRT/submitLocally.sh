@@ -1,7 +1,6 @@
 #!/bin/tcsh
 
 set ITER = $1
-set ADDITION = $2
 if ($ITER == "") then
   set ITER = 1
 endif
@@ -22,7 +21,7 @@ foreach LINE ( $OPTION )
     set DATE = $DATEYEAR$DATEMONTH$DATEDAY
     set UNAME = `uname`
 
-    set DIR = $CURRENTPATH"/run/"$ADDITION$DATE/$INFILE/$COUNT
+    set DIR = $CURRENTPATH"/run/"$DATE/$INFILE/$COUNT
     if ( -d $DIR ) then
        echo Directory exists, removing and recreating $DIR
        rm -rf $DIR
