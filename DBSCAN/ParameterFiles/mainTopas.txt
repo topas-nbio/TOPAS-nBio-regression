@@ -8,7 +8,7 @@ i:Ts/NumberOfThreads = 1
 b:Ts/ShowCPUTime = "True"
 
 sv:Ph/Default/Modules = 1 "TsEmDNAPhysics"
-s:Ph/Default/Electron/SetElasticScatteringModel = "CPA100"
+s:Ph/Default/Electron/SetElasticScatteringModel = "ELSEPA"
 
 d:So/Demo/BeamEnergy   = Tf/energies/Value MeV
 i:So/Demo/NumberOfHistoriesInRun = 5 * Tf/histories/Value 

@@ -143,6 +143,7 @@ def plot_results(sut_dir, ref_dir, args):
     plt.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
     plt.subplots_adjust(wspace=.5, hspace=.5) 
     plt.savefig(join(args.outdir, 'DBSCAN1.eps'), bbox_inches='tight')
+    plt.savefig(join(args.outdir, 'DBSCAN1.pdf'), bbox_inches='tight')
 
     fig = plt.figure(figsize=(5,6))
     grid = plt.GridSpec(3,1)
@@ -189,6 +190,7 @@ def plot_results(sut_dir, ref_dir, args):
                       loc='center'\
                       )
     plt.savefig(join(args.outdir, 'DBSCAN2.eps'), bbox_inches='tight')
+    plt.savefig(join(args.outdir, 'DBSCAN2.pdf'), bbox_inches='tight')
     
 if __name__ == '__main__':
     parser = ArgumentParser()
