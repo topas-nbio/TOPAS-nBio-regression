@@ -410,7 +410,7 @@ def plot_results(sut_dir, ref_dir, args):
     ax6.tick_params(axis='both', which='major', labelsize=20)
     ax6.tick_params(axis='both', which='minor', labelsize=20)
     ax6.set_xlabel(r"$LET$ $keV/\mu m$",fontsize=24)
-    ax6.set_ylabel(r"Ox/Red Ratio$",fontsize=24)
+    ax6.set_ylabel(r"Ox/Red Ratios",fontsize=24)
     ax6.errorbar(ElectronLET[:,0],ElectronRatio_Sut, yerr=ElectronRatio_Sut_Err*0, fmt="b--", linewidth=2, label="TOPAS-Sut e-")
     ax6.errorbar(ProtonLET[:,0],  ProtonRatio_Sut,   yerr=ProtonRatio_Sut_Err*0,   fmt="b-.", linewidth=2, label="TOPAS-Sut Proton")
     ax6.errorbar(AlphaLET[:,0],   AlphaRatio_Sut,    yerr=AlphaRatio_Sut_Err*0,    fmt="b:", linewidth=2, label="TOPAS-Sut Alpha")
@@ -437,6 +437,7 @@ def plot_results(sut_dir, ref_dir, args):
 
     plt.tight_layout()
     plt.savefig(join(args.outdir, 'Gvalue_LET-IRT.eps'),bbox_inches='tight')
+    plt.savefig(join(args.outdir, 'Gvalue_LET-IRT.pdf'),bbox_inches='tight')
 
 
 ####################################################
