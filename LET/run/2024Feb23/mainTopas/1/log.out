@@ -560,9 +560,9 @@ TOPAS run sequence complete.
 Particle source Demo: Total number of histories: 3100
 
 Elapsed times:
-Parameter Reading : User=0.000000s Real=0.000844s Sys=0.000000s [Cpu=0.0%]
-    Initialization: User=0.010000s Real=0.010045s Sys=0.000000s [Cpu=99.5%]
-         Execution: User=229.680000s Real=230.149929s Sys=0.460000s [Cpu=100.0%]
-      Finalization: User=0.000000s Real=0.000003s Sys=0.000000s [Cpu=0.0%]
-             Total: User=229.69s Real=230.161s Sys=0.46s
-      230.34 real       229.84 user         0.48 sys
+Parameter Reading : User=0.000000s Real=0.000870s Sys=0.000000s [Cpu=0.0%]
+    Initialization: User=0.000000s Real=0.010213s Sys=0.000000s [Cpu=0.0%]
+         Execution: User=262.080000s Real=262.950016s Sys=0.350000s [Cpu=99.8%]
+      Finalization: User=0.000000s Real=0.000004s Sys=0.000000s [Cpu=0.0%]
+             Total: User=262.08s Real=262.961s Sys=0.35s
+      263.16 real       262.25 user         0.37 sys

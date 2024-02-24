@@ -3,4 +3,4 @@ s:Ph/Default/Electron/SetElasticScatteringModel = "elsepa"
 
 includeFile = depFile1.txt
 
-Ts/Seed = 19866
+Ts/Seed = 4927
