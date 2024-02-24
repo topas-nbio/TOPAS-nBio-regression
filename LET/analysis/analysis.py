@@ -119,9 +119,9 @@ def plot_results(sut_dir, ref_dir, args):
     plt.subplot(grid[0:2])
     energies = np.asarray(energies,'d')
     plt.errorbar(energies, sut[:,0], yerr=sut[:,1],\
-                          color='r',marker='o',fmt='o',mfc='none',label=args.sut_label,linewidth=2.0)
+                          color='r',marker='o',mfc='none',label=args.sut_label,linewidth=2.0)
     plt.errorbar(energies, ref[:,0], yerr=ref[:,1],\
-                          color='b',marker='s',fmt='o',mfc='none',label=args.ref_label,linewidth=2.0)
+                          color='b',marker='s',mfc='none',label=args.ref_label,linewidth=2.0)
 
     literature = np.genfromtxt('analysis/benchmark/PARTRAC.csv',delimiter=',')
     plt.plot(literature[:,0], literature[:,1], 'k-', label='PARTRAC')
@@ -151,7 +151,8 @@ def plot_results(sut_dir, ref_dir, args):
 
     plt.tight_layout() 
     plt.savefig(join(args.outdir, 'LET.eps'), bbox_inches='tight')
-    
+    plt.savefig(join(args.outdir, 'LET.pdf'), bbox_inches='tight')
+
 if __name__ == '__main__':
     parser = ArgumentParser()
     parser.add_argument('sut_dir', help='Result directory for MC under test')
