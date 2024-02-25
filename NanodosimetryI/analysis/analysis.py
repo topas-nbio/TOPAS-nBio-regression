@@ -30,8 +30,7 @@ def GetFromBinary(name, bins):
         else:
             clusterSizePerEvent[event] += 1
   
-    clusterSizes = np.asarray(clusterSizePerEvent.values())
-    
+    clusterSizes = np.asarray(list(clusterSizePerEvent.values()))
     hist, bins = np.histogram(clusterSizes, np.linspace(0, bins, bins+1), density=True)
  
     return (bins[:-1], hist) 
@@ -112,19 +111,19 @@ def plot_results(sut_dir, ref_dir, args):
     plt.xlim((0,40.0))
     plt.ylim((1e-5,0.2))
     plt.yscale('log')
-    plt.errorbar(sut[0], sut[1], yerr=sut[2],\
-                          color='r',linestyle='r-',label=args.sut_label,linewidth=2.0)
-    plt.step(sut[0], sut[1],where='mid',\
+    plt.errorbar(sut[0][1:], sut[1][1:], yerr=sut[2][1:],\
+                          color='r',linestyle='-',label=args.sut_label,linewidth=2.0)
+    plt.step(sut[0][1:], sut[1][1:],where='mid',\
                           color='r',linewidth=2.0)
 
 
-    plt.errorbar(ref[0], ref[1], yerr=ref[2],\
-                          color='b',linestyle='b-',label=args.ref_label,linewidth=2.0)
-    plt.step(ref[0], ref[1],where='mid',\
+    plt.errorbar(ref[0][1:], ref[1][1:], yerr=ref[2][1:],\
+                          color='b',linestyle='-',label=args.ref_label,linewidth=2.0)
+    plt.step(ref[0][1:], ref[1][1:],where='mid',\
                           color='b',linewidth=2.0)
 
     exp = np.genfromtxt('analysis/benchmark/Hilgers_2017_Conditional.csv')
-    plt.scatter(exp[:,0], exp[:,1], label='Measured')
+    plt.scatter(exp[:,0], exp[:,1], color='g', label='Measured')
 
     plt.ylabel('Probability')
     plt.xlabel('Ionization cluster size')
@@ -147,7 +146,8 @@ def plot_results(sut_dir, ref_dir, args):
 
     plt.tight_layout() 
     plt.savefig(join(args.outdir, 'IDDistribution.eps'), bbox_inches='tight')
-    
+    plt.savefig(join(args.outdir, 'IDDistribution.pdf'), bbox_inches='tight')    
+
 if __name__ == '__main__':
     parser = ArgumentParser()
     parser.add_argument('sut_dir', help='Result directory for MC under test')
