@@ -122,14 +122,14 @@ def plot_results(sut_dir, ref_dir, args):
         namePrefix = ref_dir + '/*/' + name 
         ref = average_results(namePrefix, True)
  
-        plt.step(sut[0], sut[1], where='mid',label=args.sut_label) 
-        plt.step(ref[0], ref[1], where='mid',label=args.ref_label) 
+        plt.step(sut[0][1:], sut[1][1:], where='mid',label=args.sut_label) 
+        plt.step(ref[0][1:], ref[1][1:], where='mid',label=args.ref_label) 
 
         bench = GetBenchmark('analysis/benchmark/'+p[i]+'_ID_1_MeV.csv')
 
         plt.title(pname[i],fontsize=8)
 
-        plt.step(bench[0], bench[1],where='mid',color='r', label='Ref.')
+        plt.step(bench[0][1:], bench[1][1:],where='mid',color='r', label='Ref.')
         plt.xlim((0,xlim[i]))
 
         plt.ylim((1e-4,1.0))
@@ -162,7 +162,8 @@ def plot_results(sut_dir, ref_dir, args):
 
     plt.tight_layout() 
     plt.savefig(join(args.outdir, 'NanodosimetryIII.eps'), bbox_inches='tight')
-    
+    plt.savefig(join(args.outdir, 'NanodosimetryIII.pdf'), bbox_inches='tight')
+
 if __name__ == '__main__':
     parser = ArgumentParser()
     parser.add_argument('sut_dir', help='Result directory for MC under test')

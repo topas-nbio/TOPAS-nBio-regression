@@ -44,7 +44,7 @@ s:So/Demo/DirectPrimariesTo = "inside"
 s:So/Demo/BeamParticle = Tf/particles/Value 
 u:So/Demo/BeamEnergySpread = 0
 d:So/Demo/BeamEnergy = Tf/energies/Value MeV
-i:So/Demo/NumberOfHistoriesInRun = 10 * Tf/histories/Value 
+i:So/Demo/NumberOfHistoriesInRun = 100 * Tf/histories/Value 
 i:Ts/ShowHistoryCountAtInterval  = 100
 
 s:Tf/histories/Function = "Step"
