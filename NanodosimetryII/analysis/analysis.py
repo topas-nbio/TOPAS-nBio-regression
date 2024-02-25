@@ -30,7 +30,7 @@ def GetFromBinary(name, bins, histories):
         else:
             clusterSizePerEvent[event] += 1
   
-    clusterSizes = np.asarray(clusterSizePerEvent.values())
+    clusterSizes = np.asarray(list(clusterSizePerEvent.values()))
     zeroClusterSize = histories - len(clusterSizes) 
 
     hist, bins = np.histogram(clusterSizes, np.linspace(0, bins, bins+1)) #, density=True)
@@ -186,6 +186,7 @@ def plot_results(sut_dir, ref_dir, args):
 
     plt.tight_layout() 
     plt.savefig(join(args.outdir, 'NanodosimetryII.eps'), bbox_inches='tight')
+    plt.savefig(join(args.outdir, 'NanodosimetryII.pdf'), bbox_inches='tight')
     
 if __name__ == '__main__':
     parser = ArgumentParser()
