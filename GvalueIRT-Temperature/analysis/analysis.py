@@ -180,8 +180,8 @@ def plot_results(sut_dir, ref_dir, args):
     ax5 = plt.subplot2grid((3,3),(1,1))
     ax6 = plt.subplot2grid((3,3),(1,2))
     ax7 = plt.subplot2grid((3,3),(2,0))
-    ax8 = plt.subplot2grid((3,3),(2,1))
-    ax9 = plt.subplot2grid((3,3),(2,2))
+    ax8 = plt.subplot2grid((3,3),(2,1),colspan=2)
+    #ax9 = plt.subplot2grid((3,3),(2,2))
 
     matplotlib.rcParams['font.family']     = "sans-serif"
     matplotlib.rcParams['font.sans-serif'] = "Helvetica"
@@ -332,13 +332,13 @@ def plot_results(sut_dir, ref_dir, args):
                       loc        = 'center',\
                       fontsize   = 30)
     Table.auto_set_font_size(False)
-    Table.set_fontsize(15)
-    Table.scale(1,1.5)
+    Table.set_fontsize(20)
+    Table.scale(1,3)
 
-    ax9.set_axis_off()
+    #ax9.set_axis_off()
 
     fig.tight_layout()
-    fig.savefig(join(args.outdir,'TimeEvolution.png'))
+    fig.savefig(join(args.outdir,'TimeEvolution.pdf'))
 
     plt.clf()
     plt.cla()
@@ -352,8 +352,8 @@ def plot_results(sut_dir, ref_dir, args):
     ax5 = plt.subplot2grid((3,3),(1,1))
     ax6 = plt.subplot2grid((3,3),(1,2))
     ax7 = plt.subplot2grid((3,3),(2,0))
-    ax8 = plt.subplot2grid((3,3),(2,1))
-    ax9 = plt.subplot2grid((3,3),(2,2))
+    ax8 = plt.subplot2grid((3,3),(2,1),colspan=2)
+    #ax9 = plt.subplot2grid((3,3),(2,2))
 
     matplotlib.rcParams['font.family']     = "sans-serif"
     matplotlib.rcParams['font.sans-serif'] = "Helvetica"
@@ -472,13 +472,13 @@ def plot_results(sut_dir, ref_dir, args):
                       loc        = 'center',\
                       fontsize   = 30)
     Table.auto_set_font_size(False)
-    Table.set_fontsize(15)
-    Table.scale(1,1.5)
+    Table.set_fontsize(20)
+    Table.scale(1,3)
     
-    ax9.set_axis_off()
+    #ax9.set_axis_off()
 
     fig.tight_layout()
-    fig.savefig(join(args.outdir,'TemperatureEvolution.png'))
+    fig.savefig(join(args.outdir,'TemperatureEvolution.pdf'))
 
     plt.clf()
     plt.cla()
