@@ -17,11 +17,15 @@ from pylab import rcParams
 
 rcParams['legend.numpoints'] = 1
 
-ElectronInfo = ["2.0","7.5","30.0","80.0","999.999"]
-ElectronLET  = np.array([[9.28044,0.215123],[4.18363,0.121782],[1.37702,0.0391928],[0.556705,0.0202614],[0.195033,0.0121145]])
+# ElectronInfo = ["2.0","7.5","30.0","80.0","999.999"]
+# ElectronLET  = np.array([[9.28044,0.215123],[4.18363,0.121782],[1.37702,0.0391928],[0.556705,0.0202614],[0.195033,0.0121145]])
+ElectronInfo = ["2.0","30.0","999.999"]
+ElectronLET  = np.array([[9.28044,0.215123],[1.37702,0.0391928],[0.195033,0.0121145]])
 
-ProtonInfo   = ["500.0","5000.0","10000.0","30000.0","100000.0"]
-ProtonLET    = np.array([[40.2692,0.32277],[7.82215,0.132146],[4.49355,0.109095],[1.88872,0.113343],[0.695069,0.0417797]])
+# ProtonInfo   = ["500.0","5000.0","10000.0","30000.0","100000.0"]
+# ProtonLET    = np.array([[40.2692,0.32277],[7.82215,0.132146],[4.49355,0.109095],[1.88872,0.113343],[0.695069,0.0417797]])
+ProtonInfo   = ["500.0","10000.0","100000.0"]
+ProtonLET    = np.array([[40.2692,0.32277],[4.49355,0.109095],[0.695069,0.0417797]])
 
 AlphaInfo    = ["4000.0","20000.0","50000.0"]
 AlphaLET     = np.array([[97.3568,0.868983],[28.3289,0.336693],[13.4607,0.32049]])
@@ -412,18 +416,18 @@ def plot_results(sut_dir, ref_dir, args):
     ax6.tick_params(axis='both', which='major', labelsize=20)
     ax6.tick_params(axis='both', which='minor', labelsize=20)
     ax6.set_xlabel(r"$LET$ $keV/\mu m$",fontsize=24)
-    ax6.set_ylabel(r"Ox/Red Ratio$",fontsize=24)
-    ax6.errorbar(ElectronLET[:,0],ElectronRatio_Sut, yerr=ElectronRatio_Sut_Err, fmt="b--", linewidth=2, label="TOPAS-Sut e-")
-    ax6.errorbar(ProtonLET[:,0],  ProtonRatio_Sut,   yerr=ProtonRatio_Sut_Err,   fmt="b-.", linewidth=2, label="TOPAS-Sut Proton")
-    ax6.errorbar(AlphaLET[:,0],   AlphaRatio_Sut,    yerr=AlphaRatio_Sut_Err,    fmt="b:", linewidth=2, label="TOPAS-Sut Alpha")
-    ax6.errorbar(ElectronLET[:,0],ElectronRatio_Ref, yerr=ElectronRatio_Ref_Err, fmt="r--", linewidth=2, label="TOPAS-Ref e-")
-    ax6.errorbar(ProtonLET[:,0],  ProtonRatio_Ref,   yerr=ProtonRatio_Ref_Err,   fmt="r-.", linewidth=2, label="TOPAS-Ref Proton")
-    ax6.errorbar(AlphaLET[:,0],   AlphaRatio_Ref,    yerr=AlphaRatio_Ref_Err,    fmt="r:", linewidth=2, label="TOPAS-Ref Alpha")
+    ax6.set_ylabel(r"Ox/Red Ratios",fontsize=24)
+    ax6.errorbar(ElectronLET[:,0],ElectronRatio_Sut, yerr=ElectronRatio_Sut_Err*0, fmt="b--", linewidth=2, label="TOPAS-Sut e-")
+    ax6.errorbar(ProtonLET[:,0],  ProtonRatio_Sut,   yerr=ProtonRatio_Sut_Err*0,   fmt="b-.", linewidth=2, label="TOPAS-Sut Proton")
+    ax6.errorbar(AlphaLET[:,0],   AlphaRatio_Sut,    yerr=AlphaRatio_Sut_Err*0,    fmt="b:", linewidth=2, label="TOPAS-Sut Alpha")
+    ax6.errorbar(ElectronLET[:,0],ElectronRatio_Ref, yerr=ElectronRatio_Ref_Err*0, fmt="r--", linewidth=2, label="TOPAS-Ref e-")
+    ax6.errorbar(ProtonLET[:,0],  ProtonRatio_Ref,   yerr=ProtonRatio_Ref_Err*0,   fmt="r-.", linewidth=2, label="TOPAS-Ref Proton")
+    ax6.errorbar(AlphaLET[:,0],   AlphaRatio_Ref,    yerr=AlphaRatio_Ref_Err*0,    fmt="r:", linewidth=2, label="TOPAS-Ref Alpha")
     ax6.set_xlim(0.1,120)
     ax6.set_ylim(0.95,1.05)
     ax6.set_xscale("log")
     ax6.grid(True,dashes=[5,5])
-    ax6.legend(loc=2,fontsize=20,title=r"$H_{2}$")
+    ax6.legend(loc=2,fontsize=20)
 
     ax7.axis("off")
     Table = ax7.table(cellText=[['%1.3f +/- %1.3f'%(RefTimes[0],RefTimes[1]),'%1.3f +/- %1.3f'%(SutTimes[0],SutTimes[1])],\
@@ -438,7 +442,8 @@ def plot_results(sut_dir, ref_dir, args):
     Table.scale(1,3)
 
     plt.tight_layout()
-    plt.savefig(join(args.outdir, 'Gvalue_LET-IRT.eps'),bbox_inches='tight')
+    plt.savefig(join(args.outdir, 'Gvalue_LET-SBS.eps'),bbox_inches='tight')
+    plt.savefig(join(args.outdir, 'Gvalue_LET-SBS.pdf'),bbox_inches='tight')
 
 
 ####################################################

@@ -11,7 +11,7 @@ b:Ts/ShowCPUTime = "True"
 
 sv:Ph/Default/Modules = 2 "TsEmDNAPhysics" "TsEmDNAChemistry"
 s:Ph/Default/Electron/SetElasticScatteringModel  = "ELSEPA" 
-s:Ph/Default/SolvatedElectronThermalizationModel = "Ritchie" 
+s:Ph/Default/SolvatedElectronThermalizationModel = "Meesungnoen" 
 
 ################# CHEMISTRY #################
 
