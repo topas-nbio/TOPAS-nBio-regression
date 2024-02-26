@@ -421,7 +421,7 @@ def plot_results(sut_dir, ref_dir, args):
     ax6.set_ylim(0.95,1.05)
     ax6.set_xscale("log")
     ax6.grid(True,dashes=[5,5])
-    ax6.legend(loc=2,fontsize=20,title=r"$H_{2}$")
+    ax6.legend(loc=2,fontsize=20)
 
     ax7.axis("off")
     Table = ax7.table(cellText=[['%1.3f +/- %1.3f'%(RefTimes[0],RefTimes[1]),'%1.3f +/- %1.3f'%(SutTimes[0],SutTimes[1])],\
