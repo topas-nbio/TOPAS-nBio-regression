@@ -223,7 +223,7 @@ def plot_results(sut_dir, ref_dir, args):
     Table.scale(1,1.5)
 
     fig.tight_layout()
-    fig.savefig(join(args.outdir,'TimeEvolution.png'))
+    fig.savefig(join(args.outdir,'TimeEvolution.pdf'))
 
     plt.clf()
     plt.cla()
