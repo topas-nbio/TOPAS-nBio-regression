@@ -21,45 +21,44 @@ def Glob(match_path):
     os.system('rm list')
     return fnames
 
-def GetFromBinary(name, bins):
-    clusterSizePerEvent = {}
-    data = np.fromfile(name, 'i,f,f,f,i')
-    for event in data['f4']:
-        if not event in clusterSizePerEvent:
-            clusterSizePerEvent[event] = 1
-        else:
-            clusterSizePerEvent[event] += 1
-  
-    clusterSizes = np.asarray(list(clusterSizePerEvent.values()))
-    hist, bins = np.histogram(clusterSizes, np.linspace(0, bins, bins+1), density=True)
+def GetFromASCII(name, bins):
+    clusterSize, ionClusterFreq, exClusterFreq, totalClusterFreq = np.loadtxt(name, unpack = True, dtype = int)
+
+    ionClusterProb = np.zeros(bins)
+    sum_freq = sum(ionClusterFreq)
+    for i in range(len(ionClusterFreq)):
+        ionClusterProb[i] = ionClusterFreq[i]/sum_freq
+
+    append_zeros = np.zeros(bins - len(clusterSize))
+    fclusterSize = np.append(clusterSize, append_zeros)
+
+    return (fclusterSize, ionClusterProb)
  
-    return (bins[:-1], hist) 
- 
-def average_results(match_path, normalize):
+def average_results(match_path):
     fnames = Glob(match_path) 
     if len(fnames) == 0:
         return None
 
-    maxClusterSize = 60 
-    hClusterSize = np.zeros(maxClusterSize)
-    hClusterSizeStdv = np.zeros(maxClusterSize)
+    maxClusterSize = 150
+    clusterFreq = np.zeros(maxClusterSize)
+    clusterFreqStdv = np.zeros(maxClusterSize)
     n = 0.0
     data = 0.0
     for f in fnames:
-        data = GetFromBinary(f, maxClusterSize)
-        hClusterSize += data[1]
-        hClusterSizeStdv += data[1]**2
+        data = GetFromASCII(f, maxClusterSize)
+        clusterFreq += data[1]
+        clusterFreqStdv += data[1]**2
         n += 1.0
     
-    hClusterSize /= n
+    clusterFreq /= n
 
     if n > 1:
-        hClusterSizeStdv = np.sqrt(n/(n-1.0) * (hClusterSizeStdv/n - hClusterSize**2))
+        clusterFreqStdv = np.sqrt(n/(n-1.0) * (clusterFreqStdv/n - clusterFreq**2))
     else:
-        hClusterSizeStdv = np.zeros(maxClusterSize)
+        clusterFreqStdv = np.zeros(maxClusterSize)
 
     bins = data[0]
-    return (bins, hClusterSize, hClusterSizeStdv) 
+    return (bins, clusterFreq, clusterFreqStdv)
 
 def average_results_time(match_path):
     fnames = Glob(match_path)
@@ -101,9 +100,9 @@ def plot_results(sut_dir, ref_dir, args):
 
     name = 'CarbonIon_88MeV.phsp'
     namePrefix = sut_dir + '/*/' + name 
-    sut = average_results(namePrefix, True)
+    sut = average_results(namePrefix)
     namePrefix = ref_dir + '/*/' + name 
-    ref = average_results(namePrefix, True)
+    ref = average_results(namePrefix)
 
     grid = plt.GridSpec(3,1)
 
