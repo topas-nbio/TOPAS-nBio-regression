@@ -21,52 +21,91 @@ def Glob(match_path):
     os.system('rm list')
     return fnames
 
-def GetFromBinary(name, bins):
-    clusterSizePerEvent = {}
-    data = np.fromfile(name, 'i,f,f,f,i,i')
-    data = data[np.where(data['f5'] > 0)]
-    for event, copy in zip(data['f4'],data['f5']):
-        if not event in clusterSizePerEvent:
-            clusterSizePerEvent[event] = {}
-        else:
-            if not copy in clusterSizePerEvent[event]:
-                clusterSizePerEvent[event][copy] = 1
-            else:
-                clusterSizePerEvent[event][copy] += 1
+def GetFromASCII(name, bins):
+    clusterSize, ionClusterFreq, exClusterFreq, totalClusterFreq = np.loadtxt(name, unpack = True, dtype = int)
 
-    clusterSizes = []
-    for event in clusterSizePerEvent:
-        clusterSizes += clusterSizePerEvent[event].values()
+    ionClusterProb = np.zeros(bins)
+    sum_freq = sum(ionClusterFreq)
+    for i in range(len(ionClusterFreq)):
+        ionClusterProb[i] = ionClusterFreq[i]/sum_freq
 
-    hist, bins = np.histogram(clusterSizes, np.linspace(0, bins, bins+1), density=True)
+    append_zeros = np.zeros(bins - len(clusterSize))
+    fclusterSize = np.append(clusterSize, append_zeros)
 
-    return (bins[:-1], hist) 
- 
-def average_results(match_path, normalize):
+    return (fclusterSize, ionClusterProb)
+
+# def GetFromBinary(name, bins):
+#     clusterSizePerEvent = {}
+#     data = np.fromfile(name, 'i,f,f,f,i,i')
+#     data = data[np.where(data['f5'] > 0)]
+#     for event, copy in zip(data['f4'],data['f5']):
+#         if not event in clusterSizePerEvent:
+#             clusterSizePerEvent[event] = {}
+#         else:
+#             if not copy in clusterSizePerEvent[event]:
+#                 clusterSizePerEvent[event][copy] = 1
+#             else:
+#                 clusterSizePerEvent[event][copy] += 1
+
+#     clusterSizes = []
+#     for event in clusterSizePerEvent:
+#         clusterSizes += clusterSizePerEvent[event].values()
+
+#     hist, bins = np.histogram(clusterSizes, np.linspace(0, bins, bins+1), density=True)
+
+#     return (bins[:-1], hist) 
+
+def average_results(match_path):
     fnames = Glob(match_path) 
     if len(fnames) == 0:
         return None
 
-    maxClusterSize = 120
-    hClusterSize = np.zeros(maxClusterSize)
-    hClusterSizeStdv = np.zeros(maxClusterSize)
+    maxClusterSize = 300
+    clusterFreq = np.zeros(maxClusterSize)
+    clusterFreqStdv = np.zeros(maxClusterSize)
     n = 0.0
     data = 0.0
     for f in fnames:
-        data = GetFromBinary(f, maxClusterSize)
-        hClusterSize += data[1]
-        hClusterSizeStdv += data[1]**2
+        data = GetFromASCII(f, maxClusterSize)
+        clusterFreq += data[1]
+        clusterFreqStdv += data[1]**2
         n += 1.0
     
-    hClusterSize /= n
+    clusterFreq /= n
 
     if n > 1:
-        hClusterSizeStdv = np.sqrt(n/(n-1.0) * (hClusterSizeStdv/n - hClusterSize**2))
+        clusterFreqStdv = np.sqrt(n/(n-1.0) * (clusterFreqStdv/n - clusterFreq**2))
     else:
-        hClusterSizeStdv = np.zeros(maxClusterSize)
+        clusterFreqStdv = np.zeros(maxClusterSize)
 
     bins = data[0]
-    return (bins, hClusterSize, hClusterSizeStdv) 
+    return (bins, clusterFreq, clusterFreqStdv)
+
+# def average_results(match_path, normalize):
+#     fnames = Glob(match_path) 
+#     if len(fnames) == 0:
+#         return None
+
+#     maxClusterSize = 120
+#     hClusterSize = np.zeros(maxClusterSize)
+#     hClusterSizeStdv = np.zeros(maxClusterSize)
+#     n = 0.0
+#     data = 0.0
+#     for f in fnames:
+#         data = GetFromBinary(f, maxClusterSize)
+#         hClusterSize += data[1]
+#         hClusterSizeStdv += data[1]**2
+#         n += 1.0
+    
+#     hClusterSize /= n
+
+#     if n > 1:
+#         hClusterSizeStdv = np.sqrt(n/(n-1.0) * (hClusterSizeStdv/n - hClusterSize**2))
+#     else:
+#         hClusterSizeStdv = np.zeros(maxClusterSize)
+
+#     bins = data[0]
+#     return (bins, hClusterSize, hClusterSizeStdv) 
 
 def average_results_time(match_path):
     fnames = Glob(match_path)
@@ -118,9 +157,9 @@ def plot_results(sut_dir, ref_dir, args):
         plt.subplot(grid[i])
         name = 'ID_Run_000' + str(i)+ '.phsp' 
         namePrefix = sut_dir + '/*/' + name 
-        sut = average_results(namePrefix, True)
+        sut = average_results(namePrefix)
         namePrefix = ref_dir + '/*/' + name 
-        ref = average_results(namePrefix, True)
+        ref = average_results(namePrefix)
  
         plt.step(sut[0][1:], sut[1][1:], where='mid',label=args.sut_label) 
         plt.step(ref[0][1:], ref[1][1:], where='mid',label=args.ref_label) 
