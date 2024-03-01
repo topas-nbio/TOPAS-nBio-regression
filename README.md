@@ -52,6 +52,6 @@ python analysis/analysis.py run/2020July/mainTopas run/2020July/mainOpt2 --sut_l
 Look for the images in the directory `results/`. A table which contains averaged execution time per CPU is also available.
 
 #### Optional
-Save the eps figures in a directory inside Summary folder and latex it. Check the tex file for details.
+Run the Python script inside the folder Summary/tex_openTOPAS. This will copy and paste all the regression test images into a new directory called Summary/openTOPAS. Run the .tex file in order to generate a PDF summarising all the results.
 
 
