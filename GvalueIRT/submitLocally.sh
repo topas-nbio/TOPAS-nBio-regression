@@ -41,7 +41,7 @@ foreach LINE ( $OPTION )
 
 #!/bin/bash
 cd $DIR
-time topas $INFILE.txt > log.out 
+nohup time topas $INFILE.txt > log.out &
 EOF
     chmod +x $SCRIPT
     bash $SCRIPT 
