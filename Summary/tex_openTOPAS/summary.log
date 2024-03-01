@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.2.6)  25 FEB 2024 19:04
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.2.6)  29 FEB 2024 16:21
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1037,66 +1037,54 @@ t line 126.
 
  <./openTOPAS//./LET/LET_g4em-dna_opt4.pdf> <./openTOPAS//./LET/LET_g4em-dna_op
 t6.pdf>]
-<./openTOPAS//./frickeIRT/Gvalue.pdf, id=997, 419.85406pt x 336.85838pt>
-File: ./openTOPAS//./frickeIRT/Gvalue.pdf Graphic file (type pdf)
-<use ./openTOPAS//./frickeIRT/Gvalue.pdf>
-Package pdftex.def Info: ./openTOPAS//./frickeIRT/Gvalue.pdf  used on input lin
+<./openTOPAS//./FrickeIRT/Gvalue.pdf, id=997, 419.85406pt x 336.85838pt>
+File: ./openTOPAS//./FrickeIRT/Gvalue.pdf Graphic file (type pdf)
+<use ./openTOPAS//./FrickeIRT/Gvalue.pdf>
+Package pdftex.def Info: ./openTOPAS//./FrickeIRT/Gvalue.pdf  used on input lin
 e 133.
 (pdftex.def)             Requested size: 298.75394pt x 239.70053pt.
  [10
 
- <./openTOPAS//./frickeIRT/Gvalue.pdf>]
-<./openTOPAS//./gvalueSBS/Gvalue.pdf, id=1082, 459.56602pt x 336.85838pt>
-File: ./openTOPAS//./gvalueSBS/Gvalue.pdf Graphic file (type pdf)
-<use ./openTOPAS//./gvalueSBS/Gvalue.pdf>
-Package pdftex.def Info: ./openTOPAS//./gvalueSBS/Gvalue.pdf  used on input lin
-e 140.
+ <./openTOPAS//./FrickeIRT/Gvalue.pdf>]
+<./openTOPAS//./GvalueStepByStep/Gvalue.pdf, id=1082, 459.56602pt x 336.85838pt
+>
+File: ./openTOPAS//./GvalueStepByStep/Gvalue.pdf Graphic file (type pdf)
+<use ./openTOPAS//./GvalueStepByStep/Gvalue.pdf>
+Package pdftex.def Info: ./openTOPAS//./GvalueStepByStep/Gvalue.pdf  used on in
+put line 140.
 (pdftex.def)             Requested size: 298.75394pt x 218.98103pt.
  [11
 
- <./openTOPAS//./gvalueSBS/Gvalue.pdf>]
-<./openTOPAS//./gvalue_LET_SBS/Gvalue_LET-SBS.pdf, id=1170, 2374.18365pt x 1944
+ <./openTOPAS//./GvalueStepByStep/Gvalue.pdf>]
+<./openTOPAS//./Gvalue_LET-SBS/Gvalue_LET-SBS.pdf, id=1170, 2374.18365pt x 1944
 .1047pt>
-File: ./openTOPAS//./gvalue_LET_SBS/Gvalue_LET-SBS.pdf Graphic file (type pdf)
-<use ./openTOPAS//./gvalue_LET_SBS/Gvalue_LET-SBS.pdf>
-Package pdftex.def Info: ./openTOPAS//./gvalue_LET_SBS/Gvalue_LET-SBS.pdf  used
+File: ./openTOPAS//./Gvalue_LET-SBS/Gvalue_LET-SBS.pdf Graphic file (type pdf)
+<use ./openTOPAS//./Gvalue_LET-SBS/Gvalue_LET-SBS.pdf>
+Package pdftex.def Info: ./openTOPAS//./Gvalue_LET-SBS/Gvalue_LET-SBS.pdf  used
  on input line 147.
 (pdftex.def)             Requested size: 298.75394pt x 244.61438pt.
  [12
 
- <./openTOPAS//./gvalue_LET_SBS/Gvalue_LET-SBS.pdf>]
-<./openTOPAS//./gvalueIRT/GvalueIRT.pdf, id=1278, 714.87444pt x 567.95715pt>
-File: ./openTOPAS//./gvalueIRT/GvalueIRT.pdf Graphic file (type pdf)
-<use ./openTOPAS//./gvalueIRT/GvalueIRT.pdf>
-Package pdftex.def Info: ./openTOPAS//./gvalueIRT/GvalueIRT.pdf  used on input 
+ <./openTOPAS//./Gvalue_LET-SBS/Gvalue_LET-SBS.pdf>]
+<./openTOPAS//./GvalueIRT/GvalueIRT.pdf, id=1278, 714.87444pt x 567.95715pt>
+File: ./openTOPAS//./GvalueIRT/GvalueIRT.pdf Graphic file (type pdf)
+<use ./openTOPAS//./GvalueIRT/GvalueIRT.pdf>
+Package pdftex.def Info: ./openTOPAS//./GvalueIRT/GvalueIRT.pdf  used on input 
 line 154.
 (pdftex.def)             Requested size: 298.75394pt x 237.36176pt.
  [13
 
- <./openTOPAS//./gvalueIRT/GvalueIRT.pdf>]
-<./openTOPAS//./gvalue_LET_IRT/Gvalue_LET-IRT.pdf, id=1372, 2374.18365pt x 1944
+ <./openTOPAS//./GvalueIRT/GvalueIRT.pdf>]
+<./openTOPAS//./Gvalue_LET-IRT/Gvalue_LET-IRT.pdf, id=1372, 2374.18365pt x 1944
 .1047pt>
-File: ./openTOPAS//./gvalue_LET_IRT/Gvalue_LET-IRT.pdf Graphic file (type pdf)
-<use ./openTOPAS//./gvalue_LET_IRT/Gvalue_LET-IRT.pdf>
-Package pdftex.def Info: ./openTOPAS//./gvalue_LET_IRT/Gvalue_LET-IRT.pdf  used
+File: ./openTOPAS//./Gvalue_LET-IRT/Gvalue_LET-IRT.pdf Graphic file (type pdf)
+<use ./openTOPAS//./Gvalue_LET-IRT/Gvalue_LET-IRT.pdf>
+Package pdftex.def Info: ./openTOPAS//./Gvalue_LET-IRT/Gvalue_LET-IRT.pdf  used
  on input line 161.
 (pdftex.def)             Requested size: 298.75394pt x 244.61438pt.
+ [14
 
-[14
-
- <./openTOPAS//./gvalue_LET_IRT/Gvalue_LET-IRT.pdf>]
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 163.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 163.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 163.
-
+ <./openTOPAS//./Gvalue_LET-IRT/Gvalue_LET-IRT.pdf>]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 163.
@@ -1109,144 +1097,170 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 163.
 
-<./openTOPAS//./gvalueIRT_H2O2/TimeEvolution.pdf, id=1480, 578.16pt x 578.16pt>
 
-File: ./openTOPAS//./gvalueIRT_H2O2/TimeEvolution.pdf Graphic file (type pdf)
-<use ./openTOPAS//./gvalueIRT_H2O2/TimeEvolution.pdf>
-Package pdftex.def Info: ./openTOPAS//./gvalueIRT_H2O2/TimeEvolution.pdf  used 
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 163.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 163.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 163.
+
+<./openTOPAS//./GvalueIRT_H2O2/TimeEvolution.pdf, id=1480, 578.16pt x 578.16pt>
+
+File: ./openTOPAS//./GvalueIRT_H2O2/TimeEvolution.pdf Graphic file (type pdf)
+<use ./openTOPAS//./GvalueIRT_H2O2/TimeEvolution.pdf>
+Package pdftex.def Info: ./openTOPAS//./GvalueIRT_H2O2/TimeEvolution.pdf  used 
 on input line 168.
 (pdftex.def)             Requested size: 239.00558pt x 239.00562pt.
 [15
 
- <./openTOPAS//./gvalueIRT_H2O2/TimeEvolution.pdf>]
-<./openTOPAS//./gvalueIRT_temp/TimeEvolution.pdf, id=1572, 1445.4pt x 1300.86pt
->
-File: ./openTOPAS//./gvalueIRT_temp/TimeEvolution.pdf Graphic file (type pdf)
-<use ./openTOPAS//./gvalueIRT_temp/TimeEvolution.pdf>
-Package pdftex.def Info: ./openTOPAS//./gvalueIRT_temp/TimeEvolution.pdf  used 
-on input line 175.
+ <./openTOPAS//./GvalueIRT_H2O2/TimeEvolution.pdf>]
+<./openTOPAS//./GvalueIRT-Temperature/TimeEvolution.pdf, id=1572, 1445.4pt x 13
+00.86pt>
+File: ./openTOPAS//./GvalueIRT-Temperature/TimeEvolution.pdf Graphic file (type
+ pdf)
+<use ./openTOPAS//./GvalueIRT-Temperature/TimeEvolution.pdf>
+Package pdftex.def Info: ./openTOPAS//./GvalueIRT-Temperature/TimeEvolution.pdf
+  used on input line 175.
 (pdftex.def)             Requested size: 278.83578pt x 250.93738pt.
  [16
 
- <./openTOPAS//./gvalueIRT_temp/TimeEvolution.pdf>]
-<./openTOPAS//./gvalueIRT_temp/TemperatureEvolution.pdf, id=1681, 1445.4pt x 13
-00.86pt>
-File: ./openTOPAS//./gvalueIRT_temp/TemperatureEvolution.pdf Graphic file (type
- pdf)
-<use ./openTOPAS//./gvalueIRT_temp/TemperatureEvolution.pdf>
-Package pdftex.def Info: ./openTOPAS//./gvalueIRT_temp/TemperatureEvolution.pdf
-  used on input line 182.
+ <./openTOPAS//./GvalueIRT-Temperature/TimeEvolution.pdf>]
+<./openTOPAS//./GvalueIRT-Temperature/TemperatureEvolution.pdf, id=1681, 1445.4
+pt x 1300.86pt>
+File: ./openTOPAS//./GvalueIRT-Temperature/TemperatureEvolution.pdf Graphic fil
+e (type pdf)
+<use ./openTOPAS//./GvalueIRT-Temperature/TemperatureEvolution.pdf>
+Package pdftex.def Info: ./openTOPAS//./GvalueIRT-Temperature/TemperatureEvolut
+ion.pdf  used on input line 182.
 (pdftex.def)             Requested size: 278.83578pt x 250.93738pt.
  [17
 
- <./openTOPAS//./gvalueIRT_temp/TemperatureEvolution.pdf>]
-<./openTOPAS//./nano1/IDDistribution_TsEmDNAPhysics.pdf, id=1780, 353.65546pt x
- 426.39299pt>
-File: ./openTOPAS//./nano1/IDDistribution_TsEmDNAPhysics.pdf Graphic file (type
- pdf)
-<use ./openTOPAS//./nano1/IDDistribution_TsEmDNAPhysics.pdf>
-Package pdftex.def Info: ./openTOPAS//./nano1/IDDistribution_TsEmDNAPhysics.pdf
-  used on input line 198.
+ <./openTOPAS//./GvalueIRT-Temperature/TemperatureEvolution.pdf>]
+<./openTOPAS//./NanodosimetryI/IDDistribution_TsEmDNAPhysics.pdf, id=1780, 353.
+65546pt x 426.39299pt>
+File: ./openTOPAS//./NanodosimetryI/IDDistribution_TsEmDNAPhysics.pdf Graphic f
+ile (type pdf)
+<use ./openTOPAS//./NanodosimetryI/IDDistribution_TsEmDNAPhysics.pdf>
+Package pdftex.def Info: ./openTOPAS//./NanodosimetryI/IDDistribution_TsEmDNAPh
+ysics.pdf  used on input line 198.
 (pdftex.def)             Requested size: 159.333pt x 192.10928pt.
-<./openTOPAS//./nano1/IDDistribution_opt2.pdf, id=1781, 353.65546pt x 426.39299
-pt>
-File: ./openTOPAS//./nano1/IDDistribution_opt2.pdf Graphic file (type pdf)
-<use ./openTOPAS//./nano1/IDDistribution_opt2.pdf>
-Package pdftex.def Info: ./openTOPAS//./nano1/IDDistribution_opt2.pdf  used on 
-input line 198.
+<./openTOPAS//./NanodosimetryI/IDDistribution_opt2.pdf, id=1781, 353.65546pt x 
+426.39299pt>
+File: ./openTOPAS//./NanodosimetryI/IDDistribution_opt2.pdf Graphic file (type 
+pdf)
+<use ./openTOPAS//./NanodosimetryI/IDDistribution_opt2.pdf>
+Package pdftex.def Info: ./openTOPAS//./NanodosimetryI/IDDistribution_opt2.pdf 
+ used on input line 198.
 (pdftex.def)             Requested size: 159.333pt x 192.10928pt.
  [18
 
- <./openTOPAS//./nano1/IDDistribution_TsEmDNAPhysics.pdf> <./openTOPAS//./nano1
-/IDDistribution_opt2.pdf>]
-<./openTOPAS//./nano1/IDDistribution_opt4.pdf, id=1904, 353.65546pt x 426.39299
-pt>
-File: ./openTOPAS//./nano1/IDDistribution_opt4.pdf Graphic file (type pdf)
-<use ./openTOPAS//./nano1/IDDistribution_opt4.pdf>
-Package pdftex.def Info: ./openTOPAS//./nano1/IDDistribution_opt4.pdf  used on 
-input line 214.
+ <./openTOPAS//./NanodosimetryI/IDDistribution_TsEmDNAPhysics.pdf> <./openTOPAS
+//./NanodosimetryI/IDDistribution_opt2.pdf>]
+<./openTOPAS//./NanodosimetryI/IDDistribution_opt4.pdf, id=1907, 353.65546pt x 
+426.39299pt>
+File: ./openTOPAS//./NanodosimetryI/IDDistribution_opt4.pdf Graphic file (type 
+pdf)
+<use ./openTOPAS//./NanodosimetryI/IDDistribution_opt4.pdf>
+Package pdftex.def Info: ./openTOPAS//./NanodosimetryI/IDDistribution_opt4.pdf 
+ used on input line 214.
 (pdftex.def)             Requested size: 159.333pt x 192.10928pt.
-<./openTOPAS//./nano1/IDDistribution_opt6.pdf, id=1905, 353.65546pt x 426.39299
-pt>
-File: ./openTOPAS//./nano1/IDDistribution_opt6.pdf Graphic file (type pdf)
-<use ./openTOPAS//./nano1/IDDistribution_opt6.pdf>
-Package pdftex.def Info: ./openTOPAS//./nano1/IDDistribution_opt6.pdf  used on 
-input line 214.
+<./openTOPAS//./NanodosimetryI/IDDistribution_opt6.pdf, id=1908, 353.65546pt x 
+426.39299pt>
+File: ./openTOPAS//./NanodosimetryI/IDDistribution_opt6.pdf Graphic file (type 
+pdf)
+<use ./openTOPAS//./NanodosimetryI/IDDistribution_opt6.pdf>
+Package pdftex.def Info: ./openTOPAS//./NanodosimetryI/IDDistribution_opt6.pdf 
+ used on input line 214.
 (pdftex.def)             Requested size: 159.333pt x 192.10928pt.
- [19
 
- <./openTOPAS//./nano1/IDDistribution_opt4.pdf> <./openTOPAS//./nano1/IDDistrib
-ution_opt6.pdf>]
-<./openTOPAS//./nano2/nanoII_TsEMDNAPhysics.pdf, id=2033, 352.32623pt x 425.872
-39pt>
-File: ./openTOPAS//./nano2/nanoII_TsEMDNAPhysics.pdf Graphic file (type pdf)
-<use ./openTOPAS//./nano2/nanoII_TsEMDNAPhysics.pdf>
-Package pdftex.def Info: ./openTOPAS//./nano2/nanoII_TsEMDNAPhysics.pdf  used o
-n input line 230.
+[19
+
+ <./openTOPAS//./NanodosimetryI/IDDistribution_opt4.pdf> <./openTOPAS//./Nanodo
+simetryI/IDDistribution_opt6.pdf>]
+<./openTOPAS//./NanodosimetryII/nanoII_TsEMDNAPhysics.pdf, id=2035, 352.32623pt
+ x 425.87239pt>
+File: ./openTOPAS//./NanodosimetryII/nanoII_TsEMDNAPhysics.pdf Graphic file (ty
+pe pdf)
+<use ./openTOPAS//./NanodosimetryII/nanoII_TsEMDNAPhysics.pdf>
+Package pdftex.def Info: ./openTOPAS//./NanodosimetryII/nanoII_TsEMDNAPhysics.p
+df  used on input line 230.
 (pdftex.def)             Requested size: 159.333pt x 192.59605pt.
-<./openTOPAS//./nano2/nanoII_opt2.pdf, id=2034, 352.32623pt x 425.87239pt>
-File: ./openTOPAS//./nano2/nanoII_opt2.pdf Graphic file (type pdf)
-<use ./openTOPAS//./nano2/nanoII_opt2.pdf>
-Package pdftex.def Info: ./openTOPAS//./nano2/nanoII_opt2.pdf  used on input li
-ne 230.
+<./openTOPAS//./NanodosimetryII/nanoII_opt2.pdf, id=2036, 352.32623pt x 425.872
+39pt>
+File: ./openTOPAS//./NanodosimetryII/nanoII_opt2.pdf Graphic file (type pdf)
+<use ./openTOPAS//./NanodosimetryII/nanoII_opt2.pdf>
+Package pdftex.def Info: ./openTOPAS//./NanodosimetryII/nanoII_opt2.pdf  used o
+n input line 230.
 (pdftex.def)             Requested size: 159.333pt x 192.59605pt.
  [20
 
- <./openTOPAS//./nano2/nanoII_TsEMDNAPhysics.pdf> <./openTOPAS//./nano2/nanoII_
-opt2.pdf>]
-<./openTOPAS//./nano2/nanoII_opt4.pdf, id=2173, 352.32623pt x 425.87239pt>
-File: ./openTOPAS//./nano2/nanoII_opt4.pdf Graphic file (type pdf)
-<use ./openTOPAS//./nano2/nanoII_opt4.pdf>
-Package pdftex.def Info: ./openTOPAS//./nano2/nanoII_opt4.pdf  used on input li
-ne 246.
+ <./openTOPAS//./NanodosimetryII/nanoII_TsEMDNAPhysics.pdf> <./openTOPAS//./Nan
+odosimetryII/nanoII_opt2.pdf>]
+<./openTOPAS//./NanodosimetryII/nanoII_opt4.pdf, id=2175, 352.32623pt x 425.872
+39pt>
+File: ./openTOPAS//./NanodosimetryII/nanoII_opt4.pdf Graphic file (type pdf)
+<use ./openTOPAS//./NanodosimetryII/nanoII_opt4.pdf>
+Package pdftex.def Info: ./openTOPAS//./NanodosimetryII/nanoII_opt4.pdf  used o
+n input line 246.
 (pdftex.def)             Requested size: 159.333pt x 192.59605pt.
-<./openTOPAS//./nano2/nanoII_opt6.pdf, id=2174, 352.32623pt x 425.87239pt>
-File: ./openTOPAS//./nano2/nanoII_opt6.pdf Graphic file (type pdf)
-<use ./openTOPAS//./nano2/nanoII_opt6.pdf>
-Package pdftex.def Info: ./openTOPAS//./nano2/nanoII_opt6.pdf  used on input li
-ne 246.
+<./openTOPAS//./NanodosimetryII/nanoII_opt6.pdf, id=2176, 352.32623pt x 425.872
+39pt>
+File: ./openTOPAS//./NanodosimetryII/nanoII_opt6.pdf Graphic file (type pdf)
+<use ./openTOPAS//./NanodosimetryII/nanoII_opt6.pdf>
+Package pdftex.def Info: ./openTOPAS//./NanodosimetryII/nanoII_opt6.pdf  used o
+n input line 246.
 (pdftex.def)             Requested size: 159.333pt x 192.59605pt.
 
 [21
 
- <./openTOPAS//./nano2/nanoII_opt4.pdf> <./openTOPAS//./nano2/nanoII_opt6.pdf>]
-<./openTOPAS//./nano3/nanoIII_TsEMDNAPhysics.pdf, id=2314, 454.77386pt x 339.16
-902pt>
-File: ./openTOPAS//./nano3/nanoIII_TsEMDNAPhysics.pdf Graphic file (type pdf)
-<use ./openTOPAS//./nano3/nanoIII_TsEMDNAPhysics.pdf>
-Package pdftex.def Info: ./openTOPAS//./nano3/nanoIII_TsEMDNAPhysics.pdf  used 
-on input line 256.
+ <./openTOPAS//./NanodosimetryII/nanoII_opt4.pdf> <./openTOPAS//./Nanodosimetry
+II/nanoII_opt6.pdf>]
+<./openTOPAS//./NanodosimetryIII/nanoIII_TsEMDNAPhysics.pdf, id=2316, 454.77386
+pt x 339.16902pt>
+File: ./openTOPAS//./NanodosimetryIII/nanoIII_TsEMDNAPhysics.pdf Graphic file (
+type pdf)
+<use ./openTOPAS//./NanodosimetryIII/nanoIII_TsEMDNAPhysics.pdf>
+Package pdftex.def Info: ./openTOPAS//./NanodosimetryIII/nanoIII_TsEMDNAPhysics
+.pdf  used on input line 256.
 (pdftex.def)             Requested size: 298.75394pt x 222.81717pt.
  [22
 
- <./openTOPAS//./nano3/nanoIII_TsEMDNAPhysics.pdf>]
-<./openTOPAS//./nano3/nanoIII_opt2.pdf, id=2390, 454.77386pt x 339.16902pt>
-File: ./openTOPAS//./nano3/nanoIII_opt2.pdf Graphic file (type pdf)
-<use ./openTOPAS//./nano3/nanoIII_opt2.pdf>
-Package pdftex.def Info: ./openTOPAS//./nano3/nanoIII_opt2.pdf  used on input l
-ine 266.
+ <./openTOPAS//./NanodosimetryIII/nanoIII_TsEMDNAPhysics.pdf>]
+<./openTOPAS//./NanodosimetryIII/nanoIII_opt2.pdf, id=2392, 454.77386pt x 339.1
+6902pt>
+File: ./openTOPAS//./NanodosimetryIII/nanoIII_opt2.pdf Graphic file (type pdf)
+<use ./openTOPAS//./NanodosimetryIII/nanoIII_opt2.pdf>
+Package pdftex.def Info: ./openTOPAS//./NanodosimetryIII/nanoIII_opt2.pdf  used
+ on input line 266.
 (pdftex.def)             Requested size: 298.75394pt x 222.81717pt.
  [23
 
- <./openTOPAS//./nano3/nanoIII_opt2.pdf>]
-<./openTOPAS//./nano3/nanoIII_opt4.pdf, id=2466, 454.77386pt x 339.16902pt>
-File: ./openTOPAS//./nano3/nanoIII_opt4.pdf Graphic file (type pdf)
-<use ./openTOPAS//./nano3/nanoIII_opt4.pdf>
-Package pdftex.def Info: ./openTOPAS//./nano3/nanoIII_opt4.pdf  used on input l
-ine 276.
+ <./openTOPAS//./NanodosimetryIII/nanoIII_opt2.pdf>]
+<./openTOPAS//./NanodosimetryIII/nanoIII_opt4.pdf, id=2469, 454.77386pt x 339.1
+6902pt>
+File: ./openTOPAS//./NanodosimetryIII/nanoIII_opt4.pdf Graphic file (type pdf)
+<use ./openTOPAS//./NanodosimetryIII/nanoIII_opt4.pdf>
+Package pdftex.def Info: ./openTOPAS//./NanodosimetryIII/nanoIII_opt4.pdf  used
+ on input line 276.
 (pdftex.def)             Requested size: 298.75394pt x 222.81717pt.
  [24
 
- <./openTOPAS//./nano3/nanoIII_opt4.pdf>]
-<./openTOPAS//./nano3/nanoIII_opt6.pdf, id=2542, 454.77386pt x 339.16902pt>
-File: ./openTOPAS//./nano3/nanoIII_opt6.pdf Graphic file (type pdf)
-<use ./openTOPAS//./nano3/nanoIII_opt6.pdf>
-Package pdftex.def Info: ./openTOPAS//./nano3/nanoIII_opt6.pdf  used on input l
-ine 286.
+ <./openTOPAS//./NanodosimetryIII/nanoIII_opt4.pdf>]
+<./openTOPAS//./NanodosimetryIII/nanoIII_opt6.pdf, id=2546, 454.77386pt x 339.1
+6902pt>
+File: ./openTOPAS//./NanodosimetryIII/nanoIII_opt6.pdf Graphic file (type pdf)
+<use ./openTOPAS//./NanodosimetryIII/nanoIII_opt6.pdf>
+Package pdftex.def Info: ./openTOPAS//./NanodosimetryIII/nanoIII_opt6.pdf  used
+ on input line 286.
 (pdftex.def)             Requested size: 298.75394pt x 222.81717pt.
  [25
 
- <./openTOPAS//./nano3/nanoIII_opt6.pdf>]
+ <./openTOPAS//./NanodosimetryIII/nanoIII_opt6.pdf>]
 \tf@nav=\write6
 \openout6 = `summary.nav'.
 
@@ -1262,7 +1276,7 @@ Package rerunfilecheck Info: File `summary.out' has not changed.
  ) 
 Here is how much of TeX's memory you used:
  22125 strings out of 476025
- 438241 string characters out of 5790018
+ 439554 string characters out of 5790018
  1860388 words of memory out of 5000000
  42017 multiletter control sequences out of 15000+600000
  523492 words of font info for 72 fonts, out of 8000000 for 9000
@@ -1274,9 +1288,9 @@ Here is how much of TeX's memory you used:
 usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></u
 sr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb
 >
-Output written on summary.pdf (25 pages, 836562 bytes).
+Output written on summary.pdf (25 pages, 838244 bytes).
 PDF statistics:
- 2664 PDF objects out of 2984 (max. 8388607)
+ 2666 PDF objects out of 2984 (max. 8388607)
  992 compressed objects within 10 object streams
  73 named destinations out of 1000 (max. 500000)
  379 words of extra memory for PDF output out of 10000 (max. 10000000)
