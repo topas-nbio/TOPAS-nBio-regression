@@ -19,8 +19,8 @@ s:Ph/Default/SolvatedElectronThermalizationModel = "Meesungnoen"
 
 s:Ch/ChemistryName = "TOPASChemistry"
 b:Ch/TOPASChemistry/ChemicalStageTransportActive = "True"
-dv:Ch/TOPASChemistry/AddTimeStepHighEdge    = 1 999999 ps
-dv:Ch/TOPASChemistry/AddTimeStepResolution  = 1 1e-6 ps
+dv:Ch/TOPASChemistry/ChemicalStageTimeStepsHighEdges    = 1 999999 ps
+dv:Ch/TOPASChemistry/ChemicalStageTimeStepsResolutions  = 1 1e-6 ps
 d:Ch/TOPASChemistry/ChemicalStageTimeEnd    = 1.00001 ps
 u:Ch/TOPASChemistry/Temperature             = fTemperature
 b:Ch/TOPASChemistry/TestForContactReactions = "True"
