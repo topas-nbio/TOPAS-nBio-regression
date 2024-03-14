@@ -42,7 +42,7 @@ foreach LINE ( $OPTION )
 
 #!/bin/bash
 cd $DIR
-python3 $INFILE.py topas > log.out
+nohup python3 $INFILE.py openTOPAS > log.out &
 EOF
     chmod +x $SCRIPT
     bash $SCRIPT 

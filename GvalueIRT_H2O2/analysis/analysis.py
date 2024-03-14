@@ -127,7 +127,7 @@ def average_results_time(match_path):
 ### Define Plot Function
 
 def plot_results(sut_dir, ref_dir, args):
-    concentrations = ["0.1031e-4", "0.1031e-3", "0.1031e-2", "0.1031e-1", "0.1031e-0", "0.1031e+1", "0.1031e+2"]
+    concentrations = ["1e-3", "1e-2", "1e-1", "1e-0", "1e+1"]
     #concentrations = ["0.1031e-2", "0.1031e-1", "0.1031e-0", "0.1031e+1", "0.1031e+2"] 
 
     sut_T = average_results_time(sut_dir + '/*/log.out')

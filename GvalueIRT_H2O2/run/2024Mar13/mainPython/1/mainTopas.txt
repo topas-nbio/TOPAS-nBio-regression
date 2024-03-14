@@ -90,4 +90,4 @@ d:Sc/nbOfMol/KillPrimaryBasedOnTrackLength = 100 km
 
 #sv:Sc/nbOfMol/ReportMoleculesNamed = 7 "OH^0" "e_aq^-1" "H^0" "H2O2^0" "CH2OH" "NO32m" "HNO3m"
 
-###############################################################
+###############################################################Ts/Seed = 16623

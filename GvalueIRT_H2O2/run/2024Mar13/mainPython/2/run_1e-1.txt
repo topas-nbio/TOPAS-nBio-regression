@@ -31,7 +31,7 @@ b:Ch/TOPASChemistry/TestForContactReactions      = "True"
 ################### Additional Reactions ######################
 ###############################################################
 
-d:Ch/TOPASChemistry/BackgroundReaction/Hydroxyl/CH3OH/Concentration = theConcentration M
+d:Ch/TOPASChemistry/BackgroundReaction/Hydroxyl/CH3OH/Concentration = 1e-1 M
 
 ###############################################################
 ###################### Geometric Setup ########################
@@ -73,7 +73,7 @@ s:Sc/nbOfMol/Component  = "sWorld"
 s:Sc/nbOfMol/OutputType = "ascii"
 i:Sc/nbOfMol/OutputBufferSize = 1
 s:Sc/nbOfMol/IfOutputFileAlreadyExists = "Overwrite"
-s:Sc/nbOfMol/OutputFile = "Methanol_theConcentration_M_Nitrate_25e-3_M"
+s:Sc/nbOfMol/OutputFile = "Methanol_1e-1_M_Nitrate_25e-3_M"
 
 b:Sc/nbOfMol/EnableHighTimeScavengers = "True"
 
@@ -90,4 +90,4 @@ d:Sc/nbOfMol/KillPrimaryBasedOnTrackLength = 100 km
 
 #sv:Sc/nbOfMol/ReportMoleculesNamed = 7 "OH^0" "e_aq^-1" "H^0" "H2O2^0" "CH2OH" "NO32m" "HNO3m"
 
-###############################################################
+###############################################################Ts/Seed = 11597
