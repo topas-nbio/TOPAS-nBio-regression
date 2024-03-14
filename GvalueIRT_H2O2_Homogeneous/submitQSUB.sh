@@ -1,6 +1,11 @@
 #!/bin/tcsh
 
+#module load topas/3.2.test
+#module load geant4/10.5.1
+
+
 set ITER = $1
+set ADDITION = $2
 if ($ITER == "") then
   set ITER = 1
 endif
@@ -21,7 +26,7 @@ foreach LINE ( $OPTION )
     set DATE = $DATEYEAR$DATEMONTH$DATEDAY
     set UNAME = `uname`
 
-    set DIR = $CURRENTPATH"/run/"$DATE/$INFILE/$COUNT
+    set DIR = $CURRENTPATH"/run/"$ADDITION$DATE/$INFILE/$COUNT
     if ( -d $DIR ) then
        echo Directory exists, removing and recreating $DIR
        rm -rf $DIR
@@ -31,9 +36,7 @@ foreach LINE ( $OPTION )
     cp ParameterFiles/depFile*txt $DIR
     cp $LINE $DIR
    
-    #set SEED = `bash -c 'echo $RANDOM'` 
-    @ COUNT = $COUNT + 1
-    set SEED = $COUNT
+    set SEED = `bash -c 'echo $RANDOM'` 
     echo Ts/Seed = $SEED >> $DIR/$INFILE.txt    
 
 
@@ -41,11 +44,21 @@ foreach LINE ( $OPTION )
 
     cat - << EOF > $SCRIPT
 
-#!/bin/bash
+#!/bin/env bash
 cd $DIR
-nohup time topas $INFILE.txt > log.out &
+
+export TOPAS_G4_DATA_DIR=/wynton/home/faddegonlab/jramos/software/G4Data
+export LD_LIBRARY_PATH=/wynton/home/faddegonlab/jramos/software/topas.3.5/lib
+
+/wynton/home/faddegonlab/jramos/software/topas.3.5/bin/topas $INFILE.txt  > log.out
+
 EOF
+
     chmod +x $SCRIPT
-    bash $SCRIPT 
+
+    qsub -cwd -pe smp 1 -l mem_free=2G < $SCRIPT
+    
+    @ COUNT = $COUNT + 1
   end
 end
+

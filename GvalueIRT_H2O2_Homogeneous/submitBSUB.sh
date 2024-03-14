@@ -1,6 +1,10 @@
 #!/bin/tcsh
 
+module load topas/3.2.test
+module load geant4/10.5.1
+
 set ITER = $1
+set ADDITION = $2
 if ($ITER == "") then
   set ITER = 1
 endif
@@ -21,7 +25,7 @@ foreach LINE ( $OPTION )
     set DATE = $DATEYEAR$DATEMONTH$DATEDAY
     set UNAME = `uname`
 
-    set DIR = $CURRENTPATH"/run/"$DATE/$INFILE/$COUNT
+    set DIR = $CURRENTPATH"/run/"$ADDITION$DATE/$INFILE/$COUNT
     if ( -d $DIR ) then
        echo Directory exists, removing and recreating $DIR
        rm -rf $DIR
@@ -31,9 +35,7 @@ foreach LINE ( $OPTION )
     cp ParameterFiles/depFile*txt $DIR
     cp $LINE $DIR
    
-    #set SEED = `bash -c 'echo $RANDOM'` 
-    @ COUNT = $COUNT + 1
-    set SEED = $COUNT
+    set SEED = `bash -c 'echo $RANDOM'` 
     echo Ts/Seed = $SEED >> $DIR/$INFILE.txt    
 
 
@@ -42,10 +44,24 @@ foreach LINE ( $OPTION )
     cat - << EOF > $SCRIPT
 
 #!/bin/bash
+#BSUB -J dbscan
+#BSUB -q long
+#BSUB -r
+#BSUB -C 0
+#BSUB -n 1
+#BSUB -R "rusage[mem=2500]"
+#BSUB -Q "140"
 cd $DIR
-nohup time topas $INFILE.txt > log.out &
+
+time topas $INFILE.txt 
+
 EOF
+
     chmod +x $SCRIPT
-    bash $SCRIPT 
+
+    bsub  -e $DIR/log.err -o $DIR/log.out  < $SCRIPT
+    
+    @ COUNT = $COUNT + 1
   end
 end
+
