@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.2.6)  29 FEB 2024 16:38
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.2.6)  13 MAR 2024 18:51
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1276,7 +1276,7 @@ Package rerunfilecheck Info: File `summary.out' has not changed.
  ) 
 Here is how much of TeX's memory you used:
  22125 strings out of 476025
- 439554 string characters out of 5790018
+ 439548 string characters out of 5790018
  1860388 words of memory out of 5000000
  42017 multiletter control sequences out of 15000+600000
  523492 words of font info for 72 fonts, out of 8000000 for 9000
@@ -1288,7 +1288,7 @@ Here is how much of TeX's memory you used:
 usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></u
 sr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb
 >
-Output written on summary.pdf (25 pages, 838342 bytes).
+Output written on summary.pdf (25 pages, 838202 bytes).
 PDF statistics:
  2666 PDF objects out of 2984 (max. 8388607)
  992 compressed objects within 10 object streams
