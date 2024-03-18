@@ -52,6 +52,4 @@ python analysis/analysis.py run/2020July/mainTopas run/2020July/mainOpt2 --sut_l
 Look for the images in the directory `results/`. A table which contains averaged execution time per CPU is also available.
 
 #### Optional
-Run the Python script inside the folder Summary/tex_openTOPAS. This will copy and paste all the regression test images into a new directory called Summary/openTOPAS. Run the .tex file in order to generate a PDF summarising all the results.
-
-
+If you have modified the names of the image files resulting from `analysis.py`, open the python script `copy_and_paste.py` in the directory Summary/tex_openTOPAS and change the names of the appropriate files such that they match. Then run the script. This will copy and paste all the regression test images into a new directory called Summary/openTOPAS. Run the .tex file in order to generate a PDF summarising all the results.
