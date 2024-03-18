@@ -176,8 +176,8 @@ def plot_results(sut_dir, ref_dir, args):
     
     grid = plt.GridSpec(2,2)
     plt.subplot(grid[1])
-    plt.errorbar(sut[0]['Fe3'], sut[1]['Fe3'], yerr=sut[2]['Fe3'], fmt='b--',label='TOPAS Test')
-    plt.errorbar(ref[0]['Fe3'], ref[1]['Fe3'], yerr=ref[2]['Fe3'], fmt='r:',label='TOPAS Ref')
+    plt.errorbar(sut[0]['Fe3'], sut[1]['Fe3'], yerr=sut[2]['Fe3'], fmt='b--',label=args.sut_label)
+    plt.errorbar(ref[0]['Fe3'], ref[1]['Fe3'], yerr=ref[2]['Fe3'], fmt='r:',label=args.ref_label)
     plt.errorbar(5E13, 15.6, yerr=0.2, fmt='o', markerfacecolor="none", label='ICRU report 34')
     plt.plot(bench[:,0]*1E12,bench[:,1], label='Plante 2011')
     plt.xscale("log")
