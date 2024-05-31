@@ -220,8 +220,8 @@ def plot_results(sut_dir, ref_dir, args):
             plt.errorbar(1e6,0.61,yerr=0.03,marker='o')
             plt.errorbar(1e6,0.69,yerr=0.03,marker='o')
 
-        if i == 6:
-            plt.yticks(np.arange(0.55,0.72,0.04))
+        # if i == 6:
+        #     plt.yticks(np.arange(0.55,0.72,0.04))
   
         plt.ylabel('G(%s / 100 eV)' % name)
         plt.xlabel('Time (ps)')

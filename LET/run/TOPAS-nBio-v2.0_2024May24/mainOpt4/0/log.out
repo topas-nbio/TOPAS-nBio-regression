@@ -1,0 +1,580 @@
+
+Welcome to TOPAS, Tool for Particle Simulation (Version 3.9)
+Loading parameters starting from: mainOpt4.txt
+
+Geant4 Data directory has been specified by the
+TOPAS_G4_DATA_DIR environment variable as /wynton/home/ramos-mendez/tmasilela/software/GEANT4/G4DATA
+
+**************************************************************
+ Geant4 version Name: geant4-10-07-patch-03 [MT]   (19-November-2021)
+  << in Multi-threaded mode >> 
+                       Copyright : Geant4 Collaboration
+                      References : NIM A 506 (2003), 250-303
+                                 : IEEE-TNS 53 (2006), 270-278
+                                 : NIM A 835 (2016), 186-225
+                             WWW : http://geant4.org/
+**************************************************************
+
+TOPAS is in MT mode, setting number of threads to: 10
+
+TOPAS set the tolerances based on the World size to:
+      Surface tolerance = 4.65e-08 nm, and radial tolerance = 4.65e-08 nm.
+Checking overlaps for volume target (G4Sphere) ... OK! 
+
+Checking for Unused Components.
+These are Components that were never built even though they were at least
+partially defined in some parameters. This is not necessarily an error.
+It may be an intentional choice to have these Component definitions handy for later use.
+To turn off this check, set Ge/CheckForUnusedComponents to False
+  No unused components were found.
+
+Visualization verbosity changed to quiet (0)
+
+### ===  Deexcitation model UAtomDeexcitation is activated for 1 region:
+          DefaultRegionForTheWorld  1  1  0
+### ===  Auger cascade flag: 1
+### ===  Ignore cuts flag:   1
+
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : 
+      issued by : *** WARNING: the G4DNAUeharaScreenedRutherfordElasticModel class is used above 10 keV
+
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+
+phot:  for gamma SubType=12 BuildTable=0
+      LambdaPrime table from 200 keV to 500 MeV in 25 bins 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+ LivermorePhElectric : Emin=    0 eV  Emax=  500 MeV  SauterGavrila Fluo
+
+compt:  for gamma SubType=13 BuildTable=1
+      Lambda table from 100 eV  to 1 MeV, 7 bins/decade, spline: 1
+      LambdaPrime table from 1 MeV to 500 MeV in 20 bins 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+    LivermoreCompton : Emin=    0 eV  Emax=  500 MeV Fluo
+
+conv:  for gamma SubType=14 BuildTable=1
+      Lambda table from 1.022 MeV to 500 MeV, 33 bins/decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+ LivermoreConversion : Emin=    0 eV  Emax=  500 MeV  ModifiedTsai
+
+Rayl:  for gamma SubType=11 BuildTable=1
+      Lambda table from 100 eV  to 100 keV, 7 bins/decade, spline: 0
+      LambdaPrime table from 100 keV to 500 MeV in 27 bins 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+   LivermoreRayleigh : Emin=    0 eV  Emax=  500 MeV  CullenGenerator
+
+e-_G4DNAElectronSolvation:  for e- SubType=58 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAOneStepThermalizationModel_Meesungnoen2002 : Emin=    0 eV  Emax=   10 eV 
+
+e-_G4DNAElastic:  for e- SubType=51 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAUeharaScreenedRutherfordElasticModel : Emin=    0 eV  Emax=    1 MeV
+
+e-_G4DNAExcitation:  for e- SubType=52 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAEmfietzoglouExcitationModel : Emin=    0 eV  Emax=   10 keV
+
+e-_G4DNAIonisation:  for e- SubType=53 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAEmfietzoglouIonisationModel : Emin=    0 eV  Emax=   10 keV  deltaBorn Fluo
+
+msc:  for e+  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc : Emin=    0 eV  Emax=  500 MeV Nbins=49 100 eV  - 500 MeV
+              StepLim=DistanceToBoundary Rfact=0.04 Gfact=2.5 Sfact=0.6 DispFlag:1 Skin=1 Llimit=1
+
+eIoni:  for e+  SubType=2
+      dE/dx and range tables from 100 eV  to 500 MeV in 49 bins
+      Lambda tables from threshold to 500 MeV, 7 bins/decade, spline: 1
+      StepFunction=(0.2, 1 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        MollerBhabha : Emin=    0 eV  Emax=  500 MeV
+
+eBrem:  for e+  SubType=3
+      dE/dx and range tables from 100 eV  to 500 MeV in 49 bins
+      Lambda tables from threshold to 500 MeV, 7 bins/decade, spline: 1
+      LPM flag: 1 for E > 0.5 GeV,  VertexHighEnergyTh(GeV)= 100000
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+             eBremSB : Emin=    0 eV  Emax=  500 MeV  ModifiedTsai
+
+annihil:  for e+, integral:1  SubType=5 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            eplus2gg : Emin=    0 eV  Emax=  500 MeV
+
+proton_G4DNAElastic:  for proton SubType=51 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  DNAIonElasticModel : Emin=    0 eV  Emax=    1 MeV
+
+proton_G4DNAExcitation:  for proton SubType=52 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAMillerGreenExcitationModel : Emin=    0 eV  Emax=  500 keV
+DNABornExcitationModel : Emin=  500 keV Emax=  100 MeV
+
+proton_G4DNAIonisation:  for proton SubType=53 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNARuddIonisationModel : Emin=    0 eV  Emax=  500 keV  deltaRudd Fluo
+DNABornIonisationModel : Emin=  500 keV Emax=  100 MeV  deltaBorn Fluo
+
+proton_G4DNAChargeDecrease:  for proton SubType=56 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNADingfelderChargeDecreaseModel : Emin=    0 eV  Emax=  100 MeV
+
+GenericIon_G4DNAIonisation:  for GenericIon SubType=53 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNARuddIonisationExtendedModel : Emin=    0 eV  Emax=  500 MeV  deltaRudd Fluo
+
+alpha_G4DNAElastic:  for alpha SubType=51 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  DNAIonElasticModel : Emin=    0 eV  Emax=    1 MeV
+
+alpha_G4DNAExcitation:  for alpha SubType=52 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAMillerGreenExcitationModel : Emin=    0 eV  Emax=  400 MeV
+
+alpha_G4DNAIonisation:  for alpha SubType=53 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNARuddIonisationModel : Emin=    0 eV  Emax=  400 MeV  deltaRudd Fluo
+
+alpha_G4DNAChargeDecrease:  for alpha SubType=56 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNADingfelderChargeDecreaseModel : Emin=    0 eV  Emax=  400 MeV
+
+alpha+_G4DNAElastic:  for alpha+ SubType=51 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  DNAIonElasticModel : Emin=    0 eV  Emax=    1 MeV
+
+alpha+_G4DNAExcitation:  for alpha+ SubType=52 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAMillerGreenExcitationModel : Emin=    0 eV  Emax=  400 MeV
+
+alpha+_G4DNAIonisation:  for alpha+ SubType=53 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNARuddIonisationModel : Emin=    0 eV  Emax=  400 MeV  deltaRudd Fluo
+
+alpha+_G4DNAChargeDecrease:  for alpha+ SubType=56 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNADingfelderChargeDecreaseModel : Emin=    0 eV  Emax=  400 MeV
+
+alpha+_G4DNAChargeIncrease:  for alpha+ SubType=57 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNADingfelderChargeIncreaseModel : Emin=    0 eV  Emax=  400 MeV
+
+helium_G4DNAElastic:  for helium SubType=51 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  DNAIonElasticModel : Emin=    0 eV  Emax=    1 MeV
+
+helium_G4DNAExcitation:  for helium SubType=52 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAMillerGreenExcitationModel : Emin=    0 eV  Emax=  400 MeV
+
+helium_G4DNAIonisation:  for helium SubType=53 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNARuddIonisationModel : Emin=    0 eV  Emax=  400 MeV  deltaRudd Fluo
+
+helium_G4DNAChargeIncrease:  for helium SubType=57 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNADingfelderChargeIncreaseModel : Emin=    0 eV  Emax=  400 MeV
+
+hydrogen_G4DNAElastic:  for hydrogen SubType=51 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  DNAIonElasticModel : Emin=    0 eV  Emax=    1 MeV
+
+hydrogen_G4DNAExcitation:  for hydrogen SubType=52 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAMillerGreenExcitationModel : Emin=    0 eV  Emax=  500 keV
+
+hydrogen_G4DNAIonisation:  for hydrogen SubType=53 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNARuddIonisationModel : Emin=    0 eV  Emax=  100 MeV  deltaRudd Fluo
+
+hydrogen_G4DNAChargeIncrease:  for hydrogen SubType=57 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNADingfelderChargeIncreaseModel : Emin=    0 eV  Emax=  100 MeV
+
+=======================================================================
+--> G4MTRunManager::CreateAndStartWorkers() --> Initializing workers...
+=======================================================================
+
+G4WT2 > Begin processing for Run: 0, History: 0
+G4WT6 > Begin processing for Run: 0, History: 10
+G4WT9 > Begin processing for Run: 0, History: 20
+G4WT3 > Begin processing for Run: 0, History: 30
+G4WT9 > Begin processing for Run: 0, History: 40
+G4WT3 > Begin processing for Run: 0, History: 60
+G4WT7 > Begin processing for Run: 0, History: 50
+G4WT9 > Begin processing for Run: 0, History: 70
+G4WT2 > Begin processing for Run: 0, History: 90
+G4WT7 > Begin processing for Run: 0, History: 80
+
+Scorer: Edep
+Results have been written to file: energyDeposit_Run_0000.csv
+
+Scorer: Fluence
+Results have been written to file: fluence_Run_0000.csv
+G4WT3 > Begin processing for Run: 1, History: 0
+G4WT6 > Begin processing for Run: 1, History: 10
+G4WT5 > Begin processing for Run: 1, History: 20
+G4WT0 > Begin processing for Run: 1, History: 30
+G4WT2 > Begin processing for Run: 1, History: 40
+G4WT3 > Begin processing for Run: 1, History: 50
+G4WT2 > Begin processing for Run: 1, History: 60
+G4WT3 > Begin processing for Run: 1, History: 70
+G4WT8 > Begin processing for Run: 1, History: 80
+G4WT0 > Begin processing for Run: 1, History: 90
+
+Scorer: Edep
+Results have been written to file: energyDeposit_Run_0001.csv
+
+Scorer: Fluence
+Results have been written to file: fluence_Run_0001.csv
+G4WT7 > Begin processing for Run: 2, History: 0
+G4WT1 > Begin processing for Run: 2, History: 10
+G4WT9 > Begin processing for Run: 2, History: 20
+G4WT0 > Begin processing for Run: 2, History: 30
+G4WT3 > Begin processing for Run: 2, History: 40
+G4WT9 > Begin processing for Run: 2, History: 50
+G4WT1 > Begin processing for Run: 2, History: 60
+G4WT0 > Begin processing for Run: 2, History: 70
+G4WT9 > Begin processing for Run: 2, History: 80
+G4WT6 > Begin processing for Run: 2, History: 90
+
+Scorer: Edep
+Results have been written to file: energyDeposit_Run_0002.csv
+
+Scorer: Fluence
+Results have been written to file: fluence_Run_0002.csv
+G4WT1 > Begin processing for Run: 3, History: 0
+G4WT3 > Begin processing for Run: 3, History: 10
+G4WT8 > Begin processing for Run: 3, History: 20
+G4WT5 > Begin processing for Run: 3, History: 30
+G4WT7 > Begin processing for Run: 3, History: 40
+G4WT9 > Begin processing for Run: 3, History: 50
+G4WT7 > Begin processing for Run: 3, History: 60
+G4WT9 > Begin processing for Run: 3, History: 70
+G4WT0 > Begin processing for Run: 3, History: 80
+G4WT1 > Begin processing for Run: 3, History: 90
+
+Scorer: Edep
+Results have been written to file: energyDeposit_Run_0003.csv
+
+Scorer: Fluence
+Results have been written to file: fluence_Run_0003.csv
+G4WT0 > Begin processing for Run: 4, History: 0
+G4WT5 > Begin processing for Run: 4, History: 10
+G4WT1 > Begin processing for Run: 4, History: 20
+G4WT2 > Begin processing for Run: 4, History: 30
+G4WT7 > Begin processing for Run: 4, History: 40
+G4WT6 > Begin processing for Run: 4, History: 50
+G4WT2 > Begin processing for Run: 4, History: 60
+G4WT8 > Begin processing for Run: 4, History: 70
+G4WT7 > Begin processing for Run: 4, History: 80
+G4WT5 > Begin processing for Run: 4, History: 90
+
+Scorer: Edep
+Results have been written to file: energyDeposit_Run_0004.csv
+
+Scorer: Fluence
+Results have been written to file: fluence_Run_0004.csv
+G4WT2 > Begin processing for Run: 5, History: 0
+G4WT3 > Begin processing for Run: 5, History: 20
+G4WT8 > Begin processing for Run: 5, History: 10
+G4WT4 > Begin processing for Run: 5, History: 30
+G4WT0 > Begin processing for Run: 5, History: 40
+G4WT6 > Begin processing for Run: 5, History: 60
+G4WT2 > Begin processing for Run: 5, History: 50
+G4WT8 > Begin processing for Run: 5, History: 70
+G4WT9 > Begin processing for Run: 5, History: 80
+G4WT0 > Begin processing for Run: 5, History: 100
+G4WT1 > Begin processing for Run: 5, History: 90
+G4WT8 > Begin processing for Run: 5, History: 110
+G4WT2 > Begin processing for Run: 5, History: 120
+G4WT6 > Begin processing for Run: 5, History: 140
+G4WT1 > Begin processing for Run: 5, History: 130
+G4WT8 > Begin processing for Run: 5, History: 150
+G4WT2 > Begin processing for Run: 5, History: 160
+G4WT5 > Begin processing for Run: 5, History: 180
+G4WT1 > Begin processing for Run: 5, History: 170
+G4WT8 > Begin processing for Run: 5, History: 190
+
+Scorer: Edep
+Results have been written to file: energyDeposit_Run_0005.csv
+
+Scorer: Fluence
+Results have been written to file: fluence_Run_0005.csv
+G4WT2 > Begin processing for Run: 6, History: 0
+G4WT7 > Begin processing for Run: 6, History: 20
+G4WT4 > Begin processing for Run: 6, History: 10
+G4WT1 > Begin processing for Run: 6, History: 30
+G4WT5 > Begin processing for Run: 6, History: 40
+G4WT7 > Begin processing for Run: 6, History: 60
+G4WT4 > Begin processing for Run: 6, History: 50
+G4WT0 > Begin processing for Run: 6, History: 70
+G4WT7 > Begin processing for Run: 6, History: 80
+G4WT6 > Begin processing for Run: 6, History: 100
+G4WT8 > Begin processing for Run: 6, History: 90
+G4WT0 > Begin processing for Run: 6, History: 110
+G4WT7 > Begin processing for Run: 6, History: 120
+G4WT0 > Begin processing for Run: 6, History: 140
+G4WT5 > Begin processing for Run: 6, History: 130
+G4WT9 > Begin processing for Run: 6, History: 150
+G4WT7 > Begin processing for Run: 6, History: 160
+G4WT2 > Begin processing for Run: 6, History: 180
+G4WT5 > Begin processing for Run: 6, History: 170
+G4WT8 > Begin processing for Run: 6, History: 190
+
+Scorer: Edep
+Results have been written to file: energyDeposit_Run_0006.csv
+
+Scorer: Fluence
+Results have been written to file: fluence_Run_0006.csv
+G4WT8 > Begin processing for Run: 7, History: 0
+G4WT5 > Begin processing for Run: 7, History: 20
+G4WT9 > Begin processing for Run: 7, History: 30
+G4WT0 > Begin processing for Run: 7, History: 10
+G4WT1 > Begin processing for Run: 7, History: 40
+G4WT6 > Begin processing for Run: 7, History: 60
+G4WT5 > Begin processing for Run: 7, History: 50
+G4WT2 > Begin processing for Run: 7, History: 70
+G4WT5 > Begin processing for Run: 7, History: 80
+G4WT7 > Begin processing for Run: 7, History: 100
+G4WT4 > Begin processing for Run: 7, History: 90
+G4WT6 > Begin processing for Run: 7, History: 110
+G4WT1 > Begin processing for Run: 7, History: 120
+G4WT7 > Begin processing for Run: 7, History: 140
+G4WT3 > Begin processing for Run: 7, History: 130
+G4WT8 > Begin processing for Run: 7, History: 150
+G4WT1 > Begin processing for Run: 7, History: 160
+G4WT0 > Begin processing for Run: 7, History: 180
+G4WT4 > Begin processing for Run: 7, History: 170
+G4WT6 > Begin processing for Run: 7, History: 190
+
+Scorer: Edep
+Results have been written to file: energyDeposit_Run_0007.csv
+
+Scorer: Fluence
+Results have been written to file: fluence_Run_0007.csv
+G4WT0 > Begin processing for Run: 8, History: 0
+G4WT4 > Begin processing for Run: 8, History: 40
+G4WT8 > Begin processing for Run: 8, History: 30
+G4WT2 > Begin processing for Run: 8, History: 20
+G4WT6 > Begin processing for Run: 8, History: 70
+G4WT5 > Begin processing for Run: 8, History: 60
+G4WT9 > Begin processing for Run: 8, History: 50
+G4WT1 > Begin processing for Run: 8, History: 10
+G4WT3 > Begin processing for Run: 8, History: 90
+G4WT7 > Begin processing for Run: 8, History: 80
+G4WT1 > Begin processing for Run: 8, History: 100
+G4WT2 > Begin processing for Run: 8, History: 110
+G4WT9 > Begin processing for Run: 8, History: 120
+G4WT6 > Begin processing for Run: 8, History: 130
+G4WT0 > Begin processing for Run: 8, History: 140
+G4WT7 > Begin processing for Run: 8, History: 150
+G4WT5 > Begin processing for Run: 8, History: 160
+G4WT3 > Begin processing for Run: 8, History: 170
+G4WT8 > Begin processing for Run: 8, History: 180
+G4WT4 > Begin processing for Run: 8, History: 190
+G4WT1 > Begin processing for Run: 8, History: 200
+G4WT4 > Begin processing for Run: 8, History: 210
+G4WT2 > Begin processing for Run: 8, History: 220
+G4WT6 > Begin processing for Run: 8, History: 230
+G4WT9 > Begin processing for Run: 8, History: 240
+G4WT5 > Begin processing for Run: 8, History: 250
+G4WT3 > Begin processing for Run: 8, History: 260
+G4WT0 > Begin processing for Run: 8, History: 270
+G4WT8 > Begin processing for Run: 8, History: 280
+G4WT7 > Begin processing for Run: 8, History: 290
+G4WT1 > Begin processing for Run: 8, History: 300
+G4WT2 > Begin processing for Run: 8, History: 310
+G4WT4 > Begin processing for Run: 8, History: 320
+G4WT9 > Begin processing for Run: 8, History: 330
+G4WT5 > Begin processing for Run: 8, History: 340
+G4WT6 > Begin processing for Run: 8, History: 350
+G4WT0 > Begin processing for Run: 8, History: 360
+G4WT3 > Begin processing for Run: 8, History: 370
+G4WT8 > Begin processing for Run: 8, History: 380
+G4WT7 > Begin processing for Run: 8, History: 390
+G4WT1 > Begin processing for Run: 8, History: 400
+G4WT2 > Begin processing for Run: 8, History: 410
+G4WT4 > Begin processing for Run: 8, History: 420
+G4WT6 > Begin processing for Run: 8, History: 430
+G4WT0 > Begin processing for Run: 8, History: 440
+G4WT9 > Begin processing for Run: 8, History: 450
+G4WT5 > Begin processing for Run: 8, History: 460
+G4WT3 > Begin processing for Run: 8, History: 470
+G4WT7 > Begin processing for Run: 8, History: 480
+G4WT8 > Begin processing for Run: 8, History: 490
+G4WT1 > Begin processing for Run: 8, History: 500
+G4WT2 > Begin processing for Run: 8, History: 510
+G4WT4 > Begin processing for Run: 8, History: 520
+G4WT6 > Begin processing for Run: 8, History: 530
+G4WT0 > Begin processing for Run: 8, History: 540
+G4WT9 > Begin processing for Run: 8, History: 550
+G4WT5 > Begin processing for Run: 8, History: 560
+G4WT7 > Begin processing for Run: 8, History: 570
+G4WT8 > Begin processing for Run: 8, History: 580
+G4WT3 > Begin processing for Run: 8, History: 590
+G4WT1 > Begin processing for Run: 8, History: 600
+G4WT2 > Begin processing for Run: 8, History: 610
+G4WT4 > Begin processing for Run: 8, History: 620
+G4WT6 > Begin processing for Run: 8, History: 630
+G4WT0 > Begin processing for Run: 8, History: 640
+G4WT9 > Begin processing for Run: 8, History: 650
+G4WT5 > Begin processing for Run: 8, History: 660
+G4WT8 > Begin processing for Run: 8, History: 670
+G4WT7 > Begin processing for Run: 8, History: 680
+G4WT3 > Begin processing for Run: 8, History: 690
+G4WT1 > Begin processing for Run: 8, History: 700
+G4WT4 > Begin processing for Run: 8, History: 710
+G4WT2 > Begin processing for Run: 8, History: 720
+G4WT6 > Begin processing for Run: 8, History: 730
+G4WT0 > Begin processing for Run: 8, History: 740
+G4WT9 > Begin processing for Run: 8, History: 750
+G4WT5 > Begin processing for Run: 8, History: 760
+G4WT8 > Begin processing for Run: 8, History: 770
+G4WT7 > Begin processing for Run: 8, History: 780
+G4WT3 > Begin processing for Run: 8, History: 790
+G4WT1 > Begin processing for Run: 8, History: 800
+G4WT2 > Begin processing for Run: 8, History: 810
+G4WT4 > Begin processing for Run: 8, History: 820
+G4WT6 > Begin processing for Run: 8, History: 830
+G4WT0 > Begin processing for Run: 8, History: 840
+G4WT5 > Begin processing for Run: 8, History: 850
+G4WT9 > Begin processing for Run: 8, History: 860
+G4WT8 > Begin processing for Run: 8, History: 870
+G4WT7 > Begin processing for Run: 8, History: 880
+G4WT3 > Begin processing for Run: 8, History: 890
+G4WT1 > Begin processing for Run: 8, History: 900
+G4WT2 > Begin processing for Run: 8, History: 910
+G4WT4 > Begin processing for Run: 8, History: 920
+G4WT0 > Begin processing for Run: 8, History: 930
+G4WT6 > Begin processing for Run: 8, History: 940
+G4WT9 > Begin processing for Run: 8, History: 950
+G4WT5 > Begin processing for Run: 8, History: 960
+G4WT8 > Begin processing for Run: 8, History: 970
+G4WT7 > Begin processing for Run: 8, History: 980
+G4WT3 > Begin processing for Run: 8, History: 990
+
+Scorer: Edep
+Results have been written to file: energyDeposit_Run_0008.csv
+
+Scorer: Fluence
+Results have been written to file: fluence_Run_0008.csv
+G4WT2 > Begin processing for Run: 9, History: 0
+G4WT3 > Begin processing for Run: 9, History: 50
+G4WT9 > Begin processing for Run: 9, History: 60
+G4WT5 > Begin processing for Run: 9, History: 10
+G4WT7 > Begin processing for Run: 9, History: 20
+G4WT0 > Begin processing for Run: 9, History: 90
+G4WT8 > Begin processing for Run: 9, History: 80
+G4WT4 > Begin processing for Run: 9, History: 30
+G4WT6 > Begin processing for Run: 9, History: 70
+G4WT1 > Begin processing for Run: 9, History: 40
+G4WT2 > Begin processing for Run: 9, History: 100
+G4WT8 > Begin processing for Run: 9, History: 110
+G4WT5 > Begin processing for Run: 9, History: 120
+G4WT7 > Begin processing for Run: 9, History: 130
+G4WT1 > Begin processing for Run: 9, History: 140
+G4WT3 > Begin processing for Run: 9, History: 150
+G4WT0 > Begin processing for Run: 9, History: 160
+G4WT6 > Begin processing for Run: 9, History: 170
+G4WT4 > Begin processing for Run: 9, History: 180
+G4WT9 > Begin processing for Run: 9, History: 190
+G4WT3 > Begin processing for Run: 9, History: 200
+G4WT0 > Begin processing for Run: 9, History: 210
+G4WT5 > Begin processing for Run: 9, History: 220
+G4WT7 > Begin processing for Run: 9, History: 230
+G4WT1 > Begin processing for Run: 9, History: 240
+G4WT8 > Begin processing for Run: 9, History: 250
+G4WT2 > Begin processing for Run: 9, History: 260
+G4WT9 > Begin processing for Run: 9, History: 270
+G4WT4 > Begin processing for Run: 9, History: 280
+G4WT6 > Begin processing for Run: 9, History: 290
+G4WT0 > Begin processing for Run: 9, History: 300
+G4WT3 > Begin processing for Run: 9, History: 310
+G4WT9 > Begin processing for Run: 9, History: 320
+G4WT8 > Begin processing for Run: 9, History: 330
+G4WT5 > Begin processing for Run: 9, History: 340
+G4WT1 > Begin processing for Run: 9, History: 350
+G4WT6 > Begin processing for Run: 9, History: 360
+G4WT7 > Begin processing for Run: 9, History: 370
+G4WT2 > Begin processing for Run: 9, History: 380
+G4WT4 > Begin processing for Run: 9, History: 390
+G4WT0 > Begin processing for Run: 9, History: 400
+G4WT1 > Begin processing for Run: 9, History: 410
+G4WT3 > Begin processing for Run: 9, History: 420
+G4WT8 > Begin processing for Run: 9, History: 430
+G4WT5 > Begin processing for Run: 9, History: 440
+G4WT4 > Begin processing for Run: 9, History: 450
+G4WT6 > Begin processing for Run: 9, History: 460
+G4WT7 > Begin processing for Run: 9, History: 470
+G4WT9 > Begin processing for Run: 9, History: 480
+G4WT2 > Begin processing for Run: 9, History: 490
+G4WT0 > Begin processing for Run: 9, History: 500
+G4WT4 > Begin processing for Run: 9, History: 510
+G4WT5 > Begin processing for Run: 9, History: 520
+G4WT1 > Begin processing for Run: 9, History: 530
+G4WT3 > Begin processing for Run: 9, History: 540
+G4WT6 > Begin processing for Run: 9, History: 550
+G4WT8 > Begin processing for Run: 9, History: 560
+G4WT9 > Begin processing for Run: 9, History: 570
+G4WT7 > Begin processing for Run: 9, History: 580
+G4WT2 > Begin processing for Run: 9, History: 590
+G4WT1 > Begin processing for Run: 9, History: 600
+G4WT3 > Begin processing for Run: 9, History: 610
+G4WT0 > Begin processing for Run: 9, History: 620
+G4WT4 > Begin processing for Run: 9, History: 630
+G4WT7 > Begin processing for Run: 9, History: 640
+G4WT8 > Begin processing for Run: 9, History: 650
+G4WT2 > Begin processing for Run: 9, History: 660
+G4WT5 > Begin processing for Run: 9, History: 670
+G4WT9 > Begin processing for Run: 9, History: 680
+G4WT6 > Begin processing for Run: 9, History: 690
+G4WT1 > Begin processing for Run: 9, History: 700
+G4WT0 > Begin processing for Run: 9, History: 710
+G4WT4 > Begin processing for Run: 9, History: 720
+G4WT7 > Begin processing for Run: 9, History: 730
+G4WT3 > Begin processing for Run: 9, History: 740
+G4WT2 > Begin processing for Run: 9, History: 750
+G4WT9 > Begin processing for Run: 9, History: 760
+G4WT6 > Begin processing for Run: 9, History: 770
+G4WT5 > Begin processing for Run: 9, History: 790
+G4WT8 > Begin processing for Run: 9, History: 780
+G4WT1 > Begin processing for Run: 9, History: 800
+G4WT0 > Begin processing for Run: 9, History: 810
+G4WT4 > Begin processing for Run: 9, History: 820
+G4WT7 > Begin processing for Run: 9, History: 830
+G4WT2 > Begin processing for Run: 9, History: 840
+G4WT3 > Begin processing for Run: 9, History: 850
+G4WT6 > Begin processing for Run: 9, History: 860
+G4WT8 > Begin processing for Run: 9, History: 870
+G4WT5 > Begin processing for Run: 9, History: 880
+G4WT9 > Begin processing for Run: 9, History: 890
+G4WT0 > Begin processing for Run: 9, History: 900
+G4WT1 > Begin processing for Run: 9, History: 910
+G4WT4 > Begin processing for Run: 9, History: 920
+G4WT6 > Begin processing for Run: 9, History: 930
+G4WT8 > Begin processing for Run: 9, History: 940
+G4WT5 > Begin processing for Run: 9, History: 950
+G4WT9 > Begin processing for Run: 9, History: 960
+G4WT3 > Begin processing for Run: 9, History: 970
+G4WT7 > Begin processing for Run: 9, History: 980
+G4WT2 > Begin processing for Run: 9, History: 990
+
+Scorer: Edep
+Results have been written to file: energyDeposit_Run_0009.csv
+
+Scorer: Fluence
+Results have been written to file: fluence_Run_0009.csv
+
+TOPAS run sequence complete.
+Particle source Demo: Total number of histories: 3100
+
+Elapsed times:
+Parameter Reading : User=0.010000s Real=0.011287s Sys=0.000000s [Cpu=88.6%]
+    Initialization: User=0.010000s Real=0.053275s Sys=0.010000s [Cpu=37.5%]
+         Execution: User=3740.540000s Real=409.160777s Sys=2.310000s [Cpu=914.8%]
+      Finalization: User=0.000000s Real=0.000400s Sys=0.000000s [Cpu=0.0%]
+             Total: User=3740.56s Real=409.226s Sys=2.32s

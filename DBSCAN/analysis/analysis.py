@@ -26,7 +26,7 @@ def average_results(match_path, normalize):
     if len(fnames) == 0:
         return None
 
-    maxClusterSize = 60 #100
+    maxClusterSize = 100
     hmeanSSB, hstdvSSB = np.zeros(maxClusterSize+1), np.zeros(maxClusterSize+1)
     hmeanDSB, hstdvDSB = np.zeros(maxClusterSize+1), np.zeros(maxClusterSize+1)
     meanSSB, meanDSB = 0., 0.

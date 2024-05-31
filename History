@@ -1,8 +1,13 @@
 A Regression system for TOPAS-nBio
 (Use latest addition on top of the list)
 
+- May 30, 2024. Thongchai A. M. Masilela
+	       - Added test GvalueIRT_H
+	       - Re-ran regressions with the release version of the code
+	       - Compared TOPAS-nBio-v3.0 (OpenTOPAS v4.0) against TOPAS-nBio-v2.0 (TOPAS v3.9) where applicable
+
 - Feb 29, 2024. Thongchai A. M. Masilela
-               - Finalised all the baseline regression tests for OpenTOPAS-nBio
+               - Ran all baseline regression tests for TOPAS-nBio-v3.0
 
 - Jan 10, 2024.  J. Ramos-Mendez. Added tests
                - GvalueIRT-Temperature

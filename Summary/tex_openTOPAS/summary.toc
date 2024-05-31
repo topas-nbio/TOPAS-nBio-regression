@@ -10,13 +10,14 @@
 \beamer@sectionintoc {10}{G-value: IRT}{13}{0}{10}
 \beamer@sectionintoc {11}{G-value vs. LET: IRT}{14}{0}{11}
 \beamer@sectionintoc {12}{G-value of H$_2$O$_2$: IRT}{15}{0}{12}
-\beamer@sectionintoc {13}{G-value and Temperature I: IRT}{16}{0}{13}
-\beamer@sectionintoc {14}{G-value and Temperature II: IRT}{17}{0}{14}
-\beamer@sectionintoc {15}{Nanodosimetry I: TsEmDNAPhysics and g4em-dna\_opt2}{18}{0}{15}
-\beamer@sectionintoc {16}{Nanodosimetry I: g4em-dna\_opt4 and g4em-dna\_opt6}{19}{0}{16}
-\beamer@sectionintoc {17}{Nanodosimetry II: TsEmDNAPhysics and g4em-dna\_opt2}{20}{0}{17}
-\beamer@sectionintoc {18}{Nanodosimetry II: g4em-dna\_opt4 and g4em-dna\_opt6}{21}{0}{18}
-\beamer@sectionintoc {19}{Nanodosimetry III: TsEmDNAPhysics}{22}{0}{19}
-\beamer@sectionintoc {20}{Nanodosimetry III: g4em-dna\_opt2}{23}{0}{20}
-\beamer@sectionintoc {21}{Nanodosimetry III: g4em-dna\_opt4}{24}{0}{21}
-\beamer@sectionintoc {22}{Nanodosimetry III: g4em-dna\_opt6}{25}{0}{22}
+\beamer@sectionintoc {13}{G-value of H: IRT}{16}{0}{13}
+\beamer@sectionintoc {14}{G-value and Temperature I: IRT}{17}{0}{14}
+\beamer@sectionintoc {15}{G-value and Temperature II: IRT}{18}{0}{15}
+\beamer@sectionintoc {16}{Nanodosimetry I: TsEmDNAPhysics and g4em-dna\_opt2}{19}{0}{16}
+\beamer@sectionintoc {17}{Nanodosimetry I: g4em-dna\_opt4 and g4em-dna\_opt6}{20}{0}{17}
+\beamer@sectionintoc {18}{Nanodosimetry II: TsEmDNAPhysics and g4em-dna\_opt2}{21}{0}{18}
+\beamer@sectionintoc {19}{Nanodosimetry II: g4em-dna\_opt4 and g4em-dna\_opt6}{22}{0}{19}
+\beamer@sectionintoc {20}{Nanodosimetry III: TsEmDNAPhysics}{23}{0}{20}
+\beamer@sectionintoc {21}{Nanodosimetry III: g4em-dna\_opt2}{24}{0}{21}
+\beamer@sectionintoc {22}{Nanodosimetry III: g4em-dna\_opt4}{25}{0}{22}
+\beamer@sectionintoc {23}{Nanodosimetry III: g4em-dna\_opt6}{26}{0}{23}

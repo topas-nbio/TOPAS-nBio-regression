@@ -2,21 +2,26 @@
 \usepackage{graphicx}
 
 \graphicspath{{./openTOPAS/}}
-\DeclareRobustCommand\SUTname{TOPAS-nBio (TOPAS v4.0)}
-\DeclareRobustCommand\benchmarkname{TOPAS-nBio (TOPAS v4.0)}
+\DeclareRobustCommand\SUTname{TOPAS-nBio v3.0 (OpenTOPAS v4.0)}
+\DeclareRobustCommand\benchmarkname{TOPAS-nBio v2.0 (TOPAS v3.9)}
 
 
 \title{\SUTname}
-\subtitle{Regression testing (cf.\ \benchmarkname)}
+\subtitle{Regression testing (cf.\ \benchmarkname)\thanks{Given the substantial changes to the code (see release notes), certain regression tests in OpenTOPAS-nBio are not able to be performed in TOPAS-nBio. In these cases OpenTOPAS-nBio is simply compared against itself.}}
 \author{Jos\'e Ramos-M\'endez, Naoki D. Kondo, and Thongchai A.M. Masilela}
 \institute{University of California San Francisco}
 \date{\today}
 
-
+\addtobeamertemplate{footnote}{\hskip -2em}{}
+\let\footnoterule\relax
+\renewcommand*{\thefootnote}{\fnsymbol{footnote}}
+\let\oldfootnotesize\footnotesize
+\renewcommand*{\footnotesize}{\oldfootnotesize\tiny}
 
 \begin{document}
 
 \frame{\titlepage}
+
 
 %\begin{frame}
  % \frametitle{Table of contents}
@@ -24,9 +29,9 @@
 %\end{frame}
 
 \begin{frame}[allowframebreaks]{Table of Contents}
-  \tableofcontents[sections={1-11}]
+  \tableofcontents[sections={1-12}]
     \framebreak
-  \tableofcontents[sections={12-}]
+  \tableofcontents[sections={13-}]
 \end{frame}
 
 \section{DBSCAN - TsEmDNAPhysics}
@@ -166,6 +171,14 @@
  \centering
   \includegraphics[width=0.6\textwidth]{./GvalueIRT_H2O2/TimeEvolution}
 \end{frame}
+
+\section{G-value of H: IRT}
+
+\begin{frame}{\secname}
+ \centering
+  \includegraphics[width=0.6\textwidth]{./GvalueIRT_H/TimeEvolution}
+\end{frame}
+
 
 \section{G-value and Temperature I: IRT}
 

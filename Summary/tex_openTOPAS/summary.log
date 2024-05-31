@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.2.6)  13 MAR 2024 18:51
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.2.6)  31 MAY 2024 10:59
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -714,24 +714,24 @@ File: l3backend-pdftex.def 2023-01-16 L3 backend support: PDF output (pdfTeX)
 (./summary.aux)
 \openout1 = `summary.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -789,64 +789,64 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-Package hyperref Info: Link coloring OFF on input line 17.
+Package hyperref Info: Link coloring OFF on input line 21.
 
 (./summary.out) (./summary.out)
 \@outlinefile=\write5
 \openout5 = `summary.out'.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 17.
+(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 21.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 17.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 21.
 \symnumbers=\mathgroup6
 \sympureletters=\mathgroup7
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/cmr/m/n on input line 17.
-LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 17.
+(Font)                  OT1/cmss/m/n --> OT1/cmr/m/n on input line 21.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 21.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 17.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 21.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 17.
-LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 17.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 21.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 21.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/m/n on input line 17.
+(Font)                  OT1/cmss/m/n --> OT1/cmss/m/n on input line 21.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> OT1/cmss/m/n on input line 17.
-LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 17.
+(Font)                  OT1/cmss/bx/n --> OT1/cmss/m/n on input line 21.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 21.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> OT1/cmss/m/it on input line 17.
+(Font)                  OT1/cmr/m/it --> OT1/cmss/m/it on input line 21.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> OT1/cmss/m/it on input line 17.
-LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 17.
+(Font)                  OT1/cmr/bx/it --> OT1/cmss/m/it on input line 21.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 21.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 17.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 21.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 17.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 21.
 LaTeX Font Info:    Overwriting symbol font `numbers' in version `bold'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/b/n on input line 17.
+(Font)                  OT1/cmss/m/n --> OT1/cmss/b/n on input line 21.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  OT1/cmss/m/it --> OT1/cmss/b/it on input line 17.
+(Font)                  OT1/cmss/m/it --> OT1/cmss/b/it on input line 21.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `bold'
-(Font)                  OT1/cmss/b/n --> OT1/cmr/b/n on input line 17.
+(Font)                  OT1/cmss/b/n --> OT1/cmr/b/n on input line 21.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmss/b/n --> OT1/cmss/b/n on input line 17.
+(Font)                  OT1/cmss/b/n --> OT1/cmss/b/n on input line 21.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/b/n on input line 17.
+(Font)                  OT1/cmss/m/n --> OT1/cmss/b/n on input line 21.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmss/m/it --> OT1/cmss/b/it on input line 17.
+(Font)                  OT1/cmss/m/it --> OT1/cmss/b/it on input line 21.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/b/n on input line 17.
-LaTeX Font Info:    Redeclaring symbol font `pureletters' on input line 17.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/b/n on input line 21.
+LaTeX Font Info:    Redeclaring symbol font `pureletters' on input line 21.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `normal'
-(Font)                  OT1/cmss/m/it --> OT1/mathkerncmss/m/sl on input line 1
-7.
+(Font)                  OT1/cmss/m/it --> OT1/mathkerncmss/m/sl on input line 2
+1.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  OT1/cmss/b/it --> OT1/mathkerncmss/m/sl on input line 1
-7.
+(Font)                  OT1/cmss/b/it --> OT1/mathkerncmss/m/sl on input line 2
+1.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
 (Font)                  OT1/mathkerncmss/m/sl --> OT1/mathkerncmss/bx/sl on inp
-ut line 17.
+ut line 21.
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/translator/translator-basic-dicti
 onary-English.dict
@@ -871,394 +871,410 @@ Dictionary: translator-numbers-dictionary, Language: English
 (/usr/local/texlive/2023/texmf-dist/tex/latex/translator/translator-theorem-dic
 tionary-English.dict
 Dictionary: translator-theorem-dictionary, Language: English 
-) (./summary.nav) [1
+) (./summary.nav)
+LaTeX Font Info:    Trying to load font information for U+msa on input line 23.
 
-{/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (./summ
-ary.toc
-LaTeX Font Info:    Trying to load font information for U+msa on input line 2.
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 2.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 23.
+
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Trying to load font information for OT1+mathkerncmss on inp
-ut line 2.
+ut line 23.
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/sansmathaccent/ot1mathkerncmss.fd
 File: ot1mathkerncmss.fd 2020/01/31 Fontinst v1.933 font definitions for OT1/ma
 thkerncmss.
-)) (./summary.toc) [2
+)
+LaTeX Font Info:    Trying to load font information for TS1+cmss on input line 
+23.
+ (/usr/local/texlive/2023/texmf-dist/tex/latex/base/ts1cmss.fd
+File: ts1cmss.fd 2022/07/10 v2.5l Standard LaTeX font definitions
+) [1
+
+{/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/loc
+al/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}] (./summa
+ry.toc)
+(./summary.toc) [2
 
 ] [3
 
 
 ]
-<./openTOPAS//./DBSCAN/DBSCAN2_TsEmDNAPhysics.pdf, id=225, 337.59875pt x 348.34
+<./openTOPAS//./DBSCAN/DBSCAN2_TsEmDNAPhysics.pdf, id=233, 337.59875pt x 348.34
 142pt>
 File: ./openTOPAS//./DBSCAN/DBSCAN2_TsEmDNAPhysics.pdf Graphic file (type pdf)
 <use ./openTOPAS//./DBSCAN/DBSCAN2_TsEmDNAPhysics.pdf>
 Package pdftex.def Info: ./openTOPAS//./DBSCAN/DBSCAN2_TsEmDNAPhysics.pdf  used
- on input line 46.
+ on input line 51.
 (pdftex.def)             Requested size: 175.26726pt x 180.84624pt.
 
-Overfull \hbox (15.93427pt too wide) in paragraph at lines 46--46
+Overfull \hbox (15.93427pt too wide) in paragraph at lines 51--51
 [][]  
  []
 
-<./openTOPAS//./DBSCAN/DBSCAN1_TsEmDNAPhysics.pdf, id=226, 417.75258pt x 327.20
+<./openTOPAS//./DBSCAN/DBSCAN1_TsEmDNAPhysics.pdf, id=234, 423.25403pt x 327.20
 317pt>
 File: ./openTOPAS//./DBSCAN/DBSCAN1_TsEmDNAPhysics.pdf Graphic file (type pdf)
 <use ./openTOPAS//./DBSCAN/DBSCAN1_TsEmDNAPhysics.pdf>
 Package pdftex.def Info: ./openTOPAS//./DBSCAN/DBSCAN1_TsEmDNAPhysics.pdf  used
- on input line 46.
-(pdftex.def)             Requested size: 239.00558pt x 187.19673pt.
+ on input line 51.
+(pdftex.def)             Requested size: 239.00558pt x 184.76527pt.
 [4
 
  <./openTOPAS//./DBSCAN/DBSCAN2_TsEmDNAPhysics.pdf> <./openTOPAS//./DBSCAN/DBSC
 AN1_TsEmDNAPhysics.pdf>]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 48.
+(hyperref)                removing `math shift' on input line 53.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 48.
+(hyperref)                removing `math shift' on input line 53.
 
-<./openTOPAS//./DBSCAN/DBSCAN2_g4em-dna_opt2.pdf, id=349, 337.59875pt x 348.341
+<./openTOPAS//./DBSCAN/DBSCAN2_g4em-dna_opt2.pdf, id=353, 337.59875pt x 348.341
 42pt>
 File: ./openTOPAS//./DBSCAN/DBSCAN2_g4em-dna_opt2.pdf Graphic file (type pdf)
 <use ./openTOPAS//./DBSCAN/DBSCAN2_g4em-dna_opt2.pdf>
 Package pdftex.def Info: ./openTOPAS//./DBSCAN/DBSCAN2_g4em-dna_opt2.pdf  used 
-on input line 62.
+on input line 67.
 (pdftex.def)             Requested size: 175.26726pt x 180.84624pt.
 
-Overfull \hbox (15.93427pt too wide) in paragraph at lines 62--62
+Overfull \hbox (15.93427pt too wide) in paragraph at lines 67--67
 [][]  
  []
 
-<./openTOPAS//./DBSCAN/DBSCAN1_g4em-dna_opt2.pdf, id=350, 417.75258pt x 327.203
+<./openTOPAS//./DBSCAN/DBSCAN1_g4em-dna_opt2.pdf, id=354, 423.25403pt x 327.203
 17pt>
 File: ./openTOPAS//./DBSCAN/DBSCAN1_g4em-dna_opt2.pdf Graphic file (type pdf)
 <use ./openTOPAS//./DBSCAN/DBSCAN1_g4em-dna_opt2.pdf>
 Package pdftex.def Info: ./openTOPAS//./DBSCAN/DBSCAN1_g4em-dna_opt2.pdf  used 
-on input line 62.
-(pdftex.def)             Requested size: 239.00558pt x 187.19673pt.
+on input line 67.
+(pdftex.def)             Requested size: 239.00558pt x 184.76527pt.
 [5
 
  <./openTOPAS//./DBSCAN/DBSCAN2_g4em-dna_opt2.pdf> <./openTOPAS//./DBSCAN/DBSCA
 N1_g4em-dna_opt2.pdf>]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 64.
+(hyperref)                removing `math shift' on input line 69.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 64.
+(hyperref)                removing `math shift' on input line 69.
 
-<./openTOPAS//./DBSCAN/DBSCAN2_g4em-dna_opt4.pdf, id=471, 337.59875pt x 348.341
+<./openTOPAS//./DBSCAN/DBSCAN2_g4em-dna_opt4.pdf, id=472, 337.59875pt x 348.341
 42pt>
 File: ./openTOPAS//./DBSCAN/DBSCAN2_g4em-dna_opt4.pdf Graphic file (type pdf)
 <use ./openTOPAS//./DBSCAN/DBSCAN2_g4em-dna_opt4.pdf>
 Package pdftex.def Info: ./openTOPAS//./DBSCAN/DBSCAN2_g4em-dna_opt4.pdf  used 
-on input line 78.
+on input line 83.
 (pdftex.def)             Requested size: 175.26726pt x 180.84624pt.
 
-Overfull \hbox (15.93427pt too wide) in paragraph at lines 78--78
+Overfull \hbox (15.93427pt too wide) in paragraph at lines 83--83
 [][]  
  []
 
-<./openTOPAS//./DBSCAN/DBSCAN1_g4em-dna_opt4.pdf, id=472, 417.75258pt x 327.203
+<./openTOPAS//./DBSCAN/DBSCAN1_g4em-dna_opt4.pdf, id=473, 423.25403pt x 327.203
 17pt>
 File: ./openTOPAS//./DBSCAN/DBSCAN1_g4em-dna_opt4.pdf Graphic file (type pdf)
 <use ./openTOPAS//./DBSCAN/DBSCAN1_g4em-dna_opt4.pdf>
 Package pdftex.def Info: ./openTOPAS//./DBSCAN/DBSCAN1_g4em-dna_opt4.pdf  used 
-on input line 78.
-(pdftex.def)             Requested size: 239.00558pt x 187.19673pt.
+on input line 83.
+(pdftex.def)             Requested size: 239.00558pt x 184.76527pt.
 [6
 
  <./openTOPAS//./DBSCAN/DBSCAN2_g4em-dna_opt4.pdf> <./openTOPAS//./DBSCAN/DBSCA
 N1_g4em-dna_opt4.pdf>]
-<./openTOPAS//./DBSCAN/DBSCAN2_g4em-dna_opt6.pdf, id=594, 343.98198pt x 351.852
-66pt>
+<./openTOPAS//./DBSCAN/DBSCAN2_g4em-dna_opt6.pdf, id=589, 343.98198pt x 348.341
+42pt>
 File: ./openTOPAS//./DBSCAN/DBSCAN2_g4em-dna_opt6.pdf Graphic file (type pdf)
 <use ./openTOPAS//./DBSCAN/DBSCAN2_g4em-dna_opt6.pdf>
 Package pdftex.def Info: ./openTOPAS//./DBSCAN/DBSCAN2_g4em-dna_opt6.pdf  used 
-on input line 94.
-(pdftex.def)             Requested size: 175.26726pt x 179.28142pt.
+on input line 99.
+(pdftex.def)             Requested size: 175.26726pt x 177.49231pt.
 
-Overfull \hbox (15.93427pt too wide) in paragraph at lines 94--94
+Overfull \hbox (15.93427pt too wide) in paragraph at lines 99--99
 [][]  
  []
 
-<./openTOPAS//./DBSCAN/DBSCAN1_g4em-dna_opt6.pdf, id=595, 417.75258pt x 327.203
+<./openTOPAS//./DBSCAN/DBSCAN1_g4em-dna_opt6.pdf, id=590, 423.25403pt x 327.203
 17pt>
 File: ./openTOPAS//./DBSCAN/DBSCAN1_g4em-dna_opt6.pdf Graphic file (type pdf)
 <use ./openTOPAS//./DBSCAN/DBSCAN1_g4em-dna_opt6.pdf>
 Package pdftex.def Info: ./openTOPAS//./DBSCAN/DBSCAN1_g4em-dna_opt6.pdf  used 
-on input line 94.
-(pdftex.def)             Requested size: 239.00558pt x 187.19673pt.
+on input line 99.
+(pdftex.def)             Requested size: 239.00558pt x 184.76527pt.
 [7
 
  <./openTOPAS//./DBSCAN/DBSCAN2_g4em-dna_opt6.pdf> <./openTOPAS//./DBSCAN/DBSCA
 N1_g4em-dna_opt6.pdf>]
-<./openTOPAS//./LET/LET_TsEmDNAPhysics.pdf, id=716, 351.94217pt x 425.23347pt>
+<./openTOPAS//./LET/LET_TsEmDNAPhysics.pdf, id=709, 351.94217pt x 425.23347pt>
 File: ./openTOPAS//./LET/LET_TsEmDNAPhysics.pdf Graphic file (type pdf)
 <use ./openTOPAS//./LET/LET_TsEmDNAPhysics.pdf>
 Package pdftex.def Info: ./openTOPAS//./LET/LET_TsEmDNAPhysics.pdf  used on inp
-ut line 110.
+ut line 115.
 (pdftex.def)             Requested size: 159.333pt x 192.51472pt.
-<./openTOPAS//./LET/LET_g4em-dna_opt2.pdf, id=717, 351.94217pt x 425.23347pt>
+<./openTOPAS//./LET/LET_g4em-dna_opt2.pdf, id=710, 351.94217pt x 425.23347pt>
 File: ./openTOPAS//./LET/LET_g4em-dna_opt2.pdf Graphic file (type pdf)
 <use ./openTOPAS//./LET/LET_g4em-dna_opt2.pdf>
 Package pdftex.def Info: ./openTOPAS//./LET/LET_g4em-dna_opt2.pdf  used on inpu
-t line 110.
+t line 115.
 (pdftex.def)             Requested size: 159.333pt x 192.51472pt.
  [8
 
  <./openTOPAS//./LET/LET_TsEmDNAPhysics.pdf> <./openTOPAS//./LET/LET_g4em-dna_o
 pt2.pdf>]
-<./openTOPAS//./LET/LET_g4em-dna_opt4.pdf, id=856, 351.94217pt x 425.23347pt>
+<./openTOPAS//./LET/LET_g4em-dna_opt4.pdf, id=854, 351.94217pt x 425.23347pt>
 File: ./openTOPAS//./LET/LET_g4em-dna_opt4.pdf Graphic file (type pdf)
 <use ./openTOPAS//./LET/LET_g4em-dna_opt4.pdf>
 Package pdftex.def Info: ./openTOPAS//./LET/LET_g4em-dna_opt4.pdf  used on inpu
-t line 126.
+t line 131.
 (pdftex.def)             Requested size: 159.333pt x 192.51472pt.
-<./openTOPAS//./LET/LET_g4em-dna_opt6.pdf, id=857, 351.94217pt x 425.23347pt>
+<./openTOPAS//./LET/LET_g4em-dna_opt6.pdf, id=855, 351.94217pt x 425.23347pt>
 File: ./openTOPAS//./LET/LET_g4em-dna_opt6.pdf Graphic file (type pdf)
 <use ./openTOPAS//./LET/LET_g4em-dna_opt6.pdf>
 Package pdftex.def Info: ./openTOPAS//./LET/LET_g4em-dna_opt6.pdf  used on inpu
-t line 126.
+t line 131.
 (pdftex.def)             Requested size: 159.333pt x 192.51472pt.
  [9
 
  <./openTOPAS//./LET/LET_g4em-dna_opt4.pdf> <./openTOPAS//./LET/LET_g4em-dna_op
 t6.pdf>]
-<./openTOPAS//./FrickeIRT/Gvalue.pdf, id=997, 419.85406pt x 336.85838pt>
+<./openTOPAS//./FrickeIRT/Gvalue.pdf, id=997, 411.08382pt x 336.85838pt>
 File: ./openTOPAS//./FrickeIRT/Gvalue.pdf Graphic file (type pdf)
 <use ./openTOPAS//./FrickeIRT/Gvalue.pdf>
 Package pdftex.def Info: ./openTOPAS//./FrickeIRT/Gvalue.pdf  used on input lin
-e 133.
-(pdftex.def)             Requested size: 298.75394pt x 239.70053pt.
+e 138.
+(pdftex.def)             Requested size: 298.75394pt x 244.82pt.
  [10
 
  <./openTOPAS//./FrickeIRT/Gvalue.pdf>]
-<./openTOPAS//./GvalueStepByStep/Gvalue.pdf, id=1082, 459.56602pt x 336.85838pt
+<./openTOPAS//./GvalueStepByStep/Gvalue.pdf, id=1081, 454.91145pt x 336.85838pt
 >
 File: ./openTOPAS//./GvalueStepByStep/Gvalue.pdf Graphic file (type pdf)
 <use ./openTOPAS//./GvalueStepByStep/Gvalue.pdf>
 Package pdftex.def Info: ./openTOPAS//./GvalueStepByStep/Gvalue.pdf  used on in
-put line 140.
-(pdftex.def)             Requested size: 298.75394pt x 218.98103pt.
+put line 145.
+(pdftex.def)             Requested size: 298.75394pt x 221.22209pt.
  [11
 
  <./openTOPAS//./GvalueStepByStep/Gvalue.pdf>]
-<./openTOPAS//./Gvalue_LET-SBS/Gvalue_LET-SBS.pdf, id=1170, 2374.18365pt x 1944
+<./openTOPAS//./Gvalue_LET-SBS/Gvalue_LET-SBS.pdf, id=1168, 2374.89749pt x 1944
 .1047pt>
 File: ./openTOPAS//./Gvalue_LET-SBS/Gvalue_LET-SBS.pdf Graphic file (type pdf)
 <use ./openTOPAS//./Gvalue_LET-SBS/Gvalue_LET-SBS.pdf>
 Package pdftex.def Info: ./openTOPAS//./Gvalue_LET-SBS/Gvalue_LET-SBS.pdf  used
- on input line 147.
-(pdftex.def)             Requested size: 298.75394pt x 244.61438pt.
+ on input line 152.
+(pdftex.def)             Requested size: 298.75394pt x 244.55505pt.
  [12
 
  <./openTOPAS//./Gvalue_LET-SBS/Gvalue_LET-SBS.pdf>]
-<./openTOPAS//./GvalueIRT/GvalueIRT.pdf, id=1278, 714.87444pt x 567.95715pt>
+<./openTOPAS//./GvalueIRT/GvalueIRT.pdf, id=1271, 714.87732pt x 567.9495pt>
 File: ./openTOPAS//./GvalueIRT/GvalueIRT.pdf Graphic file (type pdf)
 <use ./openTOPAS//./GvalueIRT/GvalueIRT.pdf>
 Package pdftex.def Info: ./openTOPAS//./GvalueIRT/GvalueIRT.pdf  used on input 
-line 154.
-(pdftex.def)             Requested size: 298.75394pt x 237.36176pt.
+line 159.
+(pdftex.def)             Requested size: 298.75394pt x 237.34988pt.
  [13
 
  <./openTOPAS//./GvalueIRT/GvalueIRT.pdf>]
-<./openTOPAS//./Gvalue_LET-IRT/Gvalue_LET-IRT.pdf, id=1372, 2374.18365pt x 1944
+<./openTOPAS//./Gvalue_LET-IRT/Gvalue_LET-IRT.pdf, id=1362, 2374.89749pt x 1944
 .1047pt>
 File: ./openTOPAS//./Gvalue_LET-IRT/Gvalue_LET-IRT.pdf Graphic file (type pdf)
 <use ./openTOPAS//./Gvalue_LET-IRT/Gvalue_LET-IRT.pdf>
 Package pdftex.def Info: ./openTOPAS//./Gvalue_LET-IRT/Gvalue_LET-IRT.pdf  used
- on input line 161.
-(pdftex.def)             Requested size: 298.75394pt x 244.61438pt.
+ on input line 166.
+(pdftex.def)             Requested size: 298.75394pt x 244.55505pt.
  [14
 
  <./openTOPAS//./Gvalue_LET-IRT/Gvalue_LET-IRT.pdf>]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 163.
+(hyperref)                removing `math shift' on input line 168.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 163.
+(hyperref)                removing `subscript' on input line 168.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 163.
+(hyperref)                removing `math shift' on input line 168.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 163.
+(hyperref)                removing `math shift' on input line 168.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 163.
+(hyperref)                removing `subscript' on input line 168.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 163.
+(hyperref)                removing `math shift' on input line 168.
 
-<./openTOPAS//./GvalueIRT_H2O2/TimeEvolution.pdf, id=1480, 578.16pt x 578.16pt>
+<./openTOPAS//./GvalueIRT_H2O2/TimeEvolution.pdf, id=1465, 578.16pt x 578.16pt>
 
 File: ./openTOPAS//./GvalueIRT_H2O2/TimeEvolution.pdf Graphic file (type pdf)
 <use ./openTOPAS//./GvalueIRT_H2O2/TimeEvolution.pdf>
 Package pdftex.def Info: ./openTOPAS//./GvalueIRT_H2O2/TimeEvolution.pdf  used 
-on input line 168.
+on input line 173.
 (pdftex.def)             Requested size: 239.00558pt x 239.00562pt.
 [15
 
  <./openTOPAS//./GvalueIRT_H2O2/TimeEvolution.pdf>]
-<./openTOPAS//./GvalueIRT-Temperature/TimeEvolution.pdf, id=1572, 1445.4pt x 13
+<./openTOPAS//./GvalueIRT_H/TimeEvolution.pdf, id=1558, 578.16pt x 578.16pt>
+File: ./openTOPAS//./GvalueIRT_H/TimeEvolution.pdf Graphic file (type pdf)
+<use ./openTOPAS//./GvalueIRT_H/TimeEvolution.pdf>
+Package pdftex.def Info: ./openTOPAS//./GvalueIRT_H/TimeEvolution.pdf  used on 
+input line 180.
+(pdftex.def)             Requested size: 239.00558pt x 239.00562pt.
+ [16
+
+ <./openTOPAS//./GvalueIRT_H/TimeEvolution.pdf>]
+<./openTOPAS//./GvalueIRT-Temperature/TimeEvolution.pdf, id=1650, 1445.4pt x 13
 00.86pt>
 File: ./openTOPAS//./GvalueIRT-Temperature/TimeEvolution.pdf Graphic file (type
  pdf)
 <use ./openTOPAS//./GvalueIRT-Temperature/TimeEvolution.pdf>
 Package pdftex.def Info: ./openTOPAS//./GvalueIRT-Temperature/TimeEvolution.pdf
-  used on input line 175.
+  used on input line 188.
 (pdftex.def)             Requested size: 278.83578pt x 250.93738pt.
- [16
+ [17
 
  <./openTOPAS//./GvalueIRT-Temperature/TimeEvolution.pdf>]
-<./openTOPAS//./GvalueIRT-Temperature/TemperatureEvolution.pdf, id=1681, 1445.4
+<./openTOPAS//./GvalueIRT-Temperature/TemperatureEvolution.pdf, id=1754, 1445.4
 pt x 1300.86pt>
 File: ./openTOPAS//./GvalueIRT-Temperature/TemperatureEvolution.pdf Graphic fil
 e (type pdf)
 <use ./openTOPAS//./GvalueIRT-Temperature/TemperatureEvolution.pdf>
 Package pdftex.def Info: ./openTOPAS//./GvalueIRT-Temperature/TemperatureEvolut
-ion.pdf  used on input line 182.
+ion.pdf  used on input line 195.
 (pdftex.def)             Requested size: 278.83578pt x 250.93738pt.
- [17
+ [18
 
  <./openTOPAS//./GvalueIRT-Temperature/TemperatureEvolution.pdf>]
-<./openTOPAS//./NanodosimetryI/IDDistribution_TsEmDNAPhysics.pdf, id=1780, 353.
+<./openTOPAS//./NanodosimetryI/IDDistribution_TsEmDNAPhysics.pdf, id=1851, 353.
 65546pt x 426.39299pt>
 File: ./openTOPAS//./NanodosimetryI/IDDistribution_TsEmDNAPhysics.pdf Graphic f
 ile (type pdf)
 <use ./openTOPAS//./NanodosimetryI/IDDistribution_TsEmDNAPhysics.pdf>
 Package pdftex.def Info: ./openTOPAS//./NanodosimetryI/IDDistribution_TsEmDNAPh
-ysics.pdf  used on input line 198.
+ysics.pdf  used on input line 211.
 (pdftex.def)             Requested size: 159.333pt x 192.10928pt.
-<./openTOPAS//./NanodosimetryI/IDDistribution_opt2.pdf, id=1781, 353.65546pt x 
+<./openTOPAS//./NanodosimetryI/IDDistribution_opt2.pdf, id=1852, 353.65546pt x 
 426.39299pt>
 File: ./openTOPAS//./NanodosimetryI/IDDistribution_opt2.pdf Graphic file (type 
 pdf)
 <use ./openTOPAS//./NanodosimetryI/IDDistribution_opt2.pdf>
 Package pdftex.def Info: ./openTOPAS//./NanodosimetryI/IDDistribution_opt2.pdf 
- used on input line 198.
+ used on input line 211.
 (pdftex.def)             Requested size: 159.333pt x 192.10928pt.
- [18
+[19
 
  <./openTOPAS//./NanodosimetryI/IDDistribution_TsEmDNAPhysics.pdf> <./openTOPAS
 //./NanodosimetryI/IDDistribution_opt2.pdf>]
-<./openTOPAS//./NanodosimetryI/IDDistribution_opt4.pdf, id=1907, 353.65546pt x 
+<./openTOPAS//./NanodosimetryI/IDDistribution_opt4.pdf, id=1976, 353.65546pt x 
 426.39299pt>
 File: ./openTOPAS//./NanodosimetryI/IDDistribution_opt4.pdf Graphic file (type 
 pdf)
 <use ./openTOPAS//./NanodosimetryI/IDDistribution_opt4.pdf>
 Package pdftex.def Info: ./openTOPAS//./NanodosimetryI/IDDistribution_opt4.pdf 
- used on input line 214.
+ used on input line 227.
 (pdftex.def)             Requested size: 159.333pt x 192.10928pt.
-<./openTOPAS//./NanodosimetryI/IDDistribution_opt6.pdf, id=1908, 353.65546pt x 
+<./openTOPAS//./NanodosimetryI/IDDistribution_opt6.pdf, id=1977, 353.65546pt x 
 426.39299pt>
 File: ./openTOPAS//./NanodosimetryI/IDDistribution_opt6.pdf Graphic file (type 
 pdf)
 <use ./openTOPAS//./NanodosimetryI/IDDistribution_opt6.pdf>
 Package pdftex.def Info: ./openTOPAS//./NanodosimetryI/IDDistribution_opt6.pdf 
- used on input line 214.
+ used on input line 227.
 (pdftex.def)             Requested size: 159.333pt x 192.10928pt.
-
-[19
+ [20
 
  <./openTOPAS//./NanodosimetryI/IDDistribution_opt4.pdf> <./openTOPAS//./Nanodo
 simetryI/IDDistribution_opt6.pdf>]
-<./openTOPAS//./NanodosimetryII/nanoII_TsEMDNAPhysics.pdf, id=2035, 352.32623pt
+<./openTOPAS//./NanodosimetryII/nanoII_TsEMDNAPhysics.pdf, id=2103, 352.32623pt
  x 425.87239pt>
 File: ./openTOPAS//./NanodosimetryII/nanoII_TsEMDNAPhysics.pdf Graphic file (ty
 pe pdf)
 <use ./openTOPAS//./NanodosimetryII/nanoII_TsEMDNAPhysics.pdf>
 Package pdftex.def Info: ./openTOPAS//./NanodosimetryII/nanoII_TsEMDNAPhysics.p
-df  used on input line 230.
+df  used on input line 243.
 (pdftex.def)             Requested size: 159.333pt x 192.59605pt.
-<./openTOPAS//./NanodosimetryII/nanoII_opt2.pdf, id=2036, 352.32623pt x 425.872
+<./openTOPAS//./NanodosimetryII/nanoII_opt2.pdf, id=2104, 352.32623pt x 425.872
 39pt>
 File: ./openTOPAS//./NanodosimetryII/nanoII_opt2.pdf Graphic file (type pdf)
 <use ./openTOPAS//./NanodosimetryII/nanoII_opt2.pdf>
 Package pdftex.def Info: ./openTOPAS//./NanodosimetryII/nanoII_opt2.pdf  used o
-n input line 230.
+n input line 243.
 (pdftex.def)             Requested size: 159.333pt x 192.59605pt.
- [20
+ [21
 
  <./openTOPAS//./NanodosimetryII/nanoII_TsEMDNAPhysics.pdf> <./openTOPAS//./Nan
 odosimetryII/nanoII_opt2.pdf>]
-<./openTOPAS//./NanodosimetryII/nanoII_opt4.pdf, id=2175, 352.32623pt x 425.872
+<./openTOPAS//./NanodosimetryII/nanoII_opt4.pdf, id=2240, 352.32623pt x 425.872
 39pt>
 File: ./openTOPAS//./NanodosimetryII/nanoII_opt4.pdf Graphic file (type pdf)
 <use ./openTOPAS//./NanodosimetryII/nanoII_opt4.pdf>
 Package pdftex.def Info: ./openTOPAS//./NanodosimetryII/nanoII_opt4.pdf  used o
-n input line 246.
+n input line 259.
 (pdftex.def)             Requested size: 159.333pt x 192.59605pt.
-<./openTOPAS//./NanodosimetryII/nanoII_opt6.pdf, id=2176, 352.32623pt x 425.872
+<./openTOPAS//./NanodosimetryII/nanoII_opt6.pdf, id=2241, 352.32623pt x 425.872
 39pt>
 File: ./openTOPAS//./NanodosimetryII/nanoII_opt6.pdf Graphic file (type pdf)
 <use ./openTOPAS//./NanodosimetryII/nanoII_opt6.pdf>
 Package pdftex.def Info: ./openTOPAS//./NanodosimetryII/nanoII_opt6.pdf  used o
-n input line 246.
+n input line 259.
 (pdftex.def)             Requested size: 159.333pt x 192.59605pt.
-
-[21
+ [22
 
  <./openTOPAS//./NanodosimetryII/nanoII_opt4.pdf> <./openTOPAS//./Nanodosimetry
 II/nanoII_opt6.pdf>]
-<./openTOPAS//./NanodosimetryIII/nanoIII_TsEMDNAPhysics.pdf, id=2316, 454.77386
+<./openTOPAS//./NanodosimetryIII/nanoIII_TsEMDNAPhysics.pdf, id=2381, 454.77386
 pt x 339.16902pt>
 File: ./openTOPAS//./NanodosimetryIII/nanoIII_TsEMDNAPhysics.pdf Graphic file (
 type pdf)
 <use ./openTOPAS//./NanodosimetryIII/nanoIII_TsEMDNAPhysics.pdf>
 Package pdftex.def Info: ./openTOPAS//./NanodosimetryIII/nanoIII_TsEMDNAPhysics
-.pdf  used on input line 256.
+.pdf  used on input line 269.
 (pdftex.def)             Requested size: 298.75394pt x 222.81717pt.
- [22
+ [23
 
  <./openTOPAS//./NanodosimetryIII/nanoIII_TsEMDNAPhysics.pdf>]
-<./openTOPAS//./NanodosimetryIII/nanoIII_opt2.pdf, id=2392, 454.77386pt x 339.1
+<./openTOPAS//./NanodosimetryIII/nanoIII_opt2.pdf, id=2459, 454.77386pt x 339.1
 6902pt>
 File: ./openTOPAS//./NanodosimetryIII/nanoIII_opt2.pdf Graphic file (type pdf)
 <use ./openTOPAS//./NanodosimetryIII/nanoIII_opt2.pdf>
 Package pdftex.def Info: ./openTOPAS//./NanodosimetryIII/nanoIII_opt2.pdf  used
- on input line 266.
+ on input line 279.
 (pdftex.def)             Requested size: 298.75394pt x 222.81717pt.
- [23
+ [24
 
  <./openTOPAS//./NanodosimetryIII/nanoIII_opt2.pdf>]
-<./openTOPAS//./NanodosimetryIII/nanoIII_opt4.pdf, id=2469, 454.77386pt x 339.1
+<./openTOPAS//./NanodosimetryIII/nanoIII_opt4.pdf, id=2537, 454.77386pt x 339.1
 6902pt>
 File: ./openTOPAS//./NanodosimetryIII/nanoIII_opt4.pdf Graphic file (type pdf)
 <use ./openTOPAS//./NanodosimetryIII/nanoIII_opt4.pdf>
 Package pdftex.def Info: ./openTOPAS//./NanodosimetryIII/nanoIII_opt4.pdf  used
- on input line 276.
+ on input line 289.
 (pdftex.def)             Requested size: 298.75394pt x 222.81717pt.
- [24
+ [25
 
  <./openTOPAS//./NanodosimetryIII/nanoIII_opt4.pdf>]
-<./openTOPAS//./NanodosimetryIII/nanoIII_opt6.pdf, id=2546, 454.77386pt x 339.1
+<./openTOPAS//./NanodosimetryIII/nanoIII_opt6.pdf, id=2616, 454.77386pt x 339.1
 6902pt>
 File: ./openTOPAS//./NanodosimetryIII/nanoIII_opt6.pdf Graphic file (type pdf)
 <use ./openTOPAS//./NanodosimetryIII/nanoIII_opt6.pdf>
 Package pdftex.def Info: ./openTOPAS//./NanodosimetryIII/nanoIII_opt6.pdf  used
- on input line 286.
+ on input line 299.
 (pdftex.def)             Requested size: 298.75394pt x 222.81717pt.
- [25
+ [26
 
  <./openTOPAS//./NanodosimetryIII/nanoIII_opt6.pdf>]
 \tf@nav=\write6
@@ -1272,14 +1288,14 @@ Package pdftex.def Info: ./openTOPAS//./NanodosimetryIII/nanoIII_opt6.pdf  used
 
  (./summary.aux)
 Package rerunfilecheck Info: File `summary.out' has not changed.
-(rerunfilecheck)             Checksum: F57C6EB375C83A709890895C7025F311;4165.
+(rerunfilecheck)             Checksum: 981D6751CAA03B379F8FFDCF8491D4B5;4304.
  ) 
 Here is how much of TeX's memory you used:
- 22125 strings out of 476025
- 439548 string characters out of 5790018
- 1860388 words of memory out of 5000000
- 42017 multiletter control sequences out of 15000+600000
- 523492 words of font info for 72 fonts, out of 8000000 for 9000
+ 22199 strings out of 476025
+ 441583 string characters out of 5790018
+ 1861388 words of memory out of 5000000
+ 42078 multiletter control sequences out of 15000+600000
+ 525823 words of font info for 80 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,14n,122p,403b,557s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb
@@ -1287,11 +1303,12 @@ Here is how much of TeX's memory you used:
 </usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></
 usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></u
 sr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb
->
-Output written on summary.pdf (25 pages, 838202 bytes).
+></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfss0500.pfb><
+/usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfss0800.pfb>
+Output written on summary.pdf (26 pages, 879841 bytes).
 PDF statistics:
- 2666 PDF objects out of 2984 (max. 8388607)
- 992 compressed objects within 10 object streams
- 73 named destinations out of 1000 (max. 500000)
- 379 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2747 PDF objects out of 2984 (max. 8388607)
+ 1041 compressed objects within 11 object streams
+ 76 named destinations out of 1000 (max. 500000)
+ 392 words of extra memory for PDF output out of 10000 (max. 10000000)
 

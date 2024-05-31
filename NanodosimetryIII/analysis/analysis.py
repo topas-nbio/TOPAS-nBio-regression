@@ -60,7 +60,7 @@ def average_results(match_path):
     if len(fnames) == 0:
         return None
 
-    maxClusterSize = 300
+    maxClusterSize = 400
     clusterFreq = np.zeros(maxClusterSize)
     clusterFreqStdv = np.zeros(maxClusterSize)
     n = 0.0

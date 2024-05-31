@@ -1,7 +1,7 @@
 import os
 
 regression_tests = ['DBSCAN/','LET/','FrickeIRT/','GvalueStepByStep/','Gvalue_LET-SBS/','GvalueIRT/',
-                    'Gvalue_LET-IRT/','GvalueIRT_H2O2/','GvalueIRT-Temperature/','NanodosimetryI/',
+                    'Gvalue_LET-IRT/','GvalueIRT_H2O2/','GvalueIRT_H/','GvalueIRT-Temperature/','NanodosimetryI/',
                     'NanodosimetryII/','NanodosimetryIII/',]
 
 tex_dir = './openTOPAS/'
@@ -63,6 +63,11 @@ for test in regression_tests:
         os.system('cp ' + reg_dir + 'runMain/Gvalue_LET-IRT.pdf ' + folder_path + 'Gvalue_LET-IRT.pdf')
 
     elif test == 'GvalueIRT_H2O2/':
+        folder_path = tex_dir + test
+        os.system('mkdir ' + folder_path)
+        os.system('cp ' + reg_dir + 'mainPython/TimeEvolution.pdf ' + folder_path + 'TimeEvolution.pdf')
+
+    elif test == 'GvalueIRT_H/':
         folder_path = tex_dir + test
         os.system('mkdir ' + folder_path)
         os.system('cp ' + reg_dir + 'mainPython/TimeEvolution.pdf ' + folder_path + 'TimeEvolution.pdf')

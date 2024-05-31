@@ -17,13 +17,9 @@ from pylab import rcParams
 
 rcParams['legend.numpoints'] = 1
 
-# ElectronInfo = ["2.0","7.5","30.0","80.0","999.999"]
-# ElectronLET  = np.array([[9.28044,0.215123],[4.18363,0.121782],[1.37702,0.0391928],[0.556705,0.0202614],[0.195033,0.0121145]])
 ElectronInfo = ["2.0","30.0","999.999"]
 ElectronLET  = np.array([[9.28044,0.215123],[1.37702,0.0391928],[0.195033,0.0121145]])
 
-# ProtonInfo   = ["500.0","5000.0","10000.0","30000.0","100000.0"]
-# ProtonLET    = np.array([[40.2692,0.32277],[7.82215,0.132146],[4.49355,0.109095],[1.88872,0.113343],[0.695069,0.0417797]])
 ProtonInfo   = ["500.0","10000.0","100000.0"]
 ProtonLET    = np.array([[40.2692,0.32277],[4.49355,0.109095],[0.695069,0.0417797]])
 
@@ -152,23 +148,65 @@ def GetMeanGValue(Dir,Repeats,Molecules):
     return ElectronRes, ProtonRes, AlphaRes
 
 
-def GetMeanTime(Dir, Repeats):
-    RealTimes = []
-    UserTimes = []
-    SysTimes  = []
-    for  i in Repeats:
-        File = Dir+"/"+i+"/log.out"
-        Times = subprocess.check_output("tail -1 "+File, shell=True)
-        Times  = Times.split()
-        RealTimes.append(float(Times[0]))
-        UserTimes.append(float(Times[2]))
-        SysTimes.append(float(Times[4]))
+# def GetMeanTime(Dir, Repeats):
+#     RealTimes = []
+#     UserTimes = []
+#     SysTimes  = []
+#     for  i in Repeats:
+#         File = Dir+"/"+i+"/log.out"
+#         Times = subprocess.check_output("tail -1 "+File, shell=True)
+#         Times  = Times.split()
+#         RealTimes.append(float(Times[0]))
+#         UserTimes.append(float(Times[2]))
+#         SysTimes.append(float(Times[4]))
 
-    RealTimes = np.array(RealTimes)
-    UserTimes = np.array(UserTimes)
-    SysTimes  = np.array(SysTimes)
+#     RealTimes = np.array(RealTimes)
+#     UserTimes = np.array(UserTimes)
+#     SysTimes  = np.array(SysTimes)
 
-    return [np.mean(RealTimes),np.std(RealTimes),np.mean(UserTimes),np.std(UserTimes),np.mean(SysTimes),np.std(SysTimes)]
+#     return [np.mean(RealTimes),np.std(RealTimes),np.mean(UserTimes),np.std(UserTimes),np.mean(SysTimes),np.std(SysTimes)]
+
+def average_results_time(match_path):
+    fnames = glob(match_path)
+    if len(fnames) == 0:
+        return None
+    
+    Real, RealE = 0.0, 0.0
+    User, UserE = 0.0, 0.0
+    Sys,  SysE  = 0.0, 0.0
+    N = 0.0
+
+    for f in fnames:
+        Times = (subprocess.check_output("grep Execution " + f + " | awk '{print $2}' | sed 's/Real=//g' | sed 's/s//g' | awk '{sum+=$1}END{print sum/NR}'", shell=True))
+        RealT = float(Times) #Times.split()[0])
+        Real  += RealT
+        RealE += RealT*RealT
+
+        Times = (subprocess.check_output("grep Execution " + f + " | awk '{print $2}' | sed 's/User=//g' | sed 's/s//g' | awk '{sum+=$1}END{print sum/NR}'", shell=True))
+        UserT = float(Times) #float(Times.split()[2])
+        User  += UserT
+        UserE += UserT*UserT
+
+        Times = (subprocess.check_output("grep Execution " + f + " | awk '{print $2}' | sed 's/Sys=//g' | sed 's/s//g' | awk '{sum+=$1}END{print sum/NR}'", shell=True))
+        SysT  = float(Times) #float(Times.split()[4])
+        Sys  += SysT
+        Sys  += SysT*SysT
+        N += 1
+
+    Real /= N
+    User /= N
+    Sys  /= N
+
+    if N > 1:
+        RealE = np.sqrt(N/(N-1) * (np.abs(RealE/N - Real**2)))
+        UserE = np.sqrt(N/(N-1) * (np.abs(UserE/N - User**2)))
+        SysE  = np.sqrt(N/(N-1) * (np.abs(SysE/N  - Sys**2)))
+
+    else:
+        RealE, UserE, SysE = 0, 0, 0
+
+    return (Real,RealE,User,UserE,Sys,SysE)
+
 
 ####################################################
 ### Define Plot Function
@@ -185,10 +223,10 @@ def plot_results(sut_dir, ref_dir, args):
     ElectronRef, ProtonRef, AlphaRef = GetMeanGValue(ref_dir,Ref_Repeats,molecules)
     ElectronSut, ProtonSut, AlphaSut = GetMeanGValue(sut_dir,Sut_Repeats,molecules)
 
-    RefTimes = GetMeanTime(ref_dir,Ref_Repeats)
-    SutTimes = GetMeanTime(sut_dir,Sut_Repeats)
-
-    GetMeanTime(ref_dir,Ref_Repeats)
+    # RefTimes = GetMeanTime(ref_dir,Ref_Repeats)
+    # SutTimes = GetMeanTime(sut_dir,Sut_Repeats)
+    sut_T = average_results_time(sut_dir + '/*/log.out')
+    ref_T = average_results_time(ref_dir + '/*/log.out')
 
     Experimental = {"electron":{},"proton":{},"alpha":{}}
 
@@ -259,7 +297,7 @@ def plot_results(sut_dir, ref_dir, args):
     ax1.tick_params(axis='both', which='major', labelsize=20)
     ax1.tick_params(axis='both', which='minor', labelsize=20)
     ax1.set_xlabel(r"$LET$ $keV/\mu m$",fontsize=24)
-    ax1.set_ylabel(r"GValue $(Molecules/100eV)$",fontsize=24)
+    ax1.set_ylabel(r"GValue $(H_{2}O_{2}/100eV)$",fontsize=24)
     ax1.errorbar(ElectronLET[:,0],ElectronSut["H2O2^0"][:,1],xerr=ElectronLET[:,1],yerr=ElectronSut["H2O2^0"][:,2], linewidth=2, fmt="b--", label="TOPAS-Sut e-")
     ax1.errorbar(ProtonLET[:,0],  ProtonSut["H2O2^0"][:,1],  xerr=ProtonLET[:,1],  yerr=ProtonSut["H2O2^0"][:,2],   linewidth=2, fmt="b-.", label="TOPAS-Sut Proton")
     ax1.errorbar(AlphaLET[:,0],   AlphaSut["H2O2^0"][:,1],   xerr=AlphaLET[:,1],   yerr=AlphaSut["H2O2^0"][:,2],    linewidth=2, fmt="b:", label="TOPAS-Sut Alpha")
@@ -278,13 +316,13 @@ def plot_results(sut_dir, ref_dir, args):
     ax1.set_ylim(0.5,1.3)
     ax1.set_xscale("log")
     ax1.grid(True,dashes=[5,5])
-    ax1.legend(loc=2,fontsize=20,title=r"$H_{2}O_{2}$")
+    #ax1.legend(loc=2,fontsize=20,title=r"$H_{2}O_{2}$")
 
     # eaq
     ax2.tick_params(axis='both', which='major', labelsize=20)
     ax2.tick_params(axis='both', which='minor', labelsize=20)
     ax2.set_xlabel(r"$LET$ $keV/\mu m$",fontsize=24)
-    ax2.set_ylabel(r"GValue $(Molecules/100eV)$",fontsize=24)
+    ax2.set_ylabel(r"GValue $(e_{aq}^{-}/100eV)$",fontsize=24)
     ax2.errorbar(ElectronLET[:,0],ElectronSut["e_aq^-1"][:,1],xerr=ElectronLET[:,1],yerr=ElectronSut["e_aq^-1"][:,2], linewidth=2, fmt="b--", label="TOPAS-Sut e-")
     ax2.errorbar(ProtonLET[:,0],  ProtonSut["e_aq^-1"][:,1],  xerr=ProtonLET[:,1],  yerr=ProtonSut["e_aq^-1"][:,2],   linewidth=2, fmt="b-.", label="TOPAS-Sut Proton")
     ax2.errorbar(AlphaLET[:,0],   AlphaSut["e_aq^-1"][:,1],   xerr=AlphaLET[:,1],   yerr=AlphaSut["e_aq^-1"][:,2],    linewidth=2, fmt="b:", label="TOPAS-Sut Alpha")
@@ -300,13 +338,13 @@ def plot_results(sut_dir, ref_dir, args):
     ax2.set_ylim(0,3)
     ax2.set_xscale("log")
     ax2.grid(True,dashes=[5,5])
-    ax2.legend(loc=1,fontsize=20,title=r"$e_{aq}^{-}$")
+    #ax2.legend(loc=1,fontsize=20,title=r"$e_{aq}^{-}$")
 
     # OH
     ax3.tick_params(axis='both', which='major', labelsize=20)
     ax3.tick_params(axis='both', which='minor', labelsize=20)
     ax3.set_xlabel(r"$LET$ $keV/\mu m$",fontsize=24)
-    ax3.set_ylabel(r"GValue $(Molecules/100eV)$",fontsize=24)
+    ax3.set_ylabel(r"GValue $(OH^{\bullet}/100eV)$",fontsize=24)
     ax3.errorbar(ElectronLET[:,0],ElectronSut["OH^0"][:,1],xerr=ElectronLET[:,1],yerr=ElectronSut["OH^0"][:,2], linewidth=2, fmt="b--", label="TOPAS-Sut e-")
     ax3.errorbar(ProtonLET[:,0],  ProtonSut["OH^0"][:,1],  xerr=ProtonLET[:,1],  yerr=ProtonSut["OH^0"][:,2],   linewidth=2, fmt="b-.", label="TOPAS-Sut Proton")
     ax3.errorbar(AlphaLET[:,0],   AlphaSut["OH^0"][:,1],   xerr=AlphaLET[:,1],   yerr=AlphaSut["OH^0"][:,2],    linewidth=2, fmt="b:", label="TOPAS-Sut Alpha")
@@ -325,13 +363,13 @@ def plot_results(sut_dir, ref_dir, args):
     ax3.set_ylim(0,3)
     ax3.set_xscale("log")
     ax3.grid(True,dashes=[5,5])
-    ax3.legend(loc=3,fontsize=20,title=r"$OH^{\bullet}$")
+    #ax3.legend(loc=3,fontsize=20,title=r"$OH^{\bullet}$")
 
     # H
     ax4.tick_params(axis='both', which='major', labelsize=20)
     ax4.tick_params(axis='both', which='minor', labelsize=20)
     ax4.set_xlabel(r"$LET$ $keV/\mu m$",fontsize=24)
-    ax4.set_ylabel(r"GValue $(Molecules/100eV)$",fontsize=24)
+    ax4.set_ylabel(r"GValue $(H^{\bullet}/100eV)$",fontsize=24)
     ax4.errorbar(ElectronLET[:,0],ElectronSut["H^0"][:,1],xerr=ElectronLET[:,1],yerr=ElectronSut["OH^0"][:,2], linewidth=2, fmt="b--", label="TOPAS-Sut e-")
     ax4.errorbar(ProtonLET[:,0],  ProtonSut["H^0"][:,1],  xerr=ProtonLET[:,1],  yerr=ProtonSut["OH^0"][:,2],   linewidth=2, fmt="b-.", label="TOPAS-Sut Proton")
     ax4.errorbar(AlphaLET[:,0],   AlphaSut["H^0"][:,1],   xerr=AlphaLET[:,1],   yerr=AlphaSut["OH^0"][:,2],    linewidth=2, fmt="b:", label="TOPAS-Sut Alpha")
@@ -346,13 +384,13 @@ def plot_results(sut_dir, ref_dir, args):
     ax4.set_ylim(0.1,0.8)
     ax4.set_xscale("log")
     ax4.grid(True,dashes=[5,5])
-    ax4.legend(loc=3,fontsize=20,title=r"$H^{\bullet}$")
+    #ax4.legend(loc=3,fontsize=20,title=r"$H^{\bullet}$")
 
     # H2
     ax5.tick_params(axis='both', which='major', labelsize=20)
     ax5.tick_params(axis='both', which='minor', labelsize=20)
     ax5.set_xlabel(r"$LET$ $keV/\mu m$",fontsize=24)
-    ax5.set_ylabel(r"GValue $(Molecules/100eV)$",fontsize=24)
+    ax5.set_ylabel(r"GValue $(H_{2}/100eV)$",fontsize=24)
     ax5.errorbar(ElectronLET[:,0],ElectronSut["H_2^0"][:,1],xerr=ElectronLET[:,1],yerr=ElectronSut["H_2^0"][:,2], linewidth=2, fmt="b--", label="TOPAS-Sut e-")
     ax5.errorbar(ProtonLET[:,0],  ProtonSut["H_2^0"][:,1],  xerr=ProtonLET[:,1],  yerr=ProtonSut["H_2^0"][:,2],   linewidth=2, fmt="b-.", label="TOPAS-Sut Proton")
     ax5.errorbar(AlphaLET[:,0],   AlphaSut["H_2^0"][:,1],   xerr=AlphaLET[:,1],   yerr=AlphaSut["H_2^0"][:,2],    linewidth=2, fmt="b:", label="TOPAS-Sut Alpha")
@@ -368,7 +406,7 @@ def plot_results(sut_dir, ref_dir, args):
     ax5.set_ylim(0.2,1.4)
     ax5.set_xscale("log")
     ax5.grid(True,dashes=[5,5])
-    ax5.legend(loc=2,fontsize=20,title=r"$H_{2}$")
+    #ax5.legend(loc=2,fontsize=20,title=r"$H_{2}$")
 
     # Ox-Red
     ElectronOx_Sut  = ElectronSut["OH^0"][:,1] + (2*ElectronSut["H2O2^0"][:,1])
@@ -417,28 +455,49 @@ def plot_results(sut_dir, ref_dir, args):
     ax6.tick_params(axis='both', which='minor', labelsize=20)
     ax6.set_xlabel(r"$LET$ $keV/\mu m$",fontsize=24)
     ax6.set_ylabel(r"Ox/Red Ratios",fontsize=24)
-    ax6.errorbar(ElectronLET[:,0],ElectronRatio_Sut, yerr=ElectronRatio_Sut_Err*0, fmt="b--", linewidth=2, label="TOPAS-Sut e-")
-    ax6.errorbar(ProtonLET[:,0],  ProtonRatio_Sut,   yerr=ProtonRatio_Sut_Err*0,   fmt="b-.", linewidth=2, label="TOPAS-Sut Proton")
-    ax6.errorbar(AlphaLET[:,0],   AlphaRatio_Sut,    yerr=AlphaRatio_Sut_Err*0,    fmt="b:", linewidth=2, label="TOPAS-Sut Alpha")
-    ax6.errorbar(ElectronLET[:,0],ElectronRatio_Ref, yerr=ElectronRatio_Ref_Err*0, fmt="r--", linewidth=2, label="TOPAS-Ref e-")
-    ax6.errorbar(ProtonLET[:,0],  ProtonRatio_Ref,   yerr=ProtonRatio_Ref_Err*0,   fmt="r-.", linewidth=2, label="TOPAS-Ref Proton")
-    ax6.errorbar(AlphaLET[:,0],   AlphaRatio_Ref,    yerr=AlphaRatio_Ref_Err*0,    fmt="r:", linewidth=2, label="TOPAS-Ref Alpha")
+    ax6.errorbar(ElectronLET[:,0],ElectronRatio_Sut, yerr=ElectronRatio_Sut_Err*0, fmt="b--", linewidth=2, label="{} e-".format(args.sut_label))
+    ax6.errorbar(ProtonLET[:,0],  ProtonRatio_Sut,   yerr=ProtonRatio_Sut_Err*0,   fmt="b-.", linewidth=2, label="{} Proton".format(args.sut_label))
+    ax6.errorbar(AlphaLET[:,0],   AlphaRatio_Sut,    yerr=AlphaRatio_Sut_Err*0,    fmt="b:", linewidth=2, label="{} Alpha".format(args.sut_label))
+    ax6.errorbar(ElectronLET[:,0],ElectronRatio_Ref, yerr=ElectronRatio_Ref_Err*0, fmt="r--", linewidth=2, label="{} e-".format(args.ref_label))
+    ax6.errorbar(ProtonLET[:,0],  ProtonRatio_Ref,   yerr=ProtonRatio_Ref_Err*0,   fmt="r-.", linewidth=2, label="{} Proton".format(args.ref_label))
+    ax6.errorbar(AlphaLET[:,0],   AlphaRatio_Ref,    yerr=AlphaRatio_Ref_Err*0,    fmt="r:", linewidth=2, label="{} Alpha".format(args.ref_label))
     ax6.set_xlim(0.1,120)
     ax6.set_ylim(0.95,1.05)
     ax6.set_xscale("log")
     ax6.grid(True,dashes=[5,5])
     ax6.legend(loc=2,fontsize=20)
 
-    ax7.axis("off")
-    Table = ax7.table(cellText=[['%1.3f +/- %1.3f'%(RefTimes[0],RefTimes[1]),'%1.3f +/- %1.3f'%(SutTimes[0],SutTimes[1])],\
-                                ['%1.3f +/- %1.3f'%(RefTimes[2],RefTimes[3]),'%1.3f +/- %1.3f'%(SutTimes[2],SutTimes[3])],\
-                                ['%1.3f +/- %1.3f'%(RefTimes[4],RefTimes[5]),'%1.3f +/- %1.3f'%(SutTimes[4],SutTimes[5])]],\
-                      rowLabels=("Real","User","Sys"),\
-                      colLabels=("TOPAS-Ref","TOPAS-Sut"), \
-                      loc='center')
+    # ax7.axis("off")
+    # Table = ax7.table(cellText=[['%1.3f +/- %1.3f'%(RefTimes[0],RefTimes[1]),'%1.3f +/- %1.3f'%(SutTimes[0],SutTimes[1])],\
+    #                             ['%1.3f +/- %1.3f'%(RefTimes[2],RefTimes[3]),'%1.3f +/- %1.3f'%(SutTimes[2],SutTimes[3])],\
+    #                             ['%1.3f +/- %1.3f'%(RefTimes[4],RefTimes[5]),'%1.3f +/- %1.3f'%(SutTimes[4],SutTimes[5])]],\
+    #                   rowLabels=("Real","User","Sys"),\
+    #                   colLabels=("TOPAS-Ref","TOPAS-Sut"), \
+    #                   loc='center')
 
+    # Table.auto_set_font_size(False)
+    # Table.set_fontsize(24)
+    # Table.scale(1,3)
+
+    ax7.set_axis_off()
+    CellText = [["",""],["",""],["",""]]
+    CellText[0][0] = str(round(ref_T[0],2))+" +- "+str(round(ref_T[1],2))
+    CellText[0][1] = str(round(sut_T[0],2))+" +- "+str(round(sut_T[1],2))
+    CellText[1][0] = str(round(ref_T[2],2))+" +- "+str(round(ref_T[3],2))
+    CellText[1][1] = str(round(sut_T[2],2))+" +- "+str(round(sut_T[3],2))
+    CellText[2][0] = str(round(ref_T[4],2))+" +- "+str(round(ref_T[5],2))
+    CellText[2][1] = str(round(sut_T[4],2))+" +- "+str(round(sut_T[5],2))
+    Table = ax7.table(cellText   = CellText,\
+                      rowLabels  = ["Real (s)","User (s)", "Sys (s)"],\
+                      colLabels  = [args.ref_label,args.sut_label],\
+                      colWidths  = [0.5,0.5],\
+                      rowColours = ["lightskyblue"]*10,\
+                      colColours = ["lightskyblue"]*10,\
+                      cellLoc    = 'center',\
+                      loc        = 'center',\
+                      fontsize   = 30)
     Table.auto_set_font_size(False)
-    Table.set_fontsize(24)
+    Table.set_fontsize(20)
     Table.scale(1,3)
 
     plt.tight_layout()

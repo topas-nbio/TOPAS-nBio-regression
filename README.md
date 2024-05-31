@@ -3,7 +3,7 @@
 ### Department of Radiation Oncology                                  #
 ### University of California San Francisco.                           #
 ### Jose.RamosMendez@ucsf.edu                                         #
-### Mar 2024.                                                         #
+### May 2024.                                                         #
 ### ############################################################### ###
 
 #### Aim
@@ -26,20 +26,22 @@ Perform a regression test for TOPAS-nBio based on examples with existing publish
 8. FrickeIRT. Quantifies the G-value of Fe^3+ which comes from the oxidation of Fe^2+.
 This example must give a value of around 15.5 +- 0.1 reported by the ICRU.
 
-9. GValue_LET-IRT. LET-dependent G values for e-, p and alpha at selected energies
+9. GValue_LET-IRT. LET-dependent G values for e-, p and alpha at selected energies.
 
-10. GValue_LET-SBS. LET-dependent G values for e-, p and alpha at selected energies
+10. GValue_LET-SBS. LET-dependent G values for e-, p and alpha at selected energies.
 
-11. GvalueIRT-Temperature. Temperature-dependent G values for fast electrons at T < 200C
+11. GvalueIRT-Temperature. Temperature-dependent G values for fast electrons at T < 200C.
 
-12. GvalueIRT_H2O2. OH-scavenger-dependent G value for H2O2 within microsecond time range
+12. GvalueIRT_H2O2. OH-scavenger-dependent G value for H2O2 within microsecond time range.
+
+13. GvalueIRT_H. H-scavenger-dependent G value for H within microsecond time range.
 
 #### Use
 Each directory has TOPAS parameters with the follow pattern:
 - `mainABCD.txt`, where ABCD is Topas, Opt2, Opt4 or Opt6 that refer to used physics list.
 - `depFileN.txt`, with N=1,... dependence file used by the main file.
 - `inputfiles.txt`. Lists the main file (s) to be submitted as a job.
-- `tcsh script files`. Each directory has three tcsh files to submit the example to e.g. a cluster system or locally. For instance, to submit 5 simulation jobs in the local system (different random seeds) use
+- `tcsh script files`. Each directory has three tcsh files to submit the example to e.g. a cluster system or locally. For instance, to submit 5 simulation jobs in the local system (different random seeds) use:
 
 ```bash
 tcsh submitLocally.sh 5

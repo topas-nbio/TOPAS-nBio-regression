@@ -41,7 +41,7 @@ foreach LINE ( $OPTION )
 
 #!/bin/bash
 cd $DIR
-nohup time python3 $INFILE.py > log.out &
+time python3 $INFILE.py > log.out
 EOF
     chmod +x $SCRIPT
     bash $SCRIPT 

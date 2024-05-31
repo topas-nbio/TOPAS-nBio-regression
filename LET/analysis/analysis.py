@@ -129,7 +129,7 @@ def plot_results(sut_dir, ref_dir, args):
     plt.xlim((0.4,200))
     plt.yscale('log')
     plt.xscale('log')
-    plt.ylabel('LET (keV/$\mu$m)')
+    plt.ylabel(r'LET (keV/$\mu$m)')
     plt.xlabel('Proton energy (MeV)')
 
     plt.legend(loc=0, borderaxespad=0.)

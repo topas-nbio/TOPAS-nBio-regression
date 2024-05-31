@@ -1,0 +1,3676 @@
+
+Welcome to TOPAS, Tool for Particle Simulation (Version 3.9)
+Loading parameters starting from: RUN.txt
+
+Geant4 Data directory has been specified by the
+TOPAS_G4_DATA_DIR environment variable as /wynton/home/ramos-mendez/tmasilela/software/GEANT4/G4DATA
+
+**************************************************************
+ Geant4 version Name: geant4-10-07-patch-03 [MT]   (19-November-2021)
+  << in Multi-threaded mode >> 
+                       Copyright : Geant4 Collaboration
+                      References : NIM A 506 (2003), 250-303
+                                 : IEEE-TNS 53 (2006), 270-278
+                                 : NIM A 835 (2016), 186-225
+                             WWW : http://geant4.org/
+**************************************************************
+
+TOPAS is in MT mode, setting number of threads to: 10
+
+TOPAS set the tolerances based on the World size to:
+      Surface tolerance = 1e-06 nm, and radial tolerance = 1e-06 nm.
+Checking overlaps for volume Target (G4Box) ... OK! 
+
+Checking for Unused Components.
+These are Components that were never built even though they were at least
+partially defined in some parameters. This is not necessarily an error.
+It may be an intentional choice to have these Component definitions handy for later use.
+To turn off this check, set Ge/CheckForUnusedComponents to False
+  No unused components were found.
+
+Default
+-- Branching ratio: All ionization states probability 1
+-- Branching ratio: A1B1 Dissociative decay probability 0.65
+-- Branching ratio: A1B1 Relaxation probability 0.35
+-- Branching ratio: B1A1 Auto-ionization probability 0.55
+-- Branching ratio: B1A1 Dissociative decay probability 0.15
+-- Branching ratio: B1A1 Relaxation probability 0.3
+-- Branching ratio: Rydberg states and diffuse bands auto-ionization probability 0.5
+-- Branching ratio: Rydberg states and diffuse bands relaxation probability 0.5
+-- Branching ratio: dissociative attachment probability 1
+Solvation model selected: 3
+   1. Ritchie.
+   2. Terrisol.
+   3. Meesungnoen.
+   4. Kreipl.
+   5. Meesugnoen solid.
+-- Diffusion coefficient for molecule: H used the value 8e-09 (m2/s) 
+-- Diffusion coefficient for molecule: H2 used the value 4.8e-09 (m2/s) 
+-- Diffusion coefficient for molecule: H2O2 used the value 2.3e-09 (m2/s) 
+-- Diffusion coefficient for molecule: H3Op used the value 9.46e-09 (m2/s) 
+-- Diffusion coefficient for molecule: OH used the value 2.3e-09 (m2/s) 
+-- Diffusion coefficient for molecule: OHm used the value 5.3e-09 (m2/s) 
+-- Diffusion coefficient for molecule: Product used the value 0 (m2/s) 
+-- Diffusion coefficient for molecule: e_aq used the value 4.9e-09 (m2/s) 
+
+### TsEmDNAPhysics Construct Processes 
+Ts Rudd ionisation model is constructed 
+ Re-set reaction kobs to : 1.56e+10/M/s
+ Re-set reaction kobs to : 9e+07/M/s
+ Re-set reaction kobs to : 1.43e+11/M/s
+ Re-set reaction kobs to : 2e+10/M/s
+ Re-set reaction kobs to : 5.5e+09/M/s
+ Re-set reaction kobs to : 2.5e+10/M/s
+ Re-set reaction kobs to : 1.1e+10/M/s
+ Re-set reaction kobs to : 2.3e+10/M/s
+ Re-set reaction kobs to : 3e+10/M/s
+ Re-set reaction kobs to : 1.1e+10/M/s
+Visualization verbosity changed to quiet (0)
+
+### ===  Deexcitation model UAtomDeexcitation is activated for 1 region:
+          DefaultRegionForTheWorld  1  1  0
+### ===  Auger cascade flag: 1
+### ===  Ignore cuts flag:   1
+Rudd ionisation model is initialized 
+Energy range: 0 eV - 1e+06 keV for proton
+
+phot:  for gamma SubType=12 BuildTable=0
+      LambdaPrime table from 200 keV to 500 MeV in 25 bins 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+ LivermorePhElectric : Emin=    0 eV  Emax=  500 MeV  SauterGavrila Fluo
+
+compt:  for gamma SubType=13 BuildTable=1
+      Lambda table from 100 eV  to 1 MeV, 7 bins/decade, spline: 1
+      LambdaPrime table from 1 MeV to 500 MeV in 20 bins 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+    LivermoreCompton : Emin=    0 eV  Emax=  500 MeV Fluo
+
+conv:  for gamma SubType=14 BuildTable=1
+      Lambda table from 1.022 MeV to 500 MeV, 33 bins/decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+ LivermoreConversion : Emin=    0 eV  Emax=  500 MeV  ModifiedTsai
+
+Rayl:  for gamma SubType=11 BuildTable=1
+      Lambda table from 100 eV  to 100 keV, 7 bins/decade, spline: 0
+      LambdaPrime table from 100 keV to 500 MeV in 27 bins 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+   LivermoreRayleigh : Emin=    0 eV  Emax=  500 MeV  CullenGenerator
+
+e-_G4DNAElastic:  for e- SubType=51 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAELSEPAElasticModel : Emin=    0 eV  Emax=    1 MeV
+
+e-_G4DNAExcitation:  for e- SubType=52 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNABornExcitationModel : Emin=    0 eV  Emax=    1 MeV
+
+e-_G4DNAIonisation:  for e- SubType=53 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNABornIonisationModel : Emin=    0 eV  Emax=    1 MeV  deltaBorn Fluo
+
+e-_G4DNAElectronSolvation:  for e- SubType=58 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAOneStepThermalizationModel_Meesungnoen2002 : Emin=    0 eV  Emax=   10 eV 
+
+e-_G4DNAVibExcitation:  for e- SubType=54 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNASancheExcitationModel : Emin=    0 eV  Emax=  100 eV 
+
+e-_G4DNAAttachment:  for e- SubType=55 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAMeltonAttachmentModel : Emin=    0 eV  Emax=   13 eV 
+
+msc:  for e+  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc : Emin=    0 eV  Emax=  500 MeV Nbins=49 100 eV  - 500 MeV
+              StepLim=DistanceToBoundary Rfact=0.04 Gfact=2.5 Sfact=0.6 DispFlag:1 Skin=1 Llimit=1
+
+eIoni:  for e+  SubType=2
+      dE/dx and range tables from 100 eV  to 500 MeV in 49 bins
+      Lambda tables from threshold to 500 MeV, 7 bins/decade, spline: 1
+      StepFunction=(0.2, 1 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        MollerBhabha : Emin=    0 eV  Emax=  500 MeV
+
+eBrem:  for e+  SubType=3
+      dE/dx and range tables from 100 eV  to 500 MeV in 49 bins
+      Lambda tables from threshold to 500 MeV, 7 bins/decade, spline: 1
+      LPM flag: 1 for E > 0.5 GeV,  VertexHighEnergyTh(GeV)= 100000
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+             eBremSB : Emin=    0 eV  Emax=  500 MeV  ModifiedTsai
+
+annihil:  for e+, integral:1  SubType=5 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            eplus2gg : Emin=    0 eV  Emax=  500 MeV
+
+proton_G4DNAElastic:  for proton SubType=51 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  DNAIonElasticModel : Emin=    0 eV  Emax=    1 MeV
+
+proton_G4DNAExcitation:  for proton SubType=52 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAMillerGreenExcitationModel : Emin=    0 eV  Emax=  500 keV
+DNABornExcitationModel : Emin=  500 keV Emax=  100 MeV
+
+proton_G4DNAIonisation:  for proton SubType=53 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNARuddIonisationExtendedModel : Emin=    0 eV  Emax=  500 keV  deltaRudd Fluo
+DNABornIonisationModel : Emin=  500 keV Emax=  100 MeV  deltaBorn Fluo
+DNARuddIonisationExtendedModel : Emin=  100 MeV Emax=  500 MeV  deltaRudd Fluo
+
+proton_G4DNAChargeDecrease:  for proton SubType=56 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNADingfelderChargeDecreaseModel : Emin=    0 eV  Emax=  100 MeV
+
+GenericIon_G4DNAIonisation:  for GenericIon SubType=53 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNARuddIonisationExtendedModel : Emin=    0 eV  Emax=  500 MeV  deltaRudd Fluo
+
+alpha_G4DNAElastic:  for alpha SubType=51 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  DNAIonElasticModel : Emin=    0 eV  Emax=    1 MeV
+
+alpha_G4DNAExcitation:  for alpha SubType=52 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAMillerGreenExcitationModel : Emin=    0 eV  Emax=  400 MeV
+
+alpha_G4DNAIonisation:  for alpha SubType=53 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNARuddIonisationExtendedModel : Emin=    0 eV  Emax=  500 MeV  deltaRudd Fluo
+
+alpha_G4DNAChargeDecrease:  for alpha SubType=56 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNADingfelderChargeDecreaseModel : Emin=    0 eV  Emax=  400 MeV
+
+alpha+_G4DNAElastic:  for alpha+ SubType=51 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  DNAIonElasticModel : Emin=    0 eV  Emax=    1 MeV
+
+alpha+_G4DNAExcitation:  for alpha+ SubType=52 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAMillerGreenExcitationModel : Emin=    0 eV  Emax=  400 MeV
+
+alpha+_G4DNAIonisation:  for alpha+ SubType=53 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNARuddIonisationExtendedModel : Emin=    0 eV  Emax=  500 MeV  deltaRudd Fluo
+
+alpha+_G4DNAChargeDecrease:  for alpha+ SubType=56 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNADingfelderChargeDecreaseModel : Emin=    0 eV  Emax=  400 MeV
+
+alpha+_G4DNAChargeIncrease:  for alpha+ SubType=57 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNADingfelderChargeIncreaseModel : Emin=    0 eV  Emax=  400 MeV
+
+helium_G4DNAElastic:  for helium SubType=51 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  DNAIonElasticModel : Emin=    0 eV  Emax=    1 MeV
+
+helium_G4DNAExcitation:  for helium SubType=52 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAMillerGreenExcitationModel : Emin=    0 eV  Emax=  400 MeV
+
+helium_G4DNAIonisation:  for helium SubType=53 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNARuddIonisationExtendedModel : Emin=    0 eV  Emax=  500 MeV  deltaRudd Fluo
+
+helium_G4DNAChargeIncrease:  for helium SubType=57 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNADingfelderChargeIncreaseModel : Emin=    0 eV  Emax=  400 MeV
+
+hydrogen_G4DNAElastic:  for hydrogen SubType=51 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  DNAIonElasticModel : Emin=    0 eV  Emax=    1 MeV
+
+hydrogen_G4DNAExcitation:  for hydrogen SubType=52 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAMillerGreenExcitationModel : Emin=    0 eV  Emax=  500 keV
+
+hydrogen_G4DNAIonisation:  for hydrogen SubType=53 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNARuddIonisationExtendedModel : Emin=    0 eV  Emax=  500 MeV  deltaRudd Fluo
+
+hydrogen_G4DNAChargeIncrease:  for hydrogen SubType=57 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNADingfelderChargeIncreaseModel : Emin=    0 eV  Emax=  100 MeV
+
+=======================================================================
+--> G4MTRunManager::CreateAndStartWorkers() --> Initializing workers...
+=======================================================================
+
+G4WT8 > Begin processing for Run: 0, History: 0
+ -- Killing primary track of event 15
+ -- Aborting event 18
+ -- Aborting event 3
+ -- Killing primary track of event 9
+ -- Aborting event 0
+ -- Aborting event 6
+ -- Aborting event 12
+ -- Aborting event 27
+ -- Aborting event 21
+ -- Killing primary track of event 24
+ -- Aborting event 19
+ -- Killing primary track of event 7
+ -- Killing primary track of event 4
+G4WT9 > Begin processing for Run: 0, History: 20
+ -- Aborting event 20
+ -- Aborting event 1
+ -- Aborting event 22
+ -- Aborting event 28
+ -- Aborting event 13
+ -- Killing primary track of event 29
+ -- Killing primary track of event 23
+G4WT9 > Begin processing for Run: 0, History: 30
+ -- Aborting event 30
+ -- Aborting event 14
+ -- Killing primary track of event 2
+ -- Killing primary track of event 31
+ -- Aborting event 33
+ -- Killing primary track of event 34
+ -- Aborting event 16
+ -- Killing primary track of event 17
+ -- Killing primary track of event 36
+ -- Aborting event 35
+G4WT6 > Begin processing for Run: 0, History: 10
+ -- Aborting event 10
+ -- Killing primary track of event 39
+ -- Aborting event 8
+ -- Aborting event 42
+ -- Aborting event 32
+ -- Killing primary track of event 25
+ -- Killing primary track of event 45
+ -- Aborting event 48
+ -- Killing primary track of event 11
+ -- Killing primary track of event 43
+ -- Killing primary track of event 49
+ -- Aborting event 5
+ -- Killing primary track of event 51
+ -- Aborting event 54
+ -- Killing primary track of event 55
+ -- Aborting event 57
+ -- Killing primary track of event 58
+G4WT4 > Begin processing for Run: 0, History: 50
+ -- Aborting event 50
+ -- Aborting event 37
+G4WT4 > Begin processing for Run: 0, History: 60
+ -- Killing primary track of event 60
+ -- Aborting event 38
+ -- Aborting event 44
+ -- Aborting event 63
+ -- Aborting event 64
+ -- Aborting event 66
+ -- Aborting event 69
+ -- Aborting event 46
+ -- Aborting event 65
+ -- Aborting event 67
+G4WT3 > Begin processing for Run: 0, History: 70
+ -- Killing primary track of event 70
+ -- Aborting event 47
+ -- Killing primary track of event 72
+ -- Aborting event 52
+ -- Aborting event 75
+G4WT1 > Begin processing for Run: 0, History: 40
+ -- Aborting event 40
+ -- Aborting event 26
+ -- Killing primary track of event 68
+ -- Aborting event 56
+ -- Aborting event 53
+ -- Killing primary track of event 76
+ -- Aborting event 78
+ -- Aborting event 81
+ -- Aborting event 84
+ -- Killing primary track of event 41
+ -- Aborting event 79
+ -- Aborting event 82
+ -- Aborting event 85
+G4WT2 > Begin processing for Run: 0, History: 80
+ -- Killing primary track of event 80
+ -- Killing primary track of event 86
+ -- Killing primary track of event 83
+ -- Aborting event 59
+ -- Aborting event 87
+ -- Aborting event 61
+ -- Aborting event 88
+ -- Aborting event 62
+ -- Aborting event 89
+G4WT4 > Begin processing for Run: 0, History: 90
+ -- Aborting event 90
+ -- Aborting event 93
+ -- Killing primary track of event 94
+ -- Aborting event 91
+ -- Aborting event 92
+ -- Killing primary track of event 96
+ -- Killing primary track of event 73
+ -- Aborting event 99
+ -- Aborting event 77
+ -- Aborting event 71
+ -- Aborting event 95
+ -- Aborting event 97
+ -- Killing primary track of event 98
+ -- Aborting event 74
+
+TOPAS run sequence complete.
+Particle source Demo: Total number of histories: 100
+
+Elapsed times:
+Parameter Reading : User=0.000000s Real=0.006358s Sys=0.000000s [Cpu=0.0%]
+    Initialization: User=0.010000s Real=0.026017s Sys=0.000000s [Cpu=38.4%]
+         Execution: User=69.690000s Real=12.071698s Sys=1.970000s [Cpu=593.6%]
+      Finalization: User=0.000000s Real=1.263180s Sys=0.030000s [Cpu=2.4%]
+             Total: User=69.7s Real=13.3673s Sys=2s
+
+Welcome to TOPAS, Tool for Particle Simulation (Version 3.9)
+Loading parameters starting from: RUN.txt
+
+Geant4 Data directory has been specified by the
+TOPAS_G4_DATA_DIR environment variable as /wynton/home/ramos-mendez/tmasilela/software/GEANT4/G4DATA
+
+**************************************************************
+ Geant4 version Name: geant4-10-07-patch-03 [MT]   (19-November-2021)
+  << in Multi-threaded mode >> 
+                       Copyright : Geant4 Collaboration
+                      References : NIM A 506 (2003), 250-303
+                                 : IEEE-TNS 53 (2006), 270-278
+                                 : NIM A 835 (2016), 186-225
+                             WWW : http://geant4.org/
+**************************************************************
+
+TOPAS is in MT mode, setting number of threads to: 10
+
+TOPAS set the tolerances based on the World size to:
+      Surface tolerance = 1e-06 nm, and radial tolerance = 1e-06 nm.
+Checking overlaps for volume Target (G4Box) ... OK! 
+
+Checking for Unused Components.
+These are Components that were never built even though they were at least
+partially defined in some parameters. This is not necessarily an error.
+It may be an intentional choice to have these Component definitions handy for later use.
+To turn off this check, set Ge/CheckForUnusedComponents to False
+  No unused components were found.
+
+Default
+-- Branching ratio: All ionization states probability 1
+-- Branching ratio: A1B1 Dissociative decay probability 0.65
+-- Branching ratio: A1B1 Relaxation probability 0.35
+-- Branching ratio: B1A1 Auto-ionization probability 0.55
+-- Branching ratio: B1A1 Dissociative decay probability 0.15
+-- Branching ratio: B1A1 Relaxation probability 0.3
+-- Branching ratio: Rydberg states and diffuse bands auto-ionization probability 0.5
+-- Branching ratio: Rydberg states and diffuse bands relaxation probability 0.5
+-- Branching ratio: dissociative attachment probability 1
+Solvation model selected: 3
+   1. Ritchie.
+   2. Terrisol.
+   3. Meesungnoen.
+   4. Kreipl.
+   5. Meesugnoen solid.
+-- Diffusion coefficient for molecule: H used the value 8e-09 (m2/s) 
+-- Diffusion coefficient for molecule: H2 used the value 4.8e-09 (m2/s) 
+-- Diffusion coefficient for molecule: H2O2 used the value 2.3e-09 (m2/s) 
+-- Diffusion coefficient for molecule: H3Op used the value 9.46e-09 (m2/s) 
+-- Diffusion coefficient for molecule: OH used the value 2.3e-09 (m2/s) 
+-- Diffusion coefficient for molecule: OHm used the value 5.3e-09 (m2/s) 
+-- Diffusion coefficient for molecule: Product used the value 0 (m2/s) 
+-- Diffusion coefficient for molecule: e_aq used the value 4.9e-09 (m2/s) 
+
+### TsEmDNAPhysics Construct Processes 
+Ts Rudd ionisation model is constructed 
+ Re-set reaction kobs to : 1.56e+10/M/s
+ Re-set reaction kobs to : 9e+07/M/s
+ Re-set reaction kobs to : 1.43e+11/M/s
+ Re-set reaction kobs to : 2e+10/M/s
+ Re-set reaction kobs to : 5.5e+09/M/s
+ Re-set reaction kobs to : 2.5e+10/M/s
+ Re-set reaction kobs to : 1.1e+10/M/s
+ Re-set reaction kobs to : 2.3e+10/M/s
+ Re-set reaction kobs to : 3e+10/M/s
+ Re-set reaction kobs to : 1.1e+10/M/s
+Visualization verbosity changed to quiet (0)
+
+### ===  Deexcitation model UAtomDeexcitation is activated for 1 region:
+          DefaultRegionForTheWorld  1  1  0
+### ===  Auger cascade flag: 1
+### ===  Ignore cuts flag:   1
+Rudd ionisation model is initialized 
+Energy range: 0 eV - 1e+06 keV for proton
+
+phot:  for gamma SubType=12 BuildTable=0
+      LambdaPrime table from 200 keV to 500 MeV in 25 bins 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+ LivermorePhElectric : Emin=    0 eV  Emax=  500 MeV  SauterGavrila Fluo
+
+compt:  for gamma SubType=13 BuildTable=1
+      Lambda table from 100 eV  to 1 MeV, 7 bins/decade, spline: 1
+      LambdaPrime table from 1 MeV to 500 MeV in 20 bins 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+    LivermoreCompton : Emin=    0 eV  Emax=  500 MeV Fluo
+
+conv:  for gamma SubType=14 BuildTable=1
+      Lambda table from 1.022 MeV to 500 MeV, 33 bins/decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+ LivermoreConversion : Emin=    0 eV  Emax=  500 MeV  ModifiedTsai
+
+Rayl:  for gamma SubType=11 BuildTable=1
+      Lambda table from 100 eV  to 100 keV, 7 bins/decade, spline: 0
+      LambdaPrime table from 100 keV to 500 MeV in 27 bins 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+   LivermoreRayleigh : Emin=    0 eV  Emax=  500 MeV  CullenGenerator
+
+e-_G4DNAElastic:  for e- SubType=51 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAELSEPAElasticModel : Emin=    0 eV  Emax=    1 MeV
+
+e-_G4DNAExcitation:  for e- SubType=52 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNABornExcitationModel : Emin=    0 eV  Emax=    1 MeV
+
+e-_G4DNAIonisation:  for e- SubType=53 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNABornIonisationModel : Emin=    0 eV  Emax=    1 MeV  deltaBorn Fluo
+
+e-_G4DNAElectronSolvation:  for e- SubType=58 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAOneStepThermalizationModel_Meesungnoen2002 : Emin=    0 eV  Emax=   10 eV 
+
+e-_G4DNAVibExcitation:  for e- SubType=54 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNASancheExcitationModel : Emin=    0 eV  Emax=  100 eV 
+
+e-_G4DNAAttachment:  for e- SubType=55 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAMeltonAttachmentModel : Emin=    0 eV  Emax=   13 eV 
+
+msc:  for e+  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc : Emin=    0 eV  Emax=  500 MeV Nbins=49 100 eV  - 500 MeV
+              StepLim=DistanceToBoundary Rfact=0.04 Gfact=2.5 Sfact=0.6 DispFlag:1 Skin=1 Llimit=1
+
+eIoni:  for e+  SubType=2
+      dE/dx and range tables from 100 eV  to 500 MeV in 49 bins
+      Lambda tables from threshold to 500 MeV, 7 bins/decade, spline: 1
+      StepFunction=(0.2, 1 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        MollerBhabha : Emin=    0 eV  Emax=  500 MeV
+
+eBrem:  for e+  SubType=3
+      dE/dx and range tables from 100 eV  to 500 MeV in 49 bins
+      Lambda tables from threshold to 500 MeV, 7 bins/decade, spline: 1
+      LPM flag: 1 for E > 0.5 GeV,  VertexHighEnergyTh(GeV)= 100000
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+             eBremSB : Emin=    0 eV  Emax=  500 MeV  ModifiedTsai
+
+annihil:  for e+, integral:1  SubType=5 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            eplus2gg : Emin=    0 eV  Emax=  500 MeV
+
+proton_G4DNAElastic:  for proton SubType=51 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  DNAIonElasticModel : Emin=    0 eV  Emax=    1 MeV
+
+proton_G4DNAExcitation:  for proton SubType=52 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAMillerGreenExcitationModel : Emin=    0 eV  Emax=  500 keV
+DNABornExcitationModel : Emin=  500 keV Emax=  100 MeV
+
+proton_G4DNAIonisation:  for proton SubType=53 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNARuddIonisationExtendedModel : Emin=    0 eV  Emax=  500 keV  deltaRudd Fluo
+DNABornIonisationModel : Emin=  500 keV Emax=  100 MeV  deltaBorn Fluo
+DNARuddIonisationExtendedModel : Emin=  100 MeV Emax=  500 MeV  deltaRudd Fluo
+
+proton_G4DNAChargeDecrease:  for proton SubType=56 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNADingfelderChargeDecreaseModel : Emin=    0 eV  Emax=  100 MeV
+
+GenericIon_G4DNAIonisation:  for GenericIon SubType=53 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNARuddIonisationExtendedModel : Emin=    0 eV  Emax=  500 MeV  deltaRudd Fluo
+
+alpha_G4DNAElastic:  for alpha SubType=51 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  DNAIonElasticModel : Emin=    0 eV  Emax=    1 MeV
+
+alpha_G4DNAExcitation:  for alpha SubType=52 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAMillerGreenExcitationModel : Emin=    0 eV  Emax=  400 MeV
+
+alpha_G4DNAIonisation:  for alpha SubType=53 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNARuddIonisationExtendedModel : Emin=    0 eV  Emax=  500 MeV  deltaRudd Fluo
+
+alpha_G4DNAChargeDecrease:  for alpha SubType=56 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNADingfelderChargeDecreaseModel : Emin=    0 eV  Emax=  400 MeV
+
+alpha+_G4DNAElastic:  for alpha+ SubType=51 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  DNAIonElasticModel : Emin=    0 eV  Emax=    1 MeV
+
+alpha+_G4DNAExcitation:  for alpha+ SubType=52 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAMillerGreenExcitationModel : Emin=    0 eV  Emax=  400 MeV
+
+alpha+_G4DNAIonisation:  for alpha+ SubType=53 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNARuddIonisationExtendedModel : Emin=    0 eV  Emax=  500 MeV  deltaRudd Fluo
+
+alpha+_G4DNAChargeDecrease:  for alpha+ SubType=56 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNADingfelderChargeDecreaseModel : Emin=    0 eV  Emax=  400 MeV
+
+alpha+_G4DNAChargeIncrease:  for alpha+ SubType=57 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNADingfelderChargeIncreaseModel : Emin=    0 eV  Emax=  400 MeV
+
+helium_G4DNAElastic:  for helium SubType=51 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  DNAIonElasticModel : Emin=    0 eV  Emax=    1 MeV
+
+helium_G4DNAExcitation:  for helium SubType=52 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAMillerGreenExcitationModel : Emin=    0 eV  Emax=  400 MeV
+
+helium_G4DNAIonisation:  for helium SubType=53 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNARuddIonisationExtendedModel : Emin=    0 eV  Emax=  500 MeV  deltaRudd Fluo
+
+helium_G4DNAChargeIncrease:  for helium SubType=57 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNADingfelderChargeIncreaseModel : Emin=    0 eV  Emax=  400 MeV
+
+hydrogen_G4DNAElastic:  for hydrogen SubType=51 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  DNAIonElasticModel : Emin=    0 eV  Emax=    1 MeV
+
+hydrogen_G4DNAExcitation:  for hydrogen SubType=52 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAMillerGreenExcitationModel : Emin=    0 eV  Emax=  500 keV
+
+hydrogen_G4DNAIonisation:  for hydrogen SubType=53 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNARuddIonisationExtendedModel : Emin=    0 eV  Emax=  500 MeV  deltaRudd Fluo
+
+hydrogen_G4DNAChargeIncrease:  for hydrogen SubType=57 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNADingfelderChargeIncreaseModel : Emin=    0 eV  Emax=  100 MeV
+
+=======================================================================
+--> G4MTRunManager::CreateAndStartWorkers() --> Initializing workers...
+=======================================================================
+
+G4WT2 > Begin processing for Run: 0, History: 0
+ -- Killing primary track of event 15
+ -- Aborting event 9
+ -- Killing primary track of event 27
+ -- Aborting event 18
+ -- Killing primary track of event 6
+ -- Aborting event 12
+ -- Killing primary track of event 21
+ -- Killing primary track of event 0
+ -- Aborting event 3
+ -- Aborting event 24
+G4WT6 > Begin processing for Run: 0, History: 10
+ -- Aborting event 10
+ -- Aborting event 13
+ -- Aborting event 14
+ -- Aborting event 19
+ -- Aborting event 25
+ -- Killing primary track of event 26
+ -- Killing primary track of event 4
+G4WT4 > Begin processing for Run: 0, History: 20
+ -- Aborting event 20
+G4WT4 > Begin processing for Run: 0, History: 30
+ -- Killing primary track of event 30
+ -- Aborting event 11
+ -- Aborting event 33
+ -- Killing primary track of event 36
+ -- Killing primary track of event 34
+ -- Killing primary track of event 7
+ -- Aborting event 39
+G4WT7 > Begin processing for Run: 0, History: 40
+ -- Killing primary track of event 40
+ -- Aborting event 22
+ -- Aborting event 23
+ -- Aborting event 42
+ -- Aborting event 43
+ -- Killing primary track of event 44
+ -- Killing primary track of event 28
+ -- Killing primary track of event 37
+ -- Killing primary track of event 5
+ -- Killing primary track of event 35
+ -- Killing primary track of event 31
+ -- Killing primary track of event 16
+ -- Aborting event 1
+ -- Killing primary track of event 2
+ -- Aborting event 8
+ -- Killing primary track of event 45
+ -- Killing primary track of event 29
+ -- Aborting event 48
+ -- Killing primary track of event 49
+ -- Killing primary track of event 38
+ -- Killing primary track of event 51
+ -- Aborting event 17
+ -- Killing primary track of event 54
+ -- Aborting event 57
+ -- Aborting event 58
+ -- Killing primary track of event 59
+ -- Killing primary track of event 41
+ -- Killing primary track of event 32
+G4WT9 > Begin processing for Run: 0, History: 60
+ -- Aborting event 60
+ -- Aborting event 61
+ -- Killing primary track of event 62
+ -- Killing primary track of event 46
+ -- Aborting event 63
+ -- Aborting event 64
+ -- Killing primary track of event 65
+ -- Killing primary track of event 66
+ -- Aborting event 69
+ -- Killing primary track of event 52
+G4WT6 > Begin processing for Run: 0, History: 70
+ -- Killing primary track of event 70
+ -- Killing primary track of event 72
+ -- Killing primary track of event 55
+G4WT5 > Begin processing for Run: 0, History: 50
+ -- Killing primary track of event 50
+ -- Killing primary track of event 75
+ -- Aborting event 78
+ -- Killing primary track of event 79
+ -- Aborting event 47
+ -- Killing primary track of event 81
+ -- Aborting event 71
+ -- Killing primary track of event 84
+ -- Aborting event 53
+ -- Killing primary track of event 87
+ -- Killing primary track of event 73
+G4WT8 > Begin processing for Run: 0, History: 90
+ -- Aborting event 90
+ -- Aborting event 67
+ -- Aborting event 68
+ -- Killing primary track of event 91
+ -- Killing primary track of event 93
+ -- Killing primary track of event 56
+ -- Killing primary track of event 96
+ -- Aborting event 76
+ -- Killing primary track of event 77
+G4WT4 > Begin processing for Run: 0, History: 80
+ -- Killing primary track of event 80
+ -- Killing primary track of event 82
+ -- Killing primary track of event 74
+ -- Killing primary track of event 85
+ -- Aborting event 92
+ -- Aborting event 99
+ -- Killing primary track of event 88
+ -- Aborting event 94
+ -- Killing primary track of event 97
+ -- Killing primary track of event 95
+ -- Aborting event 83
+ -- Killing primary track of event 86
+ -- Killing primary track of event 89
+ -- Killing primary track of event 98
+
+TOPAS run sequence complete.
+Particle source Demo: Total number of histories: 100
+
+Elapsed times:
+Parameter Reading : User=0.000000s Real=0.005741s Sys=0.000000s [Cpu=0.0%]
+    Initialization: User=0.010000s Real=0.026025s Sys=0.000000s [Cpu=38.4%]
+         Execution: User=1275.370000s Real=154.988557s Sys=1.970000s [Cpu=824.2%]
+      Finalization: User=0.000000s Real=0.428447s Sys=0.020000s [Cpu=4.7%]
+             Total: User=1275.38s Real=155.449s Sys=1.99s
+
+Welcome to TOPAS, Tool for Particle Simulation (Version 3.9)
+Loading parameters starting from: RUN.txt
+
+Geant4 Data directory has been specified by the
+TOPAS_G4_DATA_DIR environment variable as /wynton/home/ramos-mendez/tmasilela/software/GEANT4/G4DATA
+
+**************************************************************
+ Geant4 version Name: geant4-10-07-patch-03 [MT]   (19-November-2021)
+  << in Multi-threaded mode >> 
+                       Copyright : Geant4 Collaboration
+                      References : NIM A 506 (2003), 250-303
+                                 : IEEE-TNS 53 (2006), 270-278
+                                 : NIM A 835 (2016), 186-225
+                             WWW : http://geant4.org/
+**************************************************************
+
+TOPAS is in MT mode, setting number of threads to: 10
+
+TOPAS set the tolerances based on the World size to:
+      Surface tolerance = 1e-06 nm, and radial tolerance = 1e-06 nm.
+Checking overlaps for volume Target (G4Box) ... OK! 
+
+Checking for Unused Components.
+These are Components that were never built even though they were at least
+partially defined in some parameters. This is not necessarily an error.
+It may be an intentional choice to have these Component definitions handy for later use.
+To turn off this check, set Ge/CheckForUnusedComponents to False
+  No unused components were found.
+
+Default
+-- Branching ratio: All ionization states probability 1
+-- Branching ratio: A1B1 Dissociative decay probability 0.65
+-- Branching ratio: A1B1 Relaxation probability 0.35
+-- Branching ratio: B1A1 Auto-ionization probability 0.55
+-- Branching ratio: B1A1 Dissociative decay probability 0.15
+-- Branching ratio: B1A1 Relaxation probability 0.3
+-- Branching ratio: Rydberg states and diffuse bands auto-ionization probability 0.5
+-- Branching ratio: Rydberg states and diffuse bands relaxation probability 0.5
+-- Branching ratio: dissociative attachment probability 1
+Solvation model selected: 3
+   1. Ritchie.
+   2. Terrisol.
+   3. Meesungnoen.
+   4. Kreipl.
+   5. Meesugnoen solid.
+-- Diffusion coefficient for molecule: H used the value 8e-09 (m2/s) 
+-- Diffusion coefficient for molecule: H2 used the value 4.8e-09 (m2/s) 
+-- Diffusion coefficient for molecule: H2O2 used the value 2.3e-09 (m2/s) 
+-- Diffusion coefficient for molecule: H3Op used the value 9.46e-09 (m2/s) 
+-- Diffusion coefficient for molecule: OH used the value 2.3e-09 (m2/s) 
+-- Diffusion coefficient for molecule: OHm used the value 5.3e-09 (m2/s) 
+-- Diffusion coefficient for molecule: Product used the value 0 (m2/s) 
+-- Diffusion coefficient for molecule: e_aq used the value 4.9e-09 (m2/s) 
+
+### TsEmDNAPhysics Construct Processes 
+Ts Rudd ionisation model is constructed 
+ Re-set reaction kobs to : 1.56e+10/M/s
+ Re-set reaction kobs to : 9e+07/M/s
+ Re-set reaction kobs to : 1.43e+11/M/s
+ Re-set reaction kobs to : 2e+10/M/s
+ Re-set reaction kobs to : 5.5e+09/M/s
+ Re-set reaction kobs to : 2.5e+10/M/s
+ Re-set reaction kobs to : 1.1e+10/M/s
+ Re-set reaction kobs to : 2.3e+10/M/s
+ Re-set reaction kobs to : 3e+10/M/s
+ Re-set reaction kobs to : 1.1e+10/M/s
+Visualization verbosity changed to quiet (0)
+
+### ===  Deexcitation model UAtomDeexcitation is activated for 1 region:
+          DefaultRegionForTheWorld  1  1  0
+### ===  Auger cascade flag: 1
+### ===  Ignore cuts flag:   1
+Rudd ionisation model is initialized 
+Energy range: 0 eV - 1e+06 keV for proton
+
+phot:  for gamma SubType=12 BuildTable=0
+      LambdaPrime table from 200 keV to 500 MeV in 25 bins 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+ LivermorePhElectric : Emin=    0 eV  Emax=  500 MeV  SauterGavrila Fluo
+
+compt:  for gamma SubType=13 BuildTable=1
+      Lambda table from 100 eV  to 1 MeV, 7 bins/decade, spline: 1
+      LambdaPrime table from 1 MeV to 500 MeV in 20 bins 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+    LivermoreCompton : Emin=    0 eV  Emax=  500 MeV Fluo
+
+conv:  for gamma SubType=14 BuildTable=1
+      Lambda table from 1.022 MeV to 500 MeV, 33 bins/decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+ LivermoreConversion : Emin=    0 eV  Emax=  500 MeV  ModifiedTsai
+
+Rayl:  for gamma SubType=11 BuildTable=1
+      Lambda table from 100 eV  to 100 keV, 7 bins/decade, spline: 0
+      LambdaPrime table from 100 keV to 500 MeV in 27 bins 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+   LivermoreRayleigh : Emin=    0 eV  Emax=  500 MeV  CullenGenerator
+
+e-_G4DNAElastic:  for e- SubType=51 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAELSEPAElasticModel : Emin=    0 eV  Emax=    1 MeV
+
+e-_G4DNAExcitation:  for e- SubType=52 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNABornExcitationModel : Emin=    0 eV  Emax=    1 MeV
+
+e-_G4DNAIonisation:  for e- SubType=53 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNABornIonisationModel : Emin=    0 eV  Emax=    1 MeV  deltaBorn Fluo
+
+e-_G4DNAElectronSolvation:  for e- SubType=58 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAOneStepThermalizationModel_Meesungnoen2002 : Emin=    0 eV  Emax=   10 eV 
+
+e-_G4DNAVibExcitation:  for e- SubType=54 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNASancheExcitationModel : Emin=    0 eV  Emax=  100 eV 
+
+e-_G4DNAAttachment:  for e- SubType=55 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAMeltonAttachmentModel : Emin=    0 eV  Emax=   13 eV 
+
+msc:  for e+  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc : Emin=    0 eV  Emax=  500 MeV Nbins=49 100 eV  - 500 MeV
+              StepLim=DistanceToBoundary Rfact=0.04 Gfact=2.5 Sfact=0.6 DispFlag:1 Skin=1 Llimit=1
+
+eIoni:  for e+  SubType=2
+      dE/dx and range tables from 100 eV  to 500 MeV in 49 bins
+      Lambda tables from threshold to 500 MeV, 7 bins/decade, spline: 1
+      StepFunction=(0.2, 1 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        MollerBhabha : Emin=    0 eV  Emax=  500 MeV
+
+eBrem:  for e+  SubType=3
+      dE/dx and range tables from 100 eV  to 500 MeV in 49 bins
+      Lambda tables from threshold to 500 MeV, 7 bins/decade, spline: 1
+      LPM flag: 1 for E > 0.5 GeV,  VertexHighEnergyTh(GeV)= 100000
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+             eBremSB : Emin=    0 eV  Emax=  500 MeV  ModifiedTsai
+
+annihil:  for e+, integral:1  SubType=5 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            eplus2gg : Emin=    0 eV  Emax=  500 MeV
+
+proton_G4DNAElastic:  for proton SubType=51 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  DNAIonElasticModel : Emin=    0 eV  Emax=    1 MeV
+
+proton_G4DNAExcitation:  for proton SubType=52 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAMillerGreenExcitationModel : Emin=    0 eV  Emax=  500 keV
+DNABornExcitationModel : Emin=  500 keV Emax=  100 MeV
+
+proton_G4DNAIonisation:  for proton SubType=53 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNARuddIonisationExtendedModel : Emin=    0 eV  Emax=  500 keV  deltaRudd Fluo
+DNABornIonisationModel : Emin=  500 keV Emax=  100 MeV  deltaBorn Fluo
+DNARuddIonisationExtendedModel : Emin=  100 MeV Emax=  500 MeV  deltaRudd Fluo
+
+proton_G4DNAChargeDecrease:  for proton SubType=56 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNADingfelderChargeDecreaseModel : Emin=    0 eV  Emax=  100 MeV
+
+GenericIon_G4DNAIonisation:  for GenericIon SubType=53 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNARuddIonisationExtendedModel : Emin=    0 eV  Emax=  500 MeV  deltaRudd Fluo
+
+alpha_G4DNAElastic:  for alpha SubType=51 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  DNAIonElasticModel : Emin=    0 eV  Emax=    1 MeV
+
+alpha_G4DNAExcitation:  for alpha SubType=52 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAMillerGreenExcitationModel : Emin=    0 eV  Emax=  400 MeV
+
+alpha_G4DNAIonisation:  for alpha SubType=53 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNARuddIonisationExtendedModel : Emin=    0 eV  Emax=  500 MeV  deltaRudd Fluo
+
+alpha_G4DNAChargeDecrease:  for alpha SubType=56 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNADingfelderChargeDecreaseModel : Emin=    0 eV  Emax=  400 MeV
+
+alpha+_G4DNAElastic:  for alpha+ SubType=51 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  DNAIonElasticModel : Emin=    0 eV  Emax=    1 MeV
+
+alpha+_G4DNAExcitation:  for alpha+ SubType=52 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAMillerGreenExcitationModel : Emin=    0 eV  Emax=  400 MeV
+
+alpha+_G4DNAIonisation:  for alpha+ SubType=53 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNARuddIonisationExtendedModel : Emin=    0 eV  Emax=  500 MeV  deltaRudd Fluo
+
+alpha+_G4DNAChargeDecrease:  for alpha+ SubType=56 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNADingfelderChargeDecreaseModel : Emin=    0 eV  Emax=  400 MeV
+
+alpha+_G4DNAChargeIncrease:  for alpha+ SubType=57 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNADingfelderChargeIncreaseModel : Emin=    0 eV  Emax=  400 MeV
+
+helium_G4DNAElastic:  for helium SubType=51 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  DNAIonElasticModel : Emin=    0 eV  Emax=    1 MeV
+
+helium_G4DNAExcitation:  for helium SubType=52 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAMillerGreenExcitationModel : Emin=    0 eV  Emax=  400 MeV
+
+helium_G4DNAIonisation:  for helium SubType=53 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNARuddIonisationExtendedModel : Emin=    0 eV  Emax=  500 MeV  deltaRudd Fluo
+
+helium_G4DNAChargeIncrease:  for helium SubType=57 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNADingfelderChargeIncreaseModel : Emin=    0 eV  Emax=  400 MeV
+
+hydrogen_G4DNAElastic:  for hydrogen SubType=51 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  DNAIonElasticModel : Emin=    0 eV  Emax=    1 MeV
+
+hydrogen_G4DNAExcitation:  for hydrogen SubType=52 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAMillerGreenExcitationModel : Emin=    0 eV  Emax=  500 keV
+
+hydrogen_G4DNAIonisation:  for hydrogen SubType=53 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNARuddIonisationExtendedModel : Emin=    0 eV  Emax=  500 MeV  deltaRudd Fluo
+
+hydrogen_G4DNAChargeIncrease:  for hydrogen SubType=57 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNADingfelderChargeIncreaseModel : Emin=    0 eV  Emax=  100 MeV
+
+=======================================================================
+--> G4MTRunManager::CreateAndStartWorkers() --> Initializing workers...
+=======================================================================
+
+G4WT7 > Begin processing for Run: 0, History: 0
+ -- Killing primary track of event 6
+ -- Killing primary track of event 12
+ -- Aborting event 15
+ -- Aborting event 24
+ -- Aborting event 27
+ -- Killing primary track of event 18
+ -- Aborting event 0
+ -- Killing primary track of event 9
+ -- Aborting event 21
+ Track killed with track: 100108 nm with energy lost 9.85145 keV 
+ -- Aborting event 16
+ -- Aborting event 17
+ -- Killing primary track of event 28
+ -- Aborting event 22
+G4WT1 > Begin processing for Run: 0, History: 30
+ -- Killing primary track of event 30
+ -- Aborting event 25
+ -- Killing primary track of event 23
+ -- Killing primary track of event 1
+ -- Aborting event 26
+ -- Aborting event 33
+ -- Aborting event 34
+ -- Aborting event 35
+ -- Killing primary track of event 36
+ -- Aborting event 31
+ -- Aborting event 32
+ -- Aborting event 39
+G4WT1 > Begin processing for Run: 0, History: 40
+ -- Aborting event 40
+ -- Killing primary track of event 37
+ -- Killing primary track of event 41
+G4WT5 > Begin processing for Run: 0, History: 10
+ -- Aborting event 10
+ -- Killing primary track of event 11
+ -- Killing primary track of event 29
+ -- Aborting event 42
+ -- Killing primary track of event 43
+ -- Aborting event 4
+ -- Killing primary track of event 5
+ -- Killing primary track of event 19
+ -- Killing primary track of event 13
+ -- Aborting event 7
+ -- Killing primary track of event 8
+ -- Aborting event 2
+ -- Aborting event 45
+ -- Killing primary track of event 46
+ -- Aborting event 48
+ -- Killing primary track of event 38
+ -- Killing primary track of event 49
+ -- Killing primary track of event 51
+ -- Aborting event 14
+ -- Aborting event 54
+ -- Killing primary track of event 55
+ -- Killing primary track of event 47
+ -- Aborting event 57
+ -- Killing primary track of event 58
+G4WT9 > Begin processing for Run: 0, History: 60
+ -- Aborting event 60
+ -- Killing primary track of event 61
+ -- Killing primary track of event 44
+ -- Killing primary track of event 63
+G4WT0 > Begin processing for Run: 0, History: 20
+ -- Aborting event 20
+ -- Aborting event 66
+ -- Aborting event 67
+ -- Killing primary track of event 68
+ -- Killing primary track of event 52
+ -- Killing primary track of event 69
+G4WT1 > Begin processing for Run: 0, History: 50
+ -- Aborting event 50
+ -- Aborting event 72
+ -- Killing primary track of event 73
+ -- Killing primary track of event 59
+ -- Killing primary track of event 56
+ -- Killing primary track of event 75
+ -- Aborting event 62
+ -- Aborting event 78
+ -- Killing primary track of event 79
+ -- Killing primary track of event 81
+ -- Killing primary track of event 64
+ -- Killing primary track of event 84
+ -- Killing primary track of event 53
+ -- Aborting event 74
+ -- Aborting event 87
+ -- Aborting event 88
+ -- Aborting event 89
+G4WT1 > Begin processing for Run: 0, History: 90
+ -- Killing primary track of event 90
+ -- Aborting event 93
+ -- Aborting event 94
+ -- Aborting event 95
+ -- Killing primary track of event 96
+G4WT7 > Begin processing for Run: 0, History: 70
+ -- Aborting event 70
+ -- Killing primary track of event 71
+ -- Aborting event 65
+ -- Killing primary track of event 99
+G4WT9 > Begin processing for Run: 0, History: 80
+ -- Killing primary track of event 80
+ -- Aborting event 76
+ -- Aborting event 77
+ -- Killing primary track of event 82
+ -- Aborting event 85
+ -- Aborting event 86
+ -- Killing primary track of event 91
+ -- Aborting event 97
+ -- Killing primary track of event 98
+ -- Aborting event 83
+ -- Killing primary track of event 92
+
+TOPAS run sequence complete.
+Particle source Demo: Total number of histories: 100
+
+Elapsed times:
+Parameter Reading : User=0.010000s Real=0.005456s Sys=0.000000s [Cpu=183.3%]
+    Initialization: User=0.010000s Real=0.023875s Sys=0.000000s [Cpu=41.9%]
+         Execution: User=2478.820000s Real=341.911396s Sys=2.090000s [Cpu=725.6%]
+      Finalization: User=0.010000s Real=0.386272s Sys=0.020000s [Cpu=7.8%]
+             Total: User=2478.85s Real=342.327s Sys=2.11s
+
+Welcome to TOPAS, Tool for Particle Simulation (Version 3.9)
+Loading parameters starting from: RUN.txt
+
+Geant4 Data directory has been specified by the
+TOPAS_G4_DATA_DIR environment variable as /wynton/home/ramos-mendez/tmasilela/software/GEANT4/G4DATA
+
+**************************************************************
+ Geant4 version Name: geant4-10-07-patch-03 [MT]   (19-November-2021)
+  << in Multi-threaded mode >> 
+                       Copyright : Geant4 Collaboration
+                      References : NIM A 506 (2003), 250-303
+                                 : IEEE-TNS 53 (2006), 270-278
+                                 : NIM A 835 (2016), 186-225
+                             WWW : http://geant4.org/
+**************************************************************
+
+TOPAS is in MT mode, setting number of threads to: 10
+
+TOPAS set the tolerances based on the World size to:
+      Surface tolerance = 2.5e-08 nm, and radial tolerance = 2.5e-08 nm.
+Checking overlaps for volume Target (G4Box) ... OK! 
+
+Checking for Unused Components.
+These are Components that were never built even though they were at least
+partially defined in some parameters. This is not necessarily an error.
+It may be an intentional choice to have these Component definitions handy for later use.
+To turn off this check, set Ge/CheckForUnusedComponents to False
+  No unused components were found.
+
+Default
+-- Branching ratio: All ionization states probability 1
+-- Branching ratio: A1B1 Dissociative decay probability 0.65
+-- Branching ratio: A1B1 Relaxation probability 0.35
+-- Branching ratio: B1A1 Auto-ionization probability 0.55
+-- Branching ratio: B1A1 Dissociative decay probability 0.15
+-- Branching ratio: B1A1 Relaxation probability 0.3
+-- Branching ratio: Rydberg states and diffuse bands auto-ionization probability 0.5
+-- Branching ratio: Rydberg states and diffuse bands relaxation probability 0.5
+-- Branching ratio: dissociative attachment probability 1
+Solvation model selected: 3
+   1. Ritchie.
+   2. Terrisol.
+   3. Meesungnoen.
+   4. Kreipl.
+   5. Meesugnoen solid.
+-- Diffusion coefficient for molecule: H used the value 8e-09 (m2/s) 
+-- Diffusion coefficient for molecule: H2 used the value 4.8e-09 (m2/s) 
+-- Diffusion coefficient for molecule: H2O2 used the value 2.3e-09 (m2/s) 
+-- Diffusion coefficient for molecule: H3Op used the value 9.46e-09 (m2/s) 
+-- Diffusion coefficient for molecule: OH used the value 2.3e-09 (m2/s) 
+-- Diffusion coefficient for molecule: OHm used the value 5.3e-09 (m2/s) 
+-- Diffusion coefficient for molecule: Product used the value 0 (m2/s) 
+-- Diffusion coefficient for molecule: e_aq used the value 4.9e-09 (m2/s) 
+
+### TsEmDNAPhysics Construct Processes 
+Ts Rudd ionisation model is constructed 
+ Re-set reaction kobs to : 1.56e+10/M/s
+ Re-set reaction kobs to : 9e+07/M/s
+ Re-set reaction kobs to : 1.43e+11/M/s
+ Re-set reaction kobs to : 2e+10/M/s
+ Re-set reaction kobs to : 5.5e+09/M/s
+ Re-set reaction kobs to : 2.5e+10/M/s
+ Re-set reaction kobs to : 1.1e+10/M/s
+ Re-set reaction kobs to : 2.3e+10/M/s
+ Re-set reaction kobs to : 3e+10/M/s
+ Re-set reaction kobs to : 1.1e+10/M/s
+Visualization verbosity changed to quiet (0)
+
+### ===  Deexcitation model UAtomDeexcitation is activated for 1 region:
+          DefaultRegionForTheWorld  1  1  0
+### ===  Auger cascade flag: 1
+### ===  Ignore cuts flag:   1
+Rudd ionisation model is initialized 
+Energy range: 0 eV - 1e+06 keV for proton
+
+phot:  for gamma SubType=12 BuildTable=0
+      LambdaPrime table from 200 keV to 500 MeV in 25 bins 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+ LivermorePhElectric : Emin=    0 eV  Emax=  500 MeV  SauterGavrila Fluo
+
+compt:  for gamma SubType=13 BuildTable=1
+      Lambda table from 100 eV  to 1 MeV, 7 bins/decade, spline: 1
+      LambdaPrime table from 1 MeV to 500 MeV in 20 bins 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+    LivermoreCompton : Emin=    0 eV  Emax=  500 MeV Fluo
+
+conv:  for gamma SubType=14 BuildTable=1
+      Lambda table from 1.022 MeV to 500 MeV, 33 bins/decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+ LivermoreConversion : Emin=    0 eV  Emax=  500 MeV  ModifiedTsai
+
+Rayl:  for gamma SubType=11 BuildTable=1
+      Lambda table from 100 eV  to 100 keV, 7 bins/decade, spline: 0
+      LambdaPrime table from 100 keV to 500 MeV in 27 bins 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+   LivermoreRayleigh : Emin=    0 eV  Emax=  500 MeV  CullenGenerator
+
+e-_G4DNAElastic:  for e- SubType=51 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAELSEPAElasticModel : Emin=    0 eV  Emax=    1 MeV
+
+e-_G4DNAExcitation:  for e- SubType=52 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNABornExcitationModel : Emin=    0 eV  Emax=    1 MeV
+
+e-_G4DNAIonisation:  for e- SubType=53 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNABornIonisationModel : Emin=    0 eV  Emax=    1 MeV  deltaBorn Fluo
+
+e-_G4DNAElectronSolvation:  for e- SubType=58 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAOneStepThermalizationModel_Meesungnoen2002 : Emin=    0 eV  Emax=   10 eV 
+
+e-_G4DNAVibExcitation:  for e- SubType=54 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNASancheExcitationModel : Emin=    0 eV  Emax=  100 eV 
+
+e-_G4DNAAttachment:  for e- SubType=55 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAMeltonAttachmentModel : Emin=    0 eV  Emax=   13 eV 
+
+msc:  for e+  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc : Emin=    0 eV  Emax=  500 MeV Nbins=49 100 eV  - 500 MeV
+              StepLim=DistanceToBoundary Rfact=0.04 Gfact=2.5 Sfact=0.6 DispFlag:1 Skin=1 Llimit=1
+
+eIoni:  for e+  SubType=2
+      dE/dx and range tables from 100 eV  to 500 MeV in 49 bins
+      Lambda tables from threshold to 500 MeV, 7 bins/decade, spline: 1
+      StepFunction=(0.2, 1 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        MollerBhabha : Emin=    0 eV  Emax=  500 MeV
+
+eBrem:  for e+  SubType=3
+      dE/dx and range tables from 100 eV  to 500 MeV in 49 bins
+      Lambda tables from threshold to 500 MeV, 7 bins/decade, spline: 1
+      LPM flag: 1 for E > 0.5 GeV,  VertexHighEnergyTh(GeV)= 100000
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+             eBremSB : Emin=    0 eV  Emax=  500 MeV  ModifiedTsai
+
+annihil:  for e+, integral:1  SubType=5 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            eplus2gg : Emin=    0 eV  Emax=  500 MeV
+
+proton_G4DNAElastic:  for proton SubType=51 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  DNAIonElasticModel : Emin=    0 eV  Emax=    1 MeV
+
+proton_G4DNAExcitation:  for proton SubType=52 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAMillerGreenExcitationModel : Emin=    0 eV  Emax=  500 keV
+DNABornExcitationModel : Emin=  500 keV Emax=  100 MeV
+
+proton_G4DNAIonisation:  for proton SubType=53 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNARuddIonisationExtendedModel : Emin=    0 eV  Emax=  500 keV  deltaRudd Fluo
+DNABornIonisationModel : Emin=  500 keV Emax=  100 MeV  deltaBorn Fluo
+DNARuddIonisationExtendedModel : Emin=  100 MeV Emax=  500 MeV  deltaRudd Fluo
+
+proton_G4DNAChargeDecrease:  for proton SubType=56 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNADingfelderChargeDecreaseModel : Emin=    0 eV  Emax=  100 MeV
+
+GenericIon_G4DNAIonisation:  for GenericIon SubType=53 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNARuddIonisationExtendedModel : Emin=    0 eV  Emax=  500 MeV  deltaRudd Fluo
+
+alpha_G4DNAElastic:  for alpha SubType=51 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  DNAIonElasticModel : Emin=    0 eV  Emax=    1 MeV
+
+alpha_G4DNAExcitation:  for alpha SubType=52 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAMillerGreenExcitationModel : Emin=    0 eV  Emax=  400 MeV
+
+alpha_G4DNAIonisation:  for alpha SubType=53 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNARuddIonisationExtendedModel : Emin=    0 eV  Emax=  500 MeV  deltaRudd Fluo
+
+alpha_G4DNAChargeDecrease:  for alpha SubType=56 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNADingfelderChargeDecreaseModel : Emin=    0 eV  Emax=  400 MeV
+
+alpha+_G4DNAElastic:  for alpha+ SubType=51 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  DNAIonElasticModel : Emin=    0 eV  Emax=    1 MeV
+
+alpha+_G4DNAExcitation:  for alpha+ SubType=52 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAMillerGreenExcitationModel : Emin=    0 eV  Emax=  400 MeV
+
+alpha+_G4DNAIonisation:  for alpha+ SubType=53 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNARuddIonisationExtendedModel : Emin=    0 eV  Emax=  500 MeV  deltaRudd Fluo
+
+alpha+_G4DNAChargeDecrease:  for alpha+ SubType=56 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNADingfelderChargeDecreaseModel : Emin=    0 eV  Emax=  400 MeV
+
+alpha+_G4DNAChargeIncrease:  for alpha+ SubType=57 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNADingfelderChargeIncreaseModel : Emin=    0 eV  Emax=  400 MeV
+
+helium_G4DNAElastic:  for helium SubType=51 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  DNAIonElasticModel : Emin=    0 eV  Emax=    1 MeV
+
+helium_G4DNAExcitation:  for helium SubType=52 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAMillerGreenExcitationModel : Emin=    0 eV  Emax=  400 MeV
+
+helium_G4DNAIonisation:  for helium SubType=53 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNARuddIonisationExtendedModel : Emin=    0 eV  Emax=  500 MeV  deltaRudd Fluo
+
+helium_G4DNAChargeIncrease:  for helium SubType=57 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNADingfelderChargeIncreaseModel : Emin=    0 eV  Emax=  400 MeV
+
+hydrogen_G4DNAElastic:  for hydrogen SubType=51 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  DNAIonElasticModel : Emin=    0 eV  Emax=    1 MeV
+
+hydrogen_G4DNAExcitation:  for hydrogen SubType=52 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAMillerGreenExcitationModel : Emin=    0 eV  Emax=  500 keV
+
+hydrogen_G4DNAIonisation:  for hydrogen SubType=53 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNARuddIonisationExtendedModel : Emin=    0 eV  Emax=  500 MeV  deltaRudd Fluo
+
+hydrogen_G4DNAChargeIncrease:  for hydrogen SubType=57 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNADingfelderChargeIncreaseModel : Emin=    0 eV  Emax=  100 MeV
+
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : Run10035
+      issued by : G4MTRunManager::InitializeEventLoop()
+Event modulo is reduced to 1 to distribute events to all threads.
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+
+=======================================================================
+--> G4MTRunManager::CreateAndStartWorkers() --> Initializing workers...
+=======================================================================
+
+G4WT6 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT0 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT0 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT2 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT0 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT0 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT6 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT0 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT2 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT0 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT2 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT2 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT1 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT0 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT6 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT0 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT0 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT1 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT1 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT0 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT0 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT0 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT0 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT2 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT0 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT2 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT8 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT8 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT6 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT6 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT2 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT2 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT0 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT8 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT1 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT6 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT1 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT8 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT1 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT1 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT1 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT6 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT6 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT6 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT1 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT1 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT1 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT2 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT1 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+
+TOPAS run sequence complete.
+Particle source Demo: Total number of histories: 5
+
+Elapsed times:
+Parameter Reading : User=0.000000s Real=0.005208s Sys=0.000000s [Cpu=0.0%]
+    Initialization: User=0.010000s Real=0.024216s Sys=0.000000s [Cpu=41.3%]
+         Execution: User=5373.480000s Real=1167.353124s Sys=3.420000s [Cpu=460.6%]
+      Finalization: User=0.010000s Real=4.658918s Sys=0.030000s [Cpu=0.9%]
+             Total: User=5373.5s Real=1172.04s Sys=3.45s
+
+Welcome to TOPAS, Tool for Particle Simulation (Version 3.9)
+Loading parameters starting from: RUN.txt
+
+Geant4 Data directory has been specified by the
+TOPAS_G4_DATA_DIR environment variable as /wynton/home/ramos-mendez/tmasilela/software/GEANT4/G4DATA
+
+**************************************************************
+ Geant4 version Name: geant4-10-07-patch-03 [MT]   (19-November-2021)
+  << in Multi-threaded mode >> 
+                       Copyright : Geant4 Collaboration
+                      References : NIM A 506 (2003), 250-303
+                                 : IEEE-TNS 53 (2006), 270-278
+                                 : NIM A 835 (2016), 186-225
+                             WWW : http://geant4.org/
+**************************************************************
+
+TOPAS is in MT mode, setting number of threads to: 10
+
+TOPAS set the tolerances based on the World size to:
+      Surface tolerance = 5e-08 nm, and radial tolerance = 5e-08 nm.
+Checking overlaps for volume Target (G4Box) ... OK! 
+
+Checking for Unused Components.
+These are Components that were never built even though they were at least
+partially defined in some parameters. This is not necessarily an error.
+It may be an intentional choice to have these Component definitions handy for later use.
+To turn off this check, set Ge/CheckForUnusedComponents to False
+  No unused components were found.
+
+Default
+-- Branching ratio: All ionization states probability 1
+-- Branching ratio: A1B1 Dissociative decay probability 0.65
+-- Branching ratio: A1B1 Relaxation probability 0.35
+-- Branching ratio: B1A1 Auto-ionization probability 0.55
+-- Branching ratio: B1A1 Dissociative decay probability 0.15
+-- Branching ratio: B1A1 Relaxation probability 0.3
+-- Branching ratio: Rydberg states and diffuse bands auto-ionization probability 0.5
+-- Branching ratio: Rydberg states and diffuse bands relaxation probability 0.5
+-- Branching ratio: dissociative attachment probability 1
+Solvation model selected: 3
+   1. Ritchie.
+   2. Terrisol.
+   3. Meesungnoen.
+   4. Kreipl.
+   5. Meesugnoen solid.
+-- Diffusion coefficient for molecule: H used the value 8e-09 (m2/s) 
+-- Diffusion coefficient for molecule: H2 used the value 4.8e-09 (m2/s) 
+-- Diffusion coefficient for molecule: H2O2 used the value 2.3e-09 (m2/s) 
+-- Diffusion coefficient for molecule: H3Op used the value 9.46e-09 (m2/s) 
+-- Diffusion coefficient for molecule: OH used the value 2.3e-09 (m2/s) 
+-- Diffusion coefficient for molecule: OHm used the value 5.3e-09 (m2/s) 
+-- Diffusion coefficient for molecule: Product used the value 0 (m2/s) 
+-- Diffusion coefficient for molecule: e_aq used the value 4.9e-09 (m2/s) 
+
+### TsEmDNAPhysics Construct Processes 
+Ts Rudd ionisation model is constructed 
+ Re-set reaction kobs to : 1.56e+10/M/s
+ Re-set reaction kobs to : 9e+07/M/s
+ Re-set reaction kobs to : 1.43e+11/M/s
+ Re-set reaction kobs to : 2e+10/M/s
+ Re-set reaction kobs to : 5.5e+09/M/s
+ Re-set reaction kobs to : 2.5e+10/M/s
+ Re-set reaction kobs to : 1.1e+10/M/s
+ Re-set reaction kobs to : 2.3e+10/M/s
+ Re-set reaction kobs to : 3e+10/M/s
+ Re-set reaction kobs to : 1.1e+10/M/s
+Visualization verbosity changed to quiet (0)
+
+### ===  Deexcitation model UAtomDeexcitation is activated for 1 region:
+          DefaultRegionForTheWorld  1  1  0
+### ===  Auger cascade flag: 1
+### ===  Ignore cuts flag:   1
+Rudd ionisation model is initialized 
+Energy range: 0 eV - 1e+06 keV for proton
+
+phot:  for gamma SubType=12 BuildTable=0
+      LambdaPrime table from 200 keV to 500 MeV in 25 bins 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+ LivermorePhElectric : Emin=    0 eV  Emax=  500 MeV  SauterGavrila Fluo
+
+compt:  for gamma SubType=13 BuildTable=1
+      Lambda table from 100 eV  to 1 MeV, 7 bins/decade, spline: 1
+      LambdaPrime table from 1 MeV to 500 MeV in 20 bins 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+    LivermoreCompton : Emin=    0 eV  Emax=  500 MeV Fluo
+
+conv:  for gamma SubType=14 BuildTable=1
+      Lambda table from 1.022 MeV to 500 MeV, 33 bins/decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+ LivermoreConversion : Emin=    0 eV  Emax=  500 MeV  ModifiedTsai
+
+Rayl:  for gamma SubType=11 BuildTable=1
+      Lambda table from 100 eV  to 100 keV, 7 bins/decade, spline: 0
+      LambdaPrime table from 100 keV to 500 MeV in 27 bins 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+   LivermoreRayleigh : Emin=    0 eV  Emax=  500 MeV  CullenGenerator
+
+e-_G4DNAElastic:  for e- SubType=51 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAELSEPAElasticModel : Emin=    0 eV  Emax=    1 MeV
+
+e-_G4DNAExcitation:  for e- SubType=52 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNABornExcitationModel : Emin=    0 eV  Emax=    1 MeV
+
+e-_G4DNAIonisation:  for e- SubType=53 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNABornIonisationModel : Emin=    0 eV  Emax=    1 MeV  deltaBorn Fluo
+
+e-_G4DNAElectronSolvation:  for e- SubType=58 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAOneStepThermalizationModel_Meesungnoen2002 : Emin=    0 eV  Emax=   10 eV 
+
+e-_G4DNAVibExcitation:  for e- SubType=54 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNASancheExcitationModel : Emin=    0 eV  Emax=  100 eV 
+
+e-_G4DNAAttachment:  for e- SubType=55 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAMeltonAttachmentModel : Emin=    0 eV  Emax=   13 eV 
+
+msc:  for e+  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc : Emin=    0 eV  Emax=  500 MeV Nbins=49 100 eV  - 500 MeV
+              StepLim=DistanceToBoundary Rfact=0.04 Gfact=2.5 Sfact=0.6 DispFlag:1 Skin=1 Llimit=1
+
+eIoni:  for e+  SubType=2
+      dE/dx and range tables from 100 eV  to 500 MeV in 49 bins
+      Lambda tables from threshold to 500 MeV, 7 bins/decade, spline: 1
+      StepFunction=(0.2, 1 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        MollerBhabha : Emin=    0 eV  Emax=  500 MeV
+
+eBrem:  for e+  SubType=3
+      dE/dx and range tables from 100 eV  to 500 MeV in 49 bins
+      Lambda tables from threshold to 500 MeV, 7 bins/decade, spline: 1
+      LPM flag: 1 for E > 0.5 GeV,  VertexHighEnergyTh(GeV)= 100000
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+             eBremSB : Emin=    0 eV  Emax=  500 MeV  ModifiedTsai
+
+annihil:  for e+, integral:1  SubType=5 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            eplus2gg : Emin=    0 eV  Emax=  500 MeV
+
+proton_G4DNAElastic:  for proton SubType=51 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  DNAIonElasticModel : Emin=    0 eV  Emax=    1 MeV
+
+proton_G4DNAExcitation:  for proton SubType=52 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAMillerGreenExcitationModel : Emin=    0 eV  Emax=  500 keV
+DNABornExcitationModel : Emin=  500 keV Emax=  100 MeV
+
+proton_G4DNAIonisation:  for proton SubType=53 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNARuddIonisationExtendedModel : Emin=    0 eV  Emax=  500 keV  deltaRudd Fluo
+DNABornIonisationModel : Emin=  500 keV Emax=  100 MeV  deltaBorn Fluo
+DNARuddIonisationExtendedModel : Emin=  100 MeV Emax=  500 MeV  deltaRudd Fluo
+
+proton_G4DNAChargeDecrease:  for proton SubType=56 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNADingfelderChargeDecreaseModel : Emin=    0 eV  Emax=  100 MeV
+
+GenericIon_G4DNAIonisation:  for GenericIon SubType=53 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNARuddIonisationExtendedModel : Emin=    0 eV  Emax=  500 MeV  deltaRudd Fluo
+
+alpha_G4DNAElastic:  for alpha SubType=51 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  DNAIonElasticModel : Emin=    0 eV  Emax=    1 MeV
+
+alpha_G4DNAExcitation:  for alpha SubType=52 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAMillerGreenExcitationModel : Emin=    0 eV  Emax=  400 MeV
+
+alpha_G4DNAIonisation:  for alpha SubType=53 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNARuddIonisationExtendedModel : Emin=    0 eV  Emax=  500 MeV  deltaRudd Fluo
+
+alpha_G4DNAChargeDecrease:  for alpha SubType=56 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNADingfelderChargeDecreaseModel : Emin=    0 eV  Emax=  400 MeV
+
+alpha+_G4DNAElastic:  for alpha+ SubType=51 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  DNAIonElasticModel : Emin=    0 eV  Emax=    1 MeV
+
+alpha+_G4DNAExcitation:  for alpha+ SubType=52 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAMillerGreenExcitationModel : Emin=    0 eV  Emax=  400 MeV
+
+alpha+_G4DNAIonisation:  for alpha+ SubType=53 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNARuddIonisationExtendedModel : Emin=    0 eV  Emax=  500 MeV  deltaRudd Fluo
+
+alpha+_G4DNAChargeDecrease:  for alpha+ SubType=56 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNADingfelderChargeDecreaseModel : Emin=    0 eV  Emax=  400 MeV
+
+alpha+_G4DNAChargeIncrease:  for alpha+ SubType=57 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNADingfelderChargeIncreaseModel : Emin=    0 eV  Emax=  400 MeV
+
+helium_G4DNAElastic:  for helium SubType=51 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  DNAIonElasticModel : Emin=    0 eV  Emax=    1 MeV
+
+helium_G4DNAExcitation:  for helium SubType=52 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAMillerGreenExcitationModel : Emin=    0 eV  Emax=  400 MeV
+
+helium_G4DNAIonisation:  for helium SubType=53 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNARuddIonisationExtendedModel : Emin=    0 eV  Emax=  500 MeV  deltaRudd Fluo
+
+helium_G4DNAChargeIncrease:  for helium SubType=57 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNADingfelderChargeIncreaseModel : Emin=    0 eV  Emax=  400 MeV
+
+hydrogen_G4DNAElastic:  for hydrogen SubType=51 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  DNAIonElasticModel : Emin=    0 eV  Emax=    1 MeV
+
+hydrogen_G4DNAExcitation:  for hydrogen SubType=52 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAMillerGreenExcitationModel : Emin=    0 eV  Emax=  500 keV
+
+hydrogen_G4DNAIonisation:  for hydrogen SubType=53 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNARuddIonisationExtendedModel : Emin=    0 eV  Emax=  500 MeV  deltaRudd Fluo
+
+hydrogen_G4DNAChargeIncrease:  for hydrogen SubType=57 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNADingfelderChargeIncreaseModel : Emin=    0 eV  Emax=  100 MeV
+
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : Run10035
+      issued by : G4MTRunManager::InitializeEventLoop()
+Event modulo is reduced to 1 to distribute events to all threads.
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+
+=======================================================================
+--> G4MTRunManager::CreateAndStartWorkers() --> Initializing workers...
+=======================================================================
+
+ Track killed with track: 5000.12 nm with energy lost 21.8336 keV 
+ Track killed with track: 5000.01 nm with energy lost 24.084 keV 
+ Track killed with track: 5000.07 nm with energy lost 30.6307 keV 
+ Track killed with track: 5000.03 nm with energy lost 14.8522 keV 
+ Track killed with track: 5000.1 nm with energy lost 18.8088 keV 
+G4WT9 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+
+TOPAS run sequence complete.
+Particle source Demo: Total number of histories: 5
+
+Elapsed times:
+Parameter Reading : User=0.000000s Real=0.005934s Sys=0.000000s [Cpu=0.0%]
+    Initialization: User=0.010000s Real=0.026446s Sys=0.010000s [Cpu=75.6%]
+         Execution: User=1251.580000s Real=334.206129s Sys=2.190000s [Cpu=375.1%]
+      Finalization: User=0.000000s Real=2.009529s Sys=0.030000s [Cpu=1.5%]
+             Total: User=1251.59s Real=336.248s Sys=2.23s
+
+Welcome to TOPAS, Tool for Particle Simulation (Version 3.9)
+Loading parameters starting from: RUN.txt
+
+Geant4 Data directory has been specified by the
+TOPAS_G4_DATA_DIR environment variable as /wynton/home/ramos-mendez/tmasilela/software/GEANT4/G4DATA
+
+**************************************************************
+ Geant4 version Name: geant4-10-07-patch-03 [MT]   (19-November-2021)
+  << in Multi-threaded mode >> 
+                       Copyright : Geant4 Collaboration
+                      References : NIM A 506 (2003), 250-303
+                                 : IEEE-TNS 53 (2006), 270-278
+                                 : NIM A 835 (2016), 186-225
+                             WWW : http://geant4.org/
+**************************************************************
+
+TOPAS is in MT mode, setting number of threads to: 10
+
+TOPAS set the tolerances based on the World size to:
+      Surface tolerance = 2e-07 nm, and radial tolerance = 2e-07 nm.
+Checking overlaps for volume Target (G4Box) ... OK! 
+
+Checking for Unused Components.
+These are Components that were never built even though they were at least
+partially defined in some parameters. This is not necessarily an error.
+It may be an intentional choice to have these Component definitions handy for later use.
+To turn off this check, set Ge/CheckForUnusedComponents to False
+  No unused components were found.
+
+Default
+-- Branching ratio: All ionization states probability 1
+-- Branching ratio: A1B1 Dissociative decay probability 0.65
+-- Branching ratio: A1B1 Relaxation probability 0.35
+-- Branching ratio: B1A1 Auto-ionization probability 0.55
+-- Branching ratio: B1A1 Dissociative decay probability 0.15
+-- Branching ratio: B1A1 Relaxation probability 0.3
+-- Branching ratio: Rydberg states and diffuse bands auto-ionization probability 0.5
+-- Branching ratio: Rydberg states and diffuse bands relaxation probability 0.5
+-- Branching ratio: dissociative attachment probability 1
+Solvation model selected: 3
+   1. Ritchie.
+   2. Terrisol.
+   3. Meesungnoen.
+   4. Kreipl.
+   5. Meesugnoen solid.
+-- Diffusion coefficient for molecule: H used the value 8e-09 (m2/s) 
+-- Diffusion coefficient for molecule: H2 used the value 4.8e-09 (m2/s) 
+-- Diffusion coefficient for molecule: H2O2 used the value 2.3e-09 (m2/s) 
+-- Diffusion coefficient for molecule: H3Op used the value 9.46e-09 (m2/s) 
+-- Diffusion coefficient for molecule: OH used the value 2.3e-09 (m2/s) 
+-- Diffusion coefficient for molecule: OHm used the value 5.3e-09 (m2/s) 
+-- Diffusion coefficient for molecule: Product used the value 0 (m2/s) 
+-- Diffusion coefficient for molecule: e_aq used the value 4.9e-09 (m2/s) 
+
+### TsEmDNAPhysics Construct Processes 
+Ts Rudd ionisation model is constructed 
+ Re-set reaction kobs to : 1.56e+10/M/s
+ Re-set reaction kobs to : 9e+07/M/s
+ Re-set reaction kobs to : 1.43e+11/M/s
+ Re-set reaction kobs to : 2e+10/M/s
+ Re-set reaction kobs to : 5.5e+09/M/s
+ Re-set reaction kobs to : 2.5e+10/M/s
+ Re-set reaction kobs to : 1.1e+10/M/s
+ Re-set reaction kobs to : 2.3e+10/M/s
+ Re-set reaction kobs to : 3e+10/M/s
+ Re-set reaction kobs to : 1.1e+10/M/s
+Visualization verbosity changed to quiet (0)
+
+### ===  Deexcitation model UAtomDeexcitation is activated for 1 region:
+          DefaultRegionForTheWorld  1  1  0
+### ===  Auger cascade flag: 1
+### ===  Ignore cuts flag:   1
+Rudd ionisation model is initialized 
+Energy range: 0 eV - 1e+06 keV for proton
+
+phot:  for gamma SubType=12 BuildTable=0
+      LambdaPrime table from 200 keV to 500 MeV in 25 bins 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+ LivermorePhElectric : Emin=    0 eV  Emax=  500 MeV  SauterGavrila Fluo
+
+compt:  for gamma SubType=13 BuildTable=1
+      Lambda table from 100 eV  to 1 MeV, 7 bins/decade, spline: 1
+      LambdaPrime table from 1 MeV to 500 MeV in 20 bins 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+    LivermoreCompton : Emin=    0 eV  Emax=  500 MeV Fluo
+
+conv:  for gamma SubType=14 BuildTable=1
+      Lambda table from 1.022 MeV to 500 MeV, 33 bins/decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+ LivermoreConversion : Emin=    0 eV  Emax=  500 MeV  ModifiedTsai
+
+Rayl:  for gamma SubType=11 BuildTable=1
+      Lambda table from 100 eV  to 100 keV, 7 bins/decade, spline: 0
+      LambdaPrime table from 100 keV to 500 MeV in 27 bins 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+   LivermoreRayleigh : Emin=    0 eV  Emax=  500 MeV  CullenGenerator
+
+e-_G4DNAElastic:  for e- SubType=51 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAELSEPAElasticModel : Emin=    0 eV  Emax=    1 MeV
+
+e-_G4DNAExcitation:  for e- SubType=52 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNABornExcitationModel : Emin=    0 eV  Emax=    1 MeV
+
+e-_G4DNAIonisation:  for e- SubType=53 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNABornIonisationModel : Emin=    0 eV  Emax=    1 MeV  deltaBorn Fluo
+
+e-_G4DNAElectronSolvation:  for e- SubType=58 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAOneStepThermalizationModel_Meesungnoen2002 : Emin=    0 eV  Emax=   10 eV 
+
+e-_G4DNAVibExcitation:  for e- SubType=54 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNASancheExcitationModel : Emin=    0 eV  Emax=  100 eV 
+
+e-_G4DNAAttachment:  for e- SubType=55 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAMeltonAttachmentModel : Emin=    0 eV  Emax=   13 eV 
+
+msc:  for e+  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc : Emin=    0 eV  Emax=  500 MeV Nbins=49 100 eV  - 500 MeV
+              StepLim=DistanceToBoundary Rfact=0.04 Gfact=2.5 Sfact=0.6 DispFlag:1 Skin=1 Llimit=1
+
+eIoni:  for e+  SubType=2
+      dE/dx and range tables from 100 eV  to 500 MeV in 49 bins
+      Lambda tables from threshold to 500 MeV, 7 bins/decade, spline: 1
+      StepFunction=(0.2, 1 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        MollerBhabha : Emin=    0 eV  Emax=  500 MeV
+
+eBrem:  for e+  SubType=3
+      dE/dx and range tables from 100 eV  to 500 MeV in 49 bins
+      Lambda tables from threshold to 500 MeV, 7 bins/decade, spline: 1
+      LPM flag: 1 for E > 0.5 GeV,  VertexHighEnergyTh(GeV)= 100000
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+             eBremSB : Emin=    0 eV  Emax=  500 MeV  ModifiedTsai
+
+annihil:  for e+, integral:1  SubType=5 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            eplus2gg : Emin=    0 eV  Emax=  500 MeV
+
+proton_G4DNAElastic:  for proton SubType=51 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  DNAIonElasticModel : Emin=    0 eV  Emax=    1 MeV
+
+proton_G4DNAExcitation:  for proton SubType=52 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAMillerGreenExcitationModel : Emin=    0 eV  Emax=  500 keV
+DNABornExcitationModel : Emin=  500 keV Emax=  100 MeV
+
+proton_G4DNAIonisation:  for proton SubType=53 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNARuddIonisationExtendedModel : Emin=    0 eV  Emax=  500 keV  deltaRudd Fluo
+DNABornIonisationModel : Emin=  500 keV Emax=  100 MeV  deltaBorn Fluo
+DNARuddIonisationExtendedModel : Emin=  100 MeV Emax=  500 MeV  deltaRudd Fluo
+
+proton_G4DNAChargeDecrease:  for proton SubType=56 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNADingfelderChargeDecreaseModel : Emin=    0 eV  Emax=  100 MeV
+
+GenericIon_G4DNAIonisation:  for GenericIon SubType=53 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNARuddIonisationExtendedModel : Emin=    0 eV  Emax=  500 MeV  deltaRudd Fluo
+
+alpha_G4DNAElastic:  for alpha SubType=51 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  DNAIonElasticModel : Emin=    0 eV  Emax=    1 MeV
+
+alpha_G4DNAExcitation:  for alpha SubType=52 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAMillerGreenExcitationModel : Emin=    0 eV  Emax=  400 MeV
+
+alpha_G4DNAIonisation:  for alpha SubType=53 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNARuddIonisationExtendedModel : Emin=    0 eV  Emax=  500 MeV  deltaRudd Fluo
+
+alpha_G4DNAChargeDecrease:  for alpha SubType=56 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNADingfelderChargeDecreaseModel : Emin=    0 eV  Emax=  400 MeV
+
+alpha+_G4DNAElastic:  for alpha+ SubType=51 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  DNAIonElasticModel : Emin=    0 eV  Emax=    1 MeV
+
+alpha+_G4DNAExcitation:  for alpha+ SubType=52 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAMillerGreenExcitationModel : Emin=    0 eV  Emax=  400 MeV
+
+alpha+_G4DNAIonisation:  for alpha+ SubType=53 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNARuddIonisationExtendedModel : Emin=    0 eV  Emax=  500 MeV  deltaRudd Fluo
+
+alpha+_G4DNAChargeDecrease:  for alpha+ SubType=56 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNADingfelderChargeDecreaseModel : Emin=    0 eV  Emax=  400 MeV
+
+alpha+_G4DNAChargeIncrease:  for alpha+ SubType=57 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNADingfelderChargeIncreaseModel : Emin=    0 eV  Emax=  400 MeV
+
+helium_G4DNAElastic:  for helium SubType=51 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  DNAIonElasticModel : Emin=    0 eV  Emax=    1 MeV
+
+helium_G4DNAExcitation:  for helium SubType=52 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAMillerGreenExcitationModel : Emin=    0 eV  Emax=  400 MeV
+
+helium_G4DNAIonisation:  for helium SubType=53 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNARuddIonisationExtendedModel : Emin=    0 eV  Emax=  500 MeV  deltaRudd Fluo
+
+helium_G4DNAChargeIncrease:  for helium SubType=57 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNADingfelderChargeIncreaseModel : Emin=    0 eV  Emax=  400 MeV
+
+hydrogen_G4DNAElastic:  for hydrogen SubType=51 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  DNAIonElasticModel : Emin=    0 eV  Emax=    1 MeV
+
+hydrogen_G4DNAExcitation:  for hydrogen SubType=52 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAMillerGreenExcitationModel : Emin=    0 eV  Emax=  500 keV
+
+hydrogen_G4DNAIonisation:  for hydrogen SubType=53 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNARuddIonisationExtendedModel : Emin=    0 eV  Emax=  500 MeV  deltaRudd Fluo
+
+hydrogen_G4DNAChargeIncrease:  for hydrogen SubType=57 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNADingfelderChargeIncreaseModel : Emin=    0 eV  Emax=  100 MeV
+
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : Run10035
+      issued by : G4MTRunManager::InitializeEventLoop()
+Event modulo is reduced to 1 to distribute events to all threads.
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+
+=======================================================================
+--> G4MTRunManager::CreateAndStartWorkers() --> Initializing workers...
+=======================================================================
+
+ Track killed with track: 20000.3 nm with energy lost 8.75079 keV 
+ Track killed with track: 20000.1 nm with energy lost 8.32593 keV 
+ Track killed with track: 20000.5 nm with energy lost 10.7143 keV 
+ Track killed with track: 20000.1 nm with energy lost 12.6547 keV 
+ Track killed with track: 20000.4 nm with energy lost 10.6183 keV 
+
+TOPAS run sequence complete.
+Particle source Demo: Total number of histories: 5
+
+Elapsed times:
+Parameter Reading : User=0.000000s Real=0.020910s Sys=0.000000s [Cpu=0.0%]
+    Initialization: User=0.010000s Real=0.023009s Sys=0.010000s [Cpu=86.9%]
+         Execution: User=483.790000s Real=152.957148s Sys=1.690000s [Cpu=317.4%]
+      Finalization: User=0.000000s Real=0.368296s Sys=0.030000s [Cpu=8.1%]
+             Total: User=483.8s Real=153.369s Sys=1.73s
+
+Welcome to TOPAS, Tool for Particle Simulation (Version 3.9)
+Loading parameters starting from: RUN.txt
+
+Geant4 Data directory has been specified by the
+TOPAS_G4_DATA_DIR environment variable as /wynton/home/ramos-mendez/tmasilela/software/GEANT4/G4DATA
+
+**************************************************************
+ Geant4 version Name: geant4-10-07-patch-03 [MT]   (19-November-2021)
+  << in Multi-threaded mode >> 
+                       Copyright : Geant4 Collaboration
+                      References : NIM A 506 (2003), 250-303
+                                 : IEEE-TNS 53 (2006), 270-278
+                                 : NIM A 835 (2016), 186-225
+                             WWW : http://geant4.org/
+**************************************************************
+
+TOPAS is in MT mode, setting number of threads to: 10
+
+TOPAS set the tolerances based on the World size to:
+      Surface tolerance = 2.5e-08 nm, and radial tolerance = 2.5e-08 nm.
+Checking overlaps for volume Target (G4Box) ... OK! 
+
+Checking for Unused Components.
+These are Components that were never built even though they were at least
+partially defined in some parameters. This is not necessarily an error.
+It may be an intentional choice to have these Component definitions handy for later use.
+To turn off this check, set Ge/CheckForUnusedComponents to False
+  No unused components were found.
+
+Default
+-- Branching ratio: All ionization states probability 1
+-- Branching ratio: A1B1 Dissociative decay probability 0.65
+-- Branching ratio: A1B1 Relaxation probability 0.35
+-- Branching ratio: B1A1 Auto-ionization probability 0.55
+-- Branching ratio: B1A1 Dissociative decay probability 0.15
+-- Branching ratio: B1A1 Relaxation probability 0.3
+-- Branching ratio: Rydberg states and diffuse bands auto-ionization probability 0.5
+-- Branching ratio: Rydberg states and diffuse bands relaxation probability 0.5
+-- Branching ratio: dissociative attachment probability 1
+Solvation model selected: 3
+   1. Ritchie.
+   2. Terrisol.
+   3. Meesungnoen.
+   4. Kreipl.
+   5. Meesugnoen solid.
+-- Diffusion coefficient for molecule: H used the value 8e-09 (m2/s) 
+-- Diffusion coefficient for molecule: H2 used the value 4.8e-09 (m2/s) 
+-- Diffusion coefficient for molecule: H2O2 used the value 2.3e-09 (m2/s) 
+-- Diffusion coefficient for molecule: H3Op used the value 9.46e-09 (m2/s) 
+-- Diffusion coefficient for molecule: OH used the value 2.3e-09 (m2/s) 
+-- Diffusion coefficient for molecule: OHm used the value 5.3e-09 (m2/s) 
+-- Diffusion coefficient for molecule: Product used the value 0 (m2/s) 
+-- Diffusion coefficient for molecule: e_aq used the value 4.9e-09 (m2/s) 
+
+### TsEmDNAPhysics Construct Processes 
+Ts Rudd ionisation model is constructed 
+ Re-set reaction kobs to : 1.56e+10/M/s
+ Re-set reaction kobs to : 9e+07/M/s
+ Re-set reaction kobs to : 1.43e+11/M/s
+ Re-set reaction kobs to : 2e+10/M/s
+ Re-set reaction kobs to : 5.5e+09/M/s
+ Re-set reaction kobs to : 2.5e+10/M/s
+ Re-set reaction kobs to : 1.1e+10/M/s
+ Re-set reaction kobs to : 2.3e+10/M/s
+ Re-set reaction kobs to : 3e+10/M/s
+ Re-set reaction kobs to : 1.1e+10/M/s
+Visualization verbosity changed to quiet (0)
+
+### ===  Deexcitation model UAtomDeexcitation is activated for 1 region:
+          DefaultRegionForTheWorld  1  1  0
+### ===  Auger cascade flag: 1
+### ===  Ignore cuts flag:   1
+Rudd ionisation model is initialized 
+Energy range: 0 eV - 1e+06 keV for proton
+
+phot:  for gamma SubType=12 BuildTable=0
+      LambdaPrime table from 200 keV to 500 MeV in 25 bins 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+ LivermorePhElectric : Emin=    0 eV  Emax=  500 MeV  SauterGavrila Fluo
+
+compt:  for gamma SubType=13 BuildTable=1
+      Lambda table from 100 eV  to 1 MeV, 7 bins/decade, spline: 1
+      LambdaPrime table from 1 MeV to 500 MeV in 20 bins 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+    LivermoreCompton : Emin=    0 eV  Emax=  500 MeV Fluo
+
+conv:  for gamma SubType=14 BuildTable=1
+      Lambda table from 1.022 MeV to 500 MeV, 33 bins/decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+ LivermoreConversion : Emin=    0 eV  Emax=  500 MeV  ModifiedTsai
+
+Rayl:  for gamma SubType=11 BuildTable=1
+      Lambda table from 100 eV  to 100 keV, 7 bins/decade, spline: 0
+      LambdaPrime table from 100 keV to 500 MeV in 27 bins 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+   LivermoreRayleigh : Emin=    0 eV  Emax=  500 MeV  CullenGenerator
+
+e-_G4DNAElastic:  for e- SubType=51 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAELSEPAElasticModel : Emin=    0 eV  Emax=    1 MeV
+
+e-_G4DNAExcitation:  for e- SubType=52 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNABornExcitationModel : Emin=    0 eV  Emax=    1 MeV
+
+e-_G4DNAIonisation:  for e- SubType=53 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNABornIonisationModel : Emin=    0 eV  Emax=    1 MeV  deltaBorn Fluo
+
+e-_G4DNAElectronSolvation:  for e- SubType=58 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAOneStepThermalizationModel_Meesungnoen2002 : Emin=    0 eV  Emax=   10 eV 
+
+e-_G4DNAVibExcitation:  for e- SubType=54 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNASancheExcitationModel : Emin=    0 eV  Emax=  100 eV 
+
+e-_G4DNAAttachment:  for e- SubType=55 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAMeltonAttachmentModel : Emin=    0 eV  Emax=   13 eV 
+
+msc:  for e+  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc : Emin=    0 eV  Emax=  500 MeV Nbins=49 100 eV  - 500 MeV
+              StepLim=DistanceToBoundary Rfact=0.04 Gfact=2.5 Sfact=0.6 DispFlag:1 Skin=1 Llimit=1
+
+eIoni:  for e+  SubType=2
+      dE/dx and range tables from 100 eV  to 500 MeV in 49 bins
+      Lambda tables from threshold to 500 MeV, 7 bins/decade, spline: 1
+      StepFunction=(0.2, 1 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        MollerBhabha : Emin=    0 eV  Emax=  500 MeV
+
+eBrem:  for e+  SubType=3
+      dE/dx and range tables from 100 eV  to 500 MeV in 49 bins
+      Lambda tables from threshold to 500 MeV, 7 bins/decade, spline: 1
+      LPM flag: 1 for E > 0.5 GeV,  VertexHighEnergyTh(GeV)= 100000
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+             eBremSB : Emin=    0 eV  Emax=  500 MeV  ModifiedTsai
+
+annihil:  for e+, integral:1  SubType=5 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            eplus2gg : Emin=    0 eV  Emax=  500 MeV
+
+proton_G4DNAElastic:  for proton SubType=51 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  DNAIonElasticModel : Emin=    0 eV  Emax=    1 MeV
+
+proton_G4DNAExcitation:  for proton SubType=52 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAMillerGreenExcitationModel : Emin=    0 eV  Emax=  500 keV
+DNABornExcitationModel : Emin=  500 keV Emax=  100 MeV
+
+proton_G4DNAIonisation:  for proton SubType=53 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNARuddIonisationExtendedModel : Emin=    0 eV  Emax=  500 keV  deltaRudd Fluo
+DNABornIonisationModel : Emin=  500 keV Emax=  100 MeV  deltaBorn Fluo
+DNARuddIonisationExtendedModel : Emin=  100 MeV Emax=  500 MeV  deltaRudd Fluo
+
+proton_G4DNAChargeDecrease:  for proton SubType=56 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNADingfelderChargeDecreaseModel : Emin=    0 eV  Emax=  100 MeV
+
+GenericIon_G4DNAIonisation:  for GenericIon SubType=53 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNARuddIonisationExtendedModel : Emin=    0 eV  Emax=  500 MeV  deltaRudd Fluo
+
+alpha_G4DNAElastic:  for alpha SubType=51 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  DNAIonElasticModel : Emin=    0 eV  Emax=    1 MeV
+
+alpha_G4DNAExcitation:  for alpha SubType=52 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAMillerGreenExcitationModel : Emin=    0 eV  Emax=  400 MeV
+
+alpha_G4DNAIonisation:  for alpha SubType=53 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNARuddIonisationExtendedModel : Emin=    0 eV  Emax=  500 MeV  deltaRudd Fluo
+
+alpha_G4DNAChargeDecrease:  for alpha SubType=56 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNADingfelderChargeDecreaseModel : Emin=    0 eV  Emax=  400 MeV
+
+alpha+_G4DNAElastic:  for alpha+ SubType=51 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  DNAIonElasticModel : Emin=    0 eV  Emax=    1 MeV
+
+alpha+_G4DNAExcitation:  for alpha+ SubType=52 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAMillerGreenExcitationModel : Emin=    0 eV  Emax=  400 MeV
+
+alpha+_G4DNAIonisation:  for alpha+ SubType=53 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNARuddIonisationExtendedModel : Emin=    0 eV  Emax=  500 MeV  deltaRudd Fluo
+
+alpha+_G4DNAChargeDecrease:  for alpha+ SubType=56 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNADingfelderChargeDecreaseModel : Emin=    0 eV  Emax=  400 MeV
+
+alpha+_G4DNAChargeIncrease:  for alpha+ SubType=57 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNADingfelderChargeIncreaseModel : Emin=    0 eV  Emax=  400 MeV
+
+helium_G4DNAElastic:  for helium SubType=51 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  DNAIonElasticModel : Emin=    0 eV  Emax=    1 MeV
+
+helium_G4DNAExcitation:  for helium SubType=52 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAMillerGreenExcitationModel : Emin=    0 eV  Emax=  400 MeV
+
+helium_G4DNAIonisation:  for helium SubType=53 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNARuddIonisationExtendedModel : Emin=    0 eV  Emax=  500 MeV  deltaRudd Fluo
+
+helium_G4DNAChargeIncrease:  for helium SubType=57 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNADingfelderChargeIncreaseModel : Emin=    0 eV  Emax=  400 MeV
+
+hydrogen_G4DNAElastic:  for hydrogen SubType=51 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  DNAIonElasticModel : Emin=    0 eV  Emax=    1 MeV
+
+hydrogen_G4DNAExcitation:  for hydrogen SubType=52 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAMillerGreenExcitationModel : Emin=    0 eV  Emax=  500 keV
+
+hydrogen_G4DNAIonisation:  for hydrogen SubType=53 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNARuddIonisationExtendedModel : Emin=    0 eV  Emax=  500 MeV  deltaRudd Fluo
+
+hydrogen_G4DNAChargeIncrease:  for hydrogen SubType=57 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNADingfelderChargeIncreaseModel : Emin=    0 eV  Emax=  100 MeV
+
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : Run10035
+      issued by : G4MTRunManager::InitializeEventLoop()
+Event modulo is reduced to 1 to distribute events to all threads.
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+
+=======================================================================
+--> G4MTRunManager::CreateAndStartWorkers() --> Initializing workers...
+=======================================================================
+
+G4WT9 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT9 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT7 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT5 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT7 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT5 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT7 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT9 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT9 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT5 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT5 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT7 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT7 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT9 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT9 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT5 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT9 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT9 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT9 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT9 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT9 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT7 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT9 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT9 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT9 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT9 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT9 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT7 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT7 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT9 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT7 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT5 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT7 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT9 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT7 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT9 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT9 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT9 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT5 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT9 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT7 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT7 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT7 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT5 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT5 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT5 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT7 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT5 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT5 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT9 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT5 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT5 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT5 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT5 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT7 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT5 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT5 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT5 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT9 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT7 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT5 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+
+TOPAS run sequence complete.
+Particle source Demo: Total number of histories: 3
+
+Elapsed times:
+Parameter Reading : User=0.000000s Real=0.005839s Sys=0.000000s [Cpu=0.0%]
+    Initialization: User=0.000000s Real=0.022210s Sys=0.000000s [Cpu=0.0%]
+         Execution: User=8314.880000s Real=2960.083315s Sys=3.200000s [Cpu=281.0%]
+      Finalization: User=0.000000s Real=1.191608s Sys=0.020000s [Cpu=1.7%]
+             Total: User=8314.88s Real=2961.3s Sys=3.22s
+
+Welcome to TOPAS, Tool for Particle Simulation (Version 3.9)
+Loading parameters starting from: RUN.txt
+
+Geant4 Data directory has been specified by the
+TOPAS_G4_DATA_DIR environment variable as /wynton/home/ramos-mendez/tmasilela/software/GEANT4/G4DATA
+
+**************************************************************
+ Geant4 version Name: geant4-10-07-patch-03 [MT]   (19-November-2021)
+  << in Multi-threaded mode >> 
+                       Copyright : Geant4 Collaboration
+                      References : NIM A 506 (2003), 250-303
+                                 : IEEE-TNS 53 (2006), 270-278
+                                 : NIM A 835 (2016), 186-225
+                             WWW : http://geant4.org/
+**************************************************************
+
+TOPAS is in MT mode, setting number of threads to: 10
+
+TOPAS set the tolerances based on the World size to:
+      Surface tolerance = 2.5e-08 nm, and radial tolerance = 2.5e-08 nm.
+Checking overlaps for volume Target (G4Box) ... OK! 
+
+Checking for Unused Components.
+These are Components that were never built even though they were at least
+partially defined in some parameters. This is not necessarily an error.
+It may be an intentional choice to have these Component definitions handy for later use.
+To turn off this check, set Ge/CheckForUnusedComponents to False
+  No unused components were found.
+
+Default
+-- Branching ratio: All ionization states probability 1
+-- Branching ratio: A1B1 Dissociative decay probability 0.65
+-- Branching ratio: A1B1 Relaxation probability 0.35
+-- Branching ratio: B1A1 Auto-ionization probability 0.55
+-- Branching ratio: B1A1 Dissociative decay probability 0.15
+-- Branching ratio: B1A1 Relaxation probability 0.3
+-- Branching ratio: Rydberg states and diffuse bands auto-ionization probability 0.5
+-- Branching ratio: Rydberg states and diffuse bands relaxation probability 0.5
+-- Branching ratio: dissociative attachment probability 1
+Solvation model selected: 3
+   1. Ritchie.
+   2. Terrisol.
+   3. Meesungnoen.
+   4. Kreipl.
+   5. Meesugnoen solid.
+-- Diffusion coefficient for molecule: H used the value 8e-09 (m2/s) 
+-- Diffusion coefficient for molecule: H2 used the value 4.8e-09 (m2/s) 
+-- Diffusion coefficient for molecule: H2O2 used the value 2.3e-09 (m2/s) 
+-- Diffusion coefficient for molecule: H3Op used the value 9.46e-09 (m2/s) 
+-- Diffusion coefficient for molecule: OH used the value 2.3e-09 (m2/s) 
+-- Diffusion coefficient for molecule: OHm used the value 5.3e-09 (m2/s) 
+-- Diffusion coefficient for molecule: Product used the value 0 (m2/s) 
+-- Diffusion coefficient for molecule: e_aq used the value 4.9e-09 (m2/s) 
+
+### TsEmDNAPhysics Construct Processes 
+Ts Rudd ionisation model is constructed 
+ Re-set reaction kobs to : 1.56e+10/M/s
+ Re-set reaction kobs to : 9e+07/M/s
+ Re-set reaction kobs to : 1.43e+11/M/s
+ Re-set reaction kobs to : 2e+10/M/s
+ Re-set reaction kobs to : 5.5e+09/M/s
+ Re-set reaction kobs to : 2.5e+10/M/s
+ Re-set reaction kobs to : 1.1e+10/M/s
+ Re-set reaction kobs to : 2.3e+10/M/s
+ Re-set reaction kobs to : 3e+10/M/s
+ Re-set reaction kobs to : 1.1e+10/M/s
+Visualization verbosity changed to quiet (0)
+
+### ===  Deexcitation model UAtomDeexcitation is activated for 1 region:
+          DefaultRegionForTheWorld  1  1  0
+### ===  Auger cascade flag: 1
+### ===  Ignore cuts flag:   1
+Rudd ionisation model is initialized 
+Energy range: 0 eV - 1e+06 keV for proton
+
+phot:  for gamma SubType=12 BuildTable=0
+      LambdaPrime table from 200 keV to 500 MeV in 25 bins 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+ LivermorePhElectric : Emin=    0 eV  Emax=  500 MeV  SauterGavrila Fluo
+
+compt:  for gamma SubType=13 BuildTable=1
+      Lambda table from 100 eV  to 1 MeV, 7 bins/decade, spline: 1
+      LambdaPrime table from 1 MeV to 500 MeV in 20 bins 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+    LivermoreCompton : Emin=    0 eV  Emax=  500 MeV Fluo
+
+conv:  for gamma SubType=14 BuildTable=1
+      Lambda table from 1.022 MeV to 500 MeV, 33 bins/decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+ LivermoreConversion : Emin=    0 eV  Emax=  500 MeV  ModifiedTsai
+
+Rayl:  for gamma SubType=11 BuildTable=1
+      Lambda table from 100 eV  to 100 keV, 7 bins/decade, spline: 0
+      LambdaPrime table from 100 keV to 500 MeV in 27 bins 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+   LivermoreRayleigh : Emin=    0 eV  Emax=  500 MeV  CullenGenerator
+
+e-_G4DNAElastic:  for e- SubType=51 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAELSEPAElasticModel : Emin=    0 eV  Emax=    1 MeV
+
+e-_G4DNAExcitation:  for e- SubType=52 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNABornExcitationModel : Emin=    0 eV  Emax=    1 MeV
+
+e-_G4DNAIonisation:  for e- SubType=53 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNABornIonisationModel : Emin=    0 eV  Emax=    1 MeV  deltaBorn Fluo
+
+e-_G4DNAElectronSolvation:  for e- SubType=58 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAOneStepThermalizationModel_Meesungnoen2002 : Emin=    0 eV  Emax=   10 eV 
+
+e-_G4DNAVibExcitation:  for e- SubType=54 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNASancheExcitationModel : Emin=    0 eV  Emax=  100 eV 
+
+e-_G4DNAAttachment:  for e- SubType=55 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAMeltonAttachmentModel : Emin=    0 eV  Emax=   13 eV 
+
+msc:  for e+  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc : Emin=    0 eV  Emax=  500 MeV Nbins=49 100 eV  - 500 MeV
+              StepLim=DistanceToBoundary Rfact=0.04 Gfact=2.5 Sfact=0.6 DispFlag:1 Skin=1 Llimit=1
+
+eIoni:  for e+  SubType=2
+      dE/dx and range tables from 100 eV  to 500 MeV in 49 bins
+      Lambda tables from threshold to 500 MeV, 7 bins/decade, spline: 1
+      StepFunction=(0.2, 1 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        MollerBhabha : Emin=    0 eV  Emax=  500 MeV
+
+eBrem:  for e+  SubType=3
+      dE/dx and range tables from 100 eV  to 500 MeV in 49 bins
+      Lambda tables from threshold to 500 MeV, 7 bins/decade, spline: 1
+      LPM flag: 1 for E > 0.5 GeV,  VertexHighEnergyTh(GeV)= 100000
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+             eBremSB : Emin=    0 eV  Emax=  500 MeV  ModifiedTsai
+
+annihil:  for e+, integral:1  SubType=5 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            eplus2gg : Emin=    0 eV  Emax=  500 MeV
+
+proton_G4DNAElastic:  for proton SubType=51 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  DNAIonElasticModel : Emin=    0 eV  Emax=    1 MeV
+
+proton_G4DNAExcitation:  for proton SubType=52 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAMillerGreenExcitationModel : Emin=    0 eV  Emax=  500 keV
+DNABornExcitationModel : Emin=  500 keV Emax=  100 MeV
+
+proton_G4DNAIonisation:  for proton SubType=53 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNARuddIonisationExtendedModel : Emin=    0 eV  Emax=  500 keV  deltaRudd Fluo
+DNABornIonisationModel : Emin=  500 keV Emax=  100 MeV  deltaBorn Fluo
+DNARuddIonisationExtendedModel : Emin=  100 MeV Emax=  500 MeV  deltaRudd Fluo
+
+proton_G4DNAChargeDecrease:  for proton SubType=56 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNADingfelderChargeDecreaseModel : Emin=    0 eV  Emax=  100 MeV
+
+GenericIon_G4DNAIonisation:  for GenericIon SubType=53 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNARuddIonisationExtendedModel : Emin=    0 eV  Emax=  500 MeV  deltaRudd Fluo
+
+alpha_G4DNAElastic:  for alpha SubType=51 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  DNAIonElasticModel : Emin=    0 eV  Emax=    1 MeV
+
+alpha_G4DNAExcitation:  for alpha SubType=52 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAMillerGreenExcitationModel : Emin=    0 eV  Emax=  400 MeV
+
+alpha_G4DNAIonisation:  for alpha SubType=53 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNARuddIonisationExtendedModel : Emin=    0 eV  Emax=  500 MeV  deltaRudd Fluo
+
+alpha_G4DNAChargeDecrease:  for alpha SubType=56 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNADingfelderChargeDecreaseModel : Emin=    0 eV  Emax=  400 MeV
+
+alpha+_G4DNAElastic:  for alpha+ SubType=51 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  DNAIonElasticModel : Emin=    0 eV  Emax=    1 MeV
+
+alpha+_G4DNAExcitation:  for alpha+ SubType=52 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAMillerGreenExcitationModel : Emin=    0 eV  Emax=  400 MeV
+
+alpha+_G4DNAIonisation:  for alpha+ SubType=53 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNARuddIonisationExtendedModel : Emin=    0 eV  Emax=  500 MeV  deltaRudd Fluo
+
+alpha+_G4DNAChargeDecrease:  for alpha+ SubType=56 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNADingfelderChargeDecreaseModel : Emin=    0 eV  Emax=  400 MeV
+
+alpha+_G4DNAChargeIncrease:  for alpha+ SubType=57 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNADingfelderChargeIncreaseModel : Emin=    0 eV  Emax=  400 MeV
+
+helium_G4DNAElastic:  for helium SubType=51 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  DNAIonElasticModel : Emin=    0 eV  Emax=    1 MeV
+
+helium_G4DNAExcitation:  for helium SubType=52 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAMillerGreenExcitationModel : Emin=    0 eV  Emax=  400 MeV
+
+helium_G4DNAIonisation:  for helium SubType=53 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNARuddIonisationExtendedModel : Emin=    0 eV  Emax=  500 MeV  deltaRudd Fluo
+
+helium_G4DNAChargeIncrease:  for helium SubType=57 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNADingfelderChargeIncreaseModel : Emin=    0 eV  Emax=  400 MeV
+
+hydrogen_G4DNAElastic:  for hydrogen SubType=51 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  DNAIonElasticModel : Emin=    0 eV  Emax=    1 MeV
+
+hydrogen_G4DNAExcitation:  for hydrogen SubType=52 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAMillerGreenExcitationModel : Emin=    0 eV  Emax=  500 keV
+
+hydrogen_G4DNAIonisation:  for hydrogen SubType=53 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNARuddIonisationExtendedModel : Emin=    0 eV  Emax=  500 MeV  deltaRudd Fluo
+
+hydrogen_G4DNAChargeIncrease:  for hydrogen SubType=57 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNADingfelderChargeIncreaseModel : Emin=    0 eV  Emax=  100 MeV
+
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : Run10035
+      issued by : G4MTRunManager::InitializeEventLoop()
+Event modulo is reduced to 1 to distribute events to all threads.
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+
+=======================================================================
+--> G4MTRunManager::CreateAndStartWorkers() --> Initializing workers...
+=======================================================================
+
+ Track killed with track: 2500.05 nm with energy lost 82.2007 keV 
+ Track killed with track: 2500.03 nm with energy lost 76.3669 keV 
+ Track killed with track: 2500.06 nm with energy lost 76.6934 keV 
+G4WT7 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT8 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT8 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT8 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT8 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT8 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT8 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT8 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT8 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT3 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT8 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT7 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT3 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT8 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT7 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+
+TOPAS run sequence complete.
+Particle source Demo: Total number of histories: 3
+
+Elapsed times:
+Parameter Reading : User=0.000000s Real=0.007068s Sys=0.010000s [Cpu=141.5%]
+    Initialization: User=0.020000s Real=0.028214s Sys=0.010000s [Cpu=106.3%]
+         Execution: User=2752.720000s Real=963.970428s Sys=2.760000s [Cpu=285.8%]
+      Finalization: User=0.020000s Real=0.447584s Sys=0.020000s [Cpu=8.9%]
+             Total: User=2752.76s Real=964.453s Sys=2.8s
+
+Welcome to TOPAS, Tool for Particle Simulation (Version 3.9)
+Loading parameters starting from: RUN.txt
+
+Geant4 Data directory has been specified by the
+TOPAS_G4_DATA_DIR environment variable as /wynton/home/ramos-mendez/tmasilela/software/GEANT4/G4DATA
+
+**************************************************************
+ Geant4 version Name: geant4-10-07-patch-03 [MT]   (19-November-2021)
+  << in Multi-threaded mode >> 
+                       Copyright : Geant4 Collaboration
+                      References : NIM A 506 (2003), 250-303
+                                 : IEEE-TNS 53 (2006), 270-278
+                                 : NIM A 835 (2016), 186-225
+                             WWW : http://geant4.org/
+**************************************************************
+
+TOPAS is in MT mode, setting number of threads to: 10
+
+TOPAS set the tolerances based on the World size to:
+      Surface tolerance = 2.5e-08 nm, and radial tolerance = 2.5e-08 nm.
+Checking overlaps for volume Target (G4Box) ... OK! 
+
+Checking for Unused Components.
+These are Components that were never built even though they were at least
+partially defined in some parameters. This is not necessarily an error.
+It may be an intentional choice to have these Component definitions handy for later use.
+To turn off this check, set Ge/CheckForUnusedComponents to False
+  No unused components were found.
+
+Default
+-- Branching ratio: All ionization states probability 1
+-- Branching ratio: A1B1 Dissociative decay probability 0.65
+-- Branching ratio: A1B1 Relaxation probability 0.35
+-- Branching ratio: B1A1 Auto-ionization probability 0.55
+-- Branching ratio: B1A1 Dissociative decay probability 0.15
+-- Branching ratio: B1A1 Relaxation probability 0.3
+-- Branching ratio: Rydberg states and diffuse bands auto-ionization probability 0.5
+-- Branching ratio: Rydberg states and diffuse bands relaxation probability 0.5
+-- Branching ratio: dissociative attachment probability 1
+Solvation model selected: 3
+   1. Ritchie.
+   2. Terrisol.
+   3. Meesungnoen.
+   4. Kreipl.
+   5. Meesugnoen solid.
+-- Diffusion coefficient for molecule: H used the value 8e-09 (m2/s) 
+-- Diffusion coefficient for molecule: H2 used the value 4.8e-09 (m2/s) 
+-- Diffusion coefficient for molecule: H2O2 used the value 2.3e-09 (m2/s) 
+-- Diffusion coefficient for molecule: H3Op used the value 9.46e-09 (m2/s) 
+-- Diffusion coefficient for molecule: OH used the value 2.3e-09 (m2/s) 
+-- Diffusion coefficient for molecule: OHm used the value 5.3e-09 (m2/s) 
+-- Diffusion coefficient for molecule: Product used the value 0 (m2/s) 
+-- Diffusion coefficient for molecule: e_aq used the value 4.9e-09 (m2/s) 
+
+### TsEmDNAPhysics Construct Processes 
+Ts Rudd ionisation model is constructed 
+ Re-set reaction kobs to : 1.56e+10/M/s
+ Re-set reaction kobs to : 9e+07/M/s
+ Re-set reaction kobs to : 1.43e+11/M/s
+ Re-set reaction kobs to : 2e+10/M/s
+ Re-set reaction kobs to : 5.5e+09/M/s
+ Re-set reaction kobs to : 2.5e+10/M/s
+ Re-set reaction kobs to : 1.1e+10/M/s
+ Re-set reaction kobs to : 2.3e+10/M/s
+ Re-set reaction kobs to : 3e+10/M/s
+ Re-set reaction kobs to : 1.1e+10/M/s
+Visualization verbosity changed to quiet (0)
+
+### ===  Deexcitation model UAtomDeexcitation is activated for 1 region:
+          DefaultRegionForTheWorld  1  1  0
+### ===  Auger cascade flag: 1
+### ===  Ignore cuts flag:   1
+Rudd ionisation model is initialized 
+Energy range: 0 eV - 1e+06 keV for proton
+
+phot:  for gamma SubType=12 BuildTable=0
+      LambdaPrime table from 200 keV to 500 MeV in 25 bins 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+ LivermorePhElectric : Emin=    0 eV  Emax=  500 MeV  SauterGavrila Fluo
+
+compt:  for gamma SubType=13 BuildTable=1
+      Lambda table from 100 eV  to 1 MeV, 7 bins/decade, spline: 1
+      LambdaPrime table from 1 MeV to 500 MeV in 20 bins 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+    LivermoreCompton : Emin=    0 eV  Emax=  500 MeV Fluo
+
+conv:  for gamma SubType=14 BuildTable=1
+      Lambda table from 1.022 MeV to 500 MeV, 33 bins/decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+ LivermoreConversion : Emin=    0 eV  Emax=  500 MeV  ModifiedTsai
+
+Rayl:  for gamma SubType=11 BuildTable=1
+      Lambda table from 100 eV  to 100 keV, 7 bins/decade, spline: 0
+      LambdaPrime table from 100 keV to 500 MeV in 27 bins 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+   LivermoreRayleigh : Emin=    0 eV  Emax=  500 MeV  CullenGenerator
+
+e-_G4DNAElastic:  for e- SubType=51 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAELSEPAElasticModel : Emin=    0 eV  Emax=    1 MeV
+
+e-_G4DNAExcitation:  for e- SubType=52 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNABornExcitationModel : Emin=    0 eV  Emax=    1 MeV
+
+e-_G4DNAIonisation:  for e- SubType=53 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNABornIonisationModel : Emin=    0 eV  Emax=    1 MeV  deltaBorn Fluo
+
+e-_G4DNAElectronSolvation:  for e- SubType=58 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAOneStepThermalizationModel_Meesungnoen2002 : Emin=    0 eV  Emax=   10 eV 
+
+e-_G4DNAVibExcitation:  for e- SubType=54 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNASancheExcitationModel : Emin=    0 eV  Emax=  100 eV 
+
+e-_G4DNAAttachment:  for e- SubType=55 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAMeltonAttachmentModel : Emin=    0 eV  Emax=   13 eV 
+
+msc:  for e+  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc : Emin=    0 eV  Emax=  500 MeV Nbins=49 100 eV  - 500 MeV
+              StepLim=DistanceToBoundary Rfact=0.04 Gfact=2.5 Sfact=0.6 DispFlag:1 Skin=1 Llimit=1
+
+eIoni:  for e+  SubType=2
+      dE/dx and range tables from 100 eV  to 500 MeV in 49 bins
+      Lambda tables from threshold to 500 MeV, 7 bins/decade, spline: 1
+      StepFunction=(0.2, 1 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        MollerBhabha : Emin=    0 eV  Emax=  500 MeV
+
+eBrem:  for e+  SubType=3
+      dE/dx and range tables from 100 eV  to 500 MeV in 49 bins
+      Lambda tables from threshold to 500 MeV, 7 bins/decade, spline: 1
+      LPM flag: 1 for E > 0.5 GeV,  VertexHighEnergyTh(GeV)= 100000
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+             eBremSB : Emin=    0 eV  Emax=  500 MeV  ModifiedTsai
+
+annihil:  for e+, integral:1  SubType=5 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            eplus2gg : Emin=    0 eV  Emax=  500 MeV
+
+proton_G4DNAElastic:  for proton SubType=51 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  DNAIonElasticModel : Emin=    0 eV  Emax=    1 MeV
+
+proton_G4DNAExcitation:  for proton SubType=52 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAMillerGreenExcitationModel : Emin=    0 eV  Emax=  500 keV
+DNABornExcitationModel : Emin=  500 keV Emax=  100 MeV
+
+proton_G4DNAIonisation:  for proton SubType=53 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNARuddIonisationExtendedModel : Emin=    0 eV  Emax=  500 keV  deltaRudd Fluo
+DNABornIonisationModel : Emin=  500 keV Emax=  100 MeV  deltaBorn Fluo
+DNARuddIonisationExtendedModel : Emin=  100 MeV Emax=  500 MeV  deltaRudd Fluo
+
+proton_G4DNAChargeDecrease:  for proton SubType=56 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNADingfelderChargeDecreaseModel : Emin=    0 eV  Emax=  100 MeV
+
+GenericIon_G4DNAIonisation:  for GenericIon SubType=53 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNARuddIonisationExtendedModel : Emin=    0 eV  Emax=  500 MeV  deltaRudd Fluo
+
+alpha_G4DNAElastic:  for alpha SubType=51 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  DNAIonElasticModel : Emin=    0 eV  Emax=    1 MeV
+
+alpha_G4DNAExcitation:  for alpha SubType=52 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAMillerGreenExcitationModel : Emin=    0 eV  Emax=  400 MeV
+
+alpha_G4DNAIonisation:  for alpha SubType=53 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNARuddIonisationExtendedModel : Emin=    0 eV  Emax=  500 MeV  deltaRudd Fluo
+
+alpha_G4DNAChargeDecrease:  for alpha SubType=56 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNADingfelderChargeDecreaseModel : Emin=    0 eV  Emax=  400 MeV
+
+alpha+_G4DNAElastic:  for alpha+ SubType=51 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  DNAIonElasticModel : Emin=    0 eV  Emax=    1 MeV
+
+alpha+_G4DNAExcitation:  for alpha+ SubType=52 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAMillerGreenExcitationModel : Emin=    0 eV  Emax=  400 MeV
+
+alpha+_G4DNAIonisation:  for alpha+ SubType=53 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNARuddIonisationExtendedModel : Emin=    0 eV  Emax=  500 MeV  deltaRudd Fluo
+
+alpha+_G4DNAChargeDecrease:  for alpha+ SubType=56 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNADingfelderChargeDecreaseModel : Emin=    0 eV  Emax=  400 MeV
+
+alpha+_G4DNAChargeIncrease:  for alpha+ SubType=57 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNADingfelderChargeIncreaseModel : Emin=    0 eV  Emax=  400 MeV
+
+helium_G4DNAElastic:  for helium SubType=51 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  DNAIonElasticModel : Emin=    0 eV  Emax=    1 MeV
+
+helium_G4DNAExcitation:  for helium SubType=52 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAMillerGreenExcitationModel : Emin=    0 eV  Emax=  400 MeV
+
+helium_G4DNAIonisation:  for helium SubType=53 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNARuddIonisationExtendedModel : Emin=    0 eV  Emax=  500 MeV  deltaRudd Fluo
+
+helium_G4DNAChargeIncrease:  for helium SubType=57 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNADingfelderChargeIncreaseModel : Emin=    0 eV  Emax=  400 MeV
+
+hydrogen_G4DNAElastic:  for hydrogen SubType=51 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  DNAIonElasticModel : Emin=    0 eV  Emax=    1 MeV
+
+hydrogen_G4DNAExcitation:  for hydrogen SubType=52 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNAMillerGreenExcitationModel : Emin=    0 eV  Emax=  500 keV
+
+hydrogen_G4DNAIonisation:  for hydrogen SubType=53 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNARuddIonisationExtendedModel : Emin=    0 eV  Emax=  500 MeV  deltaRudd Fluo
+
+hydrogen_G4DNAChargeIncrease:  for hydrogen SubType=57 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+DNADingfelderChargeIncreaseModel : Emin=    0 eV  Emax=  100 MeV
+
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : Run10035
+      issued by : G4MTRunManager::InitializeEventLoop()
+Event modulo is reduced to 1 to distribute events to all threads.
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+
+=======================================================================
+--> G4MTRunManager::CreateAndStartWorkers() --> Initializing workers...
+=======================================================================
+
+ Track killed with track: 2500.05 nm with energy lost 35.9243 keV 
+ Track killed with track: 2500.03 nm with energy lost 34.5522 keV 
+ Track killed with track: 2500.06 nm with energy lost 27.7749 keV 
+G4WT0 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT3 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4WT3 > 
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : ITManager002
+      issued by : G4ITManager::FindNearest
+Bad request : no node found in the IT you are searching closest neighbourg for
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+
+TOPAS run sequence complete.
+Particle source Demo: Total number of histories: 3
+
+Elapsed times:
+Parameter Reading : User=0.000000s Real=0.005122s Sys=0.000000s [Cpu=0.0%]
+    Initialization: User=0.010000s Real=0.025291s Sys=0.010000s [Cpu=79.1%]
+         Execution: User=1094.440000s Real=434.768943s Sys=2.100000s [Cpu=252.2%]
+      Finalization: User=0.010000s Real=0.401800s Sys=0.020000s [Cpu=7.5%]
+             Total: User=1094.46s Real=435.201s Sys=2.13s

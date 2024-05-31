@@ -208,7 +208,7 @@ def plot_results(sut_dir, ref_dir, args):
     plt.subplot(grid[3])
     plt.plot(sut[0]['Fe3'], GetRatio(ref[1]["Fe3"],sut[1]["Fe3"]))
     plt.xlim(1,1E14)
-    plt.ylim(.9,1.1)
+    #plt.ylim(.9,1.1)
     plt.xlabel('Time (ps)')
     plt.ylabel('Test/Ref ratio')
     plt.xscale("log")

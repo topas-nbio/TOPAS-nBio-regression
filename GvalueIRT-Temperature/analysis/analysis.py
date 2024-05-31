@@ -238,7 +238,7 @@ def plot_results(sut_dir, ref_dir, args):
     ax4.errorbar(sut_G[0]["H_2^0"][:,0],  sut_G[0]["H_2^0"][:,1],  yerr=sut_G[0]["H_2^0"][:,2],   color="r", linewidth=2)
     ax5.errorbar(sut_G[0]["H2O2^0"][:,0], sut_G[0]["H2O2^0"][:,1], yerr=sut_G[0]["H2O2^0"][:,2],  color="r", linewidth=2)
     ax6.errorbar(sut_G[0]["H3O^1"][:,0],  sut_G[0]["H3O^1"][:,1],  yerr=sut_G[0]["H3O^1"][:,2],   color="r", linewidth=2)
-    ax7.errorbar(sut_G[0]["OH^-1"][:,0],  sut_G[0]["OH^-1"][:,1],  yerr=sut_G[0]["OH^-1"][:,2],   color="r", linewidth=2, label='{} 10$^\circ$C'.format(args.sut_label))
+    ax7.errorbar(sut_G[0]["OH^-1"][:,0],  sut_G[0]["OH^-1"][:,1],  yerr=sut_G[0]["OH^-1"][:,2],   color="r", linewidth=2, label=r'{} 10$\degree$C'.format(args.sut_label))
 
     ax1.errorbar(sut_G[-1]["e_aq^-1"][:,0],sut_G[-1]["e_aq^-1"][:,1],yerr=sut_G[-1]["e_aq^-1"][:,2], color="r", linewidth=2, linestyle='--')
     ax2.errorbar(sut_G[-1]["OH^0"][:,0],   sut_G[-1]["OH^0"][:,1],   yerr=sut_G[-1]["OH^0"][:,2],    color="r", linewidth=2, linestyle='--')
@@ -246,7 +246,7 @@ def plot_results(sut_dir, ref_dir, args):
     ax4.errorbar(sut_G[-1]["H_2^0"][:,0],  sut_G[-1]["H_2^0"][:,1],  yerr=sut_G[-1]["H_2^0"][:,2],   color="r", linewidth=2, linestyle='--')
     ax5.errorbar(sut_G[-1]["H2O2^0"][:,0], sut_G[-1]["H2O2^0"][:,1], yerr=sut_G[-1]["H2O2^0"][:,2],  color="r", linewidth=2, linestyle='--')
     ax6.errorbar(sut_G[-1]["H3O^1"][:,0],  sut_G[-1]["H3O^1"][:,1],  yerr=sut_G[-1]["H3O^1"][:,2],   color="r", linewidth=2, linestyle='--')
-    ax7.errorbar(sut_G[-1]["OH^-1"][:,0],  sut_G[-1]["OH^-1"][:,1],  yerr=sut_G[-1]["OH^-1"][:,2],   color="r", linewidth=2, linestyle='--', label='{} 90$^\circ$C'.format(args.sut_label))
+    ax7.errorbar(sut_G[-1]["OH^-1"][:,0],  sut_G[-1]["OH^-1"][:,1],  yerr=sut_G[-1]["OH^-1"][:,2],   color="r", linewidth=2, linestyle='--', label=r'{} 90$\degree$C'.format(args.sut_label))
 
     ax1.errorbar(ref_G[0]["e_aq^-1"][:,0],ref_G[0]["e_aq^-1"][:,1],yerr=ref_G[0]["e_aq^-1"][:,2], color="g", linewidth=2)
     ax2.errorbar(ref_G[0]["OH^0"][:,0],   ref_G[0]["OH^0"][:,1],   yerr=ref_G[0]["OH^0"][:,2],    color="g", linewidth=2)
@@ -254,7 +254,7 @@ def plot_results(sut_dir, ref_dir, args):
     ax4.errorbar(ref_G[0]["H_2^0"][:,0],  ref_G[0]["H_2^0"][:,1],  yerr=ref_G[0]["H_2^0"][:,2],   color="g", linewidth=2)
     ax5.errorbar(ref_G[0]["H2O2^0"][:,0], ref_G[0]["H2O2^0"][:,1], yerr=ref_G[0]["H2O2^0"][:,2],  color="g", linewidth=2)
     ax6.errorbar(ref_G[0]["H3O^1"][:,0],  ref_G[0]["H3O^1"][:,1],  yerr=ref_G[0]["H3O^1"][:,2],   color="g", linewidth=2)
-    ax7.errorbar(ref_G[0]["OH^-1"][:,0],  ref_G[0]["OH^-1"][:,1],  yerr=ref_G[0]["OH^-1"][:,2],   color="g", linewidth=2, label='{} 10$^\circ$C'.format(args.ref_label))
+    ax7.errorbar(ref_G[0]["OH^-1"][:,0],  ref_G[0]["OH^-1"][:,1],  yerr=ref_G[0]["OH^-1"][:,2],   color="g", linewidth=2, label=r'{} 10$\degree$C'.format(args.ref_label))
 
     ax1.errorbar(ref_G[-1]["e_aq^-1"][:,0],ref_G[-1]["e_aq^-1"][:,1],yerr=ref_G[-1]["e_aq^-1"][:,2], color="g", linewidth=2, linestyle='--')
     ax2.errorbar(ref_G[-1]["OH^0"][:,0],   ref_G[-1]["OH^0"][:,1],   yerr=ref_G[-1]["OH^0"][:,2],    color="g", linewidth=2, linestyle='--')
@@ -262,7 +262,7 @@ def plot_results(sut_dir, ref_dir, args):
     ax4.errorbar(ref_G[-1]["H_2^0"][:,0],  ref_G[-1]["H_2^0"][:,1],  yerr=ref_G[-1]["H_2^0"][:,2],   color="g", linewidth=2, linestyle='--')
     ax5.errorbar(ref_G[-1]["H2O2^0"][:,0], ref_G[-1]["H2O2^0"][:,1], yerr=ref_G[-1]["H2O2^0"][:,2],  color="g", linewidth=2, linestyle='--')
     ax6.errorbar(ref_G[-1]["H3O^1"][:,0],  ref_G[-1]["H3O^1"][:,1],  yerr=ref_G[-1]["H3O^1"][:,2],   color="g", linewidth=2, linestyle='--')
-    ax7.errorbar(ref_G[-1]["OH^-1"][:,0],  ref_G[-1]["OH^-1"][:,1],  yerr=ref_G[-1]["OH^-1"][:,2],   color="g", linewidth=2, linestyle='--', label='{} 90$^\circ$C'.format(args.ref_label))
+    ax7.errorbar(ref_G[-1]["OH^-1"][:,0],  ref_G[-1]["OH^-1"][:,1],  yerr=ref_G[-1]["OH^-1"][:,2],   color="g", linewidth=2, linestyle='--', label=r'{} 90$\degree$C'.format(args.ref_label))
 
     ax1.set_xlim([1,1E7])
     ax2.set_xlim([1,1E7])
@@ -324,7 +324,7 @@ def plot_results(sut_dir, ref_dir, args):
     CellText[2][1] = str(round(sut_T[4],2))+" +- "+str(round(sut_T[5],2))
     Table = ax8.table(cellText   = CellText,\
                       rowLabels  = ["Real (s)","User (s)", "Sys (s)"],\
-                      colLabels  = ["Reference","Under Test"],\
+                      colLabels  = [args.ref_label,args.sut_label],\
                       colWidths  = [0.5,0.5],\
                       rowColours = ["lightskyblue"]*10,\
                       colColours = ["lightskyblue"]*10,\
@@ -464,7 +464,7 @@ def plot_results(sut_dir, ref_dir, args):
     CellText[2][1] = str(round(sut_T[4],2))+" +- "+str(round(sut_T[5],2))
     Table = ax8.table(cellText   = CellText,\
                       rowLabels  = ["Real (s)","User (s)", "Sys (s)"],\
-                      colLabels  = ["Reference","Under Test"],\
+                      colLabels  = [args.ref_label,args.sut_label],\
                       colWidths  = [0.5,0.5],\
                       rowColours = ["lightskyblue"]*10,\
                       colColours = ["lightskyblue"]*10,\
