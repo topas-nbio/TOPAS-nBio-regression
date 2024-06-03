@@ -7,16 +7,16 @@
 
 
 \title{\SUTname}
-\subtitle{Regression testing (cf.\ \benchmarkname)\thanks{Given the substantial changes to the code (see release notes), certain regression tests in OpenTOPAS-nBio are not able to be performed in TOPAS-nBio. In these cases OpenTOPAS-nBio is simply compared against itself.}}
+\subtitle{Regression testing (cf.\ \benchmarkname)}
 \author{Jos\'e Ramos-M\'endez, Naoki D. Kondo, and Thongchai A.M. Masilela}
 \institute{University of California San Francisco}
 \date{\today}
 
 \addtobeamertemplate{footnote}{\hskip -2em}{}
-\let\footnoterule\relax
-\renewcommand*{\thefootnote}{\fnsymbol{footnote}}
-\let\oldfootnotesize\footnotesize
-\renewcommand*{\footnotesize}{\oldfootnotesize\tiny}
+%\let\footnoterule\relax
+%\renewcommand*{\thefootnote}{\fnsymbol{footnote}}
+%\let\oldfootnotesize\footnotesize
+%\renewcommand*{\footnotesize}{\oldfootnotesize\tiny}
 
 \begin{document}
 
@@ -28,7 +28,28 @@
   %\tableofcontents
 %\end{frame}
 
+\newpage
+
+\section{Introduction}
+
+\begin{frame}{\secname}
+
+Welcome to the TOPAS-nBio regression test results!\vspace{5mm}
+
+This document depicts the results for 13 separate regression tests, comparing TOPAS-nBio v3.0 (the latest release which works with OpenTOPAS v4.0) to TOPAS-nBio v2.0.\vspace{5mm}
+
+Given the substantial changes to the code (see release notes), certain regression tests are not able to be performed in TOPAS-nBio v2.0. In these cases TOPAS-nBio v3.0 is simply compared against itself. The affected tests are as follows:\vspace{5mm}
+
+\begin{itemize}
+\item Fricke: IRT
+\item G-value of H$_2$O$_2$/H
+\item G-value and Temperature
+\item Nanodosimetry I/III
+\end{itemize}
+\end{frame}
+
 \begin{frame}[allowframebreaks]{Table of Contents}
+\vspace{2mm}
   \tableofcontents[sections={1-12}]
     \framebreak
   \tableofcontents[sections={13-}]
@@ -142,6 +163,9 @@
 \begin{frame}{\secname}
  \centering
    \includegraphics[width=0.75\textwidth]{./GvalueStepByStep/Gvalue}
+\begin{itemize}
+\item \tiny{The discrepancy between H yields can be attributed to a change that was made to the H$_2$O$^+$ and H$_2$O$^\ast$ dissociation displacements. There is a lack of experimental data in pure liquid water to conclude which graph is correct, correspondingly the H yield behavior was validated with a scavenging system, as shown in the "G-value of H: IRT" regression test.}
+\end{itemize}
 \end{frame}
 
 \section{G-value vs. LET: step-by-step}
@@ -156,6 +180,9 @@
 \begin{frame}{\secname}
  \centering
   \includegraphics[width=0.75\textwidth]{./GvalueIRT/GvalueIRT}
+\begin{itemize}
+\item \tiny{See footnote on page 12 for an explanation of the H yield discrepancy}
+\end{itemize}
 \end{frame}
 
 \section{G-value vs. LET: IRT}
@@ -184,14 +211,17 @@
 
 \begin{frame}{\secname}
  \centering
-  \includegraphics[width=0.7\textwidth]{./GvalueIRT-Temperature/TimeEvolution}
+  \includegraphics[width=0.6\textwidth]{./GvalueIRT-Temperature/TimeEvolution}
+\begin{itemize}
+\item \tiny{See footnote on page 12 for an explanation of the H yield discrepancy}
+\end{itemize}
 \end{frame}
 
 \section{G-value and Temperature II: IRT}
 
 \begin{frame}{\secname}
  \centering
-  \includegraphics[width=0.7\textwidth]{./GvalueIRT-Temperature/TemperatureEvolution}
+  \includegraphics[width=0.6\textwidth]{./GvalueIRT-Temperature/TemperatureEvolution}
 \end{frame}
 
 \section{Nanodosimetry I: TsEmDNAPhysics and g4em-dna\_opt2}
