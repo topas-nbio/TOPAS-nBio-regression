@@ -1,0 +1,6 @@
+Ph/Default/Modules = 1 "TsEmDNAPhysics"
+s:Ph/Default/Electron/SetElasticScatteringModel = "ELSEPA"
+
+includeFile = depFile1.txt
+
+Ts/Seed = 4901

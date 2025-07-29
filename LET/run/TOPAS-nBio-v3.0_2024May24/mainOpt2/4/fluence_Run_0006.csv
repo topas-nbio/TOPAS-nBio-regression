@@ -1,7 +1,0 @@
-# TOPAS Version: 4.0
-# Parameter File: mainOpt2.txt
-# Results for scorer: Fluence
-# Filtered by: OnlyIncludeParticlesNamed = 1 "proton"
-# Scored in component: target
-# Fluence ( /mm2 ) : Sum   
-2977669.75

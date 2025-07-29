@@ -80,7 +80,7 @@ def plot_results(sut_dir, ref_dir, args):
                 
     fig = plt.figure(figsize=(5,6))
 
-    energies = ['0.5', '0.9', '1.6', '2.9', '5.3', '9.5', '17.1', '30.8', '55.5', '100']
+    energies = ['0.5', '1.0', '2.0', '4.0', '8.0', '16.0', '32.0', '64.0', '100']
 
     sut = np.zeros([len(energies),2])
     ref = np.zeros([len(energies),2])
@@ -124,9 +124,9 @@ def plot_results(sut_dir, ref_dir, args):
                           color='b',marker='s',mfc='none',label=args.ref_label,linewidth=2.0)
 
     literature = np.genfromtxt('analysis/benchmark/PARTRAC.csv',delimiter=',')
-    plt.plot(literature[:,0], literature[:,1], 'k-', label='PARTRAC')
+    plt.plot(literature[:,0], literature[:,1], 'k-', marker='^', label='Friedland et al., 2017')
  
-    plt.xlim((0.4,200))
+    # plt.xlim((0.4,200))
     plt.yscale('log')
     plt.xscale('log')
     plt.ylabel(r'LET (keV/$\mu$m)')
@@ -141,10 +141,8 @@ def plot_results(sut_dir, ref_dir, args):
     ref_time = average_results_time(ref_dir + '/*/' + 'log.out')
 
     plt.axis('off')
-    table = plt.table(cellText=[['%1.1f +/- %1.1f' % (sut_time[0],sut_time[1]), '%1.1f +/- %1.1f' % (ref_time[0],ref_time[1])],\
-                                ['%1.1f +/- %1.1f' % (sut_time[2],sut_time[3]), '%1.1f +/- %1.1f' % (ref_time[2],ref_time[3])],\
-                                ['%1.1f +/- %1.1f' % (sut_time[4],sut_time[5]), '%1.1f +/- %1.1f' % (ref_time[4],ref_time[5])]],\
-                      rowLabels=('Init.','Exec.','Final.'),\
+    table = plt.table(cellText=[['%1.1f +/- %1.1f' % (sut_time[2],sut_time[3]), '%1.1f +/- %1.1f' % (ref_time[2],ref_time[3])]],\
+                      rowLabels=['Exec.'],\
                       colLabels=(args.sut_label+' (s)',args.ref_label+' (s)'),\
                       loc='center'\
                       )

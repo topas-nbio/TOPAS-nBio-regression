@@ -4,7 +4,7 @@
 
 i:Ts/ShowHistoryCountAtInterval = 50
 i:Ts/MaxInterruptedHistories  = So/Demo/NumberOfHistoriesInRun
-Ts/NumberOfThreads = 0
+Ts/NumberOfThreads = 1 # Can increase depending on your machine
 b:Ts/ShowCPUTime = "True"
 
 ################# MODEL LISTS #################

@@ -120,13 +120,13 @@ def plot_results(sut_dir, ref_dir, args):
 
     sutM1F2 = np.zeros([40,4])
     refM1F2 = np.zeros([40,4])
-    h = [100, 1000, 1000, 1000, 1000, 1000,\
-         1000, 1000, 1000, 10000, 10000, 10000,\
-         10000, 10000, 10000, 10000, 10000, 10000,\
-         10000, 10000, 100, 1000, 1000, 1000, 1000, 1000,\
-         1000, 1000, 1000, 10000, 10000, 10000,\
-         10000, 10000, 10000, 10000, 10000, 10000,\
-         10000, 10000]
+    h = [1000, 10000, 10000, 10000, 10000, 10000,\
+         10000, 10000, 10000, 100000, 100000, 100000,\
+         100000, 100000, 100000, 100000, 100000, 100000,\
+         100000, 100000, 1000, 10000, 10000, 10000, 10000, 10000,\
+         10000, 10000, 10000, 100000, 100000, 100000,\
+         100000, 100000, 100000, 100000, 100000, 100000,\
+         100000, 100000]
 
     for i in range(40):
         if i < 10:
@@ -176,10 +176,8 @@ def plot_results(sut_dir, ref_dir, args):
     ref_time = average_results_time(ref_dir + '/*/' + 'log.out')
 
     plt.axis('off')
-    table = plt.table(cellText=[['%1.1f +/- %1.1f' % (sut_time[0],sut_time[1]), '%1.1f +/- %1.1f' % (ref_time[0],ref_time[1])],\
-                                ['%1.1f +/- %1.1f' % (sut_time[2],sut_time[3]), '%1.1f +/- %1.1f' % (ref_time[2],ref_time[3])],\
-                                ['%1.1f +/- %1.1f' % (sut_time[4],sut_time[5]), '%1.1f +/- %1.1f' % (ref_time[4],ref_time[5])]],\
-                      rowLabels=('Init.','Exec.','Final.'),\
+    table = plt.table(cellText=[['%1.1f +/- %1.1f' % (sut_time[2],sut_time[3]), '%1.1f +/- %1.1f' % (ref_time[2],ref_time[3])]],\
+                      rowLabels=['Exec.'],\
                       colLabels=(args.sut_label+' (s)',args.ref_label+' (s)'),\
                       loc='center'\
                       )

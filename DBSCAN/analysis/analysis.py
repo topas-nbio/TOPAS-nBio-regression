@@ -106,8 +106,8 @@ def average_results_time(match_path):
 
 def plot_results(sut_dir, ref_dir, args):
     tag = split(sut_dir.rstrip(os.sep))[-1]
-    energies = {'0000': '0.5', '0001': '1.1', '0002': '2.3',\
-                '0003': '5', '0004': '10.8', '0005': '23.2',\
+    energies = {'0000': '0.5', '0001': '0.7', '0002': '1',\
+                '0003': '2', '0004': '4', '0005': '10',\
                 '0006': '50'}
                 
     fig = plt.figure()
@@ -154,13 +154,13 @@ def plot_results(sut_dir, ref_dir, args):
     plt.ylabel('DSB/SSB')
 
     partrac = np.genfromtxt('analysis/benchmark/PARTRAC.csv') 
-    plt.plot(partrac[:,0]*1e-6, partrac[:,1], '-', label='PARTRAC')
+    plt.plot(partrac[:,0]*1e-6, partrac[:,1], '-', label=r'Friedland et al., 2003')
 
     Francis = np.genfromtxt('analysis/benchmark/Francis2011.csv') 
-    plt.plot(Francis[:,0]*1e-6, Francis[:,1], 'o', label='Francis 2011')
+    plt.plot(Francis[:,0]*1e-6, Francis[:,1], 'o', label='Francis et al., 2011')
 
-    Leloup = np.genfromtxt('analysis/benchmark/Leloup.csv') 
-    plt.errorbar(Leloup[:,0]*1e-6, Leloup[:,1], yerr=(Leloup[:,2]-Leloup[:,1]), marker='v', color='g', ls='none', label='Leloup exp')
+    # Leloup = np.genfromtxt('analysis/benchmark/Leloup.csv') 
+    # plt.errorbar(Leloup[:,0]*1e-6, Leloup[:,1], yerr=(Leloup[:,2]-Leloup[:,1]), marker='v', color='g', ls='none', label='Leloup exp')
 
     for energy, value in sut_dbscan.items():
         if '0.5' in energy:
@@ -182,10 +182,8 @@ def plot_results(sut_dir, ref_dir, args):
     ref_time = average_results_time(ref_dir + '/*/' + 'log.out')
 
     plt.axis('off')
-    table = plt.table(cellText=[['%1.1f +/- %1.1f' % (sut_time[0],sut_time[1]), '%1.1f +/- %1.1f' % (ref_time[0],ref_time[1])],\
-                                ['%1.1f +/- %1.1f' % (sut_time[2],sut_time[3]), '%1.1f +/- %1.1f' % (ref_time[2],ref_time[3])],\
-                                ['%1.1f +/- %1.1f' % (sut_time[4],sut_time[5]), '%1.1f +/- %1.1f' % (ref_time[4],ref_time[5])]],\
-                      rowLabels=('Init.','Exec.','Final.'),\
+    table = plt.table(cellText=[['%1.1f +/- %1.1f' % (sut_time[2],sut_time[3]), '%1.1f +/- %1.1f' % (ref_time[2],ref_time[3])]],\
+                      rowLabels=['Exec.'],\
                       colLabels=(args.sut_label+' (s)',args.ref_label+' (s)'),\
                       loc='center'\
                       )

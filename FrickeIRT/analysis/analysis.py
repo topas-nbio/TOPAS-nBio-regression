@@ -178,8 +178,8 @@ def plot_results(sut_dir, ref_dir, args):
     plt.subplot(grid[1])
     plt.errorbar(sut[0]['Fe3'], sut[1]['Fe3'], yerr=sut[2]['Fe3'], fmt='b--',label=args.sut_label)
     plt.errorbar(ref[0]['Fe3'], ref[1]['Fe3'], yerr=ref[2]['Fe3'], fmt='r:',label=args.ref_label)
-    plt.errorbar(5E13, 15.6, yerr=0.2, fmt='o', markerfacecolor="none", label='ICRU report 34')
-    plt.plot(bench[:,0]*1E12,bench[:,1], label='Plante 2011')
+    plt.errorbar(5E13, 15.6, yerr=0.2, fmt='o', markerfacecolor="none", label='ICRU Report 34')
+    plt.plot(bench[:,0]*1E12,bench[:,1], label='Plante, 2011')
     plt.xscale("log")
     plt.xlim(1,1E14)
     plt.yticks((0 ,5, 10, 15))
@@ -197,11 +197,9 @@ def plot_results(sut_dir, ref_dir, args):
     ref_time = average_results_time(ref_dir + '/*/' + 'log.out')
 
     plt.axis('off')
-    table = plt.table(cellText=[['%1.3f +/- %1.3f' % (sut_time[0],sut_time[1]), '%1.3f +/- %1.3f' % (ref_time[0],ref_time[1])],\
-                                ['%1.3f +/- %1.3f' % (sut_time[2],sut_time[3]), '%1.3f +/- %1.3f' % (ref_time[2],ref_time[3])],\
-                                ['%1.3f +/- %1.3f' % (sut_time[4],sut_time[5]), '%1.3f +/- %1.3f' % (ref_time[4],ref_time[5])],\
+    table = plt.table(cellText=[['%1.3f +/- %1.3f' % (sut_time[2],sut_time[3]), '%1.3f +/- %1.3f' % (ref_time[2],ref_time[3])],\
                                 ['%1.3f +/- %1.3f' % (sut[1]["Fe3"][-1],sut[2]["Fe3"][-1]), '%1.3f +/- %1.3f' % (ref[1]["Fe3"][-1],ref[2]["Fe3"][-1])]],
-                      rowLabels=('Init. (s)','Exec. (s)','Final. (s)', 'Value (/100eV)'),\
+                      rowLabels=('Exec. (s)', 'Value (/100eV)'),\
                       colLabels=(args.sut_label,args.ref_label),\
                       loc='center')
 
@@ -210,7 +208,7 @@ def plot_results(sut_dir, ref_dir, args):
     plt.xlim(1,1E14)
     #plt.ylim(.9,1.1)
     plt.xlabel('Time (ps)')
-    plt.ylabel('Test/Ref ratio')
+    plt.ylabel('%s/%s ratio' % (args.sut_label,args.ref_label))
     plt.xscale("log")
 
     plt.tight_layout() 

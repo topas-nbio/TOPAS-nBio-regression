@@ -122,7 +122,7 @@ def plot_results(sut_dir, ref_dir, args):
                           color='b',linewidth=2.0)
 
     exp = np.genfromtxt('analysis/benchmark/Hilgers_2017_Conditional.csv')
-    plt.scatter(exp[:,0], exp[:,1], color='g', label='Measured')
+    plt.scatter(exp[:,0], exp[:,1], color='g', label='Hilgers et al., 2017')
 
     plt.ylabel('Probability')
     plt.xlabel('Ionization cluster size')
@@ -135,10 +135,8 @@ def plot_results(sut_dir, ref_dir, args):
     ref_time = average_results_time(ref_dir + '/*/' + 'log.out')
 
     plt.axis('off')
-    table = plt.table(cellText=[['%1.1f +/- %1.1f' % (sut_time[0],sut_time[1]), '%1.1f +/- %1.1f' % (ref_time[0],ref_time[1])],\
-                                ['%1.1f +/- %1.1f' % (sut_time[2],sut_time[3]), '%1.1f +/- %1.1f' % (ref_time[2],ref_time[3])],\
-                                ['%1.1f +/- %1.1f' % (sut_time[4],sut_time[5]), '%1.1f +/- %1.1f' % (ref_time[4],ref_time[5])]],\
-                      rowLabels=('Init.','Exec.','Final.'),\
+    table = plt.table(cellText=[['%1.1f +/- %1.1f' % (sut_time[2],sut_time[3]), '%1.1f +/- %1.1f' % (ref_time[2],ref_time[3])]],\
+                      rowLabels=['Exec.'],\
                       colLabels=(args.sut_label+' (s)',args.ref_label+' (s)'),\
                       loc='center'\
                       )

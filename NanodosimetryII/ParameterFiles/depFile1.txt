@@ -20,7 +20,7 @@ s:So/Demo/BeamParticle = Tf/particles/Value
 s:So/Demo/BeamPositionDistribution = "None"
 s:So/Demo/BeamAngularDistribution = "None"
 d:So/Demo/BeamEnergy = So/TotalEnergy MeV 
-i:So/Demo/NumberOfHistoriesInRun = 10 * Tf/Histories/Value
+i:So/Demo/NumberOfHistoriesInRun = 100 * Tf/Histories/Value
 i:Ts/ShowHistoryCountAtInterval =  10000
 
 s:Tf/particles/Function = "Step"
@@ -72,5 +72,5 @@ d:Tf/TimeLineEnd = 40 ms
 i:Tf/NumberOfSequentialTimes = 40
 
 b:Ts/ShowCPUTime = "True"
-i:Ts/NumberOfThreads = 1
+i:Ts/NumberOfThreads = 1 # Can increase depending on your machine
 

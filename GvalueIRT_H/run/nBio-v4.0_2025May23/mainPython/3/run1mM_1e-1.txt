@@ -1,0 +1,102 @@
+## 
+d:theNitrateConcentration = 1e-3 M
+d:theBromideConcentration = 1e-3 M
+
+b:Ch/TOPASChemistry/BackgroundReaction/SolvatedElectron/NO3m/Active = "True"
+d:Ch/TOPASChemistry/BackgroundReaction/SolvatedElectron/NO3m/Concentration = theNitrateConcentration M 
+b:Ch/TOPASChemistry/BackgroundReaction/Hydrogen/NO3m/Active = "True"
+d:Ch/TOPASChemistry/BackgroundReaction/Hydrogen/NO3m/Concentration = theNitrateConcentration M
+
+b:Ch/TOPASChemistry/BackgroundReaction/Hydroxyl/Br/Active = "True"
+d:Ch/TOPASChemistry/BackgroundReaction/Hydroxyl/Br/Concentration = theBromideConcentration M 
+
+b:Ch/TOPASChemistry/BackgroundReaction/Hydrogen/HCO2m/Active = "True"
+d:Ch/TOPASChemistry/BackgroundReaction/Hydrogen/HCO2m/Concentration = 1e-1 M
+b:Ch/TOPASChemistry/BackgroundReaction/Hydroxyl/HCO2m/Active = "True"
+d:Ch/TOPASChemistry/BackgroundReaction/Hydroxyl/HCO2m/Concentration = 1e-1 M
+
+s:Sc/nbOfMol/OutputFile = "HCO2m_1e-1_M_Br_1e-3_M_NO3m_1e-3_M"
+
+
+i:Ts/Verbosity = 0 
+################# CHEMISTRY
+sv:Ph/Default/Modules = 2 "TsEmDNAPhysics" "TsEmDNAChemistry"
+s:Ph/Default/Electron/SetElasticScatteringModel = "ELSEPA" 
+s:Ph/Default/SolvatedElectronThermalizationModel = "Meesungnoen" 
+
+includeFile = TOPASDefaultReactionsLaVerne.txt ScavengerReactions.txt
+
+s:Ch/ChemistryName = "TOPASChemistry"
+b:Ch/TOPASChemistry/ChemicalStageTransportActive = "True"
+dv:Ch/TOPASChemistry/AddTimeStepHighEdge   = 1 999999 ps
+dv:Ch/TOPASChemistry/AddTimeStepResolution = 1 1e-6 ps
+d:Ch/TOPASChemistry/ChemicalStageTimeEnd = 1.00001 ps
+b:Ch/TOPASChemistry/TestForContactReactions = "True"
+
+################# CHEMISTRY
+
+Ge/World/HLX= 1 km 
+Ge/World/HLY= 1 km 
+Ge/World/HLZ= 1 km 
+Ge/World/Material ="G4_WATER"
+
+d:Ge/sWorld/HLX= 1 km 
+d:Ge/sWorld/HLY= 1 km 
+d:Ge/sWorld/HLZ= 1 km 
+s:Ge/sWorld/Material ="G4_WATER"
+s:Ge/sWorld/Type = "TsBox"
+s:Ge/sWorld/Parent = "World"
+
+Ge/BeamPosition/TransZ = -0.0 * Ge/World/HLZ um
+Ge/BeamPosition/RotX = 0 deg
+
+# Secondary e- spectrum from a 60Co source
+s:So/60Co/Type = "Isotropic"
+s:So/60Co/Component = "BeamPosition"
+s:So/60Co/BeamPositionDistribution = "None"
+s:So/60Co/BeamParticle = "e-"
+i:So/60Co/NumberOfHistoriesInRun = 3000
+u:So/60Co/BeamEnergySpread = 0
+s:So/60Co/BeamEnergySpectrumType       = "Continuous"
+dv:So/60Co/BeamEnergySpectrumValues    = 75 0.01332     0.02664 0.03996 0.05328 0.0666  0.07992 0.09324 0.10656
+                                         0.11988 0.1332  0.14652 0.15984 0.17316 0.18648 0.1998  0.21312 0.22644 0.23976 0.25308 0.2664  0.27972 0.29304
+                                         0.30636 0.31968 0.333   0.34632 0.35964 0.37296 0.38628 0.3996  0.41292 0.42624 0.43956 0.45288 0.4662  0.47952
+                                         0.49284 0.50616 0.51948 0.5328  0.54612 0.55944 0.57276 0.58608 0.5994  0.61272 0.62604 0.63936 0.65268 0.666
+                                         0.67932 0.69264 0.70596 0.71928 0.7326  0.74592 0.75924 0.77256 0.78588 0.7992  0.81252 0.82584 0.83916 0.85248
+                                         0.8658  0.87912 0.89244 0.90576 0.91908 0.9324  0.94572 0.95904 0.97236 0.98568 0.999 MeV
+uv:So/60Co/BeamEnergySpectrumWeights   = 75 0.007422461 0.01515657      0.024106539     0.037252768
+                                         0.046409039     0.050934501     0.054432847     0.053497906     0.051281263     0.052339107     0.04863446
+                                         0.04553555      0.043577881     0.040685272     0.037287883     0.032999447     0.029035826     0.025919358
+                                         0.023294502     0.021876728     0.01977421      0.018799765     0.017232752     0.015999333     0.014844923
+                                         0.013804637     0.013111113     0.01226396      0.011087603     0.010266787     0.009757618     0.008866571
+                                         0.008401296     0.007470745     0.007123983     0.006799168     0.005930068     0.005315553     0.005157535
+                                         0.004521073     0.004863446     0.00432794      0.003340327     0.003428115     0.002708255     0.002497564
+                                         0.00237905      0.002229811     0.001970837     0.001650411     0.001689916     0.001198304     0.001246587
+                                         0.001255366     0.000886657     0.000798869     0.000645241     0.000618904     0.000478444     0.00043455
+                                         0.000443329     0.000346762     0.000298479     0.0002897       0.000302868     0.000197523     0.000210691
+                                         0.000179965     0.000109735     0.000131682     8.77878E-05     8.33984E-05     0.000100956     8.77878E-05
+                                         0.000272142
+
+s:Sc/nbOfMol/Quantity = "TsIRTGvalue" #"IRT"
+s:Sc/nbOfMol/Component = "sWorld"
+s:Sc/nbOfMol/IfOutputFileAlreadyExists = "Overwrite"
+s:Sc/nbOfMol/OutputType = "ascii"
+d:Sc/nbOfMol/KillPrimaryIfEnergyLossExceeds = 0.01 MeV
+d:Sc/nbOfMol/AbortEventIfPrimaryEnergyLossExceeds = 1.01 * Sc/nbOfMol/KillPrimaryIfEnergyLossExceeds MeV
+b:Sc/nbOfMol/KillPrimaryBasedOnEnergyLoss = "true"
+d:Sc/nbOfMol/KillPrimaryBasedOnTrackLength = 100 km 
+i:Sc/nbOfMol/OutputBufferSize = 1
+d:Sc/nbOfMol/CutOffTime = 1 ps
+d:Sc/nbOfMol/TimeLower = 1.0 ps
+d:Sc/nbOfMol/TimeUpper = 1e9 ps 
+i:Sc/nbOfMol/TimeBins  = 100
+b:Sc/nbOfMol/EnableHighTimeScavengers = "True"
+sv:Sc/nbOfMol/ReportMoleculesNamed = 8 "OH^0" "e_aq^-1" "H^0" "H2O2^0" "H_2^0" "HCO2m" "CO2m" "NO32m" 
+i:Ts/ShowHistoryCountAtInterval = 300
+
+i:Ts/MaxInterruptedHistories  = So/Demo/NumberOfHistoriesInRun
+
+Ts/NumberOfThreads = 1 # Can increase depending on your machine
+b:Ts/ShowCPUTime = "True"
+
+Ts/Seed = 19984

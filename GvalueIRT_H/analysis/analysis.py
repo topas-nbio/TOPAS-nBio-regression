@@ -88,41 +88,42 @@ def average_results_time(match_path):
     if len(fnames) == 0:
         return None
     
-    Real, RealE = 0.0, 0.0
-    User, UserE = 0.0, 0.0
-    Sys,  SysE  = 0.0, 0.0
+    execution, executionE = 0.0, 0.0
+    initialization, initializationE = 0.0, 0.0
+    finalization, finalizationE = 0.0, 0.0
+
     N = 0.0
 
+    time_tracker = {}
+
     for f in fnames:
-        Times = (subprocess.check_output("grep Execution " + f + " | awk '{print $2}' | sed 's/Real=//g' | sed 's/s//g' | awk '{sum+=$1}END{print sum/NR}'", shell=True))
-        RealT = float(Times) #Times.split()[0])
-        Real  += RealT
-        RealE += RealT*RealT
+        Times = float(subprocess.check_output("grep Execution " + f + " | awk '{print $2}' | sed 's/User=//g' | sed 's/s//g' | awk '{sum+=$1}END{print sum/NR}'", shell=True))
+        time_tracker[int(N+1)] = Times
+        execution += Times
+        executionE += Times*Times
 
-        Times = (subprocess.check_output("grep Execution " + f + " | awk '{print $2}' | sed 's/User=//g' | sed 's/s//g' | awk '{sum+=$1}END{print sum/NR}'", shell=True))
-        UserT = float(Times) #float(Times.split()[2])
-        User  += UserT
-        UserE += UserT*UserT
+        Times = float(subprocess.check_output("grep Initialization " + f + " | awk '{print $2}' | sed 's/User=//g' | sed 's/s//g' | awk '{sum+=$1}END{print sum/NR}'", shell=True))
+        initialization  += Times
+        initializationE += Times*Times
 
-        Times = (subprocess.check_output("grep Execution " + f + " | awk '{print $2}' | sed 's/Sys=//g' | sed 's/s//g' | awk '{sum+=$1}END{print sum/NR}'", shell=True))
-        SysT  = float(Times) #float(Times.split()[4])
-        Sys  += SysT
-        Sys  += SysT*SysT
+        Times = float(subprocess.check_output("grep Finalization " + f + " | awk '{print $2}' | sed 's/User=//g' | sed 's/s//g' | awk '{sum+=$1}END{print sum/NR}'", shell=True))
+        finalization  += Times
+        finalizationE  += Times*Times
+
         N += 1
 
-    Real /= N
-    User /= N
-    Sys  /= N
+    execution /= N
+    initialization /= N
+    finalization  /= N
 
     if N > 1:
-        RealE = np.sqrt(N/(N-1) * (np.abs(RealE/N - Real**2)))
-        UserE = np.sqrt(N/(N-1) * (np.abs(UserE/N - User**2)))
-        SysE  = np.sqrt(N/(N-1) * (np.abs(SysE/N  - Sys**2)))
-
+        executionE = np.sqrt(N/(N-1) * (np.abs(executionE/N - execution**2)))
+        initializationE = np.sqrt(N/(N-1) * (np.abs(initializationE/N - initialization**2)))
+        finalizationE  = np.sqrt(N/(N-1) * (np.abs(finalizationE/N  - finalization**2)))
     else:
-        RealE, UserE, SysE = 0, 0, 0
+        executionE, initializationE, finalizationE = 0, 0, 0
 
-    return (Real,RealE,User,UserE,Sys,SysE)
+    return (initialization,initializationE,execution,executionE,finalization,finalizationE,time_tracker)
 
 # Function to calculate the x-coordinate for the first dataset (Huerta benchmark)
 def huerta_1(x, y):
@@ -133,7 +134,7 @@ def huerta_1(x, y):
     for i in range(len(x)):
         xf = np.append(xf, 1e12 / (x[i] * 2.1e8 + 1e-3 * 1.4e6))
         yf = np.append(yf, y[i] - 0.460526) # H2 at 0 scav
-        yerr = np.append(yerr, y[i]*0.05) # 5% experimental uncertainty?
+        yerr = np.append(yerr, y[i]*0.05) # 5% experimental uncertainty
 
     return xf, yf, yerr
 
@@ -184,7 +185,7 @@ def plot_results(sut_dir, ref_dir, args):
     ref_SG_H20_err['H_2^0'] = [V2[2]]*len(HCO2m_concentrations)
 
     kobsHCO2m = 2.1e8
-    kobsNO3m = 1.4e6
+    kobsNO3m = 1.0e7
 
     # Now getting H2 for different concentrations of Nitrate
     for N in NO3m_concentrations: 
@@ -226,9 +227,9 @@ def plot_results(sut_dir, ref_dir, args):
                 error_sut_1mM[key].append(sut_SG_H2_1mM[key][i][2] + sut_SG_H20_err[key][i])
 
 
-    print('Time, 1mM: ', time_sut_1mM['H_2^0'])
-    print('G-value, 1mM: ', value_sut_1mM['H_2^0'])
-    print('Error, 1mM: ', error_sut_1mM['H_2^0'],'\n')
+    # print('Time, 1mM: ', time_sut_1mM['H_2^0'])
+    # print('G-value, 1mM: ', value_sut_1mM['H_2^0'])
+    # print('Error, 1mM: ', error_sut_1mM['H_2^0'],'\n')
 
     # Topas reference
     time_ref_1mM = {}
@@ -256,6 +257,10 @@ def plot_results(sut_dir, ref_dir, args):
     y1 = np.array(tr[1][1:5])
     xf1, yf1, yerr1 = huerta_1(x1,y1)
 
+    # RM 2021 data
+    rm_x = [4761.87301608,  15872.66314717,   47615.8732275,   475873.22737223]
+    rm_y = [0.7642553191489361, 0.6604255319148935, 0.5872340425531914, 0.5072340425531915]
+
     # x2 = np.array(tr[0][5:9])
     # y2 = np.array(tr[1][5:9])
     # xf2, yf2, yerr2 = huerta_2(x2,y2)
@@ -274,10 +279,12 @@ def plot_results(sut_dir, ref_dir, args):
     ax1.tick_params(axis='both', which='minor', labelsize=20)
 
     # print(final_sut["H_2^0"])
-    ax1.errorbar(time_sut_1mM["H_2^0"],  value_sut_1mM["H_2^0"], yerr=error_sut_1mM["H_2^0"],  color="r", marker='o', linewidth=2, label=r'{}, 1mM $NO_3^-$'.format(args.sut_label))
-    ax1.errorbar(time_ref_1mM["H_2^0"],  value_ref_1mM["H_2^0"], yerr=error_ref_1mM["H_2^0"],  color="blue", marker='x', dashes=[8,5], linewidth=2, label=r'{}, 1mM $NO_3^-$'.format(args.ref_label))
+    ax1.errorbar(time_sut_1mM["H_2^0"],  value_sut_1mM["H_2^0"], yerr=error_sut_1mM["H_2^0"],  color="r", marker='o', markersize=10, linewidth=0, label='{}'.format(args.sut_label))
+    ax1.errorbar(time_ref_1mM["H_2^0"],  value_ref_1mM["H_2^0"], yerr=error_ref_1mM["H_2^0"],  color="blue", marker='x', markersize=10, linewidth=0, label='{}'.format(args.ref_label))
 
-    ax1.errorbar(xf1, yf1, yerr=yerr1, linestyle='', marker='^', markersize=7, markerfacecolor='none', capsize=2, color='k', label='Huerta Parajon 2008')
+    ax1.errorbar(xf1, yf1, yerr=yerr1, linestyle='', marker='*', markersize=10, markerfacecolor='k', capsize=2, elinewidth=1, zorder=1, color='k', label='Huerta Parajon et al., 2008')
+    ax1.plot(rm_x, rm_y, color='k', mfc='white', markeredgecolor='k',zorder=1, marker='^', ms=10, ls = '--', label='Ramos-Méndez et al., 2021')
+
 
     #ax1.scatter(1e12/bench1[:,0], bench1[:,1], label='Pastina(1999)')
     #ax1.scatter(bench2[:,0], bench3[:,1], label='Ramos-Mendez(2021)')
@@ -289,30 +296,19 @@ def plot_results(sut_dir, ref_dir, args):
 
     ax1.set_xscale('log')
 
-    ax1.set_xlabel("Time (ps)",fontsize=20)
+    ax1.set_xlabel("Time [ps]",fontsize=20)
 
-    ax1.set_ylabel("GValue",fontsize=20)
+    ax1.set_ylabel("G value [{} / 100 eV]".format(r'$H^{\bullet}$'),fontsize=20)
 
     ax2.set_axis_off()
-    CellText = [["",""],["",""],["",""]]
-    CellText[0][0] = str(round(ref_T[0],2))+" +- "+str(round(ref_T[1],2))
-    CellText[0][1] = str(round(sut_T[0],2))+" +- "+str(round(sut_T[1],2))
-    CellText[1][0] = str(round(ref_T[2],2))+" +- "+str(round(ref_T[3],2))
-    CellText[1][1] = str(round(sut_T[2],2))+" +- "+str(round(sut_T[3],2))
-    CellText[2][0] = str(round(ref_T[4],2))+" +- "+str(round(ref_T[5],2))
-    CellText[2][1] = str(round(sut_T[4],2))+" +- "+str(round(sut_T[5],2))
-    Table = ax2.table(cellText   = CellText,\
-                      rowLabels  = ["Real (s)","User (s)", "Sys (s)"],\
-                      colLabels  = ["Reference","Under Test"],\
-                      colWidths  = [0.5,0.5],\
-                      rowColours = ["lightskyblue"]*10,\
-                      colColours = ["lightskyblue"]*10,\
-                      cellLoc    = 'center',\
-                      loc        = 'center',\
-                      fontsize   = 30)
-    Table.auto_set_font_size(False)
-    Table.set_fontsize(15)
-    Table.scale(1,1.5)
+    Table = ax2.table(cellText=[['%1.3f +/- %1.3f' % (sut_T[2],sut_T[3]), '%1.3f +/- %1.3f' % (ref_T[2],ref_T[3])]],\
+                      rowLabels=['Exec.'],\
+                      colLabels=(args.sut_label+' (s)',args.ref_label+' (s)'),\
+                      loc='center'\
+                      )
+
+    Table.set_fontsize(20)
+    Table.scale(1,3)
 
     fig.tight_layout()
     fig.savefig(join(args.outdir,'TimeEvolution.pdf'))

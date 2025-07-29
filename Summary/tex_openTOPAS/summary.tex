@@ -2,8 +2,8 @@
 \usepackage{graphicx}
 
 \graphicspath{{./openTOPAS/}}
-\DeclareRobustCommand\SUTname{TOPAS-nBio v3.0 (OpenTOPAS v4.0)}
-\DeclareRobustCommand\benchmarkname{TOPAS-nBio v2.0 (TOPAS v3.9)}
+\DeclareRobustCommand\SUTname{TOPAS-nBio v4.0 (OpenTOPAS v4.0)}
+\DeclareRobustCommand\benchmarkname{TOPAS-nBio v3.0 (OpenTOPAS v4.0)}
 
 
 \title{\SUTname}
@@ -36,16 +36,8 @@
 
 Welcome to the TOPAS-nBio regression test results!\vspace{5mm}
 
-This document depicts the results for 13 separate regression tests, comparing TOPAS-nBio v3.0 (the latest release which works with OpenTOPAS v4.0) to TOPAS-nBio v2.0.\vspace{5mm}
+This document depicts the results for 13 separate regression tests, comparing TOPAS-nBio v4.0 to TOPAS-nBio v3.0.
 
-Given the substantial changes to the code (see release notes), certain regression tests are not able to be performed in TOPAS-nBio v2.0. In these cases TOPAS-nBio v3.0 is simply compared against itself. The affected tests are as follows:\vspace{5mm}
-
-\begin{itemize}
-\item Fricke: IRT
-\item G-value of H$_2$O$_2$/H
-\item G-value and Temperature
-\item Nanodosimetry I/III
-\end{itemize}
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Table of Contents}
@@ -163,9 +155,6 @@ Given the substantial changes to the code (see release notes), certain regressio
 \begin{frame}{\secname}
  \centering
    \includegraphics[width=0.75\textwidth]{./GvalueStepByStep/Gvalue}
-\begin{itemize}
-\item \tiny{The discrepancy between H yields can be attributed to a change that was made to the H$_2$O$^+$ and H$_2$O$^\ast$ dissociation displacements. There is a lack of experimental data in pure liquid water to conclude which graph is correct, correspondingly the H yield behavior was validated with a scavenging system, as shown in the "G-value of H: IRT" regression test.}
-\end{itemize}
 \end{frame}
 
 \section{G-value vs. LET: step-by-step}
@@ -180,9 +169,7 @@ Given the substantial changes to the code (see release notes), certain regressio
 \begin{frame}{\secname}
  \centering
   \includegraphics[width=0.75\textwidth]{./GvalueIRT/GvalueIRT}
-\begin{itemize}
-\item \tiny{See footnote on page 12 for an explanation of the H yield discrepancy}
-\end{itemize}
+
 \end{frame}
 
 \section{G-value vs. LET: IRT}
@@ -212,9 +199,7 @@ Given the substantial changes to the code (see release notes), certain regressio
 \begin{frame}{\secname}
  \centering
   \includegraphics[width=0.6\textwidth]{./GvalueIRT-Temperature/TimeEvolution}
-\begin{itemize}
-\item \tiny{See footnote on page 12 for an explanation of the H yield discrepancy}
-\end{itemize}
+
 \end{frame}
 
 \section{G-value and Temperature II: IRT}
@@ -235,9 +220,9 @@ Given the substantial changes to the code (see release notes), certain regressio
      \includegraphics[width=\textwidth]{./NanodosimetryI/IDDistribution_opt2}
     \end{column}
    \end{columns}
-\begin{itemize}
-\item \tiny{Conte V, Selva A, Colautti P, et al., Nanodosimetry: Towards a new concept of radiation quality. \textit{Radiat Prot Dosimetry}. 2018;180(1-4):150-156. doi:10.1093/rpd/ncx175}
-\end{itemize}
+% \begin{itemize}
+% \item \tiny{Conte V, Selva A, Colautti P, et al., Nanodosimetry: Towards a new concept of radiation quality. \textit{Radiat Prot Dosimetry}. 2018;180(1-4):150-156. doi:10.1093/rpd/ncx175}
+% \end{itemize}
 \end{frame}
 
 \section{Nanodosimetry I: g4em-dna\_opt4 and g4em-dna\_opt6}
@@ -251,9 +236,9 @@ Given the substantial changes to the code (see release notes), certain regressio
      \includegraphics[width=\textwidth]{./NanodosimetryI/IDDistribution_opt6}
     \end{column}
    \end{columns}
-\begin{itemize}
-\item \tiny{Conte V, Selva A, Colautti P, et al., Nanodosimetry: Towards a new concept of radiation quality. \textit{Radiat Prot Dosimetry}. 2018;180(1-4):150-156. doi:10.1093/rpd/ncx175}
-\end{itemize}
+% \begin{itemize}
+% \item \tiny{Conte V, Selva A, Colautti P, et al., Nanodosimetry: Towards a new concept of radiation quality. \textit{Radiat Prot Dosimetry}. 2018;180(1-4):150-156. doi:10.1093/rpd/ncx175}
+% \end{itemize}
 \end{frame}
 
 \section{Nanodosimetry II: TsEmDNAPhysics and g4em-dna\_opt2}

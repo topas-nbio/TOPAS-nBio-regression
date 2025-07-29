@@ -30,6 +30,10 @@ def ReadGValues(File):
         Time = float(A[2])
         Name = A[3]
 
+        # to account for differences in nBio-v4.0 and nBio-v3.0
+        if Name == 'O^0' or Name == 'O3P^0':
+            continue
+
         if Name in GValues:
             GValues[Name].append([Time,GVal,GErr])
 
@@ -87,41 +91,42 @@ def average_results_time(match_path):
     if len(fnames) == 0:
         return None
     
-    Real, RealE = 0.0, 0.0
-    User, UserE = 0.0, 0.0
-    Sys,  SysE  = 0.0, 0.0
+    execution, executionE = 0.0, 0.0
+    initialization, initializationE = 0.0, 0.0
+    finalization, finalizationE = 0.0, 0.0
+    
     N = 0.0
 
+    time_tracker = {}
+
     for f in fnames:
-        Times = (subprocess.check_output("grep Execution " + f + " | awk '{print $2}' | sed 's/Real=//g' | sed 's/s//g' | awk '{sum+=$1}END{print sum/NR}'", shell=True))
-        RealT = float(Times) #Times.split()[0])
-        Real  += RealT
-        RealE += RealT*RealT
+        Times = float(subprocess.check_output("grep Execution " + f + " | awk '{print $2}' | sed 's/User=//g' | sed 's/s//g' | awk '{sum+=$1}END{print sum/NR}'", shell=True))
+        time_tracker[int(N+1)] = Times
+        execution += Times
+        executionE += Times*Times
 
-        Times = (subprocess.check_output("grep Execution " + f + " | awk '{print $2}' | sed 's/User=//g' | sed 's/s//g' | awk '{sum+=$1}END{print sum/NR}'", shell=True))
-        UserT = float(Times) #float(Times.split()[2])
-        User  += UserT
-        UserE += UserT*UserT
+        Times = float(subprocess.check_output("grep Initialization " + f + " | awk '{print $2}' | sed 's/User=//g' | sed 's/s//g' | awk '{sum+=$1}END{print sum/NR}'", shell=True))
+        initialization  += Times
+        initializationE += Times*Times
 
-        Times = (subprocess.check_output("grep Execution " + f + " | awk '{print $2}' | sed 's/Sys=//g' | sed 's/s//g' | awk '{sum+=$1}END{print sum/NR}'", shell=True))
-        SysT  = float(Times) #float(Times.split()[4])
-        Sys  += SysT
-        Sys  += SysT*SysT
+        Times = float(subprocess.check_output("grep Finalization " + f + " | awk '{print $2}' | sed 's/User=//g' | sed 's/s//g' | awk '{sum+=$1}END{print sum/NR}'", shell=True))
+        finalization  += Times
+        finalizationE  += Times*Times
+
         N += 1
 
-    Real /= N
-    User /= N
-    Sys  /= N
+    execution /= N
+    initialization /= N
+    finalization  /= N
 
     if N > 1:
-        RealE = np.sqrt(N/(N-1) * (np.abs(RealE/N - Real**2)))
-        UserE = np.sqrt(N/(N-1) * (np.abs(UserE/N - User**2)))
-        SysE  = np.sqrt(N/(N-1) * (np.abs(SysE/N  - Sys**2)))
-
+        executionE = np.sqrt(N/(N-1) * (np.abs(executionE/N - execution**2)))
+        initializationE = np.sqrt(N/(N-1) * (np.abs(initializationE/N - initialization**2)))
+        finalizationE  = np.sqrt(N/(N-1) * (np.abs(finalizationE/N  - finalization**2)))
     else:
-        RealE, UserE, SysE = 0, 0, 0
+        executionE, initializationE, finalizationE = 0, 0, 0
 
-    return (Real,RealE,User,UserE,Sys,SysE)
+    return (initialization,initializationE,execution,executionE,finalization,finalizationE, time_tracker)
 
 ####################################################
 ### Define Plot Function
@@ -140,6 +145,78 @@ def plot_results(sut_dir, ref_dir, args):
     ref_SG   = {}
     bench_SG = {}
 
+    # Experimental data used in R.M. 2022: https://doi.org/10.1088/1361-6560/ac79f9
+
+    #--- OH
+
+    # Spinks and Woods, 1990
+    SPINKSx = [24.897119341563787]
+    SPINKSy = [2.7240437158469946]
+
+    # Elliot et al., 1993
+    ELL1x = [23.868312757201647, 17.695473251028808]
+    ELL1y = [2.66120218579235, 2.7540983606557377]
+
+    ELL2x = [21.810699588477366, 79.83539094650206]
+    ELL2y = [2.9371584699453552, 3.349726775956284]
+
+    ELL3x = [28.395061728395063, 17.79835390946502, 30.967078189300413]
+    ELL3y = [2.959016393442623, 2.8688524590163933, 3.021857923497268]
+
+    ELL4x = [30.246913580246915, 17.79835390946502, 33.02469135802469, 72.7366255144033]
+    ELL4y = [2.907103825136612, 2.7568306010928962, 3.0437158469945356, 3.4508196721311473]
+
+    ELL5x = [19.958847736625515, 28.80658436213992]
+    ELL5y = [2.4672131147540983, 2.6038251366120218]
+
+    #--- e_aq
+
+    # Elliot et al., 1993
+    ELL6x = [25]
+    ELL6y = [2.644]
+
+    # Schmidt et al., 1992
+    SCHMIDTx = [25.401606425702813, 47.69076305220884, 68.77510040160642, 86.84738955823293]
+    SCHMIDTy = [2.664, 2.658, 2.66, 2.824]
+
+    # Kent and Sims (in Elliot et al., 2009)
+    KENT1x = [20.983935742971887, 15.763052208835342, 17.269076305220885]
+    KENT1y = [2.3820000000000006, 2.6, 2.602]
+    
+    # Jha et al., 1972
+    JHAx = [22.79116465863454]
+    JHAy = [2.696]
+
+    # Janik et al., 2007
+    JAN1x = [21.88755020080321]
+    JAN1y = [2.73]
+
+    JAN2x = [22.08835341365462]
+    JAN2y = [2.9279999999999995]
+
+    #--- H2O2
+
+    # Elliot et al., 1993
+    ELL7x = [25.2, 70.30000000000001]
+    ELL7y = [0.6879518072289156, 0.608433734939759]
+
+    # Elliot, 1998
+    ELL8x = [70.2, 25]
+    ELL8y = [0.6704819277108434, 0.7198795180722891]
+
+    # Kent and Sims (in Elliot et al., 2009)
+    KENT2x = [20, 20, 20, 20, 20]
+    KENT2y = [0.6795180722891566, 0.708433734939759, 0.75, 0.8012048192771084, 0.7879518072289156]
+
+    # Stefanic and LaVerne, 2002
+    STEFx = [60, 25, 80]
+    STEFy = [0.6620481927710843, 0.7078313253012047, 0.5975903614457831]
+        
+    #--- H2
+
+    # Elliot et al., 1990
+    ELL9x = [25, 100]
+    ELL9y = [0.42, 0.46]
 
     for T in Temps:
         sut_GT   = average_results(sut_dir + '/*/electron_Gvalue_Corrected_%s.phsp'%(T))
@@ -216,21 +293,21 @@ def plot_results(sut_dir, ref_dir, args):
     ax7.tick_params(axis='both', which='major', labelsize=20)
     ax7.tick_params(axis='both', which='minor', labelsize=20)
 
-    ax1.errorbar(bench_G[0]["e_aq^-1"][:,0][::10],bench_G[0]["e_aq^-1"][:,1][::10],yerr=bench_G[0]["e_aq^-1"][:,2][::10], color="b", marker="o", dashes=[0,1], markerfacecolor="none", markersize=15, linewidth=2)
-    ax2.errorbar(bench_G[0]["OH^0"][:,0][::10],   bench_G[0]["OH^0"][:,1][::10],   yerr=bench_G[0]["OH^0"][:,2][::10],    color="b", marker="o", dashes=[0,1], markerfacecolor="none", markersize=15, linewidth=2)
-    ax3.errorbar(bench_G[0]["H^0"][:,0][::10],    bench_G[0]["H^0"][:,1][::10],    yerr=bench_G[0]["H^0"][:,2][::10],     color="b", marker="o", dashes=[0,1], markerfacecolor="none", markersize=15, linewidth=2)
-    ax4.errorbar(bench_G[0]["H_2^0"][:,0][::10],  bench_G[0]["H_2^0"][:,1][::10],  yerr=bench_G[0]["H_2^0"][:,2][::10],   color="b", marker="o", dashes=[0,1], markerfacecolor="none", markersize=15, linewidth=2)
-    ax5.errorbar(bench_G[0]["H2O2^0"][:,0][::10], bench_G[0]["H2O2^0"][:,1][::10], yerr=bench_G[0]["H2O2^0"][:,2][::10],  color="b", marker="o", dashes=[0,1], markerfacecolor="none", markersize=15, linewidth=2)
-    ax6.errorbar(bench_G[0]["H3O^1"][:,0][::10],  bench_G[0]["H3O^1"][:,1][::10],  yerr=bench_G[0]["H3O^1"][:,2][::10],   color="b", marker="o", dashes=[0,1], markerfacecolor="none", markersize=15, linewidth=2)
-    ax7.errorbar(bench_G[0]["OH^-1"][:,0][::10],  bench_G[0]["OH^-1"][:,1][::10],  yerr=bench_G[0]["OH^-1"][:,2][::10],   color="b", marker="o", dashes=[0,1], markerfacecolor="none", markersize=15, linewidth=2)
+    ax1.errorbar(bench_G[0]["e_aq^-1"][:,0][::10],bench_G[0]["e_aq^-1"][:,1][::10],yerr=bench_G[0]["e_aq^-1"][:,2][::10], color="k", marker="^", ls = 'none', markerfacecolor="white", markersize=10)
+    ax2.errorbar(bench_G[0]["OH^0"][:,0][::10],   bench_G[0]["OH^0"][:,1][::10],   yerr=bench_G[0]["OH^0"][:,2][::10],    color="k", marker="^", ls = 'none', markerfacecolor="white", markersize=10)
+    ax3.errorbar(bench_G[0]["H^0"][:,0][::10],    bench_G[0]["H^0"][:,1][::10],    yerr=bench_G[0]["H^0"][:,2][::10],     color="k", marker="^", ls = 'none', markerfacecolor="white", markersize=10)
+    ax4.errorbar(bench_G[0]["H_2^0"][:,0][::10],  bench_G[0]["H_2^0"][:,1][::10],  yerr=bench_G[0]["H_2^0"][:,2][::10],   color="k", marker="^", ls = 'none', markerfacecolor="white", markersize=10)
+    ax5.errorbar(bench_G[0]["H2O2^0"][:,0][::10], bench_G[0]["H2O2^0"][:,1][::10], yerr=bench_G[0]["H2O2^0"][:,2][::10],  color="k", marker="^", ls = 'none', markerfacecolor="white", markersize=10)
+    ax6.errorbar(bench_G[0]["H3O^1"][:,0][::10],  bench_G[0]["H3O^1"][:,1][::10],  yerr=bench_G[0]["H3O^1"][:,2][::10],   color="k", marker="^", ls = 'none', markerfacecolor="white", markersize=10)
+    ax7.errorbar(bench_G[0]["OH^-1"][:,0][::10],  bench_G[0]["OH^-1"][:,1][::10],  yerr=bench_G[0]["OH^-1"][:,2][::10],   color="k", marker="^", ls = 'none', markerfacecolor="white", markersize=10)
 
-    ax1.errorbar(bench_G[-1]["e_aq^-1"][:,0][::10],bench_G[-1]["e_aq^-1"][:,1][::10],yerr=bench_G[-1]["e_aq^-1"][:,2][::10], color="b", marker="o", dashes=[0,1], markerfacecolor="none", markersize=15, linewidth=2)
-    ax2.errorbar(bench_G[-1]["OH^0"][:,0][::10],   bench_G[-1]["OH^0"][:,1][::10],   yerr=bench_G[-1]["OH^0"][:,2][::10],    color="b", marker="o", dashes=[0,1], markerfacecolor="none", markersize=15, linewidth=2)
-    ax3.errorbar(bench_G[-1]["H^0"][:,0][::10],    bench_G[-1]["H^0"][:,1][::10],    yerr=bench_G[-1]["H^0"][:,2][::10],     color="b", marker="o", dashes=[0,1], markerfacecolor="none", markersize=15, linewidth=2)
-    ax4.errorbar(bench_G[-1]["H_2^0"][:,0][::10],  bench_G[-1]["H_2^0"][:,1][::10],  yerr=bench_G[-1]["H_2^0"][:,2][::10],   color="b", marker="o", dashes=[0,1], markerfacecolor="none", markersize=15, linewidth=2)
-    ax5.errorbar(bench_G[-1]["H2O2^0"][:,0][::10], bench_G[-1]["H2O2^0"][:,1][::10], yerr=bench_G[-1]["H2O2^0"][:,2][::10],  color="b", marker="o", dashes=[0,1], markerfacecolor="none", markersize=15, linewidth=2)
-    ax6.errorbar(bench_G[-1]["H3O^1"][:,0][::10],  bench_G[-1]["H3O^1"][:,1][::10],  yerr=bench_G[-1]["H3O^1"][:,2][::10],   color="b", marker="o", dashes=[0,1], markerfacecolor="none", markersize=15, linewidth=2)
-    ax7.errorbar(bench_G[-1]["OH^-1"][:,0][::10],  bench_G[-1]["OH^-1"][:,1][::10],  yerr=bench_G[-1]["OH^-1"][:,2][::10],   color="b", marker="o", dashes=[0,1], markerfacecolor="none", markersize=15, linewidth=2, label='Ramos-Mendez (2022)')
+    ax1.errorbar(bench_G[-1]["e_aq^-1"][:,0][::10],bench_G[-1]["e_aq^-1"][:,1][::10],yerr=bench_G[-1]["e_aq^-1"][:,2][::10], color="k", marker="^", ls = 'none', markerfacecolor="white", markersize=10)
+    ax2.errorbar(bench_G[-1]["OH^0"][:,0][::10],   bench_G[-1]["OH^0"][:,1][::10],   yerr=bench_G[-1]["OH^0"][:,2][::10],    color="k", marker="^", ls = 'none', markerfacecolor="white", markersize=10)
+    ax3.errorbar(bench_G[-1]["H^0"][:,0][::10],    bench_G[-1]["H^0"][:,1][::10],    yerr=bench_G[-1]["H^0"][:,2][::10],     color="k", marker="^", ls = 'none', markerfacecolor="white", markersize=10)
+    ax4.errorbar(bench_G[-1]["H_2^0"][:,0][::10],  bench_G[-1]["H_2^0"][:,1][::10],  yerr=bench_G[-1]["H_2^0"][:,2][::10],   color="k", marker="^", ls = 'none', markerfacecolor="white", markersize=10)
+    ax5.errorbar(bench_G[-1]["H2O2^0"][:,0][::10], bench_G[-1]["H2O2^0"][:,1][::10], yerr=bench_G[-1]["H2O2^0"][:,2][::10],  color="k", marker="^", ls = 'none', markerfacecolor="white", markersize=10)
+    ax6.errorbar(bench_G[-1]["H3O^1"][:,0][::10],  bench_G[-1]["H3O^1"][:,1][::10],  yerr=bench_G[-1]["H3O^1"][:,2][::10],   color="k", marker="^", ls = 'none', markerfacecolor="white", markersize=10)
+    ax7.errorbar(bench_G[-1]["OH^-1"][:,0][::10],  bench_G[-1]["OH^-1"][:,1][::10],  yerr=bench_G[-1]["OH^-1"][:,2][::10],   color="k", marker="^", ls = 'none', markerfacecolor="white", markersize=10, label='Ramos-Méndez et al., 2022')
 
     ax1.errorbar(sut_G[0]["e_aq^-1"][:,0],sut_G[0]["e_aq^-1"][:,1],yerr=sut_G[0]["e_aq^-1"][:,2], color="r", linewidth=2)
     ax2.errorbar(sut_G[0]["OH^0"][:,0],   sut_G[0]["OH^0"][:,1],   yerr=sut_G[0]["OH^0"][:,2],    color="r", linewidth=2)
@@ -240,29 +317,29 @@ def plot_results(sut_dir, ref_dir, args):
     ax6.errorbar(sut_G[0]["H3O^1"][:,0],  sut_G[0]["H3O^1"][:,1],  yerr=sut_G[0]["H3O^1"][:,2],   color="r", linewidth=2)
     ax7.errorbar(sut_G[0]["OH^-1"][:,0],  sut_G[0]["OH^-1"][:,1],  yerr=sut_G[0]["OH^-1"][:,2],   color="r", linewidth=2, label=r'{} 10$\degree$C'.format(args.sut_label))
 
-    ax1.errorbar(sut_G[-1]["e_aq^-1"][:,0],sut_G[-1]["e_aq^-1"][:,1],yerr=sut_G[-1]["e_aq^-1"][:,2], color="r", linewidth=2, linestyle='--')
-    ax2.errorbar(sut_G[-1]["OH^0"][:,0],   sut_G[-1]["OH^0"][:,1],   yerr=sut_G[-1]["OH^0"][:,2],    color="r", linewidth=2, linestyle='--')
-    ax3.errorbar(sut_G[-1]["H^0"][:,0],    sut_G[-1]["H^0"][:,1],    yerr=sut_G[-1]["H^0"][:,2],     color="r", linewidth=2, linestyle='--')
-    ax4.errorbar(sut_G[-1]["H_2^0"][:,0],  sut_G[-1]["H_2^0"][:,1],  yerr=sut_G[-1]["H_2^0"][:,2],   color="r", linewidth=2, linestyle='--')
-    ax5.errorbar(sut_G[-1]["H2O2^0"][:,0], sut_G[-1]["H2O2^0"][:,1], yerr=sut_G[-1]["H2O2^0"][:,2],  color="r", linewidth=2, linestyle='--')
-    ax6.errorbar(sut_G[-1]["H3O^1"][:,0],  sut_G[-1]["H3O^1"][:,1],  yerr=sut_G[-1]["H3O^1"][:,2],   color="r", linewidth=2, linestyle='--')
-    ax7.errorbar(sut_G[-1]["OH^-1"][:,0],  sut_G[-1]["OH^-1"][:,1],  yerr=sut_G[-1]["OH^-1"][:,2],   color="r", linewidth=2, linestyle='--', label=r'{} 90$\degree$C'.format(args.sut_label))
+    ax1.errorbar(sut_G[-1]["e_aq^-1"][:,0],sut_G[-1]["e_aq^-1"][:,1],yerr=sut_G[-1]["e_aq^-1"][:,2], color="orange", linewidth=2, linestyle='--')
+    ax2.errorbar(sut_G[-1]["OH^0"][:,0],   sut_G[-1]["OH^0"][:,1],   yerr=sut_G[-1]["OH^0"][:,2],    color="orange", linewidth=2, linestyle='--')
+    ax3.errorbar(sut_G[-1]["H^0"][:,0],    sut_G[-1]["H^0"][:,1],    yerr=sut_G[-1]["H^0"][:,2],     color="orange", linewidth=2, linestyle='--')
+    ax4.errorbar(sut_G[-1]["H_2^0"][:,0],  sut_G[-1]["H_2^0"][:,1],  yerr=sut_G[-1]["H_2^0"][:,2],   color="orange", linewidth=2, linestyle='--')
+    ax5.errorbar(sut_G[-1]["H2O2^0"][:,0], sut_G[-1]["H2O2^0"][:,1], yerr=sut_G[-1]["H2O2^0"][:,2],  color="orange", linewidth=2, linestyle='--')
+    ax6.errorbar(sut_G[-1]["H3O^1"][:,0],  sut_G[-1]["H3O^1"][:,1],  yerr=sut_G[-1]["H3O^1"][:,2],   color="orange", linewidth=2, linestyle='--')
+    ax7.errorbar(sut_G[-1]["OH^-1"][:,0],  sut_G[-1]["OH^-1"][:,1],  yerr=sut_G[-1]["OH^-1"][:,2],   color="orange", linewidth=2, linestyle='--', label=r'{} 90$\degree$C'.format(args.sut_label))
 
-    ax1.errorbar(ref_G[0]["e_aq^-1"][:,0],ref_G[0]["e_aq^-1"][:,1],yerr=ref_G[0]["e_aq^-1"][:,2], color="g", linewidth=2)
-    ax2.errorbar(ref_G[0]["OH^0"][:,0],   ref_G[0]["OH^0"][:,1],   yerr=ref_G[0]["OH^0"][:,2],    color="g", linewidth=2)
-    ax3.errorbar(ref_G[0]["H^0"][:,0],    ref_G[0]["H^0"][:,1],    yerr=ref_G[0]["H^0"][:,2],     color="g", linewidth=2)
-    ax4.errorbar(ref_G[0]["H_2^0"][:,0],  ref_G[0]["H_2^0"][:,1],  yerr=ref_G[0]["H_2^0"][:,2],   color="g", linewidth=2)
-    ax5.errorbar(ref_G[0]["H2O2^0"][:,0], ref_G[0]["H2O2^0"][:,1], yerr=ref_G[0]["H2O2^0"][:,2],  color="g", linewidth=2)
-    ax6.errorbar(ref_G[0]["H3O^1"][:,0],  ref_G[0]["H3O^1"][:,1],  yerr=ref_G[0]["H3O^1"][:,2],   color="g", linewidth=2)
-    ax7.errorbar(ref_G[0]["OH^-1"][:,0],  ref_G[0]["OH^-1"][:,1],  yerr=ref_G[0]["OH^-1"][:,2],   color="g", linewidth=2, label=r'{} 10$\degree$C'.format(args.ref_label))
+    ax1.errorbar(ref_G[0]["e_aq^-1"][:,0],ref_G[0]["e_aq^-1"][:,1],yerr=ref_G[0]["e_aq^-1"][:,2], color="b", linewidth=2)
+    ax2.errorbar(ref_G[0]["OH^0"][:,0],   ref_G[0]["OH^0"][:,1],   yerr=ref_G[0]["OH^0"][:,2],    color="b", linewidth=2)
+    ax3.errorbar(ref_G[0]["H^0"][:,0],    ref_G[0]["H^0"][:,1],    yerr=ref_G[0]["H^0"][:,2],     color="b", linewidth=2)
+    ax4.errorbar(ref_G[0]["H_2^0"][:,0],  ref_G[0]["H_2^0"][:,1],  yerr=ref_G[0]["H_2^0"][:,2],   color="b", linewidth=2)
+    ax5.errorbar(ref_G[0]["H2O2^0"][:,0], ref_G[0]["H2O2^0"][:,1], yerr=ref_G[0]["H2O2^0"][:,2],  color="b", linewidth=2)
+    ax6.errorbar(ref_G[0]["H3O^1"][:,0],  ref_G[0]["H3O^1"][:,1],  yerr=ref_G[0]["H3O^1"][:,2],   color="b", linewidth=2)
+    ax7.errorbar(ref_G[0]["OH^-1"][:,0],  ref_G[0]["OH^-1"][:,1],  yerr=ref_G[0]["OH^-1"][:,2],   color="b", linewidth=2, label=r'{} 10$\degree$C'.format(args.ref_label))
 
-    ax1.errorbar(ref_G[-1]["e_aq^-1"][:,0],ref_G[-1]["e_aq^-1"][:,1],yerr=ref_G[-1]["e_aq^-1"][:,2], color="g", linewidth=2, linestyle='--')
-    ax2.errorbar(ref_G[-1]["OH^0"][:,0],   ref_G[-1]["OH^0"][:,1],   yerr=ref_G[-1]["OH^0"][:,2],    color="g", linewidth=2, linestyle='--')
-    ax3.errorbar(ref_G[-1]["H^0"][:,0],    ref_G[-1]["H^0"][:,1],    yerr=ref_G[-1]["H^0"][:,2],     color="g", linewidth=2, linestyle='--')
-    ax4.errorbar(ref_G[-1]["H_2^0"][:,0],  ref_G[-1]["H_2^0"][:,1],  yerr=ref_G[-1]["H_2^0"][:,2],   color="g", linewidth=2, linestyle='--')
-    ax5.errorbar(ref_G[-1]["H2O2^0"][:,0], ref_G[-1]["H2O2^0"][:,1], yerr=ref_G[-1]["H2O2^0"][:,2],  color="g", linewidth=2, linestyle='--')
-    ax6.errorbar(ref_G[-1]["H3O^1"][:,0],  ref_G[-1]["H3O^1"][:,1],  yerr=ref_G[-1]["H3O^1"][:,2],   color="g", linewidth=2, linestyle='--')
-    ax7.errorbar(ref_G[-1]["OH^-1"][:,0],  ref_G[-1]["OH^-1"][:,1],  yerr=ref_G[-1]["OH^-1"][:,2],   color="g", linewidth=2, linestyle='--', label=r'{} 90$\degree$C'.format(args.ref_label))
+    ax1.errorbar(ref_G[-1]["e_aq^-1"][:,0],ref_G[-1]["e_aq^-1"][:,1],yerr=ref_G[-1]["e_aq^-1"][:,2], color="k", linewidth=2, linestyle='--')
+    ax2.errorbar(ref_G[-1]["OH^0"][:,0],   ref_G[-1]["OH^0"][:,1],   yerr=ref_G[-1]["OH^0"][:,2],    color="k", linewidth=2, linestyle='--')
+    ax3.errorbar(ref_G[-1]["H^0"][:,0],    ref_G[-1]["H^0"][:,1],    yerr=ref_G[-1]["H^0"][:,2],     color="k", linewidth=2, linestyle='--')
+    ax4.errorbar(ref_G[-1]["H_2^0"][:,0],  ref_G[-1]["H_2^0"][:,1],  yerr=ref_G[-1]["H_2^0"][:,2],   color="k", linewidth=2, linestyle='--')
+    ax5.errorbar(ref_G[-1]["H2O2^0"][:,0], ref_G[-1]["H2O2^0"][:,1], yerr=ref_G[-1]["H2O2^0"][:,2],  color="k", linewidth=2, linestyle='--')
+    ax6.errorbar(ref_G[-1]["H3O^1"][:,0],  ref_G[-1]["H3O^1"][:,1],  yerr=ref_G[-1]["H3O^1"][:,2],   color="k", linewidth=2, linestyle='--')
+    ax7.errorbar(ref_G[-1]["OH^-1"][:,0],  ref_G[-1]["OH^-1"][:,1],  yerr=ref_G[-1]["OH^-1"][:,2],   color="k", linewidth=2, linestyle='--', label=r'{} 90$\degree$C'.format(args.ref_label))
 
     ax1.set_xlim([1,1E7])
     ax2.set_xlim([1,1E7])
@@ -315,23 +392,12 @@ def plot_results(sut_dir, ref_dir, args):
     ax7.grid(True,dashes=[5,5])
 
     ax8.set_axis_off()
-    CellText = [["",""],["",""],["",""]]
-    CellText[0][0] = str(round(ref_T[0],2))+" +- "+str(round(ref_T[1],2))
-    CellText[0][1] = str(round(sut_T[0],2))+" +- "+str(round(sut_T[1],2))
-    CellText[1][0] = str(round(ref_T[2],2))+" +- "+str(round(ref_T[3],2))
-    CellText[1][1] = str(round(sut_T[2],2))+" +- "+str(round(sut_T[3],2))
-    CellText[2][0] = str(round(ref_T[4],2))+" +- "+str(round(ref_T[5],2))
-    CellText[2][1] = str(round(sut_T[4],2))+" +- "+str(round(sut_T[5],2))
-    Table = ax8.table(cellText   = CellText,\
-                      rowLabels  = ["Real (s)","User (s)", "Sys (s)"],\
-                      colLabels  = [args.ref_label,args.sut_label],\
-                      colWidths  = [0.5,0.5],\
-                      rowColours = ["lightskyblue"]*10,\
-                      colColours = ["lightskyblue"]*10,\
-                      cellLoc    = 'center',\
-                      loc        = 'center',\
-                      fontsize   = 30)
-    Table.auto_set_font_size(False)
+    Table = ax8.table(cellText=[['%1.3f +/- %1.3f' % (sut_T[2],sut_T[3]), '%1.3f +/- %1.3f' % (ref_T[2],ref_T[3])]],\
+                      rowLabels=['Exec.'],\
+                      colLabels=(args.sut_label+' (s)',args.ref_label+' (s)'),\
+                      loc='center'\
+                      )
+
     Table.set_fontsize(20)
     Table.scale(1,3)
 
@@ -388,13 +454,38 @@ def plot_results(sut_dir, ref_dir, args):
     ax7.tick_params(axis='both', which='major', labelsize=20)
     ax7.tick_params(axis='both', which='minor', labelsize=20)
 
-    ax1.errorbar(bench_SG["e_aq^-1"][:,0], bench_SG["e_aq^-1"][:,1],yerr=bench_SG["e_aq^-1"][:,2], color="b", marker="o", dashes=[0,1], markerfacecolor="none", markersize=15, linewidth=2)
-    ax2.errorbar(bench_SG["OH^0"][:,0],    bench_SG["OH^0"][:,1],   yerr=bench_SG["OH^0"][:,2],    color="b", marker="o", dashes=[0,1], markerfacecolor="none", markersize=15, linewidth=2)
-    ax3.errorbar(bench_SG["H^0"][:,0],     bench_SG["H^0"][:,1],    yerr=bench_SG["H^0"][:,2],     color="b", marker="o", dashes=[0,1], markerfacecolor="none", markersize=15, linewidth=2)
-    ax4.errorbar(bench_SG["H_2^0"][:,0],   bench_SG["H_2^0"][:,1],  yerr=bench_SG["H_2^0"][:,2],   color="b", marker="o", dashes=[0,1], markerfacecolor="none", markersize=15, linewidth=2)
-    ax5.errorbar(bench_SG["H2O2^0"][:,0],  bench_SG["H2O2^0"][:,1], yerr=bench_SG["H2O2^0"][:,2],  color="b", marker="o", dashes=[0,1], markerfacecolor="none", markersize=15, linewidth=2)
-    ax6.errorbar(bench_SG["H3O^1"][:,0],   bench_SG["H3O^1"][:,1],  yerr=bench_SG["H3O^1"][:,2],   color="b", marker="o", dashes=[0,1], markerfacecolor="none", markersize=15, linewidth=2)
-    ax7.errorbar(bench_SG["OH^-1"][:,0],   bench_SG["OH^-1"][:,1],  yerr=bench_SG["OH^-1"][:,2],   color="b", marker="o", dashes=[0,1], markerfacecolor="none", markersize=15, linewidth=2, label='Ramos-Mendez (2022)')
+    ax1.scatter(ELL6x, ELL6y, marker ='o', s=70, zorder=2, color='k',label = 'Elliot et al., 1993')
+    ax1.scatter(SCHMIDTx, SCHMIDTy, marker ='v', s=70, zorder=2, color='k',label = 'Schmidt et al., 1992')
+    ax1.scatter(KENT1x, KENT1y, marker ='s', s=70, zorder=2, color='k',label = 'Kent and Sims (in Elliot et al., 2009)')
+    ax1.scatter(JHAx, JHAy, marker ='*', s=90, zorder=2, color='k',label = 'Jha et al., 1972')
+    ax1.scatter(JAN1x, JAN1y, marker ='x', s=70, zorder=2, color='k',label = 'Janik et al., 2007')
+    ax1.scatter(JAN2x, JAN2y, marker ='D', s=70, zorder=2, color='k',label = 'Janik et al., 2007')
+    ax1.legend()
+
+    ax2.scatter(SPINKSx, SPINKSy, marker ='o', s=70, zorder=2, color='k',label = 'Spinks and Woods, 1990')
+    ax2.scatter(ELL1x, ELL1y, marker ='v', s=70, zorder=2, color='k',label = 'Elliot et al., 1993')
+    ax2.scatter(ELL2x, ELL2y, marker ='s', s=70, zorder=2, color='k',label = 'Elliot et al., 1993')
+    ax2.scatter(ELL3x, ELL3y, marker ='*', s=90, zorder=2, color='k',label = 'Elliot et al., 1993')
+    ax2.scatter(ELL4x, ELL4y, marker ='x', s=70, zorder=2, color='k',label = 'Elliot et al., 1993')
+    ax2.scatter(ELL5x, ELL5y, marker ='D', s=70, zorder=2, color='k',label = 'Elliot et al., 1993')
+    ax2.legend()
+
+    ax4.scatter(ELL9x, ELL9y, marker ='o', s=70, zorder=2, color='k',label = 'Elliot et al., 1990')
+    ax4.legend()
+
+    ax5.scatter(ELL7x, ELL7y, marker ='o', s=70, zorder=2, color='k',label = 'Elliot et al., 1993')
+    ax5.scatter(ELL8x, ELL8y, marker ='v', s=70, zorder=2, color='k',label = 'Elliot, 1998')
+    ax5.scatter(KENT2x, KENT2y, marker ='s', s=70, zorder=2, color='k',label = 'Kent and Sims (in Elliot et al., 2009)')
+    ax5.scatter(STEFx, STEFy, marker ='*', s=90, zorder=2, color='k',label = 'Stefanic and LaVerne, 2002')
+    ax5.legend()
+
+    ax1.errorbar(bench_SG["e_aq^-1"][:,0], bench_SG["e_aq^-1"][:,1],yerr=bench_SG["e_aq^-1"][:,2], color="k", ls = 'none', marker="^", markerfacecolor="white", markersize=10)
+    ax2.errorbar(bench_SG["OH^0"][:,0],    bench_SG["OH^0"][:,1],   yerr=bench_SG["OH^0"][:,2],    color="k", ls = 'none', marker="^", markerfacecolor="white", markersize=10)
+    ax3.errorbar(bench_SG["H^0"][:,0],     bench_SG["H^0"][:,1],    yerr=bench_SG["H^0"][:,2],     color="k", ls = 'none', marker="^", markerfacecolor="white", markersize=10)
+    ax4.errorbar(bench_SG["H_2^0"][:,0],   bench_SG["H_2^0"][:,1],  yerr=bench_SG["H_2^0"][:,2],   color="k", ls = 'none', marker="^", markerfacecolor="white", markersize=10)
+    ax5.errorbar(bench_SG["H2O2^0"][:,0],  bench_SG["H2O2^0"][:,1], yerr=bench_SG["H2O2^0"][:,2],  color="k", ls = 'none', marker="^", markerfacecolor="white", markersize=10)
+    ax6.errorbar(bench_SG["H3O^1"][:,0],   bench_SG["H3O^1"][:,1],  yerr=bench_SG["H3O^1"][:,2],   color="k", ls = 'none', marker="^", markerfacecolor="white", markersize=10)
+    ax7.errorbar(bench_SG["OH^-1"][:,0],   bench_SG["OH^-1"][:,1],  yerr=bench_SG["OH^-1"][:,2],   color="k", ls = 'none', marker="^", markerfacecolor="white", markersize=10, label='Ramos-Méndez et al., 2022')
 
     ax1.errorbar(sut_SG["e_aq^-1"][:,0], sut_SG["e_aq^-1"][:,1],yerr=sut_SG["e_aq^-1"][:,2], color="r", linewidth=2)
     ax2.errorbar(sut_SG["OH^0"][:,0],    sut_SG["OH^0"][:,1],   yerr=sut_SG["OH^0"][:,2],    color="r", linewidth=2)
@@ -404,18 +495,21 @@ def plot_results(sut_dir, ref_dir, args):
     ax6.errorbar(sut_SG["H3O^1"][:,0],   sut_SG["H3O^1"][:,1],  yerr=sut_SG["H3O^1"][:,2],   color="r", linewidth=2)
     ax7.errorbar(sut_SG["OH^-1"][:,0],   sut_SG["OH^-1"][:,1],  yerr=sut_SG["OH^-1"][:,2],   color="r", linewidth=2, label=args.sut_label)
 
-    ax1.errorbar(ref_SG["e_aq^-1"][:,0], ref_SG["e_aq^-1"][:,1],yerr=ref_SG["e_aq^-1"][:,2], color="g", dashes=[8,5], linewidth=2)
-    ax2.errorbar(ref_SG["OH^0"][:,0],    ref_SG["OH^0"][:,1],   yerr=ref_SG["OH^0"][:,2],    color="g", dashes=[8,5], linewidth=2)
-    ax3.errorbar(ref_SG["H^0"][:,0],     ref_SG["H^0"][:,1],    yerr=ref_SG["H^0"][:,2],     color="g", dashes=[8,5], linewidth=2)
-    ax4.errorbar(ref_SG["H_2^0"][:,0],   ref_SG["H_2^0"][:,1],  yerr=ref_SG["H_2^0"][:,2],   color="g", dashes=[8,5], linewidth=2)
-    ax5.errorbar(ref_SG["H2O2^0"][:,0],  ref_SG["H2O2^0"][:,1], yerr=ref_SG["H2O2^0"][:,2],  color="g", dashes=[8,5], linewidth=2)
-    ax6.errorbar(ref_SG["H3O^1"][:,0],   ref_SG["H3O^1"][:,1],  yerr=ref_SG["H3O^1"][:,2],   color="g", dashes=[8,5], linewidth=2)
-    ax7.errorbar(ref_SG["OH^-1"][:,0],   ref_SG["OH^-1"][:,1],  yerr=ref_SG["OH^-1"][:,2],   color="g", dashes=[8,5], linewidth=2, label=args.ref_label)
+    ax1.errorbar(ref_SG["e_aq^-1"][:,0], ref_SG["e_aq^-1"][:,1],yerr=ref_SG["e_aq^-1"][:,2], color="b", dashes=[8,5], linewidth=2)
+    ax2.errorbar(ref_SG["OH^0"][:,0],    ref_SG["OH^0"][:,1],   yerr=ref_SG["OH^0"][:,2],    color="b", dashes=[8,5], linewidth=2)
+    ax3.errorbar(ref_SG["H^0"][:,0],     ref_SG["H^0"][:,1],    yerr=ref_SG["H^0"][:,2],     color="b", dashes=[8,5], linewidth=2)
+    ax4.errorbar(ref_SG["H_2^0"][:,0],   ref_SG["H_2^0"][:,1],  yerr=ref_SG["H_2^0"][:,2],   color="b", dashes=[8,5], linewidth=2)
+    ax5.errorbar(ref_SG["H2O2^0"][:,0],  ref_SG["H2O2^0"][:,1], yerr=ref_SG["H2O2^0"][:,2],  color="b", dashes=[8,5], linewidth=2)
+    ax6.errorbar(ref_SG["H3O^1"][:,0],   ref_SG["H3O^1"][:,1],  yerr=ref_SG["H3O^1"][:,2],   color="b", dashes=[8,5], linewidth=2)
+    ax7.errorbar(ref_SG["OH^-1"][:,0],   ref_SG["OH^-1"][:,1],  yerr=ref_SG["OH^-1"][:,2],   color="b", dashes=[8,5], linewidth=2, label=args.ref_label)
+
+    # print('nBio-v4.0: ', sut_SG["H_2^0"][:,1], sut_SG["H_2^0"][:,2])
+    # print('nBio-v3.0: ', ref_SG["H_2^0"][:,1], sut_SG["H_2^0"][:,2])
 
     ax1.set_xlim([0,100])
     ax2.set_xlim([0,100])
     ax3.set_xlim([0,100])
-    ax4.set_xlim([0,100])
+    ax4.set_xlim([0,105])
     ax5.set_xlim([0,100])
     ax6.set_xlim([0,100])
     ax7.set_xlim([0,100])
@@ -424,7 +518,7 @@ def plot_results(sut_dir, ref_dir, args):
     ax2.set_ylim([2,5.5])
     ax3.set_ylim([0.45,0.7])
     ax4.set_ylim([0.2,0.6])
-    ax5.set_ylim([0,0.8])
+    ax5.set_ylim([0,0.9])
     ax6.set_ylim([2.5,4.5])
     ax7.set_ylim([0,0.7])
 
@@ -455,23 +549,12 @@ def plot_results(sut_dir, ref_dir, args):
     ax7.grid(True,dashes=[5,5])
 
     ax8.set_axis_off()
-    CellText = [["",""],["",""],["",""]]
-    CellText[0][0] = str(round(ref_T[0],2))+" +- "+str(round(ref_T[1],2))
-    CellText[0][1] = str(round(sut_T[0],2))+" +- "+str(round(sut_T[1],2))
-    CellText[1][0] = str(round(ref_T[2],2))+" +- "+str(round(ref_T[3],2))
-    CellText[1][1] = str(round(sut_T[2],2))+" +- "+str(round(sut_T[3],2))
-    CellText[2][0] = str(round(ref_T[4],2))+" +- "+str(round(ref_T[5],2))
-    CellText[2][1] = str(round(sut_T[4],2))+" +- "+str(round(sut_T[5],2))
-    Table = ax8.table(cellText   = CellText,\
-                      rowLabels  = ["Real (s)","User (s)", "Sys (s)"],\
-                      colLabels  = [args.ref_label,args.sut_label],\
-                      colWidths  = [0.5,0.5],\
-                      rowColours = ["lightskyblue"]*10,\
-                      colColours = ["lightskyblue"]*10,\
-                      cellLoc    = 'center',\
-                      loc        = 'center',\
-                      fontsize   = 30)
-    Table.auto_set_font_size(False)
+    Table = ax8.table(cellText=[['%1.3f +/- %1.3f' % (sut_T[2],sut_T[3]), '%1.3f +/- %1.3f' % (ref_T[2],ref_T[3])]],\
+                      rowLabels=['Exec.'],\
+                      colLabels=(args.sut_label+' (s)',args.ref_label+' (s)'),\
+                      loc='center'\
+                      )
+
     Table.set_fontsize(20)
     Table.scale(1,3)
     

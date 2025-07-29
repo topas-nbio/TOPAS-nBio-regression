@@ -45,7 +45,7 @@ def ChangeFileAndRun(Particle, Energy, Histories, TrackLength, Percentage):
 	os.system("rm runstep4.txt")
 	os.system("rm runstep5.txt")
 	os.system("rm runstep6.txt")
-	os.system("OpenTOPAS-nBio RUN.txt")
+	os.system("TOPAS-nBio-v4.0 RUN.txt")
 	os.system("rm RUN.txt")
 
 ###############################

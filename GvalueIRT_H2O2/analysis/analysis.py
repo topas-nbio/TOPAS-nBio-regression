@@ -29,6 +29,10 @@ def ReadGValues(File):
         GErr = float(A[1])
         Time = float(A[2])
         Name = A[3]
+        
+        # to account for differences in nBio-v4.0 and nBio-v3.0
+        if Name == 'O^0' or Name == 'O3P^0':
+            continue
 
         if Name in GValues:
             GValues[Name].append([Time,GVal,GErr])
@@ -87,48 +91,48 @@ def average_results_time(match_path):
     if len(fnames) == 0:
         return None
     
-    Real, RealE = 0.0, 0.0
-    User, UserE = 0.0, 0.0
-    Sys,  SysE  = 0.0, 0.0
+    execution, executionE = 0.0, 0.0
+    initialization, initializationE = 0.0, 0.0
+    finalization, finalizationE = 0.0, 0.0
+    
     N = 0.0
 
+    time_tracker = {}
+
     for f in fnames:
-        Times = (subprocess.check_output("grep Execution " + f + " | awk '{print $2}' | sed 's/Real=//g' | sed 's/s//g' | awk '{sum+=$1}END{print sum/NR}'", shell=True))
-        RealT = float(Times) #Times.split()[0])
-        Real  += RealT
-        RealE += RealT*RealT
+        Times = float(subprocess.check_output("grep Execution " + f + " | awk '{print $2}' | sed 's/User=//g' | sed 's/s//g' | awk '{sum+=$1}END{print sum/NR}'", shell=True))
+        time_tracker[int(N+1)] = Times
+        execution += Times
+        executionE += Times*Times
 
-        Times = (subprocess.check_output("grep Execution " + f + " | awk '{print $2}' | sed 's/User=//g' | sed 's/s//g' | awk '{sum+=$1}END{print sum/NR}'", shell=True))
-        UserT = float(Times) #float(Times.split()[2])
-        User  += UserT
-        UserE += UserT*UserT
+        Times = float(subprocess.check_output("grep Initialization " + f + " | awk '{print $2}' | sed 's/User=//g' | sed 's/s//g' | awk '{sum+=$1}END{print sum/NR}'", shell=True))
+        initialization  += Times
+        initializationE += Times*Times
 
-        Times = (subprocess.check_output("grep Execution " + f + " | awk '{print $2}' | sed 's/Sys=//g' | sed 's/s//g' | awk '{sum+=$1}END{print sum/NR}'", shell=True))
-        SysT  = float(Times) #float(Times.split()[4])
-        Sys  += SysT
-        Sys  += SysT*SysT
+        Times = float(subprocess.check_output("grep Finalization " + f + " | awk '{print $2}' | sed 's/User=//g' | sed 's/s//g' | awk '{sum+=$1}END{print sum/NR}'", shell=True))
+        finalization  += Times
+        finalizationE  += Times*Times
+
         N += 1
 
-    Real /= N
-    User /= N
-    Sys  /= N
+    execution /= N
+    initialization /= N
+    finalization  /= N
 
     if N > 1:
-        RealE = np.sqrt(N/(N-1) * (np.abs(RealE/N - Real**2)))
-        UserE = np.sqrt(N/(N-1) * (np.abs(UserE/N - User**2)))
-        SysE  = np.sqrt(N/(N-1) * (np.abs(SysE/N  - Sys**2)))
-
+        executionE = np.sqrt(N/(N-1) * (np.abs(executionE/N - execution**2)))
+        initializationE = np.sqrt(N/(N-1) * (np.abs(initializationE/N - initialization**2)))
+        finalizationE  = np.sqrt(N/(N-1) * (np.abs(finalizationE/N  - finalization**2)))
     else:
-        RealE, UserE, SysE = 0, 0, 0
+        executionE, initializationE, finalizationE = 0, 0, 0
 
-    return (Real,RealE,User,UserE,Sys,SysE)
+    return (initialization,initializationE,execution,executionE,finalization,finalizationE, time_tracker)
 
 ####################################################
 ### Define Plot Function
 
 def plot_results(sut_dir, ref_dir, args):
     concentrations = ["1e-3", "1e-2", "1e-1", "1e-0", "1e+1"]
-    #concentrations = ["0.1031e-2", "0.1031e-1", "0.1031e-0", "0.1031e+1", "0.1031e+2"] 
 
     sut_T = average_results_time(sut_dir + '/*/log.out')
     ref_T = average_results_time(ref_dir + '/*/log.out')
@@ -184,11 +188,15 @@ def plot_results(sut_dir, ref_dir, args):
     ax1.tick_params(axis='both', which='major', labelsize=20)
     ax1.tick_params(axis='both', which='minor', labelsize=20)
 
-    ax1.errorbar(sut_SG["H2O2^0"][:,0],  sut_SG["H2O2^0"][:,1], yerr=sut_SG["H2O2^0"][:,2],  color="r", marker='o', linewidth=2, label=args.sut_label)
-    ax1.errorbar(ref_SG["H2O2^0"][:,0],  ref_SG["H2O2^0"][:,1], yerr=ref_SG["H2O2^0"][:,2],  color="g", marker='x', dashes=[8,5], linewidth=2, label=args.ref_label)
-    ax1.scatter(1e12/bench1[:,0], bench1[:,1], label='Pastina(1999)')
-    ax1.scatter(1e12/(bench2[:,0]*kobs), bench2[:,1], label='Hiroki(2002)')
-    ax1.scatter(bench3[:,0], bench3[:,1], label='Ramos-Mendez(2021)')
+    ax1.errorbar(sut_SG["H2O2^0"][:,0],  sut_SG["H2O2^0"][:,1], yerr=sut_SG["H2O2^0"][:,2],  color="r", marker='o', markersize=10, linewidth=0, label=args.sut_label)
+    ax1.errorbar(ref_SG["H2O2^0"][:,0],  ref_SG["H2O2^0"][:,1], yerr=ref_SG["H2O2^0"][:,2],  color="b", marker='x', markersize=10, linewidth=0, label=args.ref_label)
+    ax1.scatter(1e12/bench1[:,0], bench1[:,1], marker='*', s=90, color='k', label='Pastina et al., 1999')
+    ax1.scatter(1e12/(bench2[:,0]*kobs), bench2[:,1], marker='v', s=90, color='k', label='Hiroki et al., 2002')
+
+    # RM 2021 data
+    rm_x = [1.03092784e+06, 1.03092784e+05, 1.03092784e+04, 1.03092784e+03, 1.03092784e+02]
+    rm_y = [0.7808383233532934, 0.7329341317365269, 0.6287425149700598, 0.4047904191616767, 0.08502994011976056]
+    ax1.plot(rm_x, rm_y, color='k', mfc='white', markeredgecolor='k',zorder=1, marker='^', ms=10, ls = '--', label='Ramos-Méndez et al., 2021')
 
     ax1.legend(loc=0)
 
@@ -199,28 +207,17 @@ def plot_results(sut_dir, ref_dir, args):
 
     ax1.set_xlabel("Time (ps)",fontsize=20)
 
-    ax1.set_ylabel("GValue",fontsize=20)
+    ax1.set_ylabel("G value [{} / 100 eV]".format(r'$H_{2}O_{2}$'),fontsize=20)
 
     ax2.set_axis_off()
-    CellText = [["",""],["",""],["",""]]
-    CellText[0][0] = str(round(ref_T[0],2))+" +- "+str(round(ref_T[1],2))
-    CellText[0][1] = str(round(sut_T[0],2))+" +- "+str(round(sut_T[1],2))
-    CellText[1][0] = str(round(ref_T[2],2))+" +- "+str(round(ref_T[3],2))
-    CellText[1][1] = str(round(sut_T[2],2))+" +- "+str(round(sut_T[3],2))
-    CellText[2][0] = str(round(ref_T[4],2))+" +- "+str(round(ref_T[5],2))
-    CellText[2][1] = str(round(sut_T[4],2))+" +- "+str(round(sut_T[5],2))
-    Table = ax2.table(cellText   = CellText,\
-                      rowLabels  = ["Real (s)","User (s)", "Sys (s)"],\
-                      colLabels  = ["Reference","Under Test"],\
-                      colWidths  = [0.5,0.5],\
-                      rowColours = ["lightskyblue"]*10,\
-                      colColours = ["lightskyblue"]*10,\
-                      cellLoc    = 'center',\
-                      loc        = 'center',\
-                      fontsize   = 30)
-    Table.auto_set_font_size(False)
-    Table.set_fontsize(15)
-    Table.scale(1,1.5)
+    Table = ax2.table(cellText=[['%1.3f +/- %1.3f' % (sut_T[2],sut_T[3]), '%1.3f +/- %1.3f' % (ref_T[2],ref_T[3])]],\
+                      rowLabels=['Exec.'],\
+                      colLabels=(args.sut_label+' (s)',args.ref_label+' (s)'),\
+                      loc='center'\
+                      )
+
+    Table.set_fontsize(20)
+    Table.scale(1,3)
 
     fig.tight_layout()
     fig.savefig(join(args.outdir,'TimeEvolution.pdf'))

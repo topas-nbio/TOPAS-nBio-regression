@@ -4,7 +4,7 @@
 
 i:Ts/ShowHistoryCountAtInterval = 100
 i:Ts/MaxInterruptedHistories  = So/Demo/NumberOfHistoriesInRun
-Ts/NumberOfThreads = 0
+Ts/NumberOfThreads = 1 # Can increase depending on your machine
 b:Ts/ShowCPUTime = "True"
 
 ################## MODEL LISTS ##################
@@ -43,7 +43,7 @@ s:Ge/World/Material ="G4_WATER"
 d:Ge/Target/HLX= Ge/World/HLX cm 
 d:Ge/Target/HLY= Ge/World/HLY cm
 d:Ge/Target/HLZ= Ge/World/HLZ cm 
-s:Ge/Target/Material = "G4_WATER"
+s:Ge/Target/Material = "G4_WATER_MODIFIED"
 s:Ge/Target/Type     = "TsBox"
 s:Ge/Target/Parent   = "World"
 
@@ -73,7 +73,7 @@ d:Sc/nbOfMol/KillPrimaryBasedOnTrackLength  = 100 km
 d:Sc/nbOfMol/AbortEventIfPrimaryEnergyLossExceeds = 1.001 * Sc/nbOfMol/KillPrimaryIfEnergyLossExceeds keV
 d:Sc/nbOfMol/CutOffTime = 1 ps
 d:Sc/nbOfMol/TimeLower  = 1.0 ps
-d:Sc/nbOfMol/TimeUpper  = 1e7 ps 
+d:Sc/nbOfMol/TimeUpper  = 1e6 ps 
 i:Sc/nbOfMol/TimeBins   = 100
 s:Sc/nbOfMol/OutputFile = "electron_Gvalue_Corrected_fTemperature"
 

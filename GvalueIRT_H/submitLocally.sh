@@ -21,7 +21,7 @@ foreach LINE ( $OPTION )
     set DATE = $DATEYEAR$DATEMONTH$DATEDAY
     set UNAME = `uname`
 
-    set DIR = $CURRENTPATH"/run/"$DATE/$INFILE/$COUNT
+    set DIR = $CURRENTPATH"/run/nBio-v4.0_"$DATE/$INFILE/$COUNT
     if ( -d $DIR ) then
        echo Directory exists, removing and recreating $DIR
        rm -rf $DIR
@@ -43,7 +43,7 @@ foreach LINE ( $OPTION )
 
 #!/bin/bash
 cd $DIR
-python3 $INFILE.py TOPAS-nBio > log.out
+python3 $INFILE.py TOPAS-nBio-v4.0 > log.out
 EOF
     chmod +x $SCRIPT
     bash $SCRIPT 

@@ -46,10 +46,10 @@ Each directory has TOPAS parameters with the follow pattern:
 ```bash
 tcsh submitLocally.sh 5
 ```
-A directory named `run` is created which contains a sub-directory, its name contains the current date. Later, compare between simulation results with the python script in `analysis/analysis.py`
+A directory named `run` is created which contains a sub-directory, its name contains the current date. Later, compare between simulation results with the python script in `analysis/analysis.py`. The following is an example for comapring results of the GvalueIRT regression test.
 
 ```bash
-python analysis/analysis.py run/2020July/mainTopas run/2020July/mainOpt2 --sut_label Topas --ref_label Opt2
+python analysis/analysis.py run/nBio-v4.0_2025Jul3/mainTopas run/nBio-v3.0_2025Jul3/mainTopas --sut_label nBio-v4.0 --ref_label nBio-v3.0
 ```
 Look for the images in the directory `results/`. A table which contains averaged execution time per CPU is also available.
 

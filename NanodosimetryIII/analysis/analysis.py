@@ -168,7 +168,7 @@ def plot_results(sut_dir, ref_dir, args):
 
         plt.title(pname[i],fontsize=8)
 
-        plt.step(bench[0][1:], bench[1][1:],where='mid',color='r', label='Ref.')
+        plt.step(bench[0][1:], bench[1][1:],where='mid',color='r', label='R-M et al., 2018')
         plt.xlim((0,xlim[i]))
 
         plt.ylim((1e-4,1.0))
@@ -191,12 +191,10 @@ def plot_results(sut_dir, ref_dir, args):
     ref_time = average_results_time(ref_dir + '/*/' + 'log.out')
 
     plt.axis('off')
-    table = plt.table(cellText=[['%1.1f +/- %1.1f' % (sut_time[0],sut_time[1]), '%1.1f +/- %1.1f' % (ref_time[0],ref_time[1])],\
-                                ['%1.1f +/- %1.1f' % (sut_time[2],sut_time[3]), '%1.1f +/- %1.1f' % (ref_time[2],ref_time[3])],\
-                                ['%1.1f +/- %1.1f' % (sut_time[4],sut_time[5]), '%1.1f +/- %1.1f' % (ref_time[4],ref_time[5])]],\
-                      rowLabels=('Init.','Exec.','Final.'),\
+    table = plt.table(cellText=[['%1.1f +/- %1.1f' % (sut_time[2],sut_time[3]), '%1.1f +/- %1.1f' % (ref_time[2],ref_time[3])]],\
+                      rowLabels=['Exec.'],\
                       colLabels=(args.sut_label+' (s)',args.ref_label+' (s)'),\
-                      loc='center',fontsize=10\
+                      loc='center'\
                       )
 
     plt.tight_layout() 

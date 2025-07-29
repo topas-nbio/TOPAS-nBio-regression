@@ -313,7 +313,7 @@ def plot_results(sut_dir, ref_dir, args):
     ax1.errorbar(Experimental["alpha"]["H2O2"]["Pastina"][:,0],    Experimental["alpha"]["H2O2"]["Pastina"][:,1],    yerr=Experimental["alpha"]["H2O2"]["Pastina"][:,2],fmt="v",markersize=15,markerfacecolor="None",markeredgewidth=2,color="blue")
     ax1.errorbar(Experimental["alpha"]["H2O2"]["Wasselin"][:,0],   Experimental["alpha"]["H2O2"]["Wasselin"][:,1],   yerr=Experimental["alpha"]["H2O2"]["Wasselin"][:,2],fmt="p",markersize=15,markerfacecolor="None",markeredgewidth=2,color="blue")
     ax1.set_xlim(0.1,120)
-    ax1.set_ylim(0.5,1.3)
+    ax1.set_ylim(0.3,1.3)
     ax1.set_xscale("log")
     ax1.grid(True,dashes=[5,5])
     #ax1.legend(loc=2,fontsize=20,title=r"$H_{2}O_{2}$")
@@ -480,23 +480,12 @@ def plot_results(sut_dir, ref_dir, args):
     # Table.scale(1,3)
 
     ax7.set_axis_off()
-    CellText = [["",""],["",""],["",""]]
-    CellText[0][0] = str(round(ref_T[0],2))+" +- "+str(round(ref_T[1],2))
-    CellText[0][1] = str(round(sut_T[0],2))+" +- "+str(round(sut_T[1],2))
-    CellText[1][0] = str(round(ref_T[2],2))+" +- "+str(round(ref_T[3],2))
-    CellText[1][1] = str(round(sut_T[2],2))+" +- "+str(round(sut_T[3],2))
-    CellText[2][0] = str(round(ref_T[4],2))+" +- "+str(round(ref_T[5],2))
-    CellText[2][1] = str(round(sut_T[4],2))+" +- "+str(round(sut_T[5],2))
-    Table = ax7.table(cellText   = CellText,\
-                      rowLabels  = ["Real (s)","User (s)", "Sys (s)"],\
-                      colLabels  = [args.ref_label,args.sut_label],\
-                      colWidths  = [0.5,0.5],\
-                      rowColours = ["lightskyblue"]*10,\
-                      colColours = ["lightskyblue"]*10,\
-                      cellLoc    = 'center',\
-                      loc        = 'center',\
-                      fontsize   = 30)
-    Table.auto_set_font_size(False)
+    Table = ax7.table(cellText=[['%1.3f +/- %1.3f' % (sut_T[2],sut_T[3]), '%1.3f +/- %1.3f' % (ref_T[2],ref_T[3])]],\
+                      rowLabels=['Exec.'],\
+                      colLabels=(args.sut_label+' (s)',args.ref_label+' (s)'),\
+                      loc='center'\
+                      )
+
     Table.set_fontsize(20)
     Table.scale(1,3)
 

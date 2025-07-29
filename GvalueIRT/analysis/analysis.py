@@ -190,6 +190,13 @@ def plot_results(sut_dir, ref_dir, args):
     ind = np.where(1e12/(H2[:,0]*H2[:,1]*H2[:,3]) > 5e2)
     H2 = H2[ind]
 
+    # H2O2 data from Pastina 1999 (J. Phys. Chem. A 1999, 103, 1592-1597). Digitized from Laverne 2000 (RADIATION RESEARCH 153, 196–200 (2000))
+    pastina_h2o2_x = [7.099103388220266e-11, 7.171002414150857e-10, 3.613989370678372e-9, 7.027925247548278e-9, 2.8663578954198268e-8, 7.099103388220266e-8, 6.957460764282355e-7, 7.171002414150856e-7, 0.000007027925247548264]
+    pastina_h2o2_x_scaled = []
+    for ele in pastina_h2o2_x:
+        pastina_h2o2_x_scaled.append(ele*10**(12))
+    pastina_h2o2_y = [0.15657620041753662, 0.35699373695198333, 0.5156576200417538, 0.55741127348643, 0.5991649269311066, 0.6409185803757829, 0.6826722338204594, 0.7244258872651357, 0.6993736951983298]
+
     i = 1
     grid = plt.GridSpec(3,3)
     for molecule, name in zip(molecules, moleculesName): 
@@ -199,6 +206,9 @@ def plot_results(sut_dir, ref_dir, args):
         plt.errorbar(sut[0][molecule], sut[1][molecule], yerr=sut[2][molecule],fmt="r-",label=args.sut_label,linewidth=1.0)
         plt.errorbar(ref[0][molecule], ref[1][molecule], yerr=ref[2][molecule],fmt="b-",label=args.ref_label,linewidth=1.0)
 
+        print('nBio-v4.0 {}: '.format(molecule), sut[1][molecule][-1], sut[2][molecule][-1])
+        print('nBio-v3.0 {}: '.format(molecule), ref[1][molecule][-1], ref[2][molecule][-1])
+        
         # Benchmark 
         # plt.step(bench[2][molecule], bench[0][molecule], color='g')
         if i == 1:
@@ -212,10 +222,10 @@ def plot_results(sut_dir, ref_dir, args):
             plt.errorbar(605751, 2.44, yerr=0.12, marker='o', markerfacecolor="none", color='orange')
             plt.errorbar(   1E6, 2.49, yerr=0.12, marker='o', markerfacecolor="none", color='orange')
 
-            refs = [mlines.Line2D([0], [0], color='k', label='Ma (2015)'),
-                    mlines.Line2D([0], [0], color='grey', label='Ma (2015)'),
-                    mlines.Line2D([], [], color='g', marker='o', markerfacecolor="none", linestyle='None', label='Wang (2018)'),
-                    mlines.Line2D([], [], color='orange', marker='o', markerfacecolor="none", linestyle='None', label='Laverne (2000)')]
+            refs = [mlines.Line2D([0], [0], color='k', label='Ma et al., 2015'),
+                    mlines.Line2D([0], [0], color='grey', label='Ma et al., 2015'),
+                    mlines.Line2D([], [], color='g', marker='o', markerfacecolor="none", linestyle='None', label='Wang et al., 2018'),
+                    mlines.Line2D([], [], color='orange', marker='o', markerfacecolor="none", linestyle='None', label='LaVerne et al., 2000')]
             plt.legend(handles=refs, loc=0, fontsize=7)
 
         if i == 2:
@@ -228,9 +238,9 @@ def plot_results(sut_dir, ref_dir, args):
             plt.errorbar(  1E5,  2.7, yerr=2.7*0.05, marker='o', markerfacecolor="none", color='orange')
 
             refs = [mlines.Line2D([0], [0], color='k', label='Ma (2015)'),
-                    mlines.Line2D([], [], color='purple', marker='o', markerfacecolor="none", linestyle='None', label='Wang (2018)'),
-                    mlines.Line2D([], [], color='orange', marker='o', markerfacecolor="none", linestyle='None', label='Bartels (2000)'),
-                    mlines.Line2D([], [], color='b', marker='o', markerfacecolor="none", linestyle='None', label='Shiraishi (1988)')]
+                    mlines.Line2D([], [], color='purple', marker='o', markerfacecolor="none", linestyle='None', label='Wang et al., 2018'),
+                    mlines.Line2D([], [], color='orange', marker='o', markerfacecolor="none", linestyle='None', label='Bartels et al., 2000'),
+                    mlines.Line2D([], [], color='b', marker='o', markerfacecolor="none", linestyle='None', label='Shiraishi et al., 1988')]
             plt.legend(handles=refs, loc=0, fontsize=7)
 
         #if i == 3:
@@ -239,14 +249,18 @@ def plot_results(sut_dir, ref_dir, args):
         if i == 4:
             # H2O2
             plt.yticks(np.arange(0,1,0.2))
-            plt.errorbar(1e6,0.61,yerr=0.03,marker='o')
-            plt.errorbar(1e6,0.69,yerr=0.03,marker='o')
+            # plt.errorbar(1e6,0.61,yerr=0.03,marker='o')
+            # plt.errorbar(1e6,0.69,yerr=0.03,marker='o')
+            plt.plot(pastina_h2o2_x_scaled, pastina_h2o2_y, lw=0, marker='*', color='k')
+            refs = [mlines.Line2D([], [], color='k', marker='*', linestyle='None', label='Pastina et al., 1999')]
+            plt.legend(handles=refs, loc=2, fontsize=7)
 
         if i == 5:
             #H2
+            plt.xlim((1,3e6))
             plt.errorbar(1e12/(H2[:,0]*H2[:,1]*H2[:,3]), H2[:,2], yerr=H2[:,2]*0.1, marker='o', markerfacecolor="none", ls="none", color='g')
 
-            refs = [mlines.Line2D([], [], color='g', marker='o', markerfacecolor="none", linestyle='None', label='Pastina (1999)')]
+            refs = [mlines.Line2D([], [], color='g', marker='o', markerfacecolor="none", linestyle='None', label='Pastina et al., 1999')]
             plt.legend(handles=refs, loc=2, fontsize=7)
 
         #if i == 6:
@@ -273,10 +287,8 @@ def plot_results(sut_dir, ref_dir, args):
     ref_time = average_results_time(ref_dir + '/*/' + 'log.out')
 
     plt.axis('off')
-    table = plt.table(cellText=[['%1.3f +/- %1.3f' % (sut_time[0],sut_time[1]), '%1.3f +/- %1.3f' % (ref_time[0],ref_time[1])],\
-                                ['%1.3f +/- %1.3f' % (sut_time[2],sut_time[3]), '%1.3f +/- %1.3f' % (ref_time[2],ref_time[3])],\
-                                ['%1.3f +/- %1.3f' % (sut_time[4],sut_time[5]), '%1.3f +/- %1.3f' % (ref_time[4],ref_time[5])]],\
-                      rowLabels=('Init.','Exec.','Final.'),\
+    table = plt.table(cellText=[['%1.3f +/- %1.3f' % (sut_time[2],sut_time[3]), '%1.3f +/- %1.3f' % (ref_time[2],ref_time[3])]],\
+                      rowLabels=['Exec.'],\
                       colLabels=(args.sut_label+' (s)',args.ref_label+' (s)'),\
                       loc='center'\
                       )

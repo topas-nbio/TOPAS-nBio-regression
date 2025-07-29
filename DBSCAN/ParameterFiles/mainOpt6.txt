@@ -16,7 +16,7 @@ b:Sc/DBSCAN/OutputAfterRun = "True"
 
 s:Tf/energies/Function = "Step"
 dv:Tf/energies/Times   = 7 1  2  3  4  5  6  7 ms
-dv:Tf/energies/Values  = 7 0.5  1.1  2.3  5  10.8  23.2  50  MeV
+dv:Tf/energies/Values  = 7 0.5  0.7  1  2  4  10  50  MeV
 
 s:Tf/histories/Function = "Step"
 dv:Tf/histories/Times   = 7 1  2  3  4  5  6  7 ms
