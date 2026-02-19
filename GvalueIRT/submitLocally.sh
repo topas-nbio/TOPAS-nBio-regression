@@ -43,7 +43,7 @@ foreach LINE ( $OPTION )
 
 #!/bin/bash
 cd $DIR
-time TOPAS-nBio-v4.0 $INFILE.txt > log.out
+time topas $INFILE.txt > log.out
 EOF
     chmod +x $SCRIPT
     bash $SCRIPT 
