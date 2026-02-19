@@ -1,0 +1,23 @@
+{
+  "run_folder_name": "nBio-v4.1.0",
+  "topas_executable": "topas",
+  "python_cmd": "python3.14",
+  "default_runs": 10,
+  "tests": [
+    "DBSCAN",
+    "FrickeIRT",
+    "GvalueIRT",
+    "GvalueIRT_H",
+    "GvalueIRT_H2O2",
+    "GvalueIRT-Temperature",
+    "Gvalue_LET-IRT",
+    "Gvalue_LET-SBS",
+    "GvalueStepByStep",
+    "LET",
+    "NanodosimetryI",
+    "NanodosimetryII",
+    "NanodosimetryIII"
+  ],
+  "runs_per_test": {},
+  "max_parallel_jobs": 2
+}
