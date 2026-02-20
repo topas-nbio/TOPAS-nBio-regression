@@ -227,10 +227,19 @@ run_single_test() {
 }
 
 # -----------------------------------------------------------------------------
-# If the script is interrupted (Ctrl+C) or exits early, try to restore any
-# patched files so we don't leave the repo in a modified state.
+# Cleanup when the script exits or is interrupted (e.g. Ctrl+C).
+# First we stop any background test jobs (so TOPAS and other child processes
+# are not left running). Then we restore any patched files.
 # -----------------------------------------------------------------------------
-trap restore_all_saved_files EXIT INT TERM
+cleanup_on_exit() {
+  # Stop any background jobs this script started (and their children, e.g. topas)
+  for pid in $(jobs -p 2>/dev/null); do
+    kill -TERM -"$pid" 2>/dev/null || true
+  done
+  wait 2>/dev/null || true
+  restore_all_saved_files
+}
+trap cleanup_on_exit EXIT INT TERM
 
 # =============================================================================
 # Main: run the tests
@@ -252,6 +261,22 @@ if [[ "$DRY_RUN" == "yes" ]]; then
   exit 0
 fi
 
+# -----------------------------------------------------------------------------
+# Before running real tests, check that the commands in the config exist.
+# If they don't, we exit here so you don't start many tests that all fail
+# with "command not found".
+# -----------------------------------------------------------------------------
+if ! command -v "$TOPAS_EXECUTABLE" &>/dev/null; then
+  echo "Error: The command for topas_executable was not found: $TOPAS_EXECUTABLE" >&2
+  echo "Install TOPAS or fix the name in batch_config.json, then try again." >&2
+  exit 1
+fi
+if ! command -v "$PYTHON_CMD" &>/dev/null; then
+  echo "Error: The command for python_cmd was not found: $PYTHON_CMD" >&2
+  echo "Install that Python version or fix the name in batch_config.json, then try again." >&2
+  exit 1
+fi
+
 # Run tests either one after another or several in parallel
 if [[ "$MAX_PARALLEL_JOBS" -le 1 ]]; then
   # Run each test in order
@@ -259,11 +284,19 @@ if [[ "$MAX_PARALLEL_JOBS" -le 1 ]]; then
     run_single_test "$t"
   done
 else
-  # Run up to MAX_PARALLEL_JOBS tests at the same time (each in its own process)
-  for t in "${TESTS[@]}"; do
-    (run_single_test "$t") &
+  # Waves: run up to MAX_PARALLEL_JOBS tests at a time; when the whole batch finishes, start the next batch
+  # Enable job control so that if you press Ctrl+C we can stop these background jobs (and their topas processes)
+  set -m
+  next_index=0
+  while (( next_index < ${#TESTS[@]} )); do
+    batch=()
+    for (( i = 0; i < MAX_PARALLEL_JOBS && next_index < ${#TESTS[@]}; i++ )); do
+      (run_single_test "${TESTS[next_index]}") &
+      batch+=($!)
+      ((next_index++))
+    done
+    wait ${batch[@]}
   done
-  wait
 fi
 
 trap - EXIT INT TERM

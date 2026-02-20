@@ -22,10 +22,11 @@ You can run multiple regression tests in one go using the batch script (run_batc
    - **run_folder_name** – Name used for the run directory (e.g. `"nBio-v4.1.0"`). Results will go under `run/<run_folder_name>_<date>/`.
    - **topas_executable** – TOPAS binary name (e.g. the command that you use to run TOPAS. If following the quickStart guides this should just be `"topas"`).
    - **python_cmd** – Python interpreter for tests that use scripts (e.g. `"python3"`).
-   - **default_runs** – Default number of runs (iterations) per test.
+   - **default_runs** – Default number of runs (iterations) per test. These runs are performed sequentially for each test.
    - **tests** – List of test directory names to run (e.g. `["DBSCAN", "FrickeIRT", "Gvalue_LET-IRT"]`).
    - **runs_per_test** (optional) – Override runs for specific tests (e.g. change the empty key-value pair to something like `{ "DBSCAN": 7, "FrickeIRT": 3 }` if you want 7 runs of DBSCAN and 3 runs of FrickeIRT).
-   - **max_parallel_jobs** (optional) – Number of tests to run in parallel (defaults to 1).
+   - **max_parallel_jobs** (optional) - Max tests in one batch. Tests run in batches of this size, then the next batch starts when the current batch has all finished (defaults to 1). 
+   - Note: This current implementation doesn't avoid the problem of large differences in execution times between tests. If one test finishes fast, those cores are idle until the longest test in that batch finishes, then the remaining batches are run. More robust solutions exist to more efficiently allocate resources but for simplicity sake this is how things work.
 
 2. **Run:** From the repository root:
    ```bash
