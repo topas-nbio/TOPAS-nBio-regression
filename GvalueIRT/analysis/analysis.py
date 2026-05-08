@@ -206,8 +206,8 @@ def plot_results(sut_dir, ref_dir, args):
         plt.errorbar(sut[0][molecule], sut[1][molecule], yerr=sut[2][molecule],fmt="r-",label=args.sut_label,linewidth=1.0)
         plt.errorbar(ref[0][molecule], ref[1][molecule], yerr=ref[2][molecule],fmt="b-",label=args.ref_label,linewidth=1.0)
 
-        print('nBio-v4.0 {}: '.format(molecule), sut[1][molecule][-1], sut[2][molecule][-1])
-        print('nBio-v3.0 {}: '.format(molecule), ref[1][molecule][-1], ref[2][molecule][-1])
+        #print('nBio-v4.0 {}: '.format(molecule), sut[1][molecule][-1], sut[2][molecule][-1])
+        #print('nBio-v3.0 {}: '.format(molecule), ref[1][molecule][-1], ref[2][molecule][-1])
         
         # Benchmark 
         # plt.step(bench[2][molecule], bench[0][molecule], color='g')

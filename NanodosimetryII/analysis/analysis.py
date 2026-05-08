@@ -36,7 +36,7 @@ def GetFromBinary(name, bins, histories):
     hist, bins = np.histogram(clusterSizes, np.linspace(0, bins, bins+1)) #, density=True)
     hist = np.asarray(hist,dtype='d')
     hist[0] = zeroClusterSize
-    hist /= np.trapz(hist, bins[:-1])
+    hist /= np.trapezoid(hist, bins[:-1])
     return (bins[:-1], hist) 
 
 def GetM1andF2(bins, hist, yerror):

@@ -1,6 +1,10 @@
 A Regression system for TOPAS-nBio
 (Use latest addition on top of the list)
 
+- March 31, 2026. Thongchai A. M. Masilela
+               - Finalized the regression tests for TOPAS-nBio-v4.1.0
+               - General updates to regression repository, added batch run capabilities for future maintainers	
+
 - July 16, 2025. Thongchai A. M. Masilela
                - Finalized the regression tests for TOPAS-nBio-v4.0
 

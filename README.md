@@ -3,7 +3,7 @@
 ### Department of Radiation Oncology                                  #
 ### University of California San Francisco.                           #
 ### Jose.RamosMendez@ucsf.edu                                         #
-### February 2026                                                     #
+### April 2026                                                        #
 ### ############################################################### ###
 
 ### Overview
@@ -26,13 +26,12 @@ You can run multiple regression tests in one go using the batch script (run_batc
    - **tests** – List of test directory names to run (e.g. `["DBSCAN", "FrickeIRT", "Gvalue_LET-IRT"]`).
    - **runs_per_test** (optional) – Override runs for specific tests (e.g. change the empty key-value pair to something like `{ "DBSCAN": 7, "FrickeIRT": 3 }` if you want 7 runs of DBSCAN and 3 runs of FrickeIRT).
    - **max_parallel_jobs** (optional) - Max tests in one batch. Tests run in batches of this size, then the next batch starts when the current batch has all finished (defaults to 1). 
-   - Note: This current implementation doesn't avoid the problem of large differences in execution times between tests. If one test finishes fast, those cores are idle until the longest test in that batch finishes, then the remaining batches are run. More robust solutions exist to more efficiently allocate resources but for simplicity sake this is how things work.
 
 2. **Run:** From the repository root:
    ```bash
    ./run_batch.sh
    ```
-   The script temporarily patches each test's `submitLocally.sh` (and, for Gvalue_LET-IRT and Gvalue_LET-SBS, `ParameterFiles/runMain.py`) with the config values, runs `tcsh submitLocally.sh <runs>`, then restores the original files. No permanent changes are made to the test scripts. Please note that any significant modifications that you yourself make to `submitLocally.sh` may cause `run_batch.sh` to fail.
+   For each test, the script creates a temporary copy of `submitLocally.sh` (and, for Gvalue_LET-IRT and Gvalue_LET-SBS, a temporary copy of `ParameterFiles/runMain.py`), patches those temporary files with the config values, runs `tcsh` on the temporary script, and then deletes the temporary files. The original test scripts are never modified. Please note that any significant modifications that you yourself make to `submitLocally.sh` may cause `run_batch.sh` to fail.
 
 3. **Dry run:** To list which tests would run and with how many runs, without patching or executing:
    ```bash
@@ -45,8 +44,6 @@ You can run multiple regression tests in one go using the batch script (run_batc
 Instead of performing batch runs you have the option to go into any of the test folders and perform a single run of that test should you so wish. This is done by:
 
 1. Go into the directory of the test you want to run, then modify the name of the TOPAS command that should be used in `submitLocally.sh`, `submitBSUB.sh`, or `submitQSUB.sh`. For the tests Gvalue_LET-IRT and Gvalue_LET-SBS this TOPAS command should be changed in `ParameterFiles/runMain.py` and the bash scripts should instead be modified with the command you use to run Python, i.e. `"python3"`.
-
-"Gvalue_LET-IRT" || "$test_name" == "Gvalue_LET-SBS"
 
 2. Choose how many runs you want to do of that test, then:
    ```bash
@@ -91,7 +88,7 @@ This example must give a value of around 15.5 +- 0.1 reported by the ICRU.
 13. GvalueIRT_H. H-scavenger-dependent G value for H within microsecond time range.
 
 ### Optional
-If you have modified the names of the image files resulting from `analysis.py`, open the python script `copy_and_paste.py` in the directory Summary/tex_openTOPAS and change the names of the appropriate files such that they match. Then run the script. This will copy and paste all the regression test images into a new directory called Summary/openTOPAS. Run the .tex file in order to generate a PDF summarising all the results.
+If you have modified the names of the image files resulting from `analysis.py`, open the python script `copy_and_paste.py` in the directory Summary/tex_openTOPAS and change the names of the appropriate files such that they match. Then run the script. This will copy and paste all the regression test images into a new directory called Summary/tex_openTOPAS/openTOPAS/. Run the .tex file in order to generate a PDF summarising all the results.
 
 ### For future maintainers
 Recommendations for future maintainers of this repository are as follows:

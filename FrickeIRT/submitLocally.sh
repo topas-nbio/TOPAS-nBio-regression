@@ -41,7 +41,7 @@ foreach LINE ( $OPTION )
 
 #!/bin/bash
 cd $DIR
-time topas $INFILE.txt > log.out
+time __TOPAS_CMD__ $INFILE.txt > log.out
 EOF
     chmod +x $SCRIPT
     bash $SCRIPT 

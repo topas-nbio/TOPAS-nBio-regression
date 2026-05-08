@@ -217,8 +217,14 @@ def plot_results(sut_dir, ref_dir, args):
     molecules = ['OH^0','e_aq^-1','H3O^1','H2O2^0','H_2^0','H^0']
     moleculesName = ['$^{.}OH$','$e-_{aq}$','$H_{3}O^{+}$','$H_{2}O_{2}$','$H_{2}$','$H^{.}$']
 
-    Ref_Repeats = os.listdir(ref_dir)
-    Sut_Repeats = os.listdir(sut_dir)
+    Ref_Repeats = sorted(
+        d for d in os.listdir(ref_dir)
+        if not d.startswith('.') and os.path.isdir(os.path.join(ref_dir, d))
+    )
+    Sut_Repeats = sorted(
+        d for d in os.listdir(sut_dir)
+        if not d.startswith('.') and os.path.isdir(os.path.join(sut_dir, d))
+    )
 
     ElectronRef, ProtonRef, AlphaRef = GetMeanGValue(ref_dir,Ref_Repeats,molecules)
     ElectronSut, ProtonSut, AlphaSut = GetMeanGValue(sut_dir,Sut_Repeats,molecules)

@@ -26,6 +26,16 @@ ProtonLET    = np.array([[40.2692,0.32277],[4.49355,0.109095],[0.695069,0.041779
 AlphaInfo    = ["4000.0","20000.0","50000.0"]
 AlphaLET     = np.array([[97.3568,0.868983],[28.3289,0.336693],[13.4607,0.32049]])
 
+# As of 06/03/2026 SBS chemistry still uses the Geant4 molecule names with ° while the IRT has already been updated 
+# to normalize these molecule names to TOPAS-nBio friendly versions. When the SBS chemnistry has been updated this 
+# molecule alias dictionary can be removed.
+MOLECULE_ALIASES = {
+    "\u00b0OH^0": "OH^0",
+    "H_O2\u00b0^0": "HO2^0",
+    "\u00b0O^0": "O^0",
+    "O\u00b0^-1": "O^-1",
+}
+
 ####################################################
 ### Define Read Functions
 
@@ -53,7 +63,8 @@ def GetGValues(file,molecules):
         GValue = float(A[0])
         STD    = float(A[1])
         Time   = float(A[2])
-        Name   = A[3]
+        #Name   = A[3]
+        Name   = MOLECULE_ALIASES.get(A[3], A[3])
 
         if Name in molecules and Time == 1E6:
             Result[Name] = [[GValue, STD]]
@@ -80,6 +91,7 @@ def GetMeanGValue(Dir,Repeats,Molecules):
                     GValues_Holder[k].append(GValues[k][0])
 
         for j in Molecules:
+            #print(Dir, Molecules)
             DATA = np.array(GValues_Holder[j])
             MEAN = np.mean(DATA[:,0])
             STD  = sum(np.sqrt(DATA[:,1]**2))/len(DATA)
@@ -217,8 +229,14 @@ def plot_results(sut_dir, ref_dir, args):
     molecules = ['OH^0','e_aq^-1','H3O^1','H2O2^0','H_2^0','H^0']
     moleculesName = ['$^{.}OH$','$e-_{aq}$','$H_{3}O^{+}$','$H_{2}O_{2}$','$H_{2}$','$H^{.}$']
 
-    Ref_Repeats = os.listdir(ref_dir)
-    Sut_Repeats = os.listdir(sut_dir)
+    Ref_Repeats = sorted(
+        d for d in os.listdir(ref_dir)
+        if not d.startswith('.') and os.path.isdir(os.path.join(ref_dir, d))
+    )
+    Sut_Repeats = sorted(
+        d for d in os.listdir(sut_dir)
+        if not d.startswith('.') and os.path.isdir(os.path.join(sut_dir, d))
+    )
 
     ElectronRef, ProtonRef, AlphaRef = GetMeanGValue(ref_dir,Ref_Repeats,molecules)
     ElectronSut, ProtonSut, AlphaSut = GetMeanGValue(sut_dir,Sut_Repeats,molecules)

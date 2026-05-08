@@ -19,5 +19,5 @@
     "NanodosimetryIII"
   ],
   "runs_per_test": {},
-  "max_parallel_jobs": 2
+  "max_parallel_jobs": 8
 }

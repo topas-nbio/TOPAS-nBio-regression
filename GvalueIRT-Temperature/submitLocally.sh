@@ -41,7 +41,7 @@ foreach LINE ( $OPTION )
 
 #!/bin/bash
 cd $DIR
-time python3 $INFILE.py topas > log.out
+time python3 $INFILE.py __TOPAS_CMD__ > log.out
 EOF
     chmod +x $SCRIPT
     bash $SCRIPT 

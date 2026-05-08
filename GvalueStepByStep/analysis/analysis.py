@@ -12,6 +12,16 @@ import matplotlib.lines as mlines
 from pylab import rcParams
 rcParams['legend.numpoints'] = 1
 
+# As of 06/03/2026 SBS chemistry still uses the Geant4 molecule names with ° while the IRT has already been updated 
+# to normalize these molecule names to TOPAS-nBio friendly versions. When the SBS chemnistry has been updated this 
+# molecule alias dictionary can be removed.
+MOLECULE_ALIASES = {
+    "\u00b0OH^0": "OH^0",
+    "H_O2\u00b0^0": "HO2^0",
+    "\u00b0O^0": "O^0",
+    "O\u00b0^-1": "O^-1",
+}
+
 def GetGValue(name, accepted):
     gvalue = {}
     gvalue2 = {}
@@ -19,7 +29,9 @@ def GetGValue(name, accepted):
     iFile = open(name, 'r')
     for line in iFile:
         line = line.split()
-        mol = line[3]
+        #mol = line[3]
+        mol   = MOLECULE_ALIASES.get(line[3], line[3])
+
         if mol in accepted:
             if not mol in gvalue:
                 gvalue[mol] = []		

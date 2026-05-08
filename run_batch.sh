@@ -99,7 +99,7 @@ get_runs_for_test() {
 }
 
 # -----------------------------------------------------------------------------
-# This function makes a string safe to use inside a sed replacement. sed uses 
+# This function makes a string safe to use inside a sed replacement. sed uses
 # special characters in replacements; we escape backslash and ampersand
 # so that the config value is used literally.
 # -----------------------------------------------------------------------------
@@ -108,46 +108,7 @@ escape_for_sed() {
 }
 
 # -----------------------------------------------------------------------------
-# This function saves copies ofsubmittedLocally.sh and runMain.py so we can 
-# restore them later. It saves the original file to a temporary backup, remembers 
-# the path of the original file and the backup path so we can copy the backup back 
-# when the test is done.
-# -----------------------------------------------------------------------------
-SAVED_FILE_PATHS=()
-SAVED_BACKUP_PATHS=()
-
-save_original_file() {
-  local file_path="$1"
-  if [[ ! -f "$file_path" ]]; then
-    echo "Warning: File not found, skipping backup: $file_path" >&2
-    return
-  fi
-  local backup_file
-  backup_file=$(mktemp)
-  cp "$file_path" "$backup_file"
-  SAVED_FILE_PATHS+=("$file_path")
-  SAVED_BACKUP_PATHS+=("$backup_file")
-}
-
-# -----------------------------------------------------------------------------
-# This function restores all files we backed up.
-# -----------------------------------------------------------------------------
-restore_all_saved_files() {
-  local i
-  for (( i=0; i < ${#SAVED_FILE_PATHS[@]}; i++ )); do
-    local original_path="${SAVED_FILE_PATHS[$i]}"
-    local backup_path="${SAVED_BACKUP_PATHS[$i]}"
-    if [[ -f "$backup_path" ]]; then
-      cp "$backup_path" "$original_path"
-      rm -f "$backup_path"
-    fi
-  done
-  SAVED_FILE_PATHS=()
-  SAVED_BACKUP_PATHS=()
-}
-
-# -----------------------------------------------------------------------------
-# This function does everything for one test: backup, patch, run, restore.
+# This function does everything for one test: prepare temp scripts, patch, run.
 # -----------------------------------------------------------------------------
 run_single_test() {
   local test_name="$1"
@@ -167,6 +128,8 @@ run_single_test() {
 
   local submit_script="$test_dir/submitLocally.sh"
   local runmain_script="$test_dir/ParameterFiles/runMain.py"
+  local tmp_submit="$test_dir/submitLocally_temp.tcsh"
+  local tmp_runmain="$test_dir/ParameterFiles/runMain_temp.py"
 
   # -------- Dry run: only print what we would do --------
   if [[ "$DRY_RUN" == "yes" ]]; then
@@ -180,14 +143,6 @@ run_single_test() {
     return 0
   fi
 
-  # -------- Step A: Back up the files we are about to change --------
-  save_original_file "$submit_script"
-  if [[ "$test_name" == "Gvalue_LET-IRT" || "$test_name" == "Gvalue_LET-SBS" ]]; then
-    if [[ -f "$runmain_script" ]]; then
-      save_original_file "$runmain_script"
-    fi
-  fi
-
   # -------- Step B: Prepare escaped strings for sed --------
   # (so that characters in the config don't break sed)
   local run_folder_escaped
@@ -197,39 +152,44 @@ run_single_test() {
   topas_escaped=$(escape_for_sed "$TOPAS_EXECUTABLE")
   python_escaped=$(escape_for_sed "$PYTHON_CMD")
 
-  # -------- Step C: Patch submitLocally.sh --------
+  # -------- Step C: Create and patch a temporary submitLocally script --------
+  cp "$submit_script" "$tmp_submit"
   # Replace whatever is between run/ and _"$DATE with the config run folder name
-  sed -i.bak -e "s|/run/[^_]*_|/run/${run_folder_escaped}_|g" "$submit_script"
-  # Replace the literal "topas" with the config executable:
-  # - On the "time ..." line (e.g. "time topas $INFILE.txt" or "time python3 $INFILE.py topas")
-  sed -i.bak -e "/time / s/topas/${topas_escaped}/g" "$submit_script"
-  # - On the Python script line when there is no "time " (e.g. GvalueIRT_H: "python3 $INFILE.py topas")
-  sed -i.bak -e "/\.py / s/topas/${topas_escaped}/g" "$submit_script"
+  sed -i.bak -e "s|/run/[^_]*_|/run/${run_folder_escaped}_|g" "$tmp_submit"
+  # Replace the __TOPAS_CMD__ placeholder with the configured executable
+  sed -i.bak -e "s|__TOPAS_CMD__|${topas_escaped}|g" "$tmp_submit"
   # Replace the Python command (any form: python, python2, python3, python3.10, etc.)
-  sed -i.bak -e "s/python[0-9.]*/${python_escaped}/g" "$submit_script"
-  rm -f "$submit_script.bak"
+  sed -i.bak -e "s/python[0-9.]*/${python_escaped}/g" "$tmp_submit"
+  # Pin $DATE in the DIR line to LAUNCH_DATE so all runs use the same folder (even if tests span multiple days)
+  launch_date_escaped=$(escape_for_sed "$LAUNCH_DATE")
+  sed -i.bak -e "/set DIR = / s/\\\$DATE/${launch_date_escaped}/g" "$tmp_submit"
+  rm -f "$tmp_submit.bak"
 
-  # -------- Step D: Patch runMain.py for the two tests that use it --------
-  # Replace the literal "topas" in os.system("topas RUN.txt") with the config executable
+  # -------- Step D: Create and patch a temporary runMain.py for the LET tests --------
+  # Replace the __TOPAS_CMD__ placeholder in os.system("__TOPAS_CMD__ RUN.txt") with the config executable
   if [[ "$test_name" == "Gvalue_LET-IRT" || "$test_name" == "Gvalue_LET-SBS" ]]; then
     if [[ -f "$runmain_script" ]]; then
-      sed -i.bak -e "s/\"topas RUN\.txt\"/\"${topas_escaped} RUN.txt\"/g" "$runmain_script"
-      rm -f "$runmain_script.bak"
+      cp "$runmain_script" "$tmp_runmain"
+      sed -i.bak -e "s|__TOPAS_CMD__|${topas_escaped}|g" "$tmp_runmain"
+      rm -f "$tmp_runmain.bak"
     fi
   fi
 
   # -------- Step E: Run the test --------
   echo "Running test: $test_name (${num_runs} runs)"
-  (cd "$test_dir" && tcsh submitLocally.sh "$num_runs") || true
+  (cd "$test_dir" && tcsh "$(basename "$tmp_submit")" "$num_runs") || true
 
-  # -------- Step F: Put the original files back --------
-  restore_all_saved_files
+  # Clean up temporary files
+  rm -f "$tmp_submit"
+  if [[ -f "$tmp_runmain" ]]; then
+    rm -f "$tmp_runmain"
+  fi
 }
 
 # -----------------------------------------------------------------------------
 # Cleanup when the script exits or is interrupted (e.g. Ctrl+C).
 # First we stop any background test jobs (so TOPAS and other child processes
-# are not left running). Then we restore any patched files.
+# are not left running).
 # -----------------------------------------------------------------------------
 cleanup_on_exit() {
   # Stop any background jobs this script started (and their children, e.g. topas)
@@ -237,7 +197,6 @@ cleanup_on_exit() {
     kill -TERM -"$pid" 2>/dev/null || true
   done
   wait 2>/dev/null || true
-  restore_all_saved_files
 }
 trap cleanup_on_exit EXIT INT TERM
 
@@ -276,6 +235,10 @@ if ! command -v "$PYTHON_CMD" &>/dev/null; then
   echo "Install that Python version or fix the name in batch_config.json, then try again." >&2
   exit 1
 fi
+
+# Pin run folder date to the day we launch (so long tests don't create folders with different dates)
+LAUNCH_DATE=$(date +%Y%b%d)
+echo "Run folders will use date: $LAUNCH_DATE"
 
 # Run tests either one after another or several in parallel
 if [[ "$MAX_PARALLEL_JOBS" -le 1 ]]; then
