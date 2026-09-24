@@ -2,6 +2,7 @@
 ### Import Libraries
 
 import numpy as np
+import subprocess
 import sys
 from os import system as command
 
@@ -26,7 +27,7 @@ def Main():
         command("sed 's/fDensity/'%s'/g' depFile1.tps > run1.tps"%(Densities[i]))
         command("sed 's/fTemperature/'%s'/g' run1.tps > run2.tps"%(Temperatures[i]))
 
-        command("%s run2.tps"%(TOPAS))
+        subprocess.call([TOPAS, "run2.tps"])
         command("rm run1.tps")
         command("rm run2.tps")
 

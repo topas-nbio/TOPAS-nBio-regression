@@ -2,6 +2,7 @@
 ### Import Libraries
 
 import numpy as np
+import subprocess
 import sys 
 from os import system as command
 
@@ -15,7 +16,7 @@ def Main():
 
     for c in Concentrations:
         command("sed 's/theConcentration/'%s'/g' mainTopas.txt > run1.txt" % c)
-        command("%s run1.txt"%(TOPAS))
+        subprocess.call([TOPAS, "run1.txt"])
         command("mv run1.txt run_%s.txt"%(c))
 
 ############################

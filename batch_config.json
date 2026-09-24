@@ -1,7 +1,7 @@
 {
   "run_folder_name": "nBio-v4.1.0",
   "topas_executable": "topas",
-  "python_cmd": "python3.14",
+  "python_cmd": "python",
   "default_runs": 10,
   "tests": [
     "DBSCAN",

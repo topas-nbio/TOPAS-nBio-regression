@@ -73,6 +73,25 @@ if [[ -z "$RUN_FOLDER_NAME" || -z "$TOPAS_EXECUTABLE" || -z "$PYTHON_CMD" ]]; th
   exit 1
 fi
 
+# Resolve the configured file once, before changing into any test directory.
+# Explicit paths (including ~/...) also work when the wrapper is not on PATH.
+if [[ "$TOPAS_EXECUTABLE" == '~/'* ]]; then
+  TOPAS_EXECUTABLE="$HOME/${TOPAS_EXECUTABLE:2}"
+fi
+if [[ "$TOPAS_EXECUTABLE" != */* ]]; then
+  TOPAS_EXECUTABLE=$(type -P "$TOPAS_EXECUTABLE") || {
+    echo "Error: topas_executable was not found on PATH. Use its full path in batch_config.json (e.g. ~/Applications/bin/topasg41142)." >&2
+    exit 1
+  }
+fi
+if [[ ! -f "$TOPAS_EXECUTABLE" || ! -x "$TOPAS_EXECUTABLE" ]]; then
+  echo "Error: topas_executable is not an executable file: $TOPAS_EXECUTABLE" >&2
+  exit 1
+fi
+TOPAS_EXECUTABLE="$(cd "$(dirname "$TOPAS_EXECUTABLE")" && pwd)/$(basename "$TOPAS_EXECUTABLE")"
+export TOPAS_EXECUTABLE
+echo "TOPAS executable: $TOPAS_EXECUTABLE"
+
 # Read the list of test names (the "tests" array in the JSON)
 TESTS_RAW=$(jq -r '.tests[]?' "$CONFIG_FILE")
 TESTS=()
@@ -104,7 +123,7 @@ get_runs_for_test() {
 # so that the config value is used literally.
 # -----------------------------------------------------------------------------
 escape_for_sed() {
-  printf '%s' "$1" | sed 's/[\\&]/\\&/g'
+  printf '%s' "$1" | sed 's/[\\&|]/\\&/g'
 }
 
 # -----------------------------------------------------------------------------
@@ -149,7 +168,7 @@ run_single_test() {
   local topas_escaped
   local python_escaped
   run_folder_escaped=$(escape_for_sed "$RUN_FOLDER_NAME")
-  topas_escaped=$(escape_for_sed "$TOPAS_EXECUTABLE")
+  topas_escaped=$(escape_for_sed '"$TOPAS_EXECUTABLE"')
   python_escaped=$(escape_for_sed "$PYTHON_CMD")
 
   # -------- Step C: Create and patch a temporary submitLocally script --------
@@ -170,7 +189,10 @@ run_single_test() {
   if [[ "$test_name" == "Gvalue_LET-IRT" || "$test_name" == "Gvalue_LET-SBS" ]]; then
     if [[ -f "$runmain_script" ]]; then
       cp "$runmain_script" "$tmp_runmain"
-      sed -i.bak -e "s|__TOPAS_CMD__|${topas_escaped}|g" "$tmp_runmain"
+      sed -i.bak -e 's|os.system("__TOPAS_CMD__ RUN.txt")|os.spawnv(os.P_WAIT, os.environ["TOPAS_EXECUTABLE"], [os.environ["TOPAS_EXECUTABLE"], "RUN.txt"])|' "$tmp_runmain"
+      # Copy the patched driver under its original name in each run directory.
+      sed -i.bak -e 's|cp $LINE $DIR|cp ParameterFiles/runMain_temp.py $DIR/$INFILE.py|' "$tmp_submit"
+      rm -f "$tmp_submit.bak"
       rm -f "$tmp_runmain.bak"
     fi
   fi
@@ -256,7 +278,7 @@ else
     for (( i = 0; i < MAX_PARALLEL_JOBS && next_index < ${#TESTS[@]}; i++ )); do
       (run_single_test "${TESTS[next_index]}") &
       batch+=($!)
-      ((next_index++))
+      next_index=$((next_index + 1))
     done
     wait ${batch[@]}
   done

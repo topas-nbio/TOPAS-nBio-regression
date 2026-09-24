@@ -20,7 +20,7 @@ You can run multiple regression tests in one go using the batch script (run_batc
 
 1. **Config:** Edit `batch_config.json` to set:
    - **run_folder_name** – Name used for the run directory (e.g. `"nBio-v4.1.0"`). Results will go under `run/<run_folder_name>_<date>/`.
-   - **topas_executable** – TOPAS binary name (e.g. the command that you use to run TOPAS. If following the quickStart guides this should just be `"topas"`).
+   - **topas_executable** – Executable binary or wrapper script: a name on `PATH` (e.g. `"topasg41142"`) or a path (e.g. `"~/Applications/bin/topasg41142"`). The script resolves and prints the absolute path before launching tests; it does not fall back to `topas`. Shell aliases and functions are not supported.
    - **python_cmd** – Python interpreter for tests that use scripts (e.g. `"python3"`).
    - **default_runs** – Default number of runs (iterations) per test. These runs are performed sequentially for each test.
    - **tests** – List of test directory names to run (e.g. `["DBSCAN", "FrickeIRT", "Gvalue_LET-IRT"]`).
@@ -33,7 +33,7 @@ You can run multiple regression tests in one go using the batch script (run_batc
    ```
    For each test, the script creates a temporary copy of `submitLocally.sh` (and, for Gvalue_LET-IRT and Gvalue_LET-SBS, a temporary copy of `ParameterFiles/runMain.py`), patches those temporary files with the config values, runs `tcsh` on the temporary script, and then deletes the temporary files. The original test scripts are never modified. Please note that any significant modifications that you yourself make to `submitLocally.sh` may cause `run_batch.sh` to fail.
 
-3. **Dry run:** To list which tests would run and with how many runs, without patching or executing:
+3. **Dry run:** To verify the TOPAS executable path and list which tests would run and with how many runs, without patching or executing:
    ```bash
    ./run_batch.sh --dry-run
    ```
