@@ -41,9 +41,9 @@ You can run multiple regression tests in one go using the batch script (run_batc
 **Requirements:** `jq` (for reading the JSON config) and `tcsh` must be installed.
 
 ### Single runs
-Instead of performing batch runs you have the option to go into any of the test folders and perform a single run of that test should you so wish. This is done by:
+Instead of performing batch runs you have the option to go into any of the test folders and perform a single run of that test should you so wish. This is done as follows:
 
-1. Go into the directory of the test you want to run, then modify the name of the TOPAS command that should be used in `submitLocally.sh`, `submitBSUB.sh`, or `submitQSUB.sh`. For the tests Gvalue_LET-IRT and Gvalue_LET-SBS this TOPAS command should be changed in `ParameterFiles/runMain.py` and the bash scripts should instead be modified with the command you use to run Python, i.e. `"python3"`.
+1. Go into the directory of the test you want to run. Within `submitLocally.sh`, modify the run folder name and the name of the TOPAS command. For the tests Gvalue_LET-IRT and Gvalue_LET-SBS this TOPAS command should be changed in `ParameterFiles/runMain.py` and the bash scripts should be modified with the command you use to run Python, i.e. `"python3"`.
 
 2. Choose how many runs you want to do of that test, then:
    ```bash
